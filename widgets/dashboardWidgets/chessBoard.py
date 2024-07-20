@@ -1,7 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-from chessBoardClasses import *
-from move import *
-from movementFunctions import promotingTo
+from chessFunctions.chessBoardClasses import *
+from chessFunctions.move import *
+from chessFunctions.movementFunctions import promotingTo
 
 
 class Ui_chessBoard(QtWidgets.QWidget):

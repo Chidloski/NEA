@@ -1,6 +1,6 @@
-from checkChecking import checkForCheck
-from checkMateChecking import checkForCheckMate, checkForStaleMate
-from moveChecking import *
+from chessFunctions.checkChecking import checkForCheck
+from chessFunctions.checkMateChecking import checkForCheckMate, checkForStaleMate
+from chessFunctions.moveChecking import *
 from PyQt5.QtGui import QPixmap
 
 pieceToPromote = None

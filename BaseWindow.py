@@ -1,8 +1,7 @@
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
-from loginPage import Ui_LogInPage
-from welcomePage import Ui_WelcomePage
-from chessBoard import Ui_chessBoard
+from widgets.loginPage import Ui_LogInPage
+from widgets.dashboard import Ui_Dashboard
 
 # base window houses two widgets
 #   - login
@@ -34,7 +33,7 @@ class groupingWindow(object):
 
         # first assigns welcomewidget to the ui class for welcome page
         # then populates it using the setupUI function
-        welcomeWidget = Ui_WelcomePage()
+        welcomeWidget = Ui_Dashboard()
         welcomeWidget.setupUi()
 
         # adds the welcome page widget to the stack

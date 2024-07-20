@@ -1,5 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-from chessBoard import Ui_chessBoard
+from dashboardWidgets.chessBoard import Ui_chessBoard
 
 # welcome page will house a widget stack containing:
 #   - Puzzles
@@ -7,7 +7,7 @@ from chessBoard import Ui_chessBoard
 #   - Tournaments
 # and a second widget containing buttons to scroll through these widgets
 
-class Ui_WelcomePage(QtWidgets.QWidget):
+class Ui_Dashboard(QtWidgets.QWidget):
     
     def setupUi(self):
 

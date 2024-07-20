@@ -1,6 +1,6 @@
-from moveChecking import *
-from movementFunctions import *
-from checkChecking import *
+from chessFunctions.moveChecking import *
+from chessFunctions.movementFunctions import *
+from chessFunctions.checkChecking import *
 
 # function uses a list containing whether moving is active and the object to move (pieceToMove)
 def move(domain, currentPiece, moving, pieceToMove, validTiles, moveNumber, attackers, previousMove, pgn):
