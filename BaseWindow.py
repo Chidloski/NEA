@@ -26,6 +26,8 @@ class groupingWindow(object):
 
         # sets logInWidget to class of login page and uses the setupUI function to populate itself
         logInWidget = Ui_LogInPage()
+
+        # passes in the object in order to allow the log in widget to cycle between widgets
         logInWidget.setupUi(self)
 
         # adds the login widget to the stack

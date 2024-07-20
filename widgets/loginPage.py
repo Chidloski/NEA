@@ -1,5 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-from LoginFunctions import LogIn, PasswordVisibility
+from userFunctions import LogIn, PasswordVisibility
 
 # Responsible for setting up all elements within the log in page
 class Ui_LogInPage(QtWidgets.QWidget):
