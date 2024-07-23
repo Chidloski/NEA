@@ -78,7 +78,7 @@ class Ui_LogInPage(QtWidgets.QWidget):
 
         # calls log in function which checks the input of username and password
         # passes in the base window to allow access to the stacked widget
-        self.LoginButton.clicked.connect(lambda: LogIn(self, stackedWidgetObject, self.UsernameInput.text(), self.PasswordInput.text(), self.WelcomeLabel))
+        self.LoginButton.clicked.connect(lambda: LogIn(self, stackedWidgetObject, self.UsernameInput.text(), self.PasswordInput.text()))
 
         # declares createUser button
         self.CreateUserButton = QtWidgets.QPushButton(self)
@@ -104,6 +104,21 @@ class Ui_LogInPage(QtWidgets.QWidget):
         # calls log in function which checks the input of username and password
         # passes in the self of the group window to allow access to the stacked widget
         self.ForgotPasswordButton.clicked.connect(lambda: goToForgotPasswordPage(stackedWidgetObject, self.UsernameInput.text(), forgotPasswordWidgetObject))
+
+        # Changes font for next declaration
+        font.setPointSize(13)
+        font.setBold(False)
+
+        # declares the error label
+        self.ErrorLabel = QtWidgets.QLabel(self)
+        self.ErrorLabel.setGeometry(QtCore.QRect(350, 395, 300, 50))
+
+        # defines the font of error label
+        self.ErrorLabel.setFont(font)
+        self.ErrorLabel.setAlignment(QtCore.Qt.AlignCenter)
+        self.ErrorLabel.setObjectName("ErrorLabel")
+        self.ErrorLabel.setHidden(True)
+        self.ErrorLabel.setStyleSheet("color: rgb(175, 61, 50)")
 
         self.passwordVisibilityButton = QtWidgets.QPushButton(self)
         self.passwordVisibilityButton.setGeometry(QtCore.QRect(613, 253, 40, 26))

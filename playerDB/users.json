@@ -1,4 +1,12 @@
-{
-    "users": [
-    ]
-}
+[
+    {
+        "email": "s.chidlow07@gmail.com",
+        "fullName": "sam chidlow",
+        "id": 0,
+        "match1": -1,
+        "match2": -1,
+        "match3": -1,
+        "rating": 800,
+        "username": "chidloski"
+    }
+]

@@ -107,7 +107,22 @@ class Ui_RegisterPage(QtWidgets.QWidget):
 
         # calls register function which checks the input of username and password
         # passes in the self of the group window to allow access to the stacked widget
-        self.RegisterButton.clicked.connect(lambda: Register(stackedWidgetObject, self.UsernameInput.text(), self.FullNameInput.text(), self.EmailInput.text(), self.PasswordInput.text(), self.RePasswordInput.text()))
+        self.RegisterButton.clicked.connect(lambda: Register(self, stackedWidgetObject, self.UsernameInput.text(), self.FullNameInput.text(), self.EmailInput.text(), self.PasswordInput.text(), self.RePasswordInput.text()))
+
+        # Changes font for next declaration
+        font.setPointSize(13)
+        font.setBold(False)
+
+        # declares the error label
+        self.ErrorLabel = QtWidgets.QLabel(self)
+        self.ErrorLabel.setGeometry(QtCore.QRect(350, 450, 300, 50))
+
+        # defines the font of error label
+        self.ErrorLabel.setFont(font)
+        self.ErrorLabel.setAlignment(QtCore.Qt.AlignCenter)
+        self.ErrorLabel.setObjectName("ErrorLabel")
+        self.ErrorLabel.setHidden(True)
+        self.ErrorLabel.setStyleSheet("color: rgb(175, 61, 50)")
 
         # adds the "shut eye" icon to the button
         icon = QtGui.QIcon()
