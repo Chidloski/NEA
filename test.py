@@ -1,4 +1,8 @@
-i = [1]
+from userFunctions import passwordHashing, verifyPassword
 
-for y in i:
-    print(y)
+password = "hellohello12"
+hashed = passwordHashing(password)
+print(hashed)
+
+valid = verifyPassword(hashed, "hellohello")
+print(valid)

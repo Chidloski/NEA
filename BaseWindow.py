@@ -1,6 +1,8 @@
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from widgets.loginPage import Ui_LogInPage
+from widgets.registerPage import Ui_RegisterPage
+from widgets.forgotPasswordPage import Ui_ForgotPasswordPage
 from widgets.dashboard import Ui_Dashboard
 
 # base window houses two widgets
@@ -24,22 +26,23 @@ class groupingWindow(object):
         self.stackedWidget.setGeometry(QtCore.QRect(0, 0, 1000, 600))
         self.stackedWidget.setObjectName("stackedWidget")
 
-        # sets logInWidget to class of login page and uses the setupUI function to populate itself
+        # sets widgets to class of respective page and uses the setupUI function to populate itself
         logInWidget = Ui_LogInPage()
+        registerWidget = Ui_RegisterPage()
+        forgotPasswordWidget = Ui_ForgotPasswordPage()
+        dashboardWidget = Ui_Dashboard()
 
-        # passes in the object in order to allow the log in widget to cycle between widgets
-        logInWidget.setupUi(self)
+        # passes in the object in order to allow the widgets to cycle between widget stack
+        registerWidget.setupUi(self)
+        forgotPasswordWidget.setupUi(self)
+        logInWidget.setupUi(self, registerWidget, forgotPasswordWidget)
+        dashboardWidget.setupUi(self)
 
-        # adds the login widget to the stack
+        # adds the widgets to the stack
         self.stackedWidget.addWidget(logInWidget)
-
-        # first assigns welcomewidget to the ui class for welcome page
-        # then populates it using the setupUI function
-        welcomeWidget = Ui_Dashboard()
-        welcomeWidget.setupUi()
-
-        # adds the welcome page widget to the stack
-        self.stackedWidget.addWidget(welcomeWidget)
+        self.stackedWidget.addWidget(registerWidget)
+        self.stackedWidget.addWidget(forgotPasswordWidget)
+        self.stackedWidget.addWidget(dashboardWidget)
         
         # sets itself as the widget
         MainWindow.setCentralWidget(self.centralwidget)
