@@ -1,10 +1,10 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-from userFunctions import LogIn, PasswordVisibility
+from userFunctions import LogIn, PasswordVisibility, goToRegisterPage, goToForgotPasswordPage
 
 # Responsible for setting up all elements within the log in page
 class Ui_LogInPage(QtWidgets.QWidget):
 
-    def setupUi(self, stackedWidgetObject):
+    def setupUi(self, stackedWidgetObject, registerWidgetObject, forgotPasswordWidgetObject):
 
         # sizing of the widget
         self.setObjectName("logInPage")
@@ -66,19 +66,44 @@ class Ui_LogInPage(QtWidgets.QWidget):
         self.PasswordInput.setPlaceholderText("Enter Password:")
         self.PasswordInput.setObjectName("PasswordInput")
 
-        # declares log in button
-        self.LoginButton = QtWidgets.QPushButton(self)
-        self.LoginButton.setGeometry(QtCore.QRect(450, 292, 100, 32))
-
         font.setPointSize(14)
         font.setBold(True)
+
+        # declares log in button
+        self.LoginButton = QtWidgets.QPushButton(self)
+        self.LoginButton.setGeometry(QtCore.QRect(425, 292, 150, 32))
 
         self.LoginButton.setFont(font)
         self.LoginButton.setObjectName("LoginButton")
 
         # calls log in function which checks the input of username and password
+        # passes in the base window to allow access to the stacked widget
+        self.LoginButton.clicked.connect(lambda: LogIn(self, stackedWidgetObject, self.UsernameInput.text(), self.PasswordInput.text(), self.WelcomeLabel))
+
+        # declares createUser button
+        self.CreateUserButton = QtWidgets.QPushButton(self)
+        self.CreateUserButton.setGeometry(QtCore.QRect(425, 324, 150, 32))
+
+        self.CreateUserButton.setFont(font)
+        self.CreateUserButton.setObjectName("LoginButton")
+
+        # calls go to register page function which passes username and input to new page
+        # passes in the base window to allow access to the stacked widget
+        self.CreateUserButton.clicked.connect(lambda: goToRegisterPage(stackedWidgetObject, self.UsernameInput.text(), self.PasswordInput.text(), registerWidgetObject))
+
+        # declares forgotPassword button
+        self.ForgotPasswordButton = QtWidgets.QPushButton(self)
+        self.ForgotPasswordButton.setGeometry(QtCore.QRect(425, 356, 150, 32))
+
+        self.ForgotPasswordButton.setFont(font)
+        self.ForgotPasswordButton.setObjectName("LoginButton")
+
+        # button is initially hidden
+        self.ForgotPasswordButton.setHidden(True)
+
+        # calls log in function which checks the input of username and password
         # passes in the self of the group window to allow access to the stacked widget
-        self.LoginButton.clicked.connect(lambda: LogIn(stackedWidgetObject, self.UsernameInput.text(), self.PasswordInput.text(), self.WelcomeLabel))
+        self.ForgotPasswordButton.clicked.connect(lambda: goToForgotPasswordPage(stackedWidgetObject, self.UsernameInput.text(), forgotPasswordWidgetObject))
 
         self.passwordVisibilityButton = QtWidgets.QPushButton(self)
         self.passwordVisibilityButton.setGeometry(QtCore.QRect(613, 253, 40, 26))
@@ -93,7 +118,7 @@ class Ui_LogInPage(QtWidgets.QWidget):
         self.passwordVisibilityButton.setObjectName("passwordVisibilityButton")
 
         # calls function which either sets text to bullets or shows real text
-        self.passwordVisibilityButton.clicked.connect(lambda: PasswordVisibility(self, self.PasswordInput.displayText(), self.PasswordInput.text(), self.PasswordInput))
+        self.passwordVisibilityButton.clicked.connect(lambda: PasswordVisibility(self.PasswordInput.displayText(), self.PasswordInput.text(), self.PasswordInput))
         
         self.retranslateUi()
         QtCore.QMetaObject.connectSlotsByName(self)
@@ -104,4 +129,6 @@ class Ui_LogInPage(QtWidgets.QWidget):
         self.WelcomeLabel.setText(_translate("logInPage", "Chess Teacher"))
         self.LoginLabel.setText(_translate("logInPage", "Login:"))
         self.LoginButton.setText(_translate("logInPage", "Login"))
+        self.CreateUserButton.setText(_translate("logInPage", "Create User"))
+        self.ForgotPasswordButton.setText(_translate("logInPage", "Reset Password"))
     

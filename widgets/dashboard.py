@@ -1,5 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-from dashboardWidgets.chessBoard import Ui_chessBoard
+from widgets.dashboardWidgets.chessBoard import Ui_chessBoard
 
 # welcome page will house a widget stack containing:
 #   - Puzzles
@@ -9,7 +9,7 @@ from dashboardWidgets.chessBoard import Ui_chessBoard
 
 class Ui_Dashboard(QtWidgets.QWidget):
     
-    def setupUi(self):
+    def setupUi(self, stackedWidgetObject):
 
         self.setObjectName("WelcomePage")
         self.resize(1000, 600)
