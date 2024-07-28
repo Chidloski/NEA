@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>230</width>
+    <height>560</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QLabel" name="currentUserLabel">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>201</width>
+     <height>15</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Fira Code</family>
+     <pointsize>18</pointsize>
+     <fontweight>Medium</fontweight>
+    </font>
+   </property>
+   <property name="text">
+    <string>current user:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="currentUserRatingLabel">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>30</y>
+     <width>191</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Fira Code</family>
+     <pointsize>13</pointsize>
+     <fontweight>Light</fontweight>
+    </font>
+   </property>
+   <property name="text">
+    <string>Rating: 1000</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="currentUserRatingOutcome">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>60</y>
+     <width>191</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Fira Code</family>
+     <pointsize>13</pointsize>
+     <fontweight>Light</fontweight>
+    </font>
+   </property>
+   <property name="text">
+    <string>Rating Change:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="currentUserRatingDelta">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>80</y>
+     <width>181</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Fira Code</family>
+     <pointsize>10</pointsize>
+     <fontweight>Light</fontweight>
+    </font>
+   </property>
+   <property name="text">
+    <string>Win +5 / Draw +0 / Loss -1</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="opponentUserLabel">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>110</y>
+     <width>201</width>
+     <height>15</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Fira Code</family>
+     <pointsize>18</pointsize>
+     <fontweight>Medium</fontweight>
+    </font>
+   </property>
+   <property name="text">
+    <string>current user:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="opponentUserRatingLabel">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>130</y>
+     <width>191</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Fira Code</family>
+     <pointsize>13</pointsize>
+     <fontweight>Light</fontweight>
+    </font>
+   </property>
+   <property name="text">
+    <string>Rating: 1000</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="opponentUserRatingOutcome">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>160</y>
+     <width>191</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Fira Code</family>
+     <pointsize>13</pointsize>
+     <fontweight>Light</fontweight>
+    </font>
+   </property>
+   <property name="text">
+    <string>Rating Change:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="opponentUserRatingDelta">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>180</y>
+     <width>181</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Fira Code</family>
+     <pointsize>10</pointsize>
+     <fontweight>Light</fontweight>
+    </font>
+   </property>
+   <property name="text">
+    <string>Win +5 / Draw +0 / Loss -1</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="PGNLabel">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>220</y>
+     <width>201</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Fira Code</family>
+     <pointsize>18</pointsize>
+     <fontweight>Medium</fontweight>
+    </font>
+   </property>
+   <property name="text">
+    <string>PGN:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="opponentUserRatingDelta_2">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>240</y>
+     <width>201</width>
+     <height>201</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Fira Code</family>
+     <pointsize>8</pointsize>
+     <fontweight>Light</fontweight>
+    </font>
+   </property>
+   <property name="text">
+    <string>1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Ba4 Nf6 5. O-O Be7 6. Re1 b5 7. Bb3 d6 8. c3 O-O 9. h3 Nb8 10. d4 Nbd7 11. Nbd2 Bb7 12. Bc2 Re8 13. Nf1 Bf8 14. Ng3 g6 15. b3 Bg7 16. Bb2 h5 17. Qd2 Nh7 18. Rad1 Qe7 19. c4 bxc4 20. bxc4 Rad8 21. Qa5 Rc8 22. Ba4 c6 23. Bc1 Qd8 24. Qd2 Qe7 25. Bc2 Ndf8 26. Ba3 Qc7 27. Bb4 Rcd8 28. Ba5 Qe7 29. Ba4 Rd7 30. Qe3 Rc8 31. Qa3 Ne6 32. Bb4 Qd8 33. dxe5 dxe5 34. Rxd7 Qxd7 35. Bd6 f6 36. c5 Bf8 37. Rd1 Qf7 38. Bb3 Re8 39. Nd2 Kh8 40. Nc4 Qg7
+</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+   <property name="margin">
+    <number>3</number>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="drawButton">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>460</y>
+     <width>201</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Fira Code</family>
+     <pointsize>16</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Offer Draw</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="resignButton">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>500</y>
+     <width>201</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Fira Code</family>
+     <pointsize>16</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Resign</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

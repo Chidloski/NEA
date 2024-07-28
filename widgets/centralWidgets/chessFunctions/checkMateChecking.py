@@ -1,5 +1,5 @@
-from chessFunctions.moveChecking import checkMoveKing, checkMovePawn, checkMoveKnight, checkMoveDiagonal, checkMoveStraight, checkMoveQueen
-from chessFunctions.checkChecking import movesBlockingCheck, isBlockingCheck
+from widgets.centralWidgets.chessFunctions.moveChecking import checkMoveKing, checkMovePawn, checkMoveKnight, checkMoveDiagonal, checkMoveStraight, checkMoveQueen
+from widgets.centralWidgets.chessFunctions.checkChecking import movesBlockingCheck, isBlockingCheck
 
 # check mate function goes through all different cases for the attackers list and checks whether it will result in a checkmate
 # colours in this case represents the defending team's colour

@@ -1,8 +1,8 @@
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
-from widgets.loginPage import Ui_LogInPage
-from widgets.registerPage import Ui_RegisterPage
-from widgets.forgotPasswordPage import Ui_ForgotPasswordPage
+from widgets.userWidgets.loginPage import Ui_LogInPage
+from widgets.userWidgets.registerPage import Ui_RegisterPage
+from widgets.userWidgets.forgotPasswordPage import Ui_ForgotPasswordPage
 from widgets.dashboard import Ui_Dashboard
 
 # base window houses two widgets
@@ -27,22 +27,22 @@ class groupingWindow(object):
         self.stackedWidget.setObjectName("stackedWidget")
 
         # sets widgets to class of respective page and uses the setupUI function to populate itself
-        logInWidget = Ui_LogInPage()
-        registerWidget = Ui_RegisterPage()
-        forgotPasswordWidget = Ui_ForgotPasswordPage()
-        dashboardWidget = Ui_Dashboard()
+        self.logInWidget = Ui_LogInPage()
+        self.registerWidget = Ui_RegisterPage()
+        self.forgotPasswordWidget = Ui_ForgotPasswordPage()
+        self.dashboard = Ui_Dashboard()
 
         # passes in the object in order to allow the widgets to cycle between widget stack
-        registerWidget.setupUi(self)
-        forgotPasswordWidget.setupUi(self)
-        logInWidget.setupUi(self, registerWidget, forgotPasswordWidget)
-        dashboardWidget.setupUi(self)
+        self.registerWidget.setupUi(self)
+        self.forgotPasswordWidget.setupUi(self)
+        self.logInWidget.setupUi(self, self.registerWidget, self.forgotPasswordWidget)
+        self.dashboard.setupUi(self)
 
         # adds the widgets to the stack
-        self.stackedWidget.addWidget(logInWidget)
-        self.stackedWidget.addWidget(registerWidget)
-        self.stackedWidget.addWidget(forgotPasswordWidget)
-        self.stackedWidget.addWidget(dashboardWidget)
+        self.stackedWidget.addWidget(self.logInWidget)
+        self.stackedWidget.addWidget(self.registerWidget)
+        self.stackedWidget.addWidget(self.forgotPasswordWidget)
+        self.stackedWidget.addWidget(self.dashboard)
         
         # sets itself as the widget
         MainWindow.setCentralWidget(self.centralwidget)

@@ -1,5 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-from userFunctions import LogIn, PasswordVisibility, goToRegisterPage, goToForgotPasswordPage
+from widgets.userWidgets.functions.userFunctions import LogIn, PasswordVisibility, goToRegisterPage, goToForgotPasswordPage
 
 # Responsible for setting up all elements within the log in page
 class Ui_LogInPage(QtWidgets.QWidget):
@@ -8,7 +8,7 @@ class Ui_LogInPage(QtWidgets.QWidget):
 
         # sizing of the widget
         self.setObjectName("logInPage")
-        self.resize(100, 600)
+        self.resize(1000, 600)
         self.setAutoFillBackground(False)
 
         # declares welcome label element

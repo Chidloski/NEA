@@ -1,7 +1,9 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-from chessFunctions.chessBoardClasses import *
-from chessFunctions.move import *
-from chessFunctions.movementFunctions import promotingTo
+from widgets.centralWidgets.chessFunctions.chessBoardClasses import *
+from widgets.centralWidgets.chessFunctions.move import *
+from widgets.centralWidgets.chessFunctions.movementFunctions import promotingTo
+from widgets.centralWidgets.chessFunctions.userEndingFunctions import *
+from widgets.utilityWidgets.functions.playFunctions import goToStage2
 
 
 class Ui_chessBoard(QtWidgets.QWidget):
@@ -35,9 +37,12 @@ class Ui_chessBoard(QtWidgets.QWidget):
                                                                                 self.validTiles, self.moveNumber, self.attackers, 
                                                                                 self.previousMove, self.pgn)
 
-    def setupUi(self):
+    def setupUi(self, dashboard):
         self.setObjectName("chessBoard")
         self.resize(560, 560)
+
+        # allows all chess functions access to the dashboard so changes can be made to other widgets
+        self.dashboard = dashboard
 
         # font is declared once as it doesn't change
         font = QtGui.QFont()
@@ -535,26 +540,50 @@ class Ui_chessBoard(QtWidgets.QWidget):
         self.coverScreen = QLabel(self)
         self.coverScreen.setGeometry(QtCore.QRect(0, 0, 560, 560))
         self.coverScreen.setStyleSheet("background: rgba(255, 0, 0, 0);")
-        self.coverScreen.setHidden(True)
+        # self.coverScreen.setHidden(True)
 
-        font.setPointSize(36)
+        font.setPointSize(28)
 
         self.gameOverLabel = QLabel(self)
-        self.gameOverLabel.setGeometry(QtCore.QRect(155, 220, 250, 120))
+        self.gameOverLabel.setGeometry(QtCore.QRect(155, 210, 250, 140))
         self.gameOverLabel.setFont(font)
         self.gameOverLabel.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
+        self.gameOverLabel.setWordWrap(True)
         self.gameOverLabel.setStyleSheet("background-color: rgb(50, 50, 50); padding: 1; border-radius: 10px;")
         self.gameOverLabel.setHidden(True)
+
+        self.offerLabel = QLabel(self)
+        self.offerLabel.setGeometry(QtCore.QRect(155, 220, 250, 120))
+        self.offerLabel.setFont(font)
+        self.offerLabel.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
+        self.offerLabel.setStyleSheet("background-color: rgb(50, 50, 50); padding: 1; border-radius: 10px;")
+        self.offerLabel.setHidden(True)
 
         font.setPointSize(20)
 
         self.playAgainButton = QtWidgets.QPushButton(self)
-        self.playAgainButton.setGeometry(QtCore.QRect(190, 290, 180, 40))
+        self.playAgainButton.setGeometry(QtCore.QRect(190, 300, 180, 40))
         self.playAgainButton.setFont(font)
         self.playAgainButton.setObjectName("playAgain")
         self.playAgainButton.setStyleSheet("background-color: rgb(238, 125, 55); border-radius: 5px")
-        self.playAgainButton.clicked.connect(lambda: self.resetUi())
+        self.playAgainButton.clicked.connect(lambda: goToStage2(dashboard, dashboard.pvpStage2Widget.userId, dashboard.pvpStage2Widget.opponentId))
         self.playAgainButton.setHidden(True)
+
+        self.acceptOfferButton = QtWidgets.QPushButton(self)
+        self.acceptOfferButton.setGeometry(QtCore.QRect(180, 290, 95, 40))
+        self.acceptOfferButton.setFont(font)
+        self.acceptOfferButton.setObjectName("playAgain")
+        self.acceptOfferButton.setStyleSheet("background-color: rgb(238, 125, 55); border-radius: 5px")
+        self.acceptOfferButton.clicked.connect(lambda: onClickAcceptOffer(dashboard, self))
+        self.acceptOfferButton.setHidden(True)
+
+        self.rejectOfferButton = QtWidgets.QPushButton(self)
+        self.rejectOfferButton.setGeometry(QtCore.QRect(285, 290, 95, 40))
+        self.rejectOfferButton.setFont(font)
+        self.rejectOfferButton.setObjectName("playAgain")
+        self.rejectOfferButton.setStyleSheet("background-color: rgb(238, 125, 55); border-radius: 5px")
+        self.rejectOfferButton.clicked.connect(lambda: onClickRejectOffer(dashboard, self))
+        self.rejectOfferButton.setHidden(True)
 
         self.promotionLabel = QLabel(self)
         self.promotionLabel.setGeometry(QtCore.QRect(185, 230, 190, 100))
@@ -585,6 +614,8 @@ class Ui_chessBoard(QtWidgets.QWidget):
 
         self.retranslateUi()
         QtCore.QMetaObject.connectSlotsByName(self)
+
+
 
     def resetUi(self):
         self.currentMove = [False, -1, [], 0, [], [], ""]
