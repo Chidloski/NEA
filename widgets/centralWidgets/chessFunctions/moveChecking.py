@@ -1,4 +1,4 @@
-from chessFunctions.checkChecking import movesStoppingCheck, movesStoppingCheckForKing, checkForCheck
+from widgets.centralWidgets.chessFunctions.checkChecking import movesStoppingCheck, movesStoppingCheckForKing, checkForCheck
 
 # <------ SUMMARY ------>
 # All of these functions are used to check whether

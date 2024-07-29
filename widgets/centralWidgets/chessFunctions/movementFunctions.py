@@ -1,6 +1,7 @@
-from chessFunctions.checkChecking import checkForCheck
-from chessFunctions.checkMateChecking import checkForCheckMate, checkForStaleMate
-from chessFunctions.moveChecking import *
+from widgets.centralWidgets.chessFunctions.checkChecking import checkForCheck
+from widgets.centralWidgets.chessFunctions.checkMateChecking import checkForCheckMate, checkForStaleMate
+from widgets.centralWidgets.chessFunctions.moveChecking import *
+from widgets.utilityWidgets.functions.playFunctions import goToStage3
 from PyQt5.QtGui import QPixmap
 
 pieceToPromote = None
@@ -104,7 +105,8 @@ def movingToTile(pieceToMove, tile, domain, moveNumber, previousMove, pgn, attac
                 # sets that pawns tile occupation to false
                 tileOfPawnBeingTaken.occupied = "False"
 
-                pgnCurrentMove = pieceToMove.pos[0] + "x"
+                # pgnCurrentMove = pieceToMove.pos[0] + "x"
+                pgnCurrentMove = pgnCurrentMove + "x"
 
             # promotes a pawn
             if ((tile.objectName()[1] == "1" and pieceToMove.colour == "black") 
@@ -191,6 +193,9 @@ def movingToTile(pieceToMove, tile, domain, moveNumber, previousMove, pgn, attac
         print("pgn of move: " + pgnCurrentMove)
 
         pgn = pgn + pgnCurrentMove
+
+        # updates the moveset within the utility widget
+        domain.dashboard.pvpStage2Widget.moveset.setText(pgn)
 
         # returns updated move number when piece isn't double clicked
         return moveNumber + 1, attackers, previousMove, pgn
@@ -396,20 +401,36 @@ def isGameOver(defendingColour, domain, attackers, moveNumber, previousMove, pgn
 
     # if mate, show game over label
     if (isCheckMate == True or isStaleMate == True):
-        getattr(domain, "coverScreen").setHidden(False)
-        getattr(domain, "gameOverLabel").setHidden(False)
-        getattr(domain, "playAgainButton").setHidden(False)
 
         if isCheckMate and pgn[len(pgn) - 1] == "+":
             pgn = pgn[0: -1] + "#"
 
-        else:
+        elif isCheckMate:
             pgn = pgn + "#"  
+
+        domain.pgn = domain.pgn + pgn
 
         highlightValidTiles(previousMove, domain, True)
         
         if len(attackers) != 0:
             highlightValidTiles([getattr(domain, defendingColour + "King").pos], domain, True)
+
+        if isCheckMate == True:
+            if defendingColour == "white":
+                getattr(domain, "gameOverLabel").setText(f"{domain.blackPlayer} wins!")
+                goToStage3(domain.dashboard, -1)
+
+            else:
+                getattr(domain, "gameOverLabel").setText(f"{domain.whitePlayer} wins!")
+                goToStage3(domain.dashboard, 1)
+
+        else:
+            getattr(domain, "gameOverLabel").setText("It's a draw!")
+            goToStage3(domain.dashboard, 0)
+
+        getattr(domain, "coverScreen").setHidden(False)
+        getattr(domain, "gameOverLabel").setHidden(False)
+        getattr(domain, "playAgainButton").setHidden(False)
 
     return pgn, attackers
 

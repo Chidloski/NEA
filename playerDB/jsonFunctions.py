@@ -73,6 +73,8 @@ def insert(tableName, record):
     # adds data to table
     post(tableName, data)
 
+    return id
+
 
 
 # alter the record within a table

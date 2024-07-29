@@ -1,5 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-from userFunctions import ResetPassword, PasswordVisibility
+from widgets.userWidgets.functions.userFunctions import ResetPassword, PasswordVisibility
 
 # Responsible for setting up all elements within the log in page
 class Ui_ForgotPasswordPage(QtWidgets.QWidget):
