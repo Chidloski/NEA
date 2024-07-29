@@ -88,6 +88,8 @@ def Play(baseWindow, dashboard, widget, radioButtonStatus, opponentUser):
 
 
 def goToStage2(dashboard, userId, opponentId):
+    dashboard.chessBoard.resetUi()
+
     userQuery = {"id": userId}
     userData = getData("users", **userQuery)
     userUsername = userData[0]["username"]
@@ -115,18 +117,23 @@ def goToStage2(dashboard, userId, opponentId):
 
     if random.randint(0, 1) == 1:
         dashboard.chessBoard.whitePlayer = userUsername
+        dashboard.chessBoard.whitePlayerId = userId
         dashboard.pvpStage2Widget.currentUserLabel.setText("White: " + userUsername)
 
         dashboard.chessBoard.blackPlayer = opponentUsername
+        dashboard.chessBoard.blackPlayerId = opponentId
         dashboard.pvpStage2Widget.opponentUserLabel.setText("Black: " + opponentUsername)
 
     else:
         dashboard.chessBoard.whitePlayer = opponentUsername
+        dashboard.chessBoard.whitePlayerId = opponentId
         dashboard.pvpStage2Widget.currentUserLabel.setText("Black: " + userUsername)
 
         dashboard.chessBoard.blackPlayer = userUsername
+        dashboard.chessBoard.blackPlayerId = userId
         dashboard.pvpStage2Widget.opponentUserLabel.setText("White: " + opponentUsername)
 
+    dashboard.chessBoard.currentMatchId = createMatch(dashboard.chessBoard.whitePlayerId, dashboard.chessBoard.blackPlayerId)
 
     dashboard.pvpStage2Widget.currentUserRatingLabel.setText("Rating: " + str(userRating))
 
@@ -147,8 +154,6 @@ def goToStage2(dashboard, userId, opponentId):
     dashboard.pvpStage2Widget.currentUserRatingDeltaArray = [currentWin, currentDraw, currentLoss]
     dashboard.pvpStage2Widget.opponentUserRatingDeltaArray = [opponentWin, opponentDraw, opponentLoss]
 
-    dashboard.chessBoard.resetUi()
-
     dashboard.chessBoard.coverScreen.setHidden(True)
 
     dashboard.utilityStackedWidget.setCurrentIndex(1)
@@ -156,11 +161,11 @@ def goToStage2(dashboard, userId, opponentId):
 
 
 def ratingChange(ratingA, ratingB, outcome):
-    diff = ratingA - ratingB
+    diff = ratingB - ratingA
 
     expectedScore = 1 / (1 + 10**(diff / 400))
 
-    ratingChange = int(20*(outcome - expectedScore) + 10 * (outcome - 0.5))
+    ratingChange = int(50*(outcome - expectedScore) + 10 * (outcome - 0.5))
 
     return ratingChange
 
@@ -199,32 +204,118 @@ def resign(dashboard):
 
 
 
+# outcome is relative to the white player with 1 connoting a win, 0 a draw, and -1 a loss
 def goToStage3(dashboard, outcome):
     dashboard.pvpStage3Widget.currentUserLabel.setText(dashboard.pvpStage2Widget.currentUserLabel.text())
     dashboard.pvpStage3Widget.opponentLabel.setText(dashboard.pvpStage2Widget.opponentUserLabel.text())
 
     if dashboard.chessBoard.whitePlayer == dashboard.pvpStage2Widget.userUsername:
-        dashboard.pvpStage3Widget.currentRating = dashboard.pvpStage2Widget.userRating + dashboard.pvpStage2Widget.currentUserRatingDeltaArray[outcome]
-        dashboard.pvpStage3Widget.opponentRating = dashboard.pvpStage2Widget.opponentRating + dashboard.pvpStage2Widget.opponentUserRatingDeltaArray[abs(outcome)]
+        dashboard.pvpStage3Widget.currentRating = dashboard.pvpStage2Widget.userRating + dashboard.pvpStage2Widget.currentUserRatingDeltaArray[(outcome * -1) + 1]
+        dashboard.pvpStage3Widget.opponentRating = dashboard.pvpStage2Widget.opponentRating + dashboard.pvpStage2Widget.opponentUserRatingDeltaArray[(outcome) + 1]
 
     else:
-        dashboard.pvpStage3Widget.currentRating = dashboard.pvpStage2Widget.userRating + dashboard.pvpStage2Widget.currentUserRatingDeltaArray[abs(outcome)]
-        dashboard.pvpStage3Widget.opponentRating = dashboard.pvpStage2Widget.opponentRating + dashboard.pvpStage2Widget.opponentUserRatingDeltaArray[outcome]
+        dashboard.pvpStage3Widget.currentRating = dashboard.pvpStage2Widget.userRating + dashboard.pvpStage2Widget.currentUserRatingDeltaArray[(outcome) + 1]
+        dashboard.pvpStage3Widget.opponentRating = dashboard.pvpStage2Widget.opponentRating + dashboard.pvpStage2Widget.opponentUserRatingDeltaArray[(outcome * -1) + 1]
 
     dashboard.pvpStage3Widget.currentUserRatingChange.setText(str(dashboard.pvpStage2Widget.userRating) + " -> " + str(dashboard.pvpStage3Widget.currentRating))
     dashboard.pvpStage3Widget.opponentUserRatingChange.setText(str(dashboard.pvpStage2Widget.opponentRating) + " -> " + str(dashboard.pvpStage3Widget.opponentRating))
 
     dashboard.pvpStage3Widget.moveset.setText(dashboard.chessBoard.pgn)
 
+    finaliseMatch(dashboard, dashboard.chessBoard.currentMatchId, outcome, dashboard.chessBoard.pgn)
+
     dashboard.utilityStackedWidget.setCurrentIndex(2)
 
 
 
 def goToStage1(dashboard):
+    dashboard.playWidget.populate(dashboard.pvpStage2Widget.userId)
+
     dashboard.chessBoard.resetUi()
 
     dashboard.playWidget.refreshRadioButtons()
 
     dashboard.utilityStackedWidget.setCurrentIndex(0)
+
+
+
+def createMatch(whiteId, blackId):
+    record = {"whitePlayer": whiteId,
+              "blackPlayer": blackId,
+              "winner": "",
+              "pgn": "",
+              "finished": False}
+    
+    matchId = insert("matches", record)
+
+    return matchId
+
+
+
+def finaliseMatch(dashboard, matchId, outcome, pgn):
+    query = {"id": matchId}
+
+    match = getData("matches", **query)
+
+    print(matchId)
+    print(match)
+
+    match = match[0]
+
+    if outcome == 1:
+        match["winner"] = match["whitePlayer"]
+
+    elif outcome == -1:
+        match["winner"] = match["blackPlayer"]
+
+    else:
+        match["winner"] = "draw"
+
+    match["pgn"] = pgn
+
+    match["finished"] = True
+
+    update("matches", match, matchId)
+
+    currentUser = getData("users", id = dashboard.pvpStage2Widget.userId)
+    currentUser = currentUser[0]
+
+    currentUser["rating"] = dashboard.pvpStage3Widget.currentRating
+    currentUser["match3"] = currentUser["match2"]
+    currentUser["match2"] = currentUser["match1"]
+    currentUser["match1"] = matchId
+
+    update("users", currentUser, dashboard.pvpStage2Widget.userId)
+
+    if dashboard.pvpStage2Widget.opponentId != "guest":
+        opponentUser = getData("users", id = dashboard.pvpStage2Widget.opponentId)
+        opponentUser = opponentUser[0]
+
+        opponentUser["rating"] = dashboard.pvpStage3Widget.opponentRating
+        opponentUser["match3"] = opponentUser["match2"]
+        opponentUser["match2"] = opponentUser["match1"]
+        opponentUser["match1"] = matchId
+
+        update("users", opponentUser, dashboard.pvpStage2Widget.opponentId)
+
+
+
+
+
+def finaliseMatchOnExit(dashboard):
+    if dashboard.utilityStackedWidget.currentIndex() == 1:
+        matchId = dashboard.chessBoard.currentMatchId
+
+        query = {"id": matchId}
+
+        match = getData("matches", **query)
+
+        match = match[0]
+
+        match["pgn"] = dashboard.chessBoard.pgn
+
+        match["winner"] = "Unfinished match"
+
+        update("matches", match, matchId)
 
     

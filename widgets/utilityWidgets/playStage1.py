@@ -213,6 +213,19 @@ class Ui_PlayStage1(QtWidgets.QWidget):
         self.roundRadioButton.setAutoExclusive(True)
         self.knockoutRadioButton.setAutoExclusive(True)
 
+    def populate(widget, userId):
+
+        query = {"id": userId}
+
+        data = getData("users", **query)
+
+        data = data[0]
+
+        widget.currentUserLabel.setText(data["username"])
+        widget.currentUserRatingLabel.setText("Rating: " + str(data["rating"]))
+
+
+
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
         self.PvPLabel.setText(_translate("playStage1Page", "PvP"))

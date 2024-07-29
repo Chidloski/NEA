@@ -3,6 +3,8 @@ from widgets.centralWidgets.chessBoard import Ui_chessBoard
 from widgets.utilityWidgets.playStage1 import Ui_PlayStage1
 from widgets.utilityWidgets.pvpStage2 import Ui_PvpStage2
 from widgets.utilityWidgets.pvpStage3 import Ui_PvpStage3
+from widgets.utilityWidgets.functions.playFunctions import finaliseMatchOnExit
+import atexit
 
 # welcome page will house a widget stack containing:
 #   - Puzzles
@@ -72,5 +74,10 @@ class Ui_Dashboard(QtWidgets.QWidget):
         self.utilityStackedWidget.addWidget(self.pvpStage3Widget)
 
         QtCore.QMetaObject.connectSlotsByName(self)
+
+        atexit.register(self.onExit)
+
+    def onExit(self):
+        finaliseMatchOnExit(self)
 
 

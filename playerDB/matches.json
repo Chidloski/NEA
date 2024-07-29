@@ -1,0 +1,26 @@
+[
+    {
+        "blackPlayer": 0,
+        "finished": true,
+        "id": 0,
+        "pgn": " 1. e4 a6 2. Qf3 a5 3. Bc4 a4 4. Qxf7#",
+        "whitePlayer": 1,
+        "winner": 1
+    },
+    {
+        "blackPlayer": 1,
+        "finished": true,
+        "id": 1,
+        "pgn": " 0-1",
+        "whitePlayer": "guest",
+        "winner": 1
+    },
+    {
+        "blackPlayer": 1,
+        "finished": false,
+        "id": 2,
+        "pgn": " 1. e4",
+        "whitePlayer": "guest",
+        "winner": "Unfinished match"
+    }
+]

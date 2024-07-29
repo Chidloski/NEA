@@ -864,6 +864,20 @@ class Ui_chessBoard(QtWidgets.QWidget):
         self.gameOverLabel.setHidden(True)
         self.playAgainButton.setHidden(True)
 
+        self.offerLabel.setHidden(True)
+        self.acceptOfferButton.setHidden(True)
+        self.rejectOfferButton.setHidden(True)
+
+        self.whitePlayer = ""
+        self.whitePlayerId = ""
+
+        self.blackPlayer = ""
+        self.blackPlayerId = ""
+
+        self.currentMatchId = -1
+
+
+
 
 
 

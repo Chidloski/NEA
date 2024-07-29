@@ -1,7 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import re
-import os
-import hashlib
 from playerDB.jsonFunctions import *
 from playerDB.passwordFunctions import *
 
@@ -27,6 +25,7 @@ def LogIn(self, baseWindow, user, password):
         if verifyPassword(hashedPassword, password):
             baseWindow.userId = id
             baseWindow.stackedWidget.setCurrentIndex(3)
+            baseWindow.dashboard.playWidget.populate(id)
 
         else:
             self.ErrorLabel.setText("Incorrect password")
@@ -98,15 +97,16 @@ def Register(self, baseWindow, user, fullName, email, password, rePassword):
             "match3": -1
         }
 
-        insert("users", userData)
+        userId = insert("users", userData)
 
         hashedPassword = passwordHashing(password)
 
         passwordData = {
-            "hash": hashedPassword
+            "hash": hashedPassword,
+            "id": userId
         }
 
-        insert("passwords", passwordData)
+        throwaway = insert("passwords", passwordData)
 
         baseWindow.stackedWidget.setCurrentIndex(0)
 
