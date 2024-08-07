@@ -3,26 +3,33 @@ from playerDB.passwordFunctions import passwordHashing, verifyPassword
 from playerDB.jsonFunctions import *
 import random
 
+# handles the loggging in of a secondary user for pvp
 def secondaryLogIn(widget, username, password, state, baseWindow):
-    print(widget.opponentUser)
+    # print(widget.opponentUser)
 
+    # if no-one is already logged in
     if state is False:
+        # ensures both inputs are filled
         if len(username) == 0 or len(password) == 0:
-            widget.errorLabel.setText("Ensure both fields are filled")
+            widget.errorLabel.setText("Both fields must be filled")
             widget.errorLabel.setHidden(False)
 
         else:
+            # gets data
             data = getData("users", username = username)
             
+            # if no record is found
             if len(data) == 0:
                 widget.errorLabel.setText("Incorrect username or password")
                 widget.errorLabel.setHidden(False)
 
+            # if base user tries to login
             elif data[0]["id"] == baseWindow.userId:
                 widget.errorLabel.setText("User cannot play themselves")
                 widget.errorLabel.setHidden(False)
 
             else:
+                # fetches hashed password
                 id = data[0]["id"]
 
                 query = {"id": id}
@@ -30,10 +37,12 @@ def secondaryLogIn(widget, username, password, state, baseWindow):
                 passwordData = getData("passwords", **query)
                 hashedPassword = passwordData[0]["hash"]
 
+                # if password doesn't match
                 if not verifyPassword(hashedPassword, password):
                     widget.errorLabel.setText("Incorrect username or password")
                     widget.errorLabel.setHidden(False)
 
+                # populates all necessary elements with new logged in user
                 else:
                     widget.opponentUser = id
 
@@ -51,6 +60,7 @@ def secondaryLogIn(widget, username, password, state, baseWindow):
                     widget.errorLabel.setHidden(True)
 
     else:
+        # handles when secondary user logs out
         widget.errorLabel.setHidden(True)
         widget.secondaryUserLabel.setHidden(True)
         widget.secondaryUserLabel.setHidden(True)
@@ -64,21 +74,26 @@ def secondaryLogIn(widget, username, password, state, baseWindow):
 
 
 
+# handles the event that the play button is clicked
 def Play(baseWindow, dashboard, widget, radioButtonStatus, opponentUser):
+    # handles when no selection is made
     if radioButtonStatus == None:
         widget.errorLabel.setText("Pick opponent option")
         widget.errorLabel.setHidden(False)
 
+    # if secondary user selected but no logged in secondary user
     elif radioButtonStatus.text() == "Secondary User" and opponentUser is False:
         widget.errorLabel.setText("Log in other user")
         widget.errorLabel.setHidden(False)
 
+    # passes id of secondary user if secondary user is selected
     elif radioButtonStatus.text() == "Secondary User":
         # transition to pvp stage 2
         # pass the id of secondary user
         print("passing opponent id")
         goToStage2(dashboard, baseWindow.userId, opponentUser)
 
+    # passes guest as id if guest option is picked
     else:
         # transition to pvp stage 2
         # pass the id of guest
@@ -87,14 +102,21 @@ def Play(baseWindow, dashboard, widget, radioButtonStatus, opponentUser):
 
 
 
+# whenever the utility widget must switch to stage 2
 def goToStage2(dashboard, userId, opponentId):
+    # resets stage 2 ui
+    dashboard.pvpStage2Widget.resetUi()
+
+    # resets chessboard Ui
     dashboard.chessBoard.resetUi()
 
+    # gets user data
     userQuery = {"id": userId}
     userData = getData("users", **userQuery)
     userUsername = userData[0]["username"]
     userRating = userData[0]["rating"]
 
+    # gets opponent data based on whether opponent is secondary user
     if opponentId == "guest":
         opponentUsername = "guest"
         opponentRating = 800
@@ -106,6 +128,7 @@ def goToStage2(dashboard, userId, opponentId):
         opponentUsername = opponentData[0]["username"]
         opponentRating = opponentData[0]["rating"]
 
+    # declares data within the widget so it can be accessed
     dashboard.pvpStage2Widget.userId = userId
     dashboard.pvpStage2Widget.opponentId = opponentId
 
@@ -115,6 +138,7 @@ def goToStage2(dashboard, userId, opponentId):
     dashboard.pvpStage2Widget.userUsername = userUsername
     dashboard.pvpStage2Widget.opponentUsername = opponentUsername
 
+    # randomly picks which player is black and the other white
     if random.randint(0, 1) == 1:
         dashboard.chessBoard.whitePlayer = userUsername
         dashboard.chessBoard.whitePlayerId = userId
@@ -133,43 +157,51 @@ def goToStage2(dashboard, userId, opponentId):
         dashboard.chessBoard.blackPlayerId = userId
         dashboard.pvpStage2Widget.opponentUserLabel.setText("White: " + opponentUsername)
 
+    # gives chessBoard the current match id whilst also creating a match record
     dashboard.chessBoard.currentMatchId = createMatch(dashboard.chessBoard.whitePlayerId, dashboard.chessBoard.blackPlayerId)
 
+    # populate widget
     dashboard.pvpStage2Widget.currentUserRatingLabel.setText("Rating: " + str(userRating))
 
     dashboard.pvpStage2Widget.opponentUserRatingLabel.setText("Rating: " + str(opponentRating))
 
-    currentWin = ratingChange(userRating, opponentRating, 1)
-    currentDraw = ratingChange(userRating, opponentRating, 0.5)
-    currentLoss = ratingChange(userRating, opponentRating, 0)
+    # calculate rating changes for outcome
+    currentWin = ratingChange(userRating, opponentRating, 1, 50)
+    currentDraw = ratingChange(userRating, opponentRating, 0.5, 50)
+    currentLoss = ratingChange(userRating, opponentRating, 0, 50)
 
-    opponentWin = ratingChange(opponentRating, userRating, 1)
-    opponentDraw = ratingChange(opponentRating, userRating, 0.5)
-    opponentLoss = ratingChange(opponentRating, userRating, 0)
+    opponentWin = ratingChange(opponentRating, userRating, 1, 50)
+    opponentDraw = ratingChange(opponentRating, userRating, 0.5, 50)
+    opponentLoss = ratingChange(opponentRating, userRating, 0, 50)
 
     dashboard.pvpStage2Widget.currentUserRatingDelta.setText(f"Win {'+' if currentWin >= 0 else ''}{currentWin} / Draw {'+' if currentDraw >= 0 else ''}{currentDraw} / Loss {'+' if currentLoss >= 0 else ''}{currentLoss}")
 
     dashboard.pvpStage2Widget.opponentUserRatingDelta.setText(f"Win {'+' if opponentWin >= 0 else ''}{opponentWin} / Draw {'+' if opponentDraw >= 0 else ''}{opponentDraw} / Loss {'+' if opponentLoss >= 0 else ''}{opponentLoss}")
 
+    # hold rating changes in accessible array
     dashboard.pvpStage2Widget.currentUserRatingDeltaArray = [currentWin, currentDraw, currentLoss]
     dashboard.pvpStage2Widget.opponentUserRatingDeltaArray = [opponentWin, opponentDraw, opponentLoss]
 
+    # hides the cover screen on the chess board to allow players to make their moves
     dashboard.chessBoard.coverScreen.setHidden(True)
 
-    dashboard.utilityStackedWidget.setCurrentIndex(1)
+    # sends pvp widget to stage 2
+    dashboard.pvpStackedWidget.setCurrentIndex(1)
 
 
 
-def ratingChange(ratingA, ratingB, outcome):
+# algebraically calculates ratings based on outcome and difference between ratings
+def ratingChange(ratingA, ratingB, outcome, sensitivity):
     diff = ratingB - ratingA
 
     expectedScore = 1 / (1 + 10**(diff / 400))
 
-    ratingChange = int(50*(outcome - expectedScore) + 10 * (outcome - 0.5))
+    ratingChange = int(sensitivity*(outcome - expectedScore) + 10 * (outcome - 0.5))
 
     return ratingChange
 
 
+# handles when a draw button is clicked
 def requestDraw(dashboard):
 
     if dashboard.chessBoard.offerLabel.isVisible() == False:
@@ -187,6 +219,7 @@ def requestDraw(dashboard):
 
 
 
+# handles when resign button is clicked
 def resign(dashboard):
 
     if dashboard.chessBoard.offerLabel.isVisible() == False:
@@ -206,9 +239,18 @@ def resign(dashboard):
 
 # outcome is relative to the white player with 1 connoting a win, 0 a draw, and -1 a loss
 def goToStage3(dashboard, outcome):
+    # resets stage 3 ui
+    dashboard.pvpStage3Widget.resetUi()
+
+    # populate widget
     dashboard.pvpStage3Widget.currentUserLabel.setText(dashboard.pvpStage2Widget.currentUserLabel.text())
     dashboard.pvpStage3Widget.opponentLabel.setText(dashboard.pvpStage2Widget.opponentUserLabel.text())
 
+    # if current user is the white player
+    # if so the outcome is relative to the current user
+    # the outcome is either 1, 0, or -1 whilst the rating change array holds win in position 0, draw in position 1, and loss in position 2
+    # so therefore the outcome must be flipped by multiplying it by -1 and then shifting it by 1
+    # outcome doesnt need to be flipped for rating of other player
     if dashboard.chessBoard.whitePlayer == dashboard.pvpStage2Widget.userUsername:
         dashboard.pvpStage3Widget.currentRating = dashboard.pvpStage2Widget.userRating + dashboard.pvpStage2Widget.currentUserRatingDeltaArray[(outcome * -1) + 1]
         dashboard.pvpStage3Widget.opponentRating = dashboard.pvpStage2Widget.opponentRating + dashboard.pvpStage2Widget.opponentUserRatingDeltaArray[(outcome) + 1]
@@ -217,28 +259,31 @@ def goToStage3(dashboard, outcome):
         dashboard.pvpStage3Widget.currentRating = dashboard.pvpStage2Widget.userRating + dashboard.pvpStage2Widget.currentUserRatingDeltaArray[(outcome) + 1]
         dashboard.pvpStage3Widget.opponentRating = dashboard.pvpStage2Widget.opponentRating + dashboard.pvpStage2Widget.opponentUserRatingDeltaArray[(outcome * -1) + 1]
 
+    # populate widget
     dashboard.pvpStage3Widget.currentUserRatingChange.setText(str(dashboard.pvpStage2Widget.userRating) + " -> " + str(dashboard.pvpStage3Widget.currentRating))
     dashboard.pvpStage3Widget.opponentUserRatingChange.setText(str(dashboard.pvpStage2Widget.opponentRating) + " -> " + str(dashboard.pvpStage3Widget.opponentRating))
 
+    # get pgn from chess board
     dashboard.pvpStage3Widget.moveset.setText(dashboard.chessBoard.pgn)
 
+    # finalise record
     finaliseMatch(dashboard, dashboard.chessBoard.currentMatchId, outcome, dashboard.chessBoard.pgn)
 
-    dashboard.utilityStackedWidget.setCurrentIndex(2)
+    dashboard.pvpStackedWidget.setCurrentIndex(2)
 
 
 
+# handles going back to stage 1
 def goToStage1(dashboard):
-    dashboard.playWidget.populate(dashboard.pvpStage2Widget.userId)
+    dashboard.playWidget.resetUi(dashboard.pvpStage2Widget.userId)
 
     dashboard.chessBoard.resetUi()
 
-    dashboard.playWidget.refreshRadioButtons()
-
-    dashboard.utilityStackedWidget.setCurrentIndex(0)
+    dashboard.pvpStackedWidget.setCurrentIndex(0)
 
 
 
+# creates match record
 def createMatch(whiteId, blackId):
     record = {"whitePlayer": whiteId,
               "blackPlayer": blackId,
@@ -252,6 +297,7 @@ def createMatch(whiteId, blackId):
 
 
 
+# finalises match record and alters users' ratings
 def finaliseMatch(dashboard, matchId, outcome, pgn):
     query = {"id": matchId}
 
@@ -300,10 +346,9 @@ def finaliseMatch(dashboard, matchId, outcome, pgn):
 
 
 
-
-
+# finalises unifinished matches when program is exited
 def finaliseMatchOnExit(dashboard):
-    if dashboard.utilityStackedWidget.currentIndex() == 1:
+    if dashboard.pvpStackedWidget.currentIndex() == 1:
         matchId = dashboard.chessBoard.currentMatchId
 
         query = {"id": matchId}

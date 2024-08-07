@@ -294,7 +294,21 @@ def promotingTo(evolution, domain, alias, pgn, attackers, previousMove, moveNumb
     else:
         colour = "white"
 
-    pgn = pgn[0:-1] + "=" + alias
+    attackers == checkForCheck(colour, domain)
+
+    # highlights the king in red if it is under attack
+    if len(attackers) != 0:
+            kingPos = getattr(domain, colour + "King").pos
+            highlightValidTiles([kingPos], domain, "King")
+            
+            if pgn[-1] != "+":
+                pgn = pgn + "+"
+
+    if pgn[-1] == "+":
+        pgn = pgn[0:-1] + "=" + alias + "+"
+
+    else:
+        pgn = pgn + "=" + alias
 
     pgn, throwaway = isGameOver(colour, domain, attackers, moveNumber, previousMove, pgn)
 

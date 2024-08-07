@@ -1,8 +1,13 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from widgets.centralWidgets.chessBoard import Ui_chessBoard
-from widgets.utilityWidgets.playStage1 import Ui_PlayStage1
-from widgets.utilityWidgets.pvpStage2 import Ui_PvpStage2
-from widgets.utilityWidgets.pvpStage3 import Ui_PvpStage3
+from widgets.centralWidgets.puzzleChessBoard import Ui_puzzleChessBoard
+from widgets.utilityWidgets.pvpWidgets.playStage1 import Ui_PlayStage1
+from widgets.utilityWidgets.pvpWidgets.pvpStage2 import Ui_PvpStage2
+from widgets.utilityWidgets.pvpWidgets.pvpStage3 import Ui_PvpStage3
+from widgets.menuWidgets.menu import Ui_Menu
+from widgets.utilityWidgets.puzzleWidgets.puzzleWidget import Ui_PuzzleWidget
+from widgets.utilityWidgets.puzzleWidgets.dailyStage2 import Ui_dailyStage2
+from widgets.utilityWidgets.puzzleWidgets.dailyStage3 import Ui_dailyStage3
 from widgets.utilityWidgets.functions.playFunctions import finaliseMatchOnExit
 import atexit
 
@@ -21,6 +26,15 @@ class Ui_Dashboard(QtWidgets.QWidget):
         self.setObjectName("WelcomePage")
         self.resize(560, 560)
 
+        self.menuStackedWidget = QtWidgets.QStackedWidget(self)
+        self.menuStackedWidget.setGeometry(QtCore.QRect(20, 20, 130, 560))
+        self.menuStackedWidget.setObjectName("menuStackedWidget")
+
+        self.menu = Ui_Menu()
+        self.menu.setupUi(self)
+
+        self.menuStackedWidget.addWidget(self.menu)
+
         # declares a widget stack which currently holds only the chess board
         # in future may hold the tournament design
         self.centralStackedWidget = QtWidgets.QStackedWidget(self)
@@ -29,9 +43,11 @@ class Ui_Dashboard(QtWidgets.QWidget):
 
         # assigns chessBoard the class of chess board from the python ui file
         self.chessBoard = Ui_chessBoard()
+        self.puzzleChessBoard = Ui_puzzleChessBoard()
 
         # populates the class
         self.chessBoard.setupUi(self)
+        self.puzzleChessBoard.setupUi(self)
 
         # sets a stylesheet in the same format as css for the board
         # previous colours (cream / green):
@@ -50,16 +66,23 @@ class Ui_Dashboard(QtWidgets.QWidget):
         
         # applies the stylesheet
         self.chessBoard.setStyleSheet(styleSheet)
+        self.puzzleChessBoard.setStyleSheet(styleSheet)
 
         # adds the chess board to the widget stack
         self.centralStackedWidget.addWidget(self.chessBoard)
+        self.centralStackedWidget.addWidget(self.puzzleChessBoard)
 
 
         # declares a widget stack which currently holds only the chess board
         # in future may hold the tournament design
         self.utilityStackedWidget = QtWidgets.QStackedWidget(self)
         self.utilityStackedWidget.setGeometry(QtCore.QRect(750, 20, 230, 560))
-        self.utilityStackedWidget.setObjectName("stackedWidget")
+        self.utilityStackedWidget.setObjectName("utilityStackedWidget")
+
+
+        self.pvpStackedWidget = QtWidgets.QStackedWidget(self)
+        self.pvpStackedWidget.setGeometry(QtCore.QRect(750, 20, 230, 560))
+        self.pvpStackedWidget.setObjectName("pvpStackedWidget")
 
         self.playWidget = Ui_PlayStage1()
         self.pvpStage2Widget = Ui_PvpStage2()
@@ -69,9 +92,29 @@ class Ui_Dashboard(QtWidgets.QWidget):
         self.pvpStage2Widget.setupUi(self, baseWindow)
         self.pvpStage3Widget.setupUi(self, baseWindow)
 
-        self.utilityStackedWidget.addWidget(self.playWidget)
-        self.utilityStackedWidget.addWidget(self.pvpStage2Widget)
-        self.utilityStackedWidget.addWidget(self.pvpStage3Widget)
+        self.pvpStackedWidget.addWidget(self.playWidget)
+        self.pvpStackedWidget.addWidget(self.pvpStage2Widget)
+        self.pvpStackedWidget.addWidget(self.pvpStage3Widget)
+
+
+        self.puzzleStackedWidget = QtWidgets.QStackedWidget(self)
+        self.puzzleStackedWidget.setGeometry(QtCore.QRect(750, 20, 230, 560))
+        self.puzzleStackedWidget.setObjectName("puzzleStackedWidget")
+
+        self.puzzleWidget = Ui_PuzzleWidget()
+        self.dailyStage2Widget = Ui_dailyStage2()
+        self.dailyStage3Widget = Ui_dailyStage3()
+
+        self.puzzleWidget.setupUi(self)
+        self.dailyStage2Widget.setupUi(self)
+        self.dailyStage3Widget.setupUi(self)
+
+        self.puzzleStackedWidget.addWidget(self.puzzleWidget)
+        self.puzzleStackedWidget.addWidget(self.dailyStage2Widget)
+        self.puzzleStackedWidget.addWidget(self.dailyStage3Widget)
+        
+        self.utilityStackedWidget.addWidget(self.pvpStackedWidget)
+        self.utilityStackedWidget.addWidget(self.puzzleStackedWidget)
 
         QtCore.QMetaObject.connectSlotsByName(self)
 

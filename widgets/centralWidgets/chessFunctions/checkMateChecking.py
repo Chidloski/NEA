@@ -1,5 +1,5 @@
 from widgets.centralWidgets.chessFunctions.moveChecking import checkMoveKing, checkMovePawn, checkMoveKnight, checkMoveDiagonal, checkMoveStraight, checkMoveQueen
-from widgets.centralWidgets.chessFunctions.checkChecking import movesBlockingCheck, isBlockingCheck
+from widgets.centralWidgets.chessFunctions.checkChecking import movesBlockingCheck
 
 # check mate function goes through all different cases for the attackers list and checks whether it will result in a checkmate
 # colours in this case represents the defending team's colour
@@ -94,14 +94,12 @@ def allPieceMoves(colour, domain, attackers, moveNumber):
 
         # if the piece has not been taken
         if piece.isVisible():
-            # if the piece is not pinned
-            if not isBlockingCheck(colour, domain, piece.pos):
-                # extra args 
-                if piece.moveset == "Pawn":
-                    validTiles = validTiles + functions[piece.moveset](colour, piece.pos, domain, attackers, piece.hasMoved, moveNumber)
+            # extra args 
+            if piece.moveset == "Pawn":
+                validTiles = validTiles + functions[piece.moveset](colour, piece.pos, domain, attackers, piece.hasMoved, moveNumber)
 
-                else:
-                    validTiles = validTiles + functions[piece.moveset](colour, piece.pos, domain, attackers)
+            else:
+                validTiles = validTiles + functions[piece.moveset](colour, piece.pos, domain, attackers)
 
     
     return validTiles

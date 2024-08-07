@@ -3,10 +3,11 @@
         "email": "s.chidlow07@gmail.com",
         "fullName": "sam chidlow",
         "id": 0,
-        "match1": 0,
+        "match1": 3,
         "match2": 0,
-        "match3": -1,
-        "rating": 801,
+        "match3": 0,
+        "puzzleRating": 1077,
+        "rating": 830,
         "username": "chidloski"
     },
     {
@@ -16,6 +17,7 @@
         "match1": 1,
         "match2": 0,
         "match3": -1,
+        "puzzleRating": 800,
         "rating": 842,
         "username": "testUser"
     }

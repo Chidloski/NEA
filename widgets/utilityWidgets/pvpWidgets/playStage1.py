@@ -213,7 +213,7 @@ class Ui_PlayStage1(QtWidgets.QWidget):
         self.roundRadioButton.setAutoExclusive(True)
         self.knockoutRadioButton.setAutoExclusive(True)
 
-    def populate(widget, userId):
+    def populate(self, userId):
 
         query = {"id": userId}
 
@@ -221,10 +221,20 @@ class Ui_PlayStage1(QtWidgets.QWidget):
 
         data = data[0]
 
-        widget.currentUserLabel.setText(data["username"])
-        widget.currentUserRatingLabel.setText("Rating: " + str(data["rating"]))
+        self.currentUserLabel.setText(data["username"])
+        self.currentUserRatingLabel.setText("Rating: " + str(data["rating"]))
 
+    def resetUi(self, userId):
+        self.opponentUser = False
+        self.errorLabel.setHidden(True)
+        self.secondaryUsernameInput.setHidden(False)
+        self.secondaryPasswordInput.setHidden(False)
+        self.secondaryUserLabel.setHidden(True)
+        self.secondaryUserRatingLabel.setHidden(True)
+        self.loginButton.setText("Log In")
 
+        self.refreshRadioButtons()
+        self.populate(userId)
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate

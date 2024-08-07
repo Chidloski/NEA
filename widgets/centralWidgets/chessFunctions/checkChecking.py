@@ -2,6 +2,7 @@
 # These functions enable the board to see whether the king is in danger 
 # or whether a piece is blocking a check
 
+'''
 def isBlockingCheck(colour, domain, currentPosition):
 
     # returns False if the function is called upon the king piece
@@ -47,7 +48,7 @@ def isBlockingCheck(colour, domain, currentPosition):
         return False
     
     else:
-        '''if len(attackers) == 1:
+        if len(attackers) == 1:
             directionToAttacker = onSameLine(currentPosition, attackers[0][1])
             #print("direction from piece to attacker: ")
             #print(directionToAttacker)
@@ -58,7 +59,7 @@ def isBlockingCheck(colour, domain, currentPosition):
             elif directionToAttacker[0] * -1 == direction[0] and directionToAttacker[1] * -1 == direction[1]:
                 return True
             
-            return False'''
+            return False
         blocks = []
 
         for i in attackers:
@@ -68,7 +69,7 @@ def isBlockingCheck(colour, domain, currentPosition):
                 blocks.append(False)
 
             elif directionToAttacker[0] * -1 == direction[0] and directionToAttacker[1] * -1 == direction[1]:
-                pass
+                pass'''
 
 
 
@@ -287,19 +288,28 @@ def onSameLine(piecePosition, kingPosition):
 
 # the purpose of check against check is to compare all possible moves of a piece
 # with the legitimate moves when the king is in check
-def movesStoppingCheck(pieceValidTiles, attackers, kingPos):
+def movesStoppingCheck(pieceValidTiles, kingPos, position, domain):
     tilesToBlock = []
     validTiles = []
+
+    occupiedTile = getattr(domain, position)
+    occupant = occupiedTile.occupied
+
+    occupiedTile.occupied = "False"
+
+    attackers = checkForCheck(getattr(domain, occupant).colour, domain)
 
     # if there is more than one attacker, a non-king piece cannot move to stop the check
     if len(attackers) > 1:
         #print("multiple attackers")
+        occupiedTile.occupied = occupant
         return []
     
     # if there is no attackers, all valid moves are possible
     # (this is because if the piece is pinned to the king, earlier logic prevents the
     # call from getting this far)
     elif len(attackers) == 0:
+        occupiedTile.occupied = occupant
         return pieceValidTiles
 
     # a non-king piece cannot block either of these checks and thus can only take the piece
@@ -320,7 +330,7 @@ def movesStoppingCheck(pieceValidTiles, attackers, kingPos):
             if i == y:
                 validTiles.append(i)
 
-
+    occupiedTile.occupied = occupant
     return validTiles
 
 

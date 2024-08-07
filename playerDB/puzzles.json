@@ -1,0 +1,19 @@
+[
+    {
+        "finished": true,
+        "id": 0,
+        "matchup": "dalishenke Vs Khamba1996",
+        "outcome": "Completed!",
+        "puzzleId": "e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 g6 Be2 Bg7 Be3 O-O Qd2 Nc6 f3 Ne5 Bh6 Be6 Bxg7 Kxg7 h4 h5 Nxe6+ fxe6 O-O-O Rc8 g4 hxg4 fxg4 Nexg4 Bxg4 Nxg4 h5 Nf2 hxg6 Nxh1 Rxh1 Rh8 Rf1 Qa5 Kb1 Rcf8 Rg1 Qc5 Qg2 Qf2 Qg5 Qf1+ Nd1 Qf6 Qg4 Rh4 Qg2 Qf3 Qg5 Qf6 Qg2 Rc8 Nf2 Rf4 Nd3 Rf3 a3 Rf8 Ka2 Rf1",
+        "puzzleRating": 1928,
+        "solution": [
+            "Qh3",
+            "Rh8",
+            "Qxf1",
+            "Qxf1",
+            "Rxf1"
+        ],
+        "tournament": "Rapid",
+        "userId": 0
+    }
+]

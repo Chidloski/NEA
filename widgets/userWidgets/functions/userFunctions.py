@@ -26,6 +26,7 @@ def LogIn(self, baseWindow, user, password):
             baseWindow.userId = id
             baseWindow.stackedWidget.setCurrentIndex(3)
             baseWindow.dashboard.playWidget.populate(id)
+            baseWindow.dashboard.puzzleWidget.populate(id)
 
         else:
             self.ErrorLabel.setText("Incorrect password")
@@ -92,6 +93,7 @@ def Register(self, baseWindow, user, fullName, email, password, rePassword):
             "email": email,
             "fullName": fullName,
             "rating": 800,
+            "puzzleRating": 800,
             "match1": -1,
             "match2": -1,
             "match3": -1

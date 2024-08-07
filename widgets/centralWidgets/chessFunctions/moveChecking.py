@@ -29,7 +29,7 @@ def checkMoveDiagonal(colour, position, domain, attackers):
     validTiles = validTiles + rightUpValid
 
     kingPos = getattr(domain, colour + "King").pos
-    validTiles = movesStoppingCheck(validTiles, attackers, kingPos)
+    validTiles = movesStoppingCheck(validTiles, kingPos, position, domain)
 
     return validTiles
 
@@ -57,7 +57,7 @@ def checkMoveStraight(colour, position, domain, attackers):
     validTiles = validTiles + downValid
 
     kingPos = getattr(domain, colour + "King").pos
-    validTiles = movesStoppingCheck(validTiles, attackers, kingPos)
+    validTiles = movesStoppingCheck(validTiles, kingPos, position, domain)
 
     return validTiles
 
@@ -171,7 +171,7 @@ def checkMoveKnight(colour, position, domain, attackers):
         currentPos = letterPos + numPos
 
     kingPos = getattr(domain, colour + "King").pos
-    validTiles = movesStoppingCheck(validTiles, attackers, kingPos)
+    validTiles = movesStoppingCheck(validTiles, kingPos, position, domain)
 
     return validTiles
 
@@ -360,7 +360,7 @@ def checkMovePawn(colour, position, domain, attackers, *args):
 
 
     kingPos = getattr(domain, colour + "King").pos
-    validTiles = movesStoppingCheck(validTiles, attackers, kingPos)
+    validTiles = movesStoppingCheck(validTiles, kingPos, position, domain)
 
     return validTiles
 

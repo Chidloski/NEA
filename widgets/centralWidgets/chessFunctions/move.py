@@ -40,33 +40,32 @@ def move(domain, currentPiece, moving, pieceToMove, validTiles, moveNumber, atta
             # -> Furthermore, if the king is already in check, the function will also return true therefore meaning
             #    the 
             #print("Blocking check = " + str(isBlockingCheck(whoseTurn, domain, pieceToMove.pos)))
-            if isBlockingCheck(whoseTurn, domain, pieceToMove.pos) == False:
 
-                # adds the rest of the valid tiles onto the end of the list to retain the original position as a valid tile
-                if currentPiece.moveset == "Pawn":
-                    print("clicked a Pawn")
-                    validTiles = validTiles + checkMovePawn(currentPiece.colour, currentPiece.pos, domain, attackers, currentPiece.hasMoved, moveNumber)
+            # adds the rest of the valid tiles onto the end of the list to retain the original position as a valid tile
+            if currentPiece.moveset == "Pawn":
+                print("clicked a Pawn")
+                validTiles = validTiles + checkMovePawn(currentPiece.colour, currentPiece.pos, domain, attackers, currentPiece.hasMoved, moveNumber)
 
-                elif currentPiece.moveset == "Queen":
-                    print("clicked a Queen")
-                    validTiles = validTiles + checkMoveDiagonal(currentPiece.colour, currentPiece.pos, domain, attackers)
-                    validTiles = validTiles + checkMoveStraight(currentPiece.colour, currentPiece.pos, domain, attackers)
+            elif currentPiece.moveset == "Queen":
+                print("clicked a Queen")
+                validTiles = validTiles + checkMoveDiagonal(currentPiece.colour, currentPiece.pos, domain, attackers)
+                validTiles = validTiles + checkMoveStraight(currentPiece.colour, currentPiece.pos, domain, attackers)
 
-                elif currentPiece.moveset == "King":
-                    print("clicked a King")
-                    validTiles = validTiles + checkMoveKing(currentPiece.colour, currentPiece.pos, domain, attackers)
+            elif currentPiece.moveset == "King":
+                print("clicked a King")
+                validTiles = validTiles + checkMoveKing(currentPiece.colour, currentPiece.pos, domain, attackers)
 
-                elif currentPiece.moveset == "Knight":
-                    print("clicked a Knight")
-                    validTiles = validTiles + checkMoveKnight(currentPiece.colour, currentPiece.pos, domain, attackers)
+            elif currentPiece.moveset == "Knight":
+                print("clicked a Knight")
+                validTiles = validTiles + checkMoveKnight(currentPiece.colour, currentPiece.pos, domain, attackers)
 
-                elif currentPiece.moveset == "Rook":
-                    print("clicked a Rook")
-                    validTiles = validTiles + checkMoveStraight(currentPiece.colour, currentPiece.pos, domain, attackers)
+            elif currentPiece.moveset == "Rook":
+                print("clicked a Rook")
+                validTiles = validTiles + checkMoveStraight(currentPiece.colour, currentPiece.pos, domain, attackers)
 
-                elif currentPiece.moveset == "Bishop":
-                    print("clicked a Bishop")
-                    validTiles = validTiles + checkMoveDiagonal(currentPiece.colour, currentPiece.pos, domain, attackers)
+            elif currentPiece.moveset == "Bishop":
+                print("clicked a Bishop")
+                validTiles = validTiles + checkMoveDiagonal(currentPiece.colour, currentPiece.pos, domain, attackers)
 
             highlightValidTiles(validTiles, domain, False)
 
