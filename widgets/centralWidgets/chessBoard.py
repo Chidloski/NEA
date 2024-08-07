@@ -2,6 +2,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from widgets.centralWidgets.chessFunctions.chessBoardClasses import *
 from widgets.centralWidgets.chessFunctions.move import *
 from widgets.centralWidgets.chessFunctions.movementFunctions import promotingTo
+from widgets.centralWidgets.chessFunctions.parsePGN import *
 from widgets.centralWidgets.chessFunctions.userEndingFunctions import *
 from widgets.utilityWidgets.functions.playFunctions import goToStage2
 
@@ -635,132 +636,196 @@ class Ui_chessBoard(QtWidgets.QWidget):
         font.setBold(True)
 
         self.a8.setupLabel(font, "a8", "blackARook")
+        self.a8.setStyleSheet("")
 
         self.b8.setupLabel(font, "b8", "blackBKnight")
-        
+        self.b8.setStyleSheet("")
+
         self.c8.setupLabel(font, "c8", "blackCBishop")
-        
+        self.c8.setStyleSheet("")
+
         self.d8.setupLabel(font, "d8", "blackQueen")
-        
+        self.d8.setStyleSheet("")
+
         self.e8.setupLabel(font, "e8", "blackKing")
-        
+        self.e8.setStyleSheet("")
+
         self.f8.setupLabel(font, "f8", "blackFBishop")
-        
+        self.f8.setStyleSheet("")
+
         self.g8.setupLabel(font, "g8", "blackGKnight")
-        
+        self.g8.setStyleSheet("")
+
         self.h8.setupLabel(font, "h8", "blackHRook")
-        
+        self.h8.setStyleSheet("")
+
         self.a7.setupLabel(font, "a7", "blackAPawn")
-        
+        self.a7.setStyleSheet("")
+
         self.b7.setupLabel(font, "b7", "blackBPawn")
-        
+        self.b7.setStyleSheet("")
+
         self.c7.setupLabel(font, "c7", "blackCPawn")
-        
+        self.c7.setStyleSheet("")
+
         self.d7.setupLabel(font, "d7", "blackDPawn")
-        
+        self.d7.setStyleSheet("")
+
         self.e7.setupLabel(font, "e7", "blackEPawn")
-        
+        self.e7.setStyleSheet("")
+
         self.f7.setupLabel(font, "f7", "blackFPawn")
-        
+        self.f7.setStyleSheet("")
+
         self.g7.setupLabel(font, "g7", "blackGPawn")
-        
+        self.g7.setStyleSheet("")
+
         self.h7.setupLabel(font, "h7", "blackHPawn")
-        
+        self.h7.setStyleSheet("")
+
         self.a6.setupLabel(font, "a6", "False")
-        
+        self.a6.setStyleSheet("")
+
         self.b6.setupLabel(font, "b6", "False")
-        
+        self.b6.setStyleSheet("")
+
         self.c6.setupLabel(font, "c6", "False")
-        
+        self.c6.setStyleSheet("")
+
         self.d6.setupLabel(font, "d6", "False")
-        
+        self.d6.setStyleSheet("")
+
         self.e6.setupLabel(font, "e6", "False")
-        
+        self.e6.setStyleSheet("")
+
         self.f6.setupLabel(font, "f6", "False")
-        
+        self.f6.setStyleSheet("")
+
         self.g6.setupLabel(font, "g6", "False")
-        
+        self.g6.setStyleSheet("")
+
         self.h6.setupLabel(font, "h6", "False")
-        
+        self.h6.setStyleSheet("")
+
         self.a5.setupLabel(font, "a5", "False")
-        
+        self.a5.setStyleSheet("")
+
         self.b5.setupLabel(font, "b5", "False")
-        
+        self.b5.setStyleSheet("")
+
         self.c5.setupLabel(font, "c5", "False")
-        
+        self.c5.setStyleSheet("")
+
         self.d5.setupLabel(font, "d5", "False")
-        
+        self.d5.setStyleSheet("")
+
         self.e5.setupLabel(font, "e5", "False")
-        
+        self.e5.setStyleSheet("")
+
         self.f5.setupLabel(font, "f5", "False")
-        
+        self.f5.setStyleSheet("")
+
         self.g5.setupLabel(font, "g5", "False")
-        
+        self.g5.setStyleSheet("")
+
         self.h5.setupLabel(font, "h5", "False")
-        
+        self.h5.setStyleSheet("")
+
         self.a4.setupLabel(font, "a4", "False")
-        
+        self.a4.setStyleSheet("")
+
         self.b4.setupLabel(font, "b4", "False")
-        
+        self.b4.setStyleSheet("")
+
         self.c4.setupLabel(font, "c4", "False")
-        
+        self.c4.setStyleSheet("")
+
         self.d4.setupLabel(font, "d4", "False")
-        
+        self.d4.setStyleSheet("")
+
         self.e4.setupLabel(font, "e4", "False")
-        
+        self.e4.setStyleSheet("")
+
         self.f4.setupLabel(font, "f4", "False")
-        
+        self.f4.setStyleSheet("")
+
         self.g4.setupLabel(font, "g4", "False")
-        
+        self.g4.setStyleSheet("")
+
         self.h4.setupLabel(font, "h4", "False")
-        
+        self.h4.setStyleSheet("")
+
         self.a3.setupLabel(font, "a3", "False")
-        
+        self.a3.setStyleSheet("")
+
         self.b3.setupLabel(font, "b3", "False")
-        
+        self.b3.setStyleSheet("")
+
         self.c3.setupLabel(font, "c3", "False")
-        
+        self.c3.setStyleSheet("")
+
         self.d3.setupLabel(font, "d3", "False")
-        
+        self.d3.setStyleSheet("")
+
         self.e3.setupLabel(font, "e3", "False")
-        
+        self.e3.setStyleSheet("")
+
         self.f3.setupLabel(font, "f3", "False")
-        
+        self.f3.setStyleSheet("")
+
         self.g3.setupLabel(font, "g3", "False")
-        
+        self.g3.setStyleSheet("")
+
         self.h3.setupLabel(font, "h3", "False")
-        
+        self.h3.setStyleSheet("")
+
         self.a2.setupLabel(font, "a2", "whiteAPawn")
-        
+        self.a2.setStyleSheet("")
+
         self.b2.setupLabel(font, "b2", "whiteBPawn")
-        
+        self.b2.setStyleSheet("")
+
         self.c2.setupLabel(font, "c2", "whiteCPawn")
-        
+        self.c2.setStyleSheet("")
+
         self.d2.setupLabel(font, "d2", "whiteDPawn")
-        
+        self.d2.setStyleSheet("")
+
         self.e2.setupLabel(font, "e2", "whiteEPawn")
-        
+        self.e2.setStyleSheet("")
+
         self.f2.setupLabel(font, "f2", "whiteFPawn")
-        
+        self.f2.setStyleSheet("")
+
         self.g2.setupLabel(font, "g2", "whiteGPawn")
-        
+        self.g2.setStyleSheet("")
+
         self.h2.setupLabel(font, "h2", "whiteHPawn")
-        
+        self.h2.setStyleSheet("")
+
         self.a1.setupLabel(font, "a1", "whiteARook")
-        
+        self.a1.setStyleSheet("")
+
         self.b1.setupLabel(font, "b1", "whiteBKnight")
-        
+        self.b1.setStyleSheet("")
+
         self.c1.setupLabel(font, "c1", "whiteCBishop")
-        
+        self.c1.setStyleSheet("")
+
         self.d1.setupLabel(font, "d1", "whiteQueen")
-        
+        self.d1.setStyleSheet("")
+
         self.e1.setupLabel(font, "e1", "whiteKing")
-        
+        self.e1.setStyleSheet("")
+
         self.f1.setupLabel(font, "f1", "whiteFBishop")
-        
+        self.f1.setStyleSheet("")
+
         self.g1.setupLabel(font, "g1", "whiteGKnight")
-        
+        self.g1.setStyleSheet("")
+
         self.h1.setupLabel(font, "h1", "whiteHRook")
+        self.h1.setStyleSheet("")
 
 
         self.blackARook.setupLabel("black", "blackARook", "Rook", "a8")
@@ -876,15 +941,8 @@ class Ui_chessBoard(QtWidgets.QWidget):
 
         self.currentMatchId = -1
 
-
-
-
-
-
     def promotionEvent(self, newPiece, alias):
         self.pgn = promotingTo(newPiece, self, alias, self.pgn, self.attackers, self.previousMove, self.moveNumber)
-
-
 
 
     def retranslateUi(self):

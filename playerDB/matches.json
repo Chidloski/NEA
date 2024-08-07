@@ -22,5 +22,13 @@
         "pgn": " 1. e4",
         "whitePlayer": "guest",
         "winner": "Unfinished match"
+    },
+    {
+        "blackPlayer": 0,
+        "finished": true,
+        "id": 3,
+        "pgn": " 1. a3 e5 2. a4 Qf6 3. a5 Bc5 4. a6 Qxf2#",
+        "whitePlayer": "guest",
+        "winner": 0
     }
 ]

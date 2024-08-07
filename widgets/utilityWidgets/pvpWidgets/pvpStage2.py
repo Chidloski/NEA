@@ -106,6 +106,24 @@ class Ui_PvpStage2(QtWidgets.QWidget):
         self.retranslateUi()
         QtCore.QMetaObject.connectSlotsByName(self)
 
+    def resetUi(self):
+        self.userId = None
+        self.userRating = None
+        self.userUsername = None
+
+        self.opponentId = None
+        self.opponentRating = None
+        self.opponentUsername = None
+
+        self.currentUserLabel.setText("White:")
+        self.opponentUserLabel.setText("Black:")
+
+        self.currentUserRatingLabel.setText("Rating: ")
+        self.opponentUserRatingLabel.setText("Rating: ")
+
+        self.currentUserRatingDeltaArray = None
+        self.opponentUserRatingDeltaArray = None
+
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
         self.currentUserLabel.setText(_translate("pvpStage2Page", "current user:"))
