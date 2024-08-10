@@ -64,8 +64,9 @@ def insert(tableName, record):
     # -> id indexing starts at 0
     id = len(data)
 
-    # ensures the id field is filled
-    record["id"] = id
+    if not hasattr(record, "id"):
+        # ensures the id field is filled
+        record["id"] = id
 
     # adds the record
     data.append(record)
@@ -82,8 +83,9 @@ def update(tableName, record, id):
     # gets data
     data = fetch(tableName)
 
-    # ensures id field is filled
-    record["id"] = id
+    if not hasattr(record, "id"):
+        # ensures id field is filled
+        record["id"] = id
 
     # places the record at the right place
     # -> id is equivalent to the record's position

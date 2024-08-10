@@ -219,6 +219,7 @@ def newMove(dashboard, pgn):
 def goToPuzzleWidget(dashboard):
     dashboard.puzzleChessBoard.resetUi()
 
+    dashboard.puzzleWidget.populate(dashboard.baseWindow.userId)
     dashboard.puzzleStackedWidget.setCurrentIndex(0)
 
 def getSolution(dashboard, moveList, solution):

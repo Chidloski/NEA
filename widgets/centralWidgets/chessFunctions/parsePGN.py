@@ -8,9 +8,14 @@ import re
 def parsePGN(pgn):
     moveset = []
     
+    moveNumberPattern = r'^\d{1,3}\.$'
+    amountDeleted = 0
+
+    newPgn = [item for item in pgn if not re.match(moveNumberPattern, item)]
+
     solutionPattern = r'^[a-z]\d[a-z]\d$'
 
-    for index, move in enumerate(pgn):
+    for index, move in enumerate(newPgn):
 
         promotionInfo = ""
 
@@ -90,8 +95,10 @@ def parsePGN(pgn):
             if len(middleInfo) != 0 and middleInfo[-1] == "x":
                 middleInfo = middleInfo[:-1]
 
+        moveNumberPattern = r'^\d{1,3}\.$'
 
-        if not move in ("1-0", "0-1", "1/2-1/2"):
+        if not move in ("1-0", "0-1", "1/2-1/2") and not re.match(moveNumberPattern, move):
+
             moveset.append([colour, piece, middleInfo, endPosition, promotionInfo])
 
     return moveset
@@ -176,8 +183,8 @@ def getPiece(domain, colour, pieceType, piecePosition, endPosition):
                 return refinedPiece
 
 def makeMove(domain, piece, target, promotionInfo):
-    #print(piece)
-    #print(target)
+    print(f"piece: {piece}")
+    print(f"target: {target}")
 
     pieceObject = getattr(domain, piece)
     targetObject = getattr(domain, target)

@@ -1,0 +1,137 @@
+[
+    {
+        "id": 0,
+        "tournament": "World Championship, Game 10",
+        "versus": "Carlsen (W) vs. Karjakin",
+        "outcome": "Won by checkmate",
+        "description": "In a tense and crucial Game 10, Carlsen secured a win, leveling the score and setting up his eventual victory in the tiebreaks.",
+        "year_location": "2016, New York, USA",
+        "pgn": "1. e4 e5 2. Nf3 Nc6 3. Bb5 Nf6 4. d3 Bc5 5. c3 O-O 6. Bg5 h6 7. Bh4 Be7 8. O-O d6 9. Nbd2 Nh5 10. Bxe7 Qxe7 11. Nc4 Nf4 12. Ne3 Qf6 13. g3 Nh3+ 14. Kh1 Ne7 15. Bc4 c6 16. Bb3 Ng6 17. Qe2 a5 18. a4 Be6 19. Bxe6 fxe6 20. Nd2 d5 21. Qh5 Ng5 22. h4 Nf3 23. Nxf3 Qxf3+ 24. Qxf3 Rxf3 25. Kg2 Rf7 26. Rfe1 h5 27. Nf1 Kf8 28. Nd2 Ke7 29. Re2 Kd6 30. Nf3 Raf8 31. Ng5 Re7 32. Rae1 Rfe8 33. Nf3 Nh8 34. d4 exd4 35. Nxd4 g6 36. Re3 Nf7 37. e5+ Kd7 38. Rf3 Nh6 39. Rf6 Rg7 40. b4 axb4 41. cxb4 Ng8 42. Rf3 Nh6 43. a5 Nf5 44. Nb3 Kc7 45. Nc5 Kb8 46. Rb1 Ka7 47. Rd3 Rc7 48. Ra3 Nd4 49. Rd1 Nf5 50. Kh3 Nh6 51. f3 Rf7 52. Rd4 Nf5 53. Rd2 Rh7 54. Rb3 Ree7 55. Rdd3 Rh8 56. Rb1 Rhh7 57. b5 cxb5 58. Rxb5 d4 59. Rb6 Rc7 60. Nxe6 Rc3 61. Nf4 Rhc7 62. Nd5 Rxd3 63. Nxc7 Kb8 64. Nb5 Kc8 65. Rxg6 Rxf3 66. Kg2 Rb3 67. Nd6+ Nxd6 68. Rxd6 Re3 69. e6 Kc7 70. Rxd4 Rxe6 71. Rd5 Rh6 72. Kf3 Kb8 73. Kf4 Ka7 74. Kg5 Rh8 75. Kf6 1-0"
+    },
+    {
+        "id": 1,
+        "tournament": "World Championship, Game 2",
+        "versus": "Carlsen (W) vs. Anand",
+        "outcome": "Won by resignation",
+        "description": "Carlsen's sharp play in Game 2 gave him an early lead, showcasing his superior form and contributing to his successful title defense.",
+        "year_location": "2014, Sochi, Russia",
+        "pgn": "1. e4 e5 2. Nf3 Nc6 3. Bb5 Nf6 4. d3 Bc5 5. O-O d6 6. Re1 O-O 7. Bxc6 bxc6 8. h3 Re8 9. Nbd2 Nd7 10. Nc4 Bb6 11. a4 a5 12. Nxb6 cxb6 13. d4 Qc7 14. Ra3 Nf8 15. dxe5 dxe5 16. Nh4 Rd8 17. Qh5 f6 18. Nf5 Be6 19. Rg3 Ng6 20. h4 Bxf5 21. exf5 Nf4 22. Bxf4 exf4 23. Rc3 c5 24. Re6 Rab8 25. Rc4 Qd7 26. Kh2 Rf8 27. Rce4 Rb7 28. Qe2 b5 29. b3 bxa4 30. bxa4 Rb4 31. Re7 Qd6 32. Qf3 Rxe4 33. Qxe4 f3+ 34. g3 h5 35. Qb7 1-0"
+    },
+    {
+        "id": 2,
+        "tournament": "Wijk aan Zee, Round 11",
+        "versus": "Carlsen (W) vs. Aronian",
+        "outcome": "Won by resignation",
+        "description": "Carlsen outmaneuvered Aronian in a complex middlegame, demonstrating his deep strategic understanding.",
+        "year_location": "2012, Wijk aan Zee, Netherlands",
+        "pgn": "1.c4 e6 2.Nc3 d5 3.d4 Be7 4.cxd5 exd5 5.Bf4 c6 6.Qc2 Nf6 7.h3 g6 8.e3 Bf5 9.Qd2 h5 10.Bd3 Bxd3 11.Qxd3 Nbd7 12.Nge2 a5 13.O-O O-O 14.f3 b5 15.e4 dxe4 16.fxe4 Nc5 17.Qf3 Ne6 18.Be3 b4 19.Nb1 Nh7 20.Nd2 Rc8 21.Rad1 Bh4 22.g3 Bf6 23.Nc4 Bg7 24.b3 Qe7 25.Qg2 Nc7 26.Nxa5 Rfe8 27.e5 Nd5 28.Bd2 Red8 29.Nf4 Qa7 30.Nxc6 Rxc6 31.Nxd5 Rc2 32.Kh1 Bf8 33.e6 Qa8 34.exf7+ Kh8 35.Nf4 Qxg2+ 36.Kxg2 Rxd4 37.Rf2 Rd6 38.Bc1 Rxf2+ 39.Kxf2 Rxd1 40.Bb2+ Nf6 41.Bxf6+ Kh7 42.Ne6 Bd6 43.Be5 Be7 44.f8=Q Bxf8 45.Nxf8+ Kh6 46.Ne6 g5 47.h4 gxh4 48.gxh4 Kg6 49.Nd4 Rd3 50.Nc6 Rd2+ 51.Ke3 Rxa2 52.Bd6 Ra1 53.Kd4 Rg1 54.Kc5 Kf5 55.Nxb4 Rc1+ 56.Kd4 Re1 57.Nc6 Re4+ 58.Kd5 Rxh4 59.b4 Rh1 60.b5 Rb1 61.Nd4+ Kg4 62.Kc6 Rc1+ 63.Kd7 Rb1 64.Kc7 h4 65.b6 Kh3 66.b7 Kg2 67.Nf5 h3 68.Nh4+ 1-0"
+    },
+    {
+        "id": 3,
+        "tournament": "World Championship, Game 24",
+        "versus": "Kasparov (B) vs. Karpov",
+        "outcome": "Won by resignation",
+        "description": "Kasparov's victory in Game 24 (24!!) secured his first World Championship title, ending Karpov's dominance.",
+        "year_location": "1985, Moscow, USSR",
+        "pgn": "1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6 6. Be2 e6 7. O-O Be7 8. f4 O-O 9. Kh1 Qc7 10. a4 Nc6 11. Be3 Re8 12. Bf3 Rb8 13. Qd2 Bd7 14. Nb3 b6 15. g4 Bc8 16. g5 Nd7 17. Qf2 Bf8 18. Bg2 Bb7 19. Rad1 g6 20. Bc1 Rbc8 21. Rd3 Nb4 22. Rh3 Bg7 23. Be3 Re7 24. Kg1 Rce8 25. Rd1 f5 26. gxf6 Nxf6 27. Rg3 Rf7 28. Bxb6 Qb8 29. Be3 Nh5 30. Rg4 Nf6 31. Rh4 g5 32. fxg5 Ng4 33. Qd2 Nxe3 34. Qxe3 Nxc2 35. Qb6 Ba8 36. Rxd6 Rb7 37. Qxa6 Rxb3 38. Rxe6 Rxb2 39. Qc4 Kh8 40. e5 Qa7+ 41. Kh1 Bxg2+ 42. Kxg2 Nd4+ 0-1"
+    },
+    {
+        "id": 4,
+        "tournament": "Wijk aan Zee",
+        "versus": "Kasparov (W) vs. Topalov",
+        "outcome": "Won by checkmate",
+        "description": "In a legendary game, Kasparov sacrificed his queen to create a brilliant attack, leading to a spectacular victory.",
+        "year_location": "1999, Wijk aan Zee, Netherlands",
+        "pgn": "1. e4 d6 2. d4 Nf6 3. Nc3 g6 4. Be3 Bg7 5. Qd2 c6 6. f3 b5 7. Nge2 Nbd7 8. Bh6 Bxh6 9. Qxh6 Bb7 10. a3 e5 11. O-O-O Qe7 12. Kb1 a6 13. Nc1 O-O-O 14. Nb3 exd4 15. Rxd4 c5 16. Rd1 Nb6 17. g3 Kb8 18. Na5 Ba8 19. Bh3 d5 20. Qf4+ Ka7 21. Rhe1 d4 22. Nd5 Nbxd5 23. exd5 Qd6 24. Rxd4 cxd4 25. Re7+ Kb6 26. Qxd4+ Kxa5 27. b4+ Ka4 28. Qc3 Qxd5 29. Ra7 Bb7 30. Rxb7 Qc4 31. Qxf6 Kxa3 32. Qxa6+ Kxb4 33. c3+ Kxc3 34. Qa1+ Kd2 35. Qb2+ Kd1 36. Bf1 Rd2 37. Rd7 Rxd7 38. Bxc4 bxc4 39. Qxh8 Rd3 40. Qa8 c3 41. Qa4+ Ke1 42. f4 f5 43. Kc1 Rd2 44. Qa7 "
+    },
+    {
+        "id": 5,
+        "tournament": "Match vs. Deep Blue",
+        "versus": "Kasparov (B) vs. IBM Deep Blue",
+        "outcome": "Lost by resignation",
+        "description": "In a groundbreaking match, Kasparov was defeated by Deep Blue, marking a new era in chess.",
+        "year_location": "1997, New York, USA",
+        "pgn": "1.e4 e5 2.Nf3 Nc6 3.Bb5 a6 4.Ba4 Nf6 5.O-O Be7 6.Re1 b5 7.Bb3 d6 8.c3 O-O 9.h3 h6 10.d4 Re8 11.Nbd2 Bf8 12.Nf1 Bd7 13.Ng3 Na5 14.Bc2 c5 15.b3 Nc6 16.d5 Ne7 17.Be3 Ng6 18.Qd2 Nh7 19.a4 Nh4 20.Nxh4 Qxh4 21.Qe2 Qd8 22.b4 Qc7 23.Rec1 c4 24.Ra3 Rec8 25.Rca1 Qd8 26.f4 Nf6 27.fxe5 dxe5 28.Qf1 Ne8 29.Qf2 Nd6 30.Bb6 Qe8 31.R3a2 Be7 32.Bc5 Bf8 33.Nf5 Bxf5 34.exf5 f6 35.Bxd6 Bxd6 36.axb5 axb5 37.Be4 Rxa2 38.Qxa2 Qd7 39.Qa7 Rc7 40.Qb6 Rb7 41.Ra8+ Kf7 42.Qa6 Qc7 43.Qc6 Qb6+ 44.Kf1 Rb8 45.Ra6 1-0"
+    },
+    {
+        "id": 6,
+        "tournament": "World Championship, Game 6",
+        "versus": "Fischer (W) vs. Spassky",
+        "outcome": "Won by resignation",
+        "description": "Fischer's Game 6 win, known as the 'Game of the Century,' was a masterpiece that helped him win the World Championship.",
+        "year_location": "1972, Reykjavik, Iceland",
+        "pgn": "1. c4 e6 2. Nf3 d5 3. d4 Nf6 4. Nc3 Be7 5. Bg5 O-O 6. e3 h6 7. Bh4 b6 8. cxd5 Nxd5 9. Bxe7 Qxe7 10. Nxd5 exd5 11. Rc1 Be6 12. Qa4 c5 13. Qa3 Rc8 14. Bb5 a6 15. dxc5 bxc5 16. O-O Ra7 17. Be2 Nd7 18. Nd4 Qf8 19. Nxe6 fxe6 20. e4 d4 21. f4 Qe7 22. e5 Rb8 23. Bc4 Kh8 24. Qh3 Nf8 25. b3 a5 26. f5 exf5 27. Rxf5 Nh7 28. Rcf1 Qd8 29. Qg3 Re7 30. h4 Rbb7 31. e6 Rbc7 32. Qe5 Qe8 33. a4 Qd8 34. R1f2 Qe8 35. R2f3 Qd8 36. Bd3 Qe8 37. Qe4 Nf6 38. Rxf6 gxf6 39. Rxf6 Kg8 40. Bc4 Kh8 41. Qf4 1-0"
+    },
+    {
+        "id": 7,
+        "tournament": "Candidates Match",
+        "versus": "Fischer (W) vs. Taimanov",
+        "outcome": "Won by resignation",
+        "description": "Fischer's 6-0 sweep against Taimanov was unprecedented, showing his dominance.",
+        "year_location": "1971, Vancouver, Canada",
+        "pgn": "1.e4 c5 2.Nf3 Nc6 3.d4 cxd4 4.Nxd4 e6 5.Nb5 d6 6.Bf4 e5 7.Be3 Nf6 8.Bg5 Be6 9.N1c3 a6 10.Bxf6 gxf6 11.Na3 Nd4 12.Nc4 f5 13.exf5 Nxf5 14.Bd3 Rc8 15.Bxf5 Rxc4 16.Bxe6 fxe6 17.Qe2 Rd4 18.O-O Qg5 19.Rad1 Qf5 20.Rxd4 exd4 21.Ne4 Be7 22.Rd1 Qe5 23.Qd3 Rf8 24.Qxd4 Qxd4 25.Rxd4 d5 26.Nc3 Bc5 27.Rd2 Rf4 28.g3 Rc4 29.Ne2 Ra4 30.a3 Kd7 31.Kg2 b5 32.c3 a5 33.Nd4 b4 34.Nb3 Bb6 35.axb4 axb4 36.c4 Kc6 37.c5 Bc7 38.Nd4+ Kd7 39.f4 e5 40.c6+ Kc8 41.Nb5 Ra2 42.f5 Bd8 43.Rxd5 Rxb2 1-0"
+    },
+    {
+        "id": 8,
+        "tournament": "Rosenwald Memorial",
+        "versus": "Fischer (B) vs. Byrne",
+        "outcome": "Won by checkmate",
+        "description": "At 13, Fischer played the 'Game of the Century,' showcasing his prodigious talent.",
+        "year_location": "1956, New York, USA",
+        "pgn": "1. Nf3 Nf6 2. c4 g6 3. Nc3 Bg7 4. d4 O-O 5. Bf4 d5 6. Qb3 dxc4 7. Qxc4 c6 8. e4 Nbd7 9. Rd1 Nb6 10. Qc5 Bg4 11. Bg5 Na4 12. Qa3 Nxc3 13. bxc3 Nxe4 14. Bxe7 Qb6 15. Bc4 Nxc3 16. Bc5 Rfe8+ 17. Kf1 Be6 18. Bxb6 Bxc4+ 19. Kg1 Ne2+ 20. Kf1 Nxd4+ 21. Kg1 Ne2+ 22. Kf1 Nc3+ 23. Kg1 axb6 24. Qb4 Ra4 25. Qxb6 Nxd1 26. h3 Rxa2 27. Kh2 Nxf2 28. Re1 Rxe1 29. Qd8+ Bf8 30. Nxe1 Bd5 31. Nf3 Ne4 32. Qb8 b5 33. h4 h5 34. Ne5 Kg7 35. Kg1 Bc5+ 36. Kf1 Ng3+ 37. Ke1 Bb4+ 38. Kd1 Bb3+ 39. Kc1 Ne2+ 40. Kb1 Nc3+ 41. Kc1 Rc2# 0-1"
+    },
+    {
+        "id": 9,
+        "tournament": "World Championship, Game 14",
+        "versus": "Capablanca (B) vs. Lasker",
+        "outcome": "Won by resignation",
+        "description": "Capablanca's win in Game 14 secured his World Championship, ending Lasker's 27-year reign.",
+        "year_location": "1921, Havana, Cuba",
+        "pgn": "1.e4 e5 2.Nf3 Nc6 3.Bb5 Nf6 4.O-O d6 5.d4 Bd7 6.Nc3 Be7 7.Bxc6 Bxc6 8.Qd3 exd4 9.Nxd4 Bd7 10.Bg5 O-O 11.Rae1 h6 12.Bh4 Nh7 13.Bxe7 Qxe7 14.Nd5 Qd8 15.c4 Re8 16.f4 c6 17.Nc3 Qb6 18.b3 Rad8 19.Kh1 Nf6 20.h3 Bc8 21.Rd1 Re7 22.Rfe1 Rde8 23.Re2 Qa5 24.Rf1 Qh5 25.Kg1 a6 26.Rff2 Qg6 27.Rf3 Qh5 28.f5 Qh4 29.Kh2 Ng4+ 30.Kh1 Ne5 31.Qd2 Nxf3 32.Nxf3 Qf6 33.a4 g6 34.fxg6 fxg6 35.Re3 Bf5 36.Qd3 g5 37.Nd2 Bg6 38.b4 Qe6 39.b5 axb5 40.axb5 Ra8 41.Qb1 Qe5 42.Qe1 Kh7 43.bxc6 bxc6 44.Qg3 Qxg3 45.Rxg3 Ra3 46.Kh2 Rb7 47.c5 dxc5 48.Nc4 Ra1 49.Ne5 Rc1 50.h4 Re7 51.Nxc6 Re6 52.Nd8 gxh4 53.Rd3 Rf6 54.Rd7+ Kh8 55.Nd5 Rff1 56.Kh3 Bxe4 0-1"
+    },
+    {
+        "id": 10,
+        "tournament": "World Championship",
+        "versus": "Capablanca (W) vs. Alekhine",
+        "outcome": "Lost by resignation",
+        "description": "Although he lost, Capablanca's defense in this game was remarkable against Alekhine's aggressive play.",
+        "year_location": "1927, Buenos Aires, Argentina",
+        "pgn": "1.d4 d5 2.c4 e6 3.Nc3 Nf6 4.Bg5 Nbd7 5.e3 c6 6.Nf3 Qa5 7.Nd2 Bb4 8.Qc2 dxc4 9.Bxf6 Nxf6 10.Nxc4 Qc7 11.a3 Be7 12.Be2 O-O 13.O-O Bd7 14.b4 b6 15.Bf3 Rac8 16.Rfd1 Rfd8 17.Rac1 Be8 18.g3 Nd5 19.Nb2 Qb8 20.Nd3 Bg5 21.Rb1 Qb7 22.e4 Nxc3 23.Qxc3 Qe7 24.h4 Bh6 25.Ne5 g6 26.Ng4 Bg7 27.e5 h5 28.Ne3 c5 29.bxc5 bxc5 30.d5 exd5 31.Nxd5 Qe6 32.Nf6+ Bxf6 33.exf6 Rxd1+ 34.Rxd1 Bc6 35.Re1 Qf5 36.Re3 c4 37.a4 a5 38.Bg2 Bxg2 39.Kxg2 Qd5+ 40.Kh2 Qf5 41.Rf3 Qc5 42.Rf4 Kh7 43.Rd4 Qc6 44.Qxa5 c3 45.Qa7 Kg8 46.Qe7 Qb6 47.Qd7 Qc5 48.Re4 Qxf2+ 49.Kh3 Qf1+ 50.Kh2 Qf2+ 51.Kh3 Rf8 52.Qc6 Qf1+ 53.Kh2 Qf2+ 54.Kh3 Qf1+ 55.Kh2 Kh7 56.Qc4 Qf2+ 57.Kh3 Qg1 58.Re2 Qf1+ 59.Kh2 Qxf6 60.a5 Rd8 61.a6 Qf1 62.Qe4 Rd2 63.Rxd2 cxd2 64.a7 d1=Q 65.a8=Q Qg1+ 66.Kh3 Qdf1+ 0-1"
+    },
+    {
+        "id": 11,
+        "tournament": "New York",
+        "versus": "Capablanca (W) vs. Marshall",
+        "outcome": "Won by resignation",
+        "description": "Capablanca calmly refuted Marshall's prepared gambit, showcasing his positional brilliance.",
+        "year_location": "1918, New York, USA",
+        "pgn": "1.e4 e5 2.Nf3 Nc6 3.Bb5 a6 4.Ba4 Nf6 5.O-O Be7 6.Re1 b5 7.Bb3 O-O 8.c3 d5 9.exd5 Nxd5 10.Nxe5 Nxe5 11.Rxe5 Nf6 12.Re1 Bd6 13.h3 Ng4 14.Qf3 Qh4 15.d4 Nxf2 16.Re2 Bg4 17.hxg4 Bh2+ 18.Kf1 Bg3 19.Rxf2 Qh1+ 20.Ke2 Bxf2 21.Bd2 Bh4 22.Qh3 Rae8+ 23.Kd3 Qf1+ 24.Kc2 Bf2 25.Qf3 Qg1 26.Bd5 c5 27.dxc5 Bxc5 28.b4 Bd6 29.a4 a5 30.axb5 axb4 31.Ra6 bxc3 32.Nxc3 Bb4 33.b6 Bxc3 34.Bxc3 h6 35.b7 Re3 36.Bxf7+ 1-0"
+    },
+    {
+        "id": 12,
+        "tournament": "Russia vs. Rest of the World",
+        "versus": "Polgár (W) vs. Kasparov",
+        "outcome": "Won by resignation",
+        "description": "Polgár made history by defeating Kasparov, marking a significant milestone in her career.",
+        "year_location": "2002, Moscow, Russia",
+        "pgn": "1. e4 e5 2. Nf3 Nc6 3. Bb5 Nf6 4. O-O Nxe4 5. d4 Nd6 6. Bxc6 dxc6 7. dxe5 Nf5 8. Qxd8+ Kxd8 9. Nc3 h6 10. Rd1+ Ke8 11. h3 Be7 12. Ne2 Nh4 13. Nxh4 Bxh4 14. Be3 Bf5 15. Nd4 Bh7 16. g4 Be7 17. Kg2 h5 18. Nf5 Bf8 19. Kf3 Bg6 20. Rd2 hxg4+ 21. hxg4 Rh3+ 22. Kg2 Rh7 23. Kg3 f6 24. Bf4 Bxf5 25. gxf5 fxe5 26. Re1 Bd6 27. Bxe5 Kd7 28. c4 c5 29. Bxd6 cxd6 30. Re6 Rah8 31. Rexd6+ Kc8 32. R2d5 Rh3+ 33. Kg2 Rh2+ 34. Kf3 R2h3+ 35. Ke4 b6 36. Rc6+ Kb8 37. Rd7 Rh2 38. Ke3 Rf8 39. Rcc7 Rxf5 40. Rb7+ Kc8 41. Rdc7+ Kd8 42. Rxg7 Kc8 1-0"
+    },
+    {
+        "id": 13,
+        "tournament": "Cap D'Agde",
+        "versus": "Polgár (B) vs. Anand",
+        "outcome": "Won by resignation",
+        "description": "Polgár's tactical brilliance was on full display as she defeated the future World Champion.",
+        "year_location": "2003, Cap D'Agde, France",
+        "pgn": "1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6 6. f3 Qb6 7. g4 Nc6 8. Nb3 e6 9. Qe2 Qc7 10. Be3 b5 11. O-O-O Nd7 12. Qf2 b4 13. Ne2 Bb7 14. Ned4 Nxd4 15. Nxd4 d5 16. exd5 Bxd5 17. Kb1 Bc5 18. h4 O-O 19. Be2 Rfc8 20. Rd2 Bxd4 21. Bxd4 Bxa2+ 22. Kc1 Bb3 23. Kd1 Bxc2+ 24. Ke1 Ba4 25. Be3 Ne5 26. Qh2 Nc4 27. Qxc7 Rxc7 28. Bxc4 Rxc4 29. Kf2 Rac8 30. Kg3 Rc2 31. g5 e5 32. h5 f5 33. gxf6 gxf6 34. Rd6 Kf7 35. Rd2 f5 36. f4 Rxd2 37. Bxd2 Rc2 38. Rh2 Rxb2 39. fxe5 b3 0-1"
+    },
+    {
+        "id": 14,
+        "tournament": "Budapest",
+        "versus": "Polgár (W) vs. Spassky",
+        "outcome": "Won by resignation",
+        "description": "Polgár's victory over Spassky further established her as a top player in the world.",
+        "year_location": "1993, Budapest, Hungary",
+        "pgn": "1.e4 e5 2.Nf3 Nc6 3.Bb5 g6 4.O-O Bg7 5.c3 a6 6.Ba4 d6 7.d4 Bd7 8.Re1 Nge7 9.d5 Nb8 10.Bxd7+ Nxd7 11.Be3 h6 12.Nfd2 O-O 13.c4 f5 14.f3 c5 15.Nc3 Qc7 16.Rb1 Rfb8 17.Qe2 f4 18.Bf2 g5 19.b4 b6 20.Rb2 Bf6 21.Reb1 Nc8 22.g4 Kg7 23.Kg2 Kg6 24.a3 Kg7 25.Qd1 Kf7 26.Qa4 Ne7 27.Qb3 Nc8 28.a4 a5 29.Nb5 Qd8 30.bxa5 Rxa5 31.Ra2 Rba8 32.Qc2 R5a6 33.Rba1 Nb8 34.Nb3 Qd7 35.Be1 Bd8 36.Bc3 Ne7 37.a5 Ng6 38.Kf2 Ke7 39.axb6 Bxb6 40.Na5 Kf8 41.Nc6 Rxa2 42.Rxa2 Rxa2 43.Qxa2 Nxc6 44.Qa8+ Nd8 45.Qb8 h5 46.Qxb6 Nf7 47.Qb8+ Kg7 48.h3 hxg4 49.hxg4 Kf6 50.Ba5 Ne7 51.Qf8 Ng6 52.Qg8 Ne7 53.Qh7 Qe8 54.Bc7 Qa8 55.Nxd6 Nxd6 56.Bxd6 Qa2+ 57.Kg1 Qa1+ 58.Kh2 Ng6 59.Bc7 Qa8 60.Bxe5+ Nxe5 61.Qf5+ Kg7 62.Qxe5+ Kg6 63.Qf5+ Kh6 64.Qf6+ Kh7 65.Qf7+ 1-0"
+    }
+]

@@ -45,9 +45,11 @@ class Ui_Menu(QtWidgets.QWidget):
         self.puzzleSection.clicked.connect(lambda: goToPuzzles(dashboard))
 
         self.prosSection = clickableLabel(self)
-        self.prosSection.setGeometry(QtCore.QRect(10, 90, 101, 31))
+        self.prosSection.setGeometry(QtCore.QRect(10, 90, 111, 31))
         self.prosSection.setFont(font)
         self.prosSection.setObjectName("prosSection")
+
+        self.prosSection.clicked.connect(lambda: goToPros(dashboard))
 
         font.setBold(False)
 

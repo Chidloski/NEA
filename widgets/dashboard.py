@@ -1,6 +1,8 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from widgets.centralWidgets.chessBoard import Ui_chessBoard
 from widgets.centralWidgets.puzzleChessBoard import Ui_puzzleChessBoard
+from widgets.centralWidgets.proChessBoard import Ui_proChessBoard
+from widgets.centralWidgets.infoBoard import Ui_infoBoard
 from widgets.utilityWidgets.pvpWidgets.playStage1 import Ui_PlayStage1
 from widgets.utilityWidgets.pvpWidgets.pvpStage2 import Ui_PvpStage2
 from widgets.utilityWidgets.pvpWidgets.pvpStage3 import Ui_PvpStage3
@@ -8,6 +10,7 @@ from widgets.menuWidgets.menu import Ui_Menu
 from widgets.utilityWidgets.puzzleWidgets.puzzleWidget import Ui_PuzzleWidget
 from widgets.utilityWidgets.puzzleWidgets.dailyStage2 import Ui_dailyStage2
 from widgets.utilityWidgets.puzzleWidgets.dailyStage3 import Ui_dailyStage3
+from widgets.utilityWidgets.proWidgets.proWidget import Ui_proWidget
 from widgets.utilityWidgets.functions.playFunctions import finaliseMatchOnExit
 import atexit
 
@@ -44,6 +47,22 @@ class Ui_Dashboard(QtWidgets.QWidget):
         # assigns chessBoard the class of chess board from the python ui file
         self.chessBoard = Ui_chessBoard()
         self.puzzleChessBoard = Ui_puzzleChessBoard()
+        
+        self.proCentralStackedWidget = QtWidgets.QStackedWidget(self)
+        self.proCentralStackedWidget.setGeometry(QtCore.QRect(170, 20, 560, 560))
+        self.proCentralStackedWidget.setObjectName("proCentralStackedWidget")
+
+        self.proWidget = Ui_proWidget()
+        self.proWidget.setupUi(self)
+
+        self.infoBoard = Ui_infoBoard()
+        self.proChessBoard = Ui_proChessBoard()
+
+        self.infoBoard.setupUi(self)
+        self.proChessBoard.setupUi(self)
+
+        self.proCentralStackedWidget.addWidget(self.infoBoard)
+        self.proCentralStackedWidget.addWidget(self.proChessBoard)
 
         # populates the class
         self.chessBoard.setupUi(self)
@@ -67,10 +86,12 @@ class Ui_Dashboard(QtWidgets.QWidget):
         # applies the stylesheet
         self.chessBoard.setStyleSheet(styleSheet)
         self.puzzleChessBoard.setStyleSheet(styleSheet)
+        self.proChessBoard.setStyleSheet(styleSheet)
 
         # adds the chess board to the widget stack
         self.centralStackedWidget.addWidget(self.chessBoard)
         self.centralStackedWidget.addWidget(self.puzzleChessBoard)
+        self.centralStackedWidget.addWidget(self.proCentralStackedWidget)
 
 
         # declares a widget stack which currently holds only the chess board
@@ -109,12 +130,20 @@ class Ui_Dashboard(QtWidgets.QWidget):
         self.dailyStage2Widget.setupUi(self)
         self.dailyStage3Widget.setupUi(self)
 
+
+        self.proStackedWidget = QtWidgets.QStackedWidget(self)
+        self.proStackedWidget.setGeometry(QtCore.QRect(750, 20, 230, 560))
+        self.proStackedWidget.setObjectName("proStackedWidget")
+
+        self.proStackedWidget.addWidget(self.proWidget)
+
         self.puzzleStackedWidget.addWidget(self.puzzleWidget)
         self.puzzleStackedWidget.addWidget(self.dailyStage2Widget)
         self.puzzleStackedWidget.addWidget(self.dailyStage3Widget)
         
         self.utilityStackedWidget.addWidget(self.pvpStackedWidget)
         self.utilityStackedWidget.addWidget(self.puzzleStackedWidget)
+        self.utilityStackedWidget.addWidget(self.proStackedWidget)
 
         QtCore.QMetaObject.connectSlotsByName(self)
 
