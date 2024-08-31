@@ -89,7 +89,7 @@ class Ui_dailyStage3(QtWidgets.QWidget):
         self.backButton.clicked.connect(lambda: goToPuzzleWidget(dashboard))
 
         self.backMoveButton = QtWidgets.QPushButton(self)
-        self.backMoveButton.setGeometry(QtCore.QRect(30, 300, 71, 41))
+        self.backMoveButton.setGeometry(QtCore.QRect(30, 320, 71, 41))
         self.backMoveButton.setFont(font)
         self.backMoveButton.setObjectName("backMoveButton")
         self.backMoveButton.clicked.connect(lambda: self.reRunPgn(dashboard))
@@ -97,7 +97,7 @@ class Ui_dailyStage3(QtWidgets.QWidget):
         self.index = 0
 
         self.forwardMoveButton = QtWidgets.QPushButton(self)
-        self.forwardMoveButton.setGeometry(QtCore.QRect(120, 300, 71, 41))
+        self.forwardMoveButton.setGeometry(QtCore.QRect(120, 320, 71, 41))
         self.forwardMoveButton.setFont(font)
         self.forwardMoveButton.setObjectName("forwardMoveButton")
         self.forwardMoveButton.clicked.connect(lambda: self.nextMove(dashboard))

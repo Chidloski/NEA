@@ -420,7 +420,7 @@ def isGameOver(defendingColour, domain, attackers, moveNumber, previousMove, pgn
             pgn = pgn[0: -1] + "#"
 
         elif isCheckMate:
-            pgn = pgn + "#"  
+            pgn = pgn + "#"
 
         domain.pgn = domain.pgn + pgn
 
@@ -430,13 +430,14 @@ def isGameOver(defendingColour, domain, attackers, moveNumber, previousMove, pgn
             highlightValidTiles([getattr(domain, defendingColour + "King").pos], domain, True)
 
         if isCheckMate == True:
-            if defendingColour == "white":
-                getattr(domain, "gameOverLabel").setText(f"{domain.blackPlayer} wins!")
-                goToStage3(domain.dashboard, -1)
+            if domain.objectName() == "chessBoard":
+                if defendingColour == "white":
+                    getattr(domain, "gameOverLabel").setText(f"{domain.blackPlayer} wins!")
+                    goToStage3(domain.dashboard, -1)
 
-            else:
-                getattr(domain, "gameOverLabel").setText(f"{domain.whitePlayer} wins!")
-                goToStage3(domain.dashboard, 1)
+                else:
+                    getattr(domain, "gameOverLabel").setText(f"{domain.whitePlayer} wins!")
+                    goToStage3(domain.dashboard, 1)
 
         else:
             getattr(domain, "gameOverLabel").setText("It's a draw!")

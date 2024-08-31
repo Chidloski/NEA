@@ -64,5 +64,37 @@
         ],
         "tournament": "Rapid",
         "userId": 0
+    },
+    {
+        "finished": true,
+        "id": 4,
+        "matchup": "ThreeGoldenPawns Vs boracpodlug",
+        "outcome": "Failed",
+        "puzzleId": "e4 e5 Nf3 d6 d4 exd4 Nxd4 Be7 Nc3 Nf6 h3 O-O Be3 c5 Nde2 b5 f3 b4 Nd5 Bb7 Nef4 Nxd5 Nxd5 Bh4+ Bf2 Re8 Bb5 Bxf2+ Kxf2 Re5 Qd2 Bxd5 exd5 Qb6 Bc4 Nd7 Rhe1 Rae8 Rxe5 Rxe5 Qf4 Nf6 Rd1 Qb7 g4 h6 h4 Nxd5",
+        "puzzleRating": 1915,
+        "solution": [
+            "Bxd5",
+            "Rxd5",
+            "Qe4",
+            "Rxd1",
+            "Qxb7"
+        ],
+        "tournament": "Classical",
+        "userId": 0
+    },
+    {
+        "finished": true,
+        "id": 5,
+        "matchup": "rokio Vs Benuard",
+        "outcome": "Failed",
+        "puzzleId": "e4 e5 f4 exf4 Bc4 d5 exd5 Qh4+ Kf1 f3 d3 fxg2+ Kxg2 Bc5 Qe2+ Ne7 Nc3 Bg4 Qf1",
+        "puzzleRating": 1885,
+        "solution": [
+            "Bh3+",
+            "Nxh3",
+            "Qg4#"
+        ],
+        "tournament": "Rapid",
+        "userId": 0
     }
 ]

@@ -61,7 +61,7 @@ class Ui_proChessBoard(QtWidgets.QWidget):
                 
 
     def setupUi(self, dashboard):
-        self.setObjectName("chessBoard")
+        self.setObjectName("proChessBoard")
         self.resize(560, 560)
 
         # allows all chess functions access to the dashboard so changes can be made to other widgets

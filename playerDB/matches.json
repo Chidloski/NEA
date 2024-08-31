@@ -30,5 +30,21 @@
         "pgn": " 1. a3 e5 2. a4 Qf6 3. a5 Bc5 4. a6 Qxf2#",
         "whitePlayer": "guest",
         "winner": 0
+    },
+    {
+        "blackPlayer": 0,
+        "finished": true,
+        "id": 4,
+        "pgn": " 1. e4 c5 2. d3 f5 3. d4 a6 4. Bc4 a5 5. Qh5+ g6 6. Qxh7 a4 7. Qf7#",
+        "whitePlayer": "guest",
+        "winner": "guest"
+    },
+    {
+        "blackPlayer": "guest",
+        "finished": true,
+        "id": 5,
+        "pgn": " 0-1",
+        "whitePlayer": 0,
+        "winner": "guest"
     }
 ]
