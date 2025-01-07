@@ -108,7 +108,7 @@ def Register(self, baseWindow, user, fullName, email, password, rePassword):
             "id": userId
         }
 
-        throwaway = insert("passwords", passwordData)
+        _ = insert("passwords", passwordData)
 
         baseWindow.stackedWidget.setCurrentIndex(0)
 

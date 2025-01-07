@@ -8,9 +8,7 @@ def move(domain, currentPiece, moving, pieceToMove, validTiles, moveNumber, atta
     # if a move isn't active, it sets moving to true and pieceToMove to the piece object
     if moving == False:
 
-        print()
-        print()
-        print("<------- NEW MOVE ------->")
+        print("\n\n<------- NEW MOVE ------->")
 
         # de highlights the previous move
         highlightValidTiles(previousMove, domain, True)
@@ -30,16 +28,8 @@ def move(domain, currentPiece, moving, pieceToMove, validTiles, moveNumber, atta
             pieceToMove = currentPiece
             moving = True
 
-            # sets the tile of which the piece occupies to no longer occupied
-            #getattr(domain, str(pieceToMove.pos)).occupied = "False"
-
             # original postion is a valid tile
             validTiles = [pieceToMove.pos]
-
-            # if the piece is blocking a check, its only valid move is to stay on its current tile
-            # -> Furthermore, if the king is already in check, the function will also return true therefore meaning
-            #    the 
-            #print("Blocking check = " + str(isBlockingCheck(whoseTurn, domain, pieceToMove.pos)))
 
             # adds the rest of the valid tiles onto the end of the list to retain the original position as a valid tile
             if currentPiece.moveset == "Pawn":
@@ -69,15 +59,12 @@ def move(domain, currentPiece, moving, pieceToMove, validTiles, moveNumber, atta
 
             highlightValidTiles(validTiles, domain, False)
 
-            # print("OCCUPATION OF F5: " + getattr(domain, "f5").occupied)
-
             return moving, pieceToMove, validTiles, moveNumber, attackers, previousMove, pgn
         
         # however if first click is not of parent class piece nothing happens
         else:
             print("tile piece can't move")
 
-            # print("OCCUPATION OF F5: " + getattr(domain, "f5").occupied)
             return moving, pieceToMove, validTiles, moveNumber, attackers, previousMove, pgn
     
     # handles when moving is true
@@ -100,23 +87,6 @@ def move(domain, currentPiece, moving, pieceToMove, validTiles, moveNumber, atta
                 # moves piece to new tile whilst also updating move number and attackers if move isn't nullified
                 moveNumber, attackers, previousMove, pgn = movingToTile(pieceToMove, getattr(domain, str(currentPiece.pos)), 
                                                                    domain, moveNumber, previousMove, pgn, attackers)
-
-        # ADD CHECKMATE VALIDATION
-        # ADD CHECKMATE VALIDATION
-        # ADD CHECKMATE VALIDATION
-        # ADD CHECKMATE VALIDATION
-        # ADD CHECKMATE VALIDATION
-        # ADD CHECKMATE VALIDATION
-        # ADD CHECKMATE VALIDATION
-
-        # REASON IT DOESNT WORK
-        # REASON IT DOESNT WORK
-        # REASON IT DOESNT WORK
-        # REASON IT DOESNT WORK
-        # REASON IT DOESNT WORK
-        # REASON IT DOESNT WORK
-
-        # print("OCCUPATION OF F5: " + getattr(domain, "f5").occupied)
 
         print("pgn:")
         print(pgn)

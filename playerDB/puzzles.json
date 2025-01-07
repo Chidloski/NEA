@@ -96,5 +96,136 @@
         ],
         "tournament": "Rapid",
         "userId": 0
+    },
+    {
+        "finished": false,
+        "id": 6,
+        "matchup": "RyszardR Vs sloan101",
+        "outcome": "unfinished",
+        "puzzleId": "d4 Nf6 c4 e6 Nc3 c5 Nf3 b6 Bg5 Be7 e3 O-O Bd3 cxd4 exd4 Bb7 O-O d5 Ne5 dxc4 Bxc4 Nc6 Nxc6 Bxc6 Re1 Nd5",
+        "puzzleRating": 2193,
+        "solution": [
+            "Bxd5",
+            "Bxd5",
+            "Bxe7",
+            "Qxe7",
+            "Nxd5"
+        ],
+        "tournament": "Rapid",
+        "userId": 0
+    },
+    {
+        "finished": true,
+        "id": 7,
+        "matchup": "Desdichado_A Vs jakebarnes17",
+        "outcome": "Failed",
+        "puzzleId": "e4 c6 d4 d5 e5 Bf5 Bd3 Bxd3 Qxd3 e6 Nf3 Ne7 O-O Nd7 Be3 Qb6 b3 Rc8 c4 c5 Nbd2 Nf5 cxd5 cxd4 Nxd4 Nxe5 Qe4 Nxe3 fxe3 Nd7 dxe6 fxe6 Nxe6 Nf6 Nxg7+ Kf7 Rxf6+ Qxf6 Rf1 Qxf1+ Kxf1 Bxg7 Qxb7+ Kg6 Qa6+ Bf6 Qd3+ Kg7 Qd7+ Kh6 Nf3 Rhf8 Qh3+ Kg7 Qd7+ Kh8 Kf2 Rc2+ Kg1",
+        "puzzleRating": 1894,
+        "solution": [
+            "Rd8",
+            "Qxd8+",
+            "Bxd8"
+        ],
+        "tournament": "Rapid",
+        "userId": 0
+    },
+    {
+        "finished": false,
+        "id": 8,
+        "matchup": "robertojose Vs Alexander52",
+        "outcome": "unfinished",
+        "puzzleId": "c4 c6 d3 d5 cxd5 cxd5 Nc3 Nf6 g3 Bf5 Bg2 e6 a3 a6 b4 b5 Bb2 Nbd7 e4 dxe4 dxe4 Bg6 e5 Ng4 Bxa8 Qxa8 Nf3 Ndxe5 Kf1 Qxf3 Qxf3 Nxf3 Ne2 Ngxh2+ Kg2 Be4 Rxh2 Nxh2+ Kxh2 Be7 Bxg7 Rg8 Bd4 Rg5 f4 Rh5+ Kg1 Rh1+ Kf2 Rxa1 Bxa1 f5 Nd4 Bf6 Ke3 Kd7 Bc3 h5 Ne2 Bxc3 Nxc3 Bb7 Ne2 Kd6 Kd4 Bf3 Nc1 Bb7 Nd3 Bf3 Nc5 Bd5 Nxa6 Ke7 Ke5 Kf7 Nc7 Bc4 Na6 Kg6 Nc5 Kf7 Kd6 Kf6 Nd7+ Kf7 Ne5+ Kf6 Kc5 Be2 Nc6 Kg6 Nd4 Kf6 Nxb5 e5 fxe5+ Kxe5 Nc3 Bf3 b5 f4 gxf4+ Kxf4 Kd4",
+        "puzzleRating": 1906,
+        "solution": [
+            "h4",
+            "b6",
+            "h3",
+            "Ne2+",
+            "Kg4",
+            "Ng1",
+            "h2",
+            "Nxf3",
+            "h1=Q"
+        ],
+        "tournament": "Rapid",
+        "userId": 0
+    },
+    {
+        "finished": true,
+        "id": 9,
+        "matchup": "robertojose Vs Alexander52",
+        "outcome": "Failed",
+        "puzzleId": "c4 c6 d3 d5 cxd5 cxd5 Nc3 Nf6 g3 Bf5 Bg2 e6 a3 a6 b4 b5 Bb2 Nbd7 e4 dxe4 dxe4 Bg6 e5 Ng4 Bxa8 Qxa8 Nf3 Ndxe5 Kf1 Qxf3 Qxf3 Nxf3 Ne2 Ngxh2+ Kg2 Be4 Rxh2 Nxh2+ Kxh2 Be7 Bxg7 Rg8 Bd4 Rg5 f4 Rh5+ Kg1 Rh1+ Kf2 Rxa1 Bxa1 f5 Nd4 Bf6 Ke3 Kd7 Bc3 h5 Ne2 Bxc3 Nxc3 Bb7 Ne2 Kd6 Kd4 Bf3 Nc1 Bb7 Nd3 Bf3 Nc5 Bd5 Nxa6 Ke7 Ke5 Kf7 Nc7 Bc4 Na6 Kg6 Nc5 Kf7 Kd6 Kf6 Nd7+ Kf7 Ne5+ Kf6 Kc5 Be2 Nc6 Kg6 Nd4 Kf6 Nxb5 e5 fxe5+ Kxe5 Nc3 Bf3 b5 f4 gxf4+ Kxf4 Kd4",
+        "puzzleRating": 1920,
+        "solution": [
+            "h4",
+            "b6",
+            "h3",
+            "Ne2+",
+            "Kg4",
+            "Ng1",
+            "h2",
+            "Nxf3",
+            "h1=Q"
+        ],
+        "tournament": "Rapid",
+        "userId": 1
+    },
+    {
+        "finished": false,
+        "id": 10,
+        "matchup": "robertojose Vs Alexander52",
+        "outcome": "unfinished",
+        "puzzleId": "c4 c6 d3 d5 cxd5 cxd5 Nc3 Nf6 g3 Bf5 Bg2 e6 a3 a6 b4 b5 Bb2 Nbd7 e4 dxe4 dxe4 Bg6 e5 Ng4 Bxa8 Qxa8 Nf3 Ndxe5 Kf1 Qxf3 Qxf3 Nxf3 Ne2 Ngxh2+ Kg2 Be4 Rxh2 Nxh2+ Kxh2 Be7 Bxg7 Rg8 Bd4 Rg5 f4 Rh5+ Kg1 Rh1+ Kf2 Rxa1 Bxa1 f5 Nd4 Bf6 Ke3 Kd7 Bc3 h5 Ne2 Bxc3 Nxc3 Bb7 Ne2 Kd6 Kd4 Bf3 Nc1 Bb7 Nd3 Bf3 Nc5 Bd5 Nxa6 Ke7 Ke5 Kf7 Nc7 Bc4 Na6 Kg6 Nc5 Kf7 Kd6 Kf6 Nd7+ Kf7 Ne5+ Kf6 Kc5 Be2 Nc6 Kg6 Nd4 Kf6 Nxb5 e5 fxe5+ Kxe5 Nc3 Bf3 b5 f4 gxf4+ Kxf4 Kd4",
+        "puzzleRating": 1805,
+        "solution": [
+            "h4",
+            "b6",
+            "h3",
+            "Ne2+",
+            "Kg4",
+            "Ng1",
+            "h2",
+            "Nxf3",
+            "h1=Q"
+        ],
+        "tournament": "Rapid",
+        "userId": 3
+    },
+    {
+        "finished": true,
+        "id": 11,
+        "matchup": "OMCOEP Vs anandbintang02",
+        "outcome": "Failed",
+        "puzzleId": "d4 d5 c4 e6 Nc3 Nf6 cxd5 exd5 Nf3 c6 Bg5 Be7 e3 O-O Bd3 Bg4 h3 Be6 Qc2 Nbd7 Ne5 h6 Nxd7 Qxd7 Bxf6 Bxf6 f4 Bh4+ Kd2 f5 Rhg1 Bf2 Rh1 Rae8 Raf1 Bg3 Rf3 Bh4 g3 Be7 Qd1 b5 g4 fxg4 Rg3 Bh4 Rg2 gxh3 Rg6 b4 Na4 Bf7 Nc5 Qe7 Rxc6 Qxe3+ Kc2 Bf6 Nd7 Rc8 Nxf6+ gxf6",
+        "puzzleRating": 1718,
+        "solution": [
+            "Qg4+",
+            "Kh8",
+            "Rxc8",
+            "Rxc8+",
+            "Qxc8+"
+        ],
+        "tournament": "Rapid",
+        "userId": 0
+    },
+    {
+        "finished": true,
+        "id": 12,
+        "matchup": "FranzJosephOfAustria Vs Ambassador_xx",
+        "outcome": "Failed",
+        "puzzleId": "e4 e6 Nf3 d5 e5 Bc5 d4 Bb6 c4 a6 c5 Ba7 Nc3 Nc6 Be3 Nge7 Bd3 g6 O-O Bd7 Bh6 b6 cxb6 Bxb6 Qd2 Nxd4 Nxd4 Bxd4 Qg5 Nf5 Qf4 Qh4 Bg5 Qxf4 Bxf4 Rb8 Rab1 a5 g4 Ne7 Bh6 Bxe5 Rfe1 Bd6 Bg7 Rg8 Bf6 c5 Bc2 Kf8 Re3 Nc6 Rh3 h5 gxh5 gxh5+ Kh1 Ne5 Rxh5 Ng4 Bh4 d4 Ne4 Bc6 h3 Ne5 Rg1 Bxe4+ Bxe4 Ng6 Rh7 Rxb2 Bg5 Be5 Bh6+ Ke8 Bc6+ Kd8 Rxf7 Rb6 Rd7+ Kc8 Ba4 c4 h4 Rb4 Bc6 Rb6 Ba4 Rd6 Rxd6 Bxd6 h5 Ne7 Rxg8+ Nxg8 Bg5 Be5 h6 Bh8 h7 Nf6 Bxf6 Bxf6 f4 Kc7 Bb5 c3 Bd3 Kb6 Kg2 Kc5 Kf3 Kb4 Ke4 Ka3 f5 e5",
+        "puzzleRating": 1848,
+        "solution": [
+            "Kd5",
+            "Kb2",
+            "Ke6",
+            "Bh8",
+            "f6",
+            "e4",
+            "Bxe4"
+        ],
+        "tournament": "Rapid",
+        "userId": 4
     }
 ]

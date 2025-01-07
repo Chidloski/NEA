@@ -46,5 +46,85 @@
         "pgn": " 0-1",
         "whitePlayer": 0,
         "winner": "guest"
+    },
+    {
+        "blackPlayer": 0,
+        "finished": true,
+        "id": 6,
+        "pgn": " 1. f4 d5 2. e3 c6 3. Qg4 Bxg4",
+        "whitePlayer": "guest",
+        "winner": "draw"
+    },
+    {
+        "blackPlayer": 0,
+        "finished": false,
+        "id": 7,
+        "pgn": " 1. d4 c6",
+        "whitePlayer": "guest",
+        "winner": "Unfinished match"
+    },
+    {
+        "blackPlayer": 1,
+        "finished": true,
+        "id": 8,
+        "pgn": " 1. c4 d6 2. e3 f6 3. Qf3 e5 4. Qxf6 xf6 5. Bd3 e4 6. Bxe4 1-0",
+        "whitePlayer": "guest",
+        "winner": "guest"
+    },
+    {
+        "blackPlayer": 0,
+        "finished": true,
+        "id": 9,
+        "pgn": " 1. e4 d5 2. xd5 c6 3. xc6 1-0",
+        "whitePlayer": "guest",
+        "winner": "guest"
+    },
+    {
+        "blackPlayer": "guest",
+        "finished": true,
+        "id": 10,
+        "pgn": " 1. f4 d6 2. f5 Nf6 3. b4 Bxf5 4. b5 a6 5. xa6 Rxa6 6. a4 g6 7. a5 Bg7 8. Nc3 O-O 9. Nb1 Ne4 10. c4 Bxa1 11. c5 xc5 12. d3 Nc3 13. d4 Nxd1 14. Kxd1 xd4 15. e4 Bxe4 16. g4 Rxa5 17. g5 Ra2 18. Bb5 Bc2+ 19. Ke1 d3 20. h4 Bc3+ 21. Kf1 Bxb1 22. Be3 Qd5 23. Ne2 Qxh1+ 24. Ng1 Ra1 25. Kf2 Qh2+ 26. Kf3 d2 27. Bc5 d1=Q+ 28. Ke3 Qe5+ 29. Kf2 Qf4+ 30. Kg2 Be4+ 31. Kh3 Qg4#",
+        "whitePlayer": 0,
+        "winner": "guest"
+    },
+    {
+        "blackPlayer": 4,
+        "finished": true,
+        "id": 11,
+        "pgn": " 1. d4 f5 2. e4 xe4 3. Bc4 h5 4. Bxg8 1-0",
+        "whitePlayer": "guest",
+        "winner": "guest"
+    },
+    {
+        "blackPlayer": "guest",
+        "finished": true,
+        "id": 12,
+        "pgn": " 0-1",
+        "whitePlayer": 4,
+        "winner": "guest"
+    },
+    {
+        "blackPlayer": "guest",
+        "finished": true,
+        "id": 13,
+        "pgn": " 1. f4 e5 0-1",
+        "whitePlayer": 4,
+        "winner": "guest"
+    },
+    {
+        "blackPlayer": 0,
+        "finished": true,
+        "id": 14,
+        "pgn": " 1. e4 1-0",
+        "whitePlayer": "guest",
+        "winner": "guest"
+    },
+    {
+        "blackPlayer": 0,
+        "finished": true,
+        "id": 15,
+        "pgn": "",
+        "whitePlayer": "guest",
+        "winner": "draw"
     }
 ]

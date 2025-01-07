@@ -14,6 +14,7 @@ def parsePGN(pgn):
     newPgn = [item for item in pgn if not re.match(moveNumberPattern, item)]
 
     solutionPattern = r'^[a-z]\d[a-z]\d$'
+    otherSolutionPattern = r'^[a-z]\d[a-z]\d[a-z]$'
 
     for index, move in enumerate(newPgn):
 
@@ -34,7 +35,13 @@ def parsePGN(pgn):
         elif len(move) > 4 and move[3] == ".":
             move = move[4:]
 
-        if re.match(solutionPattern, move):
+        if re.match(otherSolutionPattern, move):
+            endPosition = move[-3:-1]
+            piece = move[:2]
+            middleInfo = ""
+            promotionInfo = str(move[-1]).upper()
+
+        elif re.match(solutionPattern, move):
             endPosition = move[-2:]
             piece = move[:2]
             middleInfo = ""
@@ -208,13 +215,11 @@ def makeMove(domain, piece, target, promotionInfo):
         else:
             buttonObject = getattr(domain, "queenButton")
 
-        #print("TRYING TO PROMOTE TRYING TO PROMOTE TRYING TO PROMOTE")
         buttonPressEvent = QMouseEvent(QMouseEvent.MouseButtonPress, buttonObject.rect().center(), Qt.LeftButton, Qt.LeftButton, Qt.NoModifier)
         buttonObject.mousePressEvent(buttonPressEvent)
 
         buttonReleaseEvent = QMouseEvent(QMouseEvent.MouseButtonRelease, buttonObject.rect().center(), Qt.LeftButton, Qt.LeftButton, Qt.NoModifier)
         buttonObject.mouseReleaseEvent(buttonReleaseEvent)
 
-    # time.sleep(0.1)
 
 

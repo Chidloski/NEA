@@ -87,11 +87,6 @@ def allPieceMoves(colour, domain, attackers, moveNumber):
         # finding the object corresponding to the piece name
         piece = getattr(domain, colour + i)
 
-        # debugging prints
-        # print("current piece: " + (colour + i))
-        # print("current piece position: " + piece.pos)
-        # print(piece.isVisible())
-
         # if the piece has not been taken
         if piece.isVisible():
             # extra args 

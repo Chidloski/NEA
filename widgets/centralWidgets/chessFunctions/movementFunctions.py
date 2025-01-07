@@ -175,18 +175,6 @@ def movingToTile(pieceToMove, tile, domain, moveNumber, previousMove, pgn, attac
         else:
             defendingColour = "white"
 
-        # fetches attackers using checkForCheck
-        '''attackers = checkForCheck(defendingColour, domain)
-
-        if len(attackers) != 0:
-            kingPos = getattr(domain, defendingColour + "King").pos
-            highlightValidTiles([kingPos], domain, "King")
-
-            pgnCurrentMove = pgnCurrentMove + "+"
-
-        # checks whether there is a mate
-        print("Checkmate: " + str(checkForCheckMate(defendingColour, domain, attackers, moveNumber)))'''
-
         # if mate, show game over label
         pgnCurrentMove, attackers = isGameOver(defendingColour, domain, attackers, moveNumber, previousMove, pgnCurrentMove)
 

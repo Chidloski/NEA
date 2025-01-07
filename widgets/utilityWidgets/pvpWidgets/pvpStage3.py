@@ -12,6 +12,7 @@ class Ui_PvpStage3(QtWidgets.QWidget):
         font = QtGui.QFont()
         font.setFamily("Fira Code")
         font.setPointSize(18)
+        font.setBold(True)
 
         self.currentUserLabel = QtWidgets.QLabel(self)
         self.currentUserLabel.setGeometry(QtCore.QRect(10, 10, 201, 16))
@@ -19,6 +20,7 @@ class Ui_PvpStage3(QtWidgets.QWidget):
         self.currentUserLabel.setObjectName("currentUserLabel")
 
         font.setPointSize(13)
+        font.setBold(False)
 
         self.currentUserRatingChange = QtWidgets.QLabel(self)
         self.currentUserRatingChange.setGeometry(QtCore.QRect(30, 50, 181, 16))
@@ -31,6 +33,7 @@ class Ui_PvpStage3(QtWidgets.QWidget):
         self.currentUserRating.setObjectName("currentUserRating")
 
         font.setPointSize(18)
+        font.setBold(True)
 
         self.opponentLabel = QtWidgets.QLabel(self)
         self.opponentLabel.setGeometry(QtCore.QRect(10, 110, 201, 16))
@@ -38,6 +41,7 @@ class Ui_PvpStage3(QtWidgets.QWidget):
         self.opponentLabel.setObjectName("opponentLabel")
 
         font.setPointSize(13)
+        font.setBold(False)
 
         self.opponentUserRating = QtWidgets.QLabel(self)
         self.opponentUserRating.setGeometry(QtCore.QRect(20, 130, 181, 16))
@@ -50,6 +54,7 @@ class Ui_PvpStage3(QtWidgets.QWidget):
         self.opponentUserRatingChange.setObjectName("opponentUserRatingChange")
 
         font.setPointSize(18)
+        font.setBold(True)
 
         self.PGNLabel = QtWidgets.QLabel(self)
         self.PGNLabel.setGeometry(QtCore.QRect(10, 210, 201, 16))
@@ -57,6 +62,7 @@ class Ui_PvpStage3(QtWidgets.QWidget):
         self.PGNLabel.setObjectName("PGNLabel")
 
         font.setPointSize(8)
+        font.setBold(False)
 
         self.moveset = QtWidgets.QLabel(self)
         self.moveset.setGeometry(QtCore.QRect(10, 230, 201, 201))

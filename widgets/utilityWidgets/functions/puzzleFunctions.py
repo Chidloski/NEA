@@ -218,6 +218,7 @@ def newMove(dashboard, pgn):
 
 def goToPuzzleWidget(dashboard):
     dashboard.puzzleChessBoard.resetUi()
+    dashboard.puzzleChessBoard.coverScreen.setHidden(False)
 
     dashboard.puzzleWidget.populate(dashboard.baseWindow.userId)
     dashboard.puzzleStackedWidget.setCurrentIndex(0)

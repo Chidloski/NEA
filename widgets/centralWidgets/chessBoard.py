@@ -28,10 +28,6 @@ class Ui_chessBoard(QtWidgets.QWidget):
     pgn = ""
 
     def moveFunction(self, currentPiece):
-            # print(self.currentMove)
-            #self.currentMove = move(self, currentPiece, self.currentMove[0], self.currentMove[1], 
-            #                        self.currentMove[2], self.currentMove[3], self.currentMove[4], 
-            #                        self.currentMove[5], self.currentMove[6])
             
             (self.moveActive, self.pieceBeingMoved, self.validTiles, 
             self.moveNumber, self.attackers, self.previousMove, self.pgn) = move(self, currentPiece, self.moveActive, self.pieceBeingMoved, 

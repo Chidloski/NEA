@@ -121,6 +121,8 @@ class Ui_PvpStage2(QtWidgets.QWidget):
         self.currentUserRatingLabel.setText("Rating: ")
         self.opponentUserRatingLabel.setText("Rating: ")
 
+        self.moveset.setText("")
+
         self.currentUserRatingDeltaArray = None
         self.opponentUserRatingDeltaArray = None
 
