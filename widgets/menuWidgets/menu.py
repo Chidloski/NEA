@@ -52,6 +52,13 @@ class Ui_Menu(QtWidgets.QWidget):
         self.prosSection.clicked.connect(lambda: goToPros(dashboard))
 
         font.setBold(False)
+        font.setPointSize(16)
+
+        self.accountSection = clickableLabel(self)
+        self.accountSection.setGeometry(10, 490, 101, 26)
+        self.accountSection.setFont(font)
+        self.accountSection.setObjectName("accountSection")
+        self.accountSection.clicked.connect(lambda: goToAccount(dashboard))
 
         self.logOut = clickableLabel(self)
         self.logOut.setGeometry(QtCore.QRect(10, 520, 101, 26))
@@ -67,3 +74,4 @@ class Ui_Menu(QtWidgets.QWidget):
         self.puzzleSection.setText(_translate("menuPage", "Puzzles"))
         self.prosSection.setText(_translate("menuPage", "Pros"))
         self.logOut.setText(_translate("menuPage", "Log Out"))
+        self.accountSection.setText(_translate("menuPage", "Account"))

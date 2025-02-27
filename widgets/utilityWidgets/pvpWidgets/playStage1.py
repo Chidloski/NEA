@@ -1,5 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from widgets.utilityWidgets.functions.playFunctions import *
+from widgets.utilityWidgets.functions.tournamentFunctions import goToTournamentStage2
 
 # Responsible for setting up all elements within the log in page
 class Ui_PlayStage1(QtWidgets.QWidget):
@@ -156,6 +157,7 @@ class Ui_PlayStage1(QtWidgets.QWidget):
         self.createButton.setDefault(False)
         self.createButton.setFlat(False)
         self.createButton.setObjectName("createButton")
+        self.createButton.clicked.connect(lambda: goToTournamentStage2(dashboard, self, self.numberOfPlayersInput.text()))
 
         font.setPointSize(12)
         font.setBold(False)
@@ -175,6 +177,9 @@ class Ui_PlayStage1(QtWidgets.QWidget):
         self.tournamentErrorLabel.setText("")
         self.tournamentErrorLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.tournamentErrorLabel.setObjectName("tournamentErrorLabel")
+
+        self.guestRadioButton.setChecked(True)
+        self.roundRadioButton.setChecked(True)
 
         self.retranslateUi()
         QtCore.QMetaObject.connectSlotsByName(self)
@@ -212,6 +217,9 @@ class Ui_PlayStage1(QtWidgets.QWidget):
         self.secondaryUserRadioButton.setAutoExclusive(True)
         self.roundRadioButton.setAutoExclusive(True)
         self.knockoutRadioButton.setAutoExclusive(True)
+
+        self.guestRadioButton.setChecked(True)
+        self.roundRadioButton.setChecked(True)
 
     def populate(self, userId):
 

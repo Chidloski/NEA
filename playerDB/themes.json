@@ -1,0 +1,53 @@
+[
+    {
+        "id": 0,
+        "light": "184, 184, 184",
+        "dark": "133, 133, 133",
+        "lightPrevious": "184, 220, 184",
+        "darkPrevious": "133, 170, 133",
+        "lightPossible": "184, 200, 220",
+        "darkPossible": "133, 150, 170",
+        "lightCheck": "220, 184, 184",
+        "darkCheck": "170, 133, 133"
+    }, {
+		"id": 1,
+        "light": "220, 200, 170",
+		"dark": "160, 120, 90",
+		"lightPrevious": "200, 180, 140",
+		"darkPrevious": "140, 100, 70",
+		"lightPossible": "220, 210, 180",
+		"darkPossible": "160, 140, 110",
+		"lightCheck": "240, 170, 170",
+		"darkCheck": "190, 110, 110"
+    }, {
+		"id": 2,
+        "light": "180, 210, 230",
+		"dark": "120, 150, 170",
+		"lightPrevious": "170, 220, 220",
+		"darkPrevious": "110, 170, 170",
+		"lightPossible": "200, 200, 240",
+		"darkPossible": "140, 140, 200",
+		"lightCheck": "240, 180, 180",
+		"darkCheck": "190, 130, 130"
+    }, {
+		"id": 3,
+        "light": "220, 210, 160",
+		"dark": "140, 100, 60",
+		"lightPrevious": "200, 230, 170",
+		"darkPrevious": "120, 160, 90",
+		"lightPossible": "190, 230, 200",
+		"darkPossible": "110, 170, 140",
+		"lightCheck": "230, 160, 160",
+		"darkCheck": "170, 110, 110"
+    }, {
+		"id": 4,
+        "light": "240, 240, 240",
+		"dark": "50, 50, 50",
+		"lightPrevious": "255, 255, 100",
+		"darkPrevious": "180, 180, 60",
+		"lightPossible": "100, 255, 100",
+		"darkPossible": "60, 180, 60",
+		"lightCheck": "255, 50, 50",
+		"darkCheck": "200, 30, 30"
+    }
+]

@@ -66,19 +66,33 @@ def populateForMatch(dashboard, matchId):
     dashboard.proWidget.moveIndex = 0
 
 def forwardMove(dashboard):
-    dashboard.proChessBoard.runPgnTurn(dashboard.proChessBoard.moveNumber, dashboard.proWidget.pgn, dashboard.proWidget.moveIndex)
+    lastMove = len(dashboard.proWidget.pgn.split())
 
-    dashboard.proWidget.moveIndex += 1
+    if dashboard.proWidget.pgn.split()[-1] in ("1-0", "0-1", "1/2-1/2"):
+        lastMove -= 1
+
+    lastMove = 2*(lastMove // 3) + (lastMove % 3)
+
+    lastMove -= 1
+
+    print(f"last move: {lastMove}")
+    print(dashboard.proWidget.moveIndex)
+
+    if dashboard.proWidget.moveIndex < lastMove:
+        dashboard.proChessBoard.runPgnTurn(dashboard.proChessBoard.moveNumber, dashboard.proWidget.pgn, dashboard.proWidget.moveIndex)
+
+        dashboard.proWidget.moveIndex += 1
 
 def backwardMove(dashboard):
     if dashboard.proWidget.moveIndex > 0:
+        dashboard.proWidget.moveIndex -= 1
 
         dashboard.proChessBoard.resetUi()
 
-        pgn = dashboard.proWidget.pgn[:dashboard.proWidget.moveIndex]
+        pgn = dashboard.proWidget.pgn.split()
+        pgn = [pgn[i] for i in range(len(pgn)) if (i % 3) != 0]
 
-        dashboard.proWidget.moveIndex -= 1
-
+        pgn = pgn[:dashboard.proWidget.moveIndex]
         dashboard.proChessBoard.runPgn(pgn)
 
 def fullBackMove(dashboard):

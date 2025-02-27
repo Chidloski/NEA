@@ -1,0 +1,160 @@
+[
+    {
+        "capacity": 5,
+        "id": 0,
+        "type": "Knockout",
+        "winnerId": "unfinished"
+    },
+    {
+        "capacity": 4,
+        "id": 1,
+        "type": "Knockout",
+        "winnerId": "unfinished"
+    },
+    {
+        "capacity": 5,
+        "id": 2,
+        "type": "Knockout",
+        "winnerId": "unfinished"
+    },
+    {
+        "capacity": 5,
+        "id": 3,
+        "type": "Knockout",
+        "winnerId": "unfinished"
+    },
+    {
+        "capacity": 5,
+        "id": 4,
+        "type": "Knockout",
+        "winnerId": "unfinished"
+    },
+    {
+        "capacity": 5,
+        "id": 5,
+        "type": "Knockout",
+        "winnerId": "unfinished"
+    },
+    {
+        "capacity": 5,
+        "id": 6,
+        "type": "Knockout",
+        "winnerId": "unfinished"
+    },
+    {
+        "capacity": 5,
+        "id": 7,
+        "type": "Knockout",
+        "winner": "guest",
+        "winnerId": "unfinished"
+    },
+    {
+        "capacity": 3,
+        "id": 8,
+        "type": "Round Robin",
+        "winner": "guest",
+        "winnerId": "unfinished"
+    },
+    {
+        "capacity": 4,
+        "id": 9,
+        "type": "Knockout",
+        "winnerId": 0
+    },
+    {
+        "capacity": 5,
+        "id": 10,
+        "type": "Knockout",
+        "winnerId": "guest"
+    },
+    {
+        "capacity": 3,
+        "id": 11,
+        "type": "Round Robin",
+        "winnerId": "guest"
+    },
+    {
+        "capacity": 4,
+        "id": 12,
+        "type": "Round Robin",
+        "winnerId": "unfinished"
+    },
+    {
+        "capacity": 5,
+        "id": 13,
+        "type": "Round Robin",
+        "winnerId": "unfinished"
+    },
+    {
+        "capacity": 3,
+        "id": 14,
+        "type": "Round Robin",
+        "winnerId": "unfinished"
+    },
+    {
+        "capacity": 5,
+        "id": 15,
+        "type": "Knockout",
+        "winnerId": "unfinished"
+    },
+    {
+        "capacity": 5,
+        "id": 16,
+        "type": "Knockout",
+        "winnerId": "unfinished"
+    },
+    {
+        "capacity": 3,
+        "id": 17,
+        "type": "Round Robin",
+        "winnerId": "unfinished"
+    },
+    {
+        "capacity": 5,
+        "id": 18,
+        "type": "Round Robin",
+        "winnerId": "unfinished"
+    },
+    {
+        "capacity": 4,
+        "id": 19,
+        "type": "Knockout",
+        "winnerId": "unfinished"
+    },
+    {
+        "capacity": 4,
+        "id": 20,
+        "type": "Knockout",
+        "winnerId": "unfinished"
+    },
+    {
+        "capacity": 4,
+        "id": 21,
+        "type": "Knockout",
+        "winnerId": "unfinished"
+    },
+    {
+        "capacity": 4,
+        "id": 22,
+        "type": "Knockout",
+        "winnerId": "unfinished"
+    },
+    {
+        "capacity": 5,
+        "id": 23,
+        "type": "Knockout",
+        "winnerId": "unfinished"
+    },
+    {
+        "capacity": 3,
+        "id": 24,
+        "type": "Knockout",
+        "winnerId": "unfinished"
+    },
+    {
+        "capacity": 3,
+        "id": 25,
+        "type": "Knockout",
+        "winnerId": "unfinished"
+    }
+]

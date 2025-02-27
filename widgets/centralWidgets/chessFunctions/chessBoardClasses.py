@@ -67,13 +67,22 @@ class piece(QLabel):
         QLabel.__init__(self, *args, **kwargs)
 
     # adds all necessary values to the object
-    def setupLabel(self, colour, objName, piece, position):
+    def setupLabel(self, colour, objName, piece, position, *args):
 
         self.setText("")
-        self.setPixmap(QPixmap("Resources/ChessIcons/" + colour + piece + ".png"))
+        #self.setPixmap(QPixmap("Resources/ChessIcons/Classic/" + colour + piece + ".png"))
         self.setScaledContents(True)
         self.setObjectName(objName)
         self.setHidden(False)
+
+
+        if len(args) == 0:
+            self.setPixmap(QPixmap("Resources/ChessIcons/Classic/" + colour + piece + ".png"))
+
+        else:
+            pieceFolder = args[0]
+            self.setPixmap(QPixmap("Resources/ChessIcons/" + pieceFolder + "/" + colour + piece + ".png"))
+
 
         self.colour = colour
         self.moveset = piece
@@ -83,6 +92,9 @@ class piece(QLabel):
         # keeps a tab of if a pawn has moved to check whether it can move two squares forward
         if piece in ("Pawn", "Rook", "King"):
             self.hasMoved = False
+
+    def changeStyle(self, pieceFolder):
+        self.setPixmap(QPixmap("Resources/ChessIcons/" + pieceFolder + "/" + self.colour + self.moveset + ".png"))
 
     # re-declares the mouse press event functions as QLabel does not have them built-in
     # variable clickState is used to show to current state of click (single, or double)

@@ -2,6 +2,7 @@ from widgets.centralWidgets.chessFunctions.checkChecking import checkForCheck
 from widgets.centralWidgets.chessFunctions.checkMateChecking import checkForCheckMate, checkForStaleMate
 from widgets.centralWidgets.chessFunctions.moveChecking import *
 from widgets.utilityWidgets.functions.playFunctions import goToStage3
+from widgets.utilityWidgets.functions.tournamentFunctions import goBackToTournamentStage3
 from PyQt5.QtGui import QPixmap
 
 pieceToPromote = None
@@ -229,32 +230,32 @@ def highlightValidTiles(validTiles, domain, deHighlight):
         darkStyle = ""
 
     elif deHighlight == "Previous":
-        lightStyle = '''
-            background-color: rgb(184, 220, 184);
-            color: rgb(133, 170, 133);'''
-        darkStyle = '''
-            background-color: rgb(133, 170, 133);
-            color: rgb(184, 220, 184);'''
+        lightStyle = f'''
+            background-color: rgb({domain.dashboard.themeDict["lightPrevious"]});
+            color: rgb({domain.dashboard.themeDict["darkPrevious"]});'''
+        darkStyle = f'''
+            background-color: rgb({domain.dashboard.themeDict["darkPrevious"]});
+            color: rgb({domain.dashboard.themeDict["lightPrevious"]});'''
 
     elif deHighlight == "King":
-        lightStyle = '''
-            background-color: rgb(220, 184, 184);
-            color: rgb(170, 133, 133);'''
-        darkStyle = '''
-            background-color: rgb(170, 133, 133);
-            color: rgb(220, 184, 184);'''
+        lightStyle = f'''
+            background-color: rgb({domain.dashboard.themeDict["lightCheck"]});
+            color: rgb({domain.dashboard.themeDict["darkCheck"]});'''
+        darkStyle = f'''
+            background-color: rgb({domain.dashboard.themeDict["darkCheck"]});
+            color: rgb({domain.dashboard.themeDict["lightCheck"]});'''
 
     else:
         # actual colours:
         # -> light: 184, 184, 184
         # -> dark: 135, 135, 135
 
-        lightStyle = '''
-            background-color: rgb(184, 200, 220);
-            color: rgb(133, 150, 170);'''
-        darkStyle = '''
-            background-color: rgb(133, 150, 170);
-            color: rgb(184, 200, 220);'''
+        lightStyle = f'''
+            background-color: rgb({domain.dashboard.themeDict["lightPossible"]});
+            color: rgb({domain.dashboard.themeDict["darkPossible"]});'''
+        darkStyle = f'''
+            background-color: rgb({domain.dashboard.themeDict["darkPossible"]});
+            color: rgb({domain.dashboard.themeDict["lightPossible"]});'''
 
     # applies the style sheet for each tile
     for i in validTiles:
@@ -264,12 +265,15 @@ def highlightValidTiles(validTiles, domain, deHighlight):
         else:
             getattr(domain, i).setStyleSheet(darkStyle)
 
-    
+    domain.currentlyHighlightedTiles = validTiles
 
+    domain.currentlyHighlightedTiles.append(deHighlight)
+
+    
 
 def promotingTo(evolution, domain, alias, pgn, attackers, previousMove, moveNumber):
     pieceToPromote.moveset = evolution
-    pieceToPromote.setPixmap(QPixmap("Resources/ChessIcons/" + pieceToPromote.colour.title() + evolution + ".png"))
+    pieceToPromote.setPixmap(QPixmap("Resources/ChessIcons/" + domain.pieceFolder + "/" + pieceToPromote.colour.title() + evolution + ".png"))
 
     getattr(domain, "queenButton").setHidden(True)
     getattr(domain, "knightButton").setHidden(True)
@@ -427,9 +431,26 @@ def isGameOver(defendingColour, domain, attackers, moveNumber, previousMove, pgn
                     getattr(domain, "gameOverLabel").setText(f"{domain.whitePlayer} wins!")
                     goToStage3(domain.dashboard, 1)
 
+            if domain.objectName() == "tournamentChessBoard":
+                if defendingColour == "white":
+                    getattr(domain, "gameOverLabel").setText(f"{domain.blackPlayer} wins!")
+                    goBackToTournamentStage3(domain.dashboard, -1)
+
+                else:
+                    getattr(domain, "gameOverLabel").setText(f"{domain.whitePlayer} wins!")
+                    goBackToTournamentStage3(domain.dashboard, 1)
+
         else:
-            getattr(domain, "gameOverLabel").setText("It's a draw!")
-            goToStage3(domain.dashboard, 0)
+            if domain.objectName() == "chessBoard":
+                getattr(domain, "gameOverLabel").setText("It's a draw!")
+                goToStage3(domain.dashboard, 0)
+
+            if domain.objectName() == "tournamentChessBoard":
+                if domain.dashboard.tournamentStage3Widget.tournamentType == "Knockout":
+                    domain.drawMessage.setHidden(False)
+
+                getattr(domain, "gameOverLabel").setText("It's a draw!")
+                goBackToTournamentStage3(domain.dashboard, 0)
 
         getattr(domain, "coverScreen").setHidden(False)
         getattr(domain, "gameOverLabel").setHidden(False)

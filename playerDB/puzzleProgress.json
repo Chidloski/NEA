@@ -1,0 +1,68 @@
+[
+    {
+        "datetime": "2025-02-11 09:35:30",
+        "id": 0,
+        "puzzleRating": 1119,
+        "userId": 0
+    },
+    {
+        "datetime": "2025-02-11 19:29:27",
+        "id": 1,
+        "puzzleRating": 785,
+        "userId": 1
+    },
+    {
+        "datetime": "2025-02-11 20:13:28",
+        "id": 2,
+        "puzzleRating": 904,
+        "userId": 5
+    },
+    {
+        "datetime": "2025-02-12 20:38:45",
+        "id": 3,
+        "puzzleRating": 899,
+        "userId": 5
+    },
+    {
+        "datetime": "2025-02-16 13:26:41",
+        "id": 4,
+        "puzzleRating": 1061,
+        "userId": 0
+    },
+    {
+        "datetime": "2025-02-16 13:27:40",
+        "id": 5,
+        "puzzleRating": 1117,
+        "userId": 0
+    },
+    {
+        "datetime": "2025-02-16 14:00:49",
+        "id": 6,
+        "puzzleRating": 1168,
+        "userId": 0
+    },
+    {
+        "datetime": "2025-02-16 14:06:15",
+        "id": 7,
+        "puzzleRating": 1113,
+        "userId": 0
+    },
+    {
+        "datetime": "2025-02-21 22:22:59",
+        "id": 8,
+        "puzzleRating": 1057,
+        "userId": 0
+    },
+    {
+        "datetime": "2025-02-21 23:11:06",
+        "id": 9,
+        "puzzleRating": 1005,
+        "userId": 0
+    },
+    {
+        "datetime": "2025-02-25 13:16:36",
+        "id": 10,
+        "puzzleRating": 999,
+        "userId": 0
+    }
+]

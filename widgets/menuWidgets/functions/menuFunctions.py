@@ -1,4 +1,8 @@
-
+def goToAccount(dashboard):
+    dashboard.centralStackedWidget.setCurrentIndex(4)
+    dashboard.utilityStackedWidget.setCurrentIndex(3)
+    dashboard.accountUtilityWidget.resetUi()
+    dashboard.accountUtilityWidget.populate(dashboard.baseWindow.userId)
 
 def goToPuzzles(dashboard):
     dashboard.centralStackedWidget.setCurrentIndex(1)

@@ -1,5 +1,6 @@
 from PyQt5.QtGui import QPixmap
 from widgets.utilityWidgets.functions.playFunctions import goToStage3
+from widgets.utilityWidgets.functions.tournamentFunctions import goBackToTournamentStage3
 
 def onClickAcceptOffer(dashboard, domain):
     domain.offerLabel.setHidden(True)
@@ -14,19 +15,36 @@ def onClickAcceptOffer(dashboard, domain):
 
             domain.gameOverLabel.setText(domain.blackPlayer + " wins!")
 
-            goToStage3(dashboard, -1)
+            if domain.objectName() == "chessBoard":
+                goToStage3(dashboard, -1)
+
+            else:
+                goBackToTournamentStage3(dashboard, -1)
 
         else:
             domain.pgn = domain.pgn + " 1-0"
 
             domain.gameOverLabel.setText(domain.whitePlayer + " wins!")
 
-            goToStage3(dashboard, 1)
+            if domain.objectName() == "chessBoard":
+                goToStage3(dashboard, 1)
+
+            else:
+                goBackToTournamentStage3(dashboard, 1)
 
     else:
-        domain.gameOverLabel.setText("It's a draw!")
+        if domain.objectName() == "chessBoard":
+            domain.gameOverLabel.setText("It's a draw!")
 
-        goToStage3(dashboard, 0)
+            goToStage3(dashboard, 0)
+
+        else:
+            if dashboard.tournamentStage3Widget.tournamentType == "Knockout":
+                domain.drawMessage.setHidden(False)
+
+            domain.gameOverLabel.setText("It's a draw!")
+
+            goBackToTournamentStage3(dashboard, 0)
 
     domain.gameOverLabel.setHidden(False)
     domain.playAgainButton.setHidden(False)

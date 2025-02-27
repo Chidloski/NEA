@@ -27,6 +27,40 @@ def LogIn(self, baseWindow, user, password):
             baseWindow.stackedWidget.setCurrentIndex(3)
             baseWindow.dashboard.playWidget.populate(id)
             baseWindow.dashboard.puzzleWidget.populate(id)
+            baseWindow.dashboard.accountBoard.populate(id)
+
+            query = {"id": id}
+            userData = getData("users", **query)
+            pieceIndex = userData[0]["pieces"]
+            themeIndex = userData[0]["theme"]
+            fontType = userData[0]["font"]
+
+            pieceQuery = {"id": pieceIndex}
+            pieceData = getData("pieces", **pieceQuery)
+            pieceFolder = pieceData[0]["folder"]
+            baseWindow.dashboard.changePieces(pieceFolder)
+
+            themeQuery = {"id": themeIndex}
+            themeData = getData("themes", **themeQuery)
+            themeDict = themeData[0]
+            baseWindow.dashboard.themeDict = themeDict
+
+            styleSheet = """
+                lightSquare {
+                background-color: rgb(""" + themeDict["light"] + """);
+                color: rgb(""" + themeDict["dark"] + """);
+                }
+
+                darkSquare {
+                background-color: rgb(""" + themeDict["dark"] + """);
+                color: rgb(""" + themeDict["light"] + """);
+                };"""
+            
+            baseWindow.dashboard.changeTheme(styleSheet, themeDict)
+
+            baseWindow.dashboard.changeFont(fontType)
+
+            
 
         else:
             self.ErrorLabel.setText("Incorrect password")
@@ -96,7 +130,11 @@ def Register(self, baseWindow, user, fullName, email, password, rePassword):
             "puzzleRating": 800,
             "match1": -1,
             "match2": -1,
-            "match3": -1
+            "match3": -1,
+            "theme": 0,
+            "pieces": 0,
+            "avatar": 0,
+            "font": "Fira Code"
         }
 
         userId = insert("users", userData)

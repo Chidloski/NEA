@@ -5,6 +5,7 @@ from widgets.centralWidgets.chessFunctions.movementFunctions import promotingTo
 from widgets.centralWidgets.chessFunctions.parsePGN import *
 from widgets.centralWidgets.chessFunctions.userEndingFunctions import *
 from widgets.utilityWidgets.functions.playFunctions import goToStage2
+from playerDB.jsonFunctions import getData
 
 
 class Ui_chessBoard(QtWidgets.QWidget):
@@ -46,6 +47,8 @@ class Ui_chessBoard(QtWidgets.QWidget):
         font.setFamily("Fira Code")
         font.setPointSize(14)
         font.setBold(True)
+
+        self.currentlyHighlightedTiles = []
 
         # the next 300 lines contain repeated code for each tile 
         # tiles with added words for coords also have alignment declared and font declared
@@ -579,7 +582,7 @@ class Ui_chessBoard(QtWidgets.QWidget):
         self.rejectOfferButton.setFont(font)
         self.rejectOfferButton.setObjectName("playAgain")
         self.rejectOfferButton.setStyleSheet("background-color: rgb(238, 125, 55); border-radius: 5px")
-        self.rejectOfferButton.clicked.connect(lambda: onClickRejectOffer(dashboard, self))
+        self.rejectOfferButton.clicked.connect(lambda: onClickRejectOffer(self))
         self.rejectOfferButton.setHidden(True)
 
         self.promotionLabel = QLabel(self)
@@ -624,6 +627,16 @@ class Ui_chessBoard(QtWidgets.QWidget):
         self.attackers = []
         self.previousMove = []
         self.pgn = ""
+
+        self.currentlyHighlightedTiles = []
+
+        query = {"id": self.dashboard.baseWindow.userId}
+        userData = getData("users", **query)
+        pieceIndex = userData[0]["pieces"]
+
+        pieceQuery = {"id": pieceIndex}
+        pieceFolder = getData("pieces", **pieceQuery)
+        pieceFolder = pieceFolder[0]["folder"]
 
         # font is declared once as it doesn't change
         font = QtGui.QFont()
@@ -824,104 +837,104 @@ class Ui_chessBoard(QtWidgets.QWidget):
         self.h1.setStyleSheet("")
 
 
-        self.blackARook.setupLabel("black", "blackARook", "Rook", "a8")
+        self.blackARook.setupLabel("black", "blackARook", "Rook", "a8", pieceFolder)
         self.blackARook.move(5, 5)
         
-        self.blackBKnight.setupLabel("black", "blackBKnight", "Knight", "b8")
+        self.blackBKnight.setupLabel("black", "blackBKnight", "Knight", "b8", pieceFolder)
         self.blackBKnight.move(75, 5)
         
-        self.blackCBishop.setupLabel("black", "blackCBishop", "Bishop", "c8")
+        self.blackCBishop.setupLabel("black", "blackCBishop", "Bishop", "c8", pieceFolder)
         self.blackCBishop.move(145, 5)
         
-        self.blackQueen.setupLabel("black", "blackQueen", "Queen", "d8")
+        self.blackQueen.setupLabel("black", "blackQueen", "Queen", "d8", pieceFolder)
         self.blackQueen.move(215, 5)
         
-        self.blackKing.setupLabel("black", "blackKing", "King", "e8")
+        self.blackKing.setupLabel("black", "blackKing", "King", "e8", pieceFolder)
         self.blackKing.move(285, 5)
         
-        self.blackFBishop.setupLabel("black", "blackFBishop", "Bishop", "f8")
+        self.blackFBishop.setupLabel("black", "blackFBishop", "Bishop", "f8", pieceFolder)
         self.blackFBishop.move(355, 5)
         
-        self.blackGKnight.setupLabel("black", "blackGKnight", "Knight", "g8")
+        self.blackGKnight.setupLabel("black", "blackGKnight", "Knight", "g8", pieceFolder)
         self.blackGKnight.move(425, 5)
         
-        self.blackHRook.setupLabel("black", "blackHRook", "Rook", "h8")
+        self.blackHRook.setupLabel("black", "blackHRook", "Rook", "h8", pieceFolder)
         self.blackHRook.move(495, 5)
         
-        self.blackAPawn.setupLabel("black", "blackAPawn", "Pawn", "a7")
+        self.blackAPawn.setupLabel("black", "blackAPawn", "Pawn", "a7", pieceFolder)
         self.blackAPawn.move(5, 75)
         
-        self.blackBPawn.setupLabel("black", "blackBPawn", "Pawn", "b7")
+        self.blackBPawn.setupLabel("black", "blackBPawn", "Pawn", "b7", pieceFolder)
         self.blackBPawn.move(75, 75)
         
-        self.blackCPawn.setupLabel("black", "blackCPawn", "Pawn", "c7")
+        self.blackCPawn.setupLabel("black", "blackCPawn", "Pawn", "c7", pieceFolder)
         self.blackCPawn.move(145, 75)
         
-        self.blackDPawn.setupLabel("black", "blackDPawn", "Pawn", "d7")
+        self.blackDPawn.setupLabel("black", "blackDPawn", "Pawn", "d7", pieceFolder)
         self.blackDPawn.move(215, 75)
         
-        self.blackEPawn.setupLabel("black", "blackEPawn", "Pawn", "e7")
+        self.blackEPawn.setupLabel("black", "blackEPawn", "Pawn", "e7", pieceFolder)
         self.blackEPawn.move(285, 75)
         
-        self.blackFPawn.setupLabel("black", "blackFPawn", "Pawn", "f7")
+        self.blackFPawn.setupLabel("black", "blackFPawn", "Pawn", "f7", pieceFolder)
         self.blackFPawn.move(355, 75)
         
-        self.blackGPawn.setupLabel("black", "blackGPawn", "Pawn", "g7")
+        self.blackGPawn.setupLabel("black", "blackGPawn", "Pawn", "g7", pieceFolder)
         self.blackGPawn.move(425, 75)
         
-        self.blackHPawn.setupLabel("black", "blackHPawn", "Pawn", "h7")
+        self.blackHPawn.setupLabel("black", "blackHPawn", "Pawn", "h7", pieceFolder)
         self.blackHPawn.move(495, 75)
         
-        self.whiteARook.setupLabel("white", "whiteARook", "Rook", "a1")
+        self.whiteARook.setupLabel("white", "whiteARook", "Rook", "a1", pieceFolder)
         self.whiteARook.move(5, 495)
         
-        self.whiteBKnight.setupLabel("white", "whiteBKnight", "Knight", "b1")
+        self.whiteBKnight.setupLabel("white", "whiteBKnight", "Knight", "b1", pieceFolder)
         self.whiteBKnight.move(75, 495)
         
-        self.whiteCBishop.setupLabel("white", "whiteCBishop", "Bishop", "c1")
+        self.whiteCBishop.setupLabel("white", "whiteCBishop", "Bishop", "c1", pieceFolder)
         self.whiteCBishop.move(145, 495)
         
-        self.whiteQueen.setupLabel("white", "whiteQueen", "Queen", "d1")
+        self.whiteQueen.setupLabel("white", "whiteQueen", "Queen", "d1", pieceFolder)
         self.whiteQueen.move(215, 495)
         
-        self.whiteKing.setupLabel("white", "whiteKing", "King", "e1")
+        self.whiteKing.setupLabel("white", "whiteKing", "King", "e1", pieceFolder)
         self.whiteKing.move(285, 495)
         
-        self.whiteFBishop.setupLabel("white", "whiteFBishop", "Bishop", "f1")
+        self.whiteFBishop.setupLabel("white", "whiteFBishop", "Bishop", "f1", pieceFolder)
         self.whiteFBishop.move(355, 495)
         
-        self.whiteGKnight.setupLabel("white", "whiteGKnight", "Knight", "g1")
+        self.whiteGKnight.setupLabel("white", "whiteGKnight", "Knight", "g1", pieceFolder)
         self.whiteGKnight.move(425, 495)
         
-        self.whiteHRook.setupLabel("white", "whiteHRook", "Rook", "h1")
+        self.whiteHRook.setupLabel("white", "whiteHRook", "Rook", "h1", pieceFolder)
         self.whiteHRook.move(495, 495)
         
-        self.whiteAPawn.setupLabel("white", "whiteAPawn", "Pawn", "a2")
+        self.whiteAPawn.setupLabel("white", "whiteAPawn", "Pawn", "a2", pieceFolder)
         self.whiteAPawn.move(5, 425)
         
-        self.whiteBPawn.setupLabel("white", "whiteBPawn", "Pawn", "b2")
+        self.whiteBPawn.setupLabel("white", "whiteBPawn", "Pawn", "b2", pieceFolder)
         self.whiteBPawn.move(75, 425)
         
-        self.whiteCPawn.setupLabel("white", "whiteCPawn", "Pawn", "c2")
+        self.whiteCPawn.setupLabel("white", "whiteCPawn", "Pawn", "c2", pieceFolder)
         self.whiteCPawn.move(145, 425)
         
-        self.whiteDPawn.setupLabel("white", "whiteDPawn", "Pawn", "d2")
+        self.whiteDPawn.setupLabel("white", "whiteDPawn", "Pawn", "d2", pieceFolder)
         self.whiteDPawn.move(215, 425)
         
-        self.whiteEPawn.setupLabel("white", "whiteEPawn", "Pawn", "e2")
+        self.whiteEPawn.setupLabel("white", "whiteEPawn", "Pawn", "e2", pieceFolder)
         self.whiteEPawn.move(285, 425)
         
-        self.whiteFPawn.setupLabel("white", "whiteFPawn", "Pawn", "f2")
+        self.whiteFPawn.setupLabel("white", "whiteFPawn", "Pawn", "f2", pieceFolder)
         self.whiteFPawn.move(355, 425)
         
-        self.whiteGPawn.setupLabel("white", "whiteGPawn", "Pawn", "g2")
+        self.whiteGPawn.setupLabel("white", "whiteGPawn", "Pawn", "g2", pieceFolder)
         self.whiteGPawn.move(425, 425)
         
-        self.whiteHPawn.setupLabel("white", "whiteHPawn", "Pawn", "h2")
+        self.whiteHPawn.setupLabel("white", "whiteHPawn", "Pawn", "h2", pieceFolder)
         self.whiteHPawn.move(495, 425)
         
 
-        self.coverScreen.setHidden(True)
+        self.coverScreen.setHidden(False)
         self.gameOverLabel.setHidden(True)
         self.playAgainButton.setHidden(True)
 

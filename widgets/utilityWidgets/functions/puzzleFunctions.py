@@ -1,6 +1,7 @@
 from playerDB.jsonFunctions import *
 from widgets.utilityWidgets.functions.playFunctions import ratingChange
 import requests
+from datetime import datetime
 
 def getDailyPuzzle():
     response = requests.get("https://lichess.org/api/puzzle/daily")
@@ -140,8 +141,16 @@ def goToDailyStage3(dashboard, moveList, solution, outcome, tournament, matchup,
 
 
 def newMove(dashboard, pgn):
+    if dashboard.puzzleStackedWidget.currentIndex() == 2:
+        activeWidget = dashboard.dailyStage2Widget
+        puzzleId = dashboard.dailyStage2Widget.moveList
+
+    else:
+        activeWidget = dashboard.filterStage2Widget
+        puzzleId = dashboard.filterStage2Widget.puzzleDict["fen"]
+
     # checks if move is a user move
-    if dashboard.dailyStage2Widget.currentMove / 2 == int(dashboard.dailyStage2Widget.currentMove / 2):
+    if activeWidget.currentMove / 2 == int(activeWidget.currentMove / 2):
         # gets the last move from the pgn set
         moveSet = pgn.split()
 
@@ -153,7 +162,9 @@ def newMove(dashboard, pgn):
 
         print(f"MOVE IS {move}")
 
-        if move == dashboard.dailyStage2Widget.solution[dashboard.dailyStage2Widget.currentMove]:
+        print(f"SOLUTION IS {activeWidget.solution}")
+
+        if move == activeWidget.solution[activeWidget.currentMove]:
             # gets the colour of the next move
             if dashboard.puzzleChessBoard.moveNumber / 2 == int(dashboard.puzzleChessBoard.moveNumber / 2):
                 colour = "white"
@@ -162,18 +173,18 @@ def newMove(dashboard, pgn):
                 colour = "black"
 
             # adds one to the current move
-            dashboard.dailyStage2Widget.currentMove += 1
+            activeWidget.currentMove += 1
 
             # if the current move is smaller than the length of the solution, a robot move must be made
-            if dashboard.dailyStage2Widget.currentMove < len(dashboard.dailyStage2Widget.solution):
+            if activeWidget.currentMove < len(activeWidget.solution):
                 # makes robot move
-                dashboard.puzzleChessBoard.runPgnTurn(colour, dashboard.dailyStage2Widget.solution[dashboard.dailyStage2Widget.currentMove])
+                dashboard.puzzleChessBoard.runPgnTurn(colour, activeWidget.solution[activeWidget.currentMove])
 
-                dashboard.dailyStage2Widget.currentMove += 1
+                activeWidget.currentMove += 1
 
             # adds a success to the puzzle record then goes to stage 3
             else:
-                record = getData("puzzles", userId = dashboard.baseWindow.userId, puzzleId = dashboard.dailyStage2Widget.moveList)
+                record = getData("puzzles", userId = dashboard.baseWindow.userId, puzzleId = puzzleId)
                 record = record[0]
 
                 record["finished"] = True
@@ -183,17 +194,37 @@ def newMove(dashboard, pgn):
 
                 userRecord = getData("users", id = dashboard.baseWindow.userId)
                 userRecord = userRecord[0]
-                userRecord["puzzleRating"] = userRecord["puzzleRating"] + dashboard.dailyStage2Widget.ratingDelta[0]
+
+                newPuzzleRating = userRecord["puzzleRating"] + activeWidget.ratingDelta[0]
+
+                userRecord["puzzleRating"] = newPuzzleRating
 
                 update("users", userRecord, userRecord["id"])
 
-                goToDailyStage3(dashboard, dashboard.dailyStage2Widget.moveList, dashboard.dailyStage2Widget.solution, 
-                            "Completed!", dashboard.dailyStage2Widget.tournamentLabel.text(), 
-                            dashboard.dailyStage2Widget.matchupLabel.text(), dashboard.dailyStage2Widget.puzzleRating)
+                userId = userRecord["id"]
+                timeInfo = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+                puzzleProgressRecord = {
+                    "userId": userId,
+                    "datetime": timeInfo,
+                    "puzzleRating": newPuzzleRating
+                }
+
+                _ = insert("puzzleProgress", puzzleProgressRecord)
+
+                if dashboard.puzzleStackedWidget.currentIndex() == 2:
+                    goToDailyStage3(dashboard, dashboard.dailyStage2Widget.moveList, dashboard.dailyStage2Widget.solution, 
+                                "Completed!", dashboard.dailyStage2Widget.tournamentLabel.text(), 
+                                dashboard.dailyStage2Widget.matchupLabel.text(), dashboard.dailyStage2Widget.puzzleRating)
+                    
+                else:
+                    dashboard.filterStage3Widget.populate(dashboard, "Completed!", dashboard.filterStage2Widget.index)
+
+                    dashboard.puzzleWidget.filterPuzzles[dashboard.filterStage2Widget.index]["outcome"] = "Completed!"
 
         # adds a fail to puzzle record then goes to stage 3
         else:
-            record = getData("puzzles", userId = dashboard.baseWindow.userId, puzzleId = dashboard.dailyStage2Widget.moveList)
+            record = getData("puzzles", userId = dashboard.baseWindow.userId, puzzleId = puzzleId)
             record = record[0]
 
             record["finished"] = True
@@ -203,25 +234,51 @@ def newMove(dashboard, pgn):
 
             userRecord = getData("users", id = dashboard.baseWindow.userId)
             userRecord = userRecord[0]
-            userRecord["puzzleRating"] = userRecord["puzzleRating"] + dashboard.dailyStage2Widget.ratingDelta[1]
+
+            newPuzzleRating = userRecord["puzzleRating"] + activeWidget.ratingDelta[1]
+
+            userRecord["puzzleRating"] = newPuzzleRating
 
             update("users", userRecord, userRecord["id"])
-            
-            goToDailyStage3(dashboard, dashboard.dailyStage2Widget.moveList, dashboard.dailyStage2Widget.solution, 
-                            "Failed", dashboard.dailyStage2Widget.tournamentLabel.text(), 
-                            dashboard.dailyStage2Widget.matchupLabel.text(), dashboard.dailyStage2Widget.puzzleRating)
+
+            userId = userRecord["id"]
+            timeInfo = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+            puzzleProgressRecord = {
+                "userId": userId,
+                "datetime": timeInfo,
+                "puzzleRating": newPuzzleRating
+            }
+
+            _ = insert("puzzleProgress", puzzleProgressRecord)
+
+            if dashboard.puzzleStackedWidget.currentIndex() == 2:
+                goToDailyStage3(dashboard, dashboard.dailyStage2Widget.moveList, dashboard.dailyStage2Widget.solution, 
+                                "Failed", dashboard.dailyStage2Widget.tournamentLabel.text(), 
+                                dashboard.dailyStage2Widget.matchupLabel.text(), dashboard.dailyStage2Widget.puzzleRating)
+                
+            else:
+                dashboard.filterStage3Widget.populate(dashboard, "Failed", dashboard.filterStage2Widget.index)
+
+                dashboard.puzzleWidget.filterPuzzles[dashboard.filterStage2Widget.index]["outcome"] = "Failed"
             
     # if move is a robot move, only needs to update the currentMove variable
     else:
-        dashboard.dailyStage2Widget.currentMove += 1
+        activeWidget.currentMove += 1
+
 
 
 def goToPuzzleWidget(dashboard):
     dashboard.puzzleChessBoard.resetUi()
     dashboard.puzzleChessBoard.coverScreen.setHidden(False)
 
+    dashboard.puzzleWidget.errorLabel.setHidden(True)
+    dashboard.puzzleWidget.filterPuzzles = []
+
     dashboard.puzzleWidget.populate(dashboard.baseWindow.userId)
     dashboard.puzzleStackedWidget.setCurrentIndex(0)
+
+
 
 def getSolution(dashboard, moveList, solution):
     dashboard.puzzleChessBoard.resetUi()
@@ -242,3 +299,89 @@ def getSolution(dashboard, moveList, solution):
     reformattedSolution = pgn[len(solution) * -1:]
 
     return reformattedSolution
+
+
+def getFenSolution(dashboard, fen, solution):
+    dashboard.puzzleChessBoard.resetUi()
+    dashboard.puzzleChessBoard.runFen(fen)
+
+    dashboard.puzzleChessBoard.runPgn(solution)
+
+    pgn = dashboard.puzzleChessBoard.pgn.split()
+
+    dashboard.puzzleChessBoard.resetUi()
+
+    print("FULL PGN FULL PGN FULL PGN")
+    print(pgn)
+    pgn = [item for item in pgn if not (item[:-1].isdigit() and item.endswith("."))]
+
+    print("pgn after removing every third")
+
+    reformattedSolution = pgn[len(solution) * -1:]
+
+    print(reformattedSolution)
+
+    return reformattedSolution
+
+
+def goToFilterStage2(dashboard, stage1):
+    puzzles = stage1.getParameters(dashboard)
+
+    if puzzles != 400:
+        stage1.filterPuzzles = puzzles
+
+        for i in puzzles:
+            puzzleRecord = {
+                "finished": False,
+                "outcome": "unfinished",
+                "puzzleId": i["fen"],
+                "puzzleRating": i["rating"],
+                "solution": i["solution"],
+                "userId": dashboard.baseWindow.userId
+            }
+
+            insert("puzzles", puzzleRecord)
+
+        for i in range(1, len(puzzles) + 1):
+            getattr(dashboard.filterStage2Widget, f"puzzle{i}Button").setHidden(False)
+            getattr(dashboard.filterStage2Widget, f"puzzle{i}Button").setText(str(stage1.filterPuzzles[i - 1]["rating"]))
+
+            getattr(dashboard.filterStage3Widget, f"puzzle{i}Button").setHidden(False)
+            getattr(dashboard.filterStage3Widget, f"puzzle{i}Button").setText(str(stage1.filterPuzzles[i - 1]["rating"]))
+
+        dashboard.filterStage2Widget.puzzle1Button.active = True
+        dashboard.filterStage3Widget.puzzle1Button.active = True
+
+        dashboard.filterStage2Widget.populate(dashboard, 0)
+
+        dashboard.puzzleStackedWidget.setCurrentIndex(3)
+
+
+def switchPuzzles(dashboard, index):
+    if getattr(dashboard.filterStage2Widget, f"puzzle{index + 1}Button").active == False:
+        puzzle = dashboard.puzzleWidget.filterPuzzles[index]
+
+        dashboard.filterStage2Widget.puzzle1Button.active = False
+        dashboard.filterStage2Widget.puzzle2Button.active = False
+        dashboard.filterStage2Widget.puzzle3Button.active = False
+        dashboard.filterStage2Widget.puzzle4Button.active = False
+        dashboard.filterStage2Widget.puzzle5Button.active = False
+
+        dashboard.filterStage3Widget.puzzle1Button.active = False
+        dashboard.filterStage3Widget.puzzle2Button.active = False
+        dashboard.filterStage3Widget.puzzle3Button.active = False
+        dashboard.filterStage3Widget.puzzle4Button.active = False
+        dashboard.filterStage3Widget.puzzle5Button.active = False
+
+        getattr(dashboard.filterStage2Widget, f"puzzle{index + 1}Button").active = True
+        getattr(dashboard.filterStage3Widget, f"puzzle{index + 1}Button").active = True
+
+        if puzzle["outcome"] == "unfinished":
+            dashboard.filterStage2Widget.populate(dashboard, index)
+            dashboard.puzzleStackedWidget.setCurrentIndex(3)
+
+        else:
+            dashboard.filterStage3Widget.populate(dashboard, puzzle["outcome"], index)
+            dashboard.puzzleStackedWidget.setCurrentIndex(4)
+
+

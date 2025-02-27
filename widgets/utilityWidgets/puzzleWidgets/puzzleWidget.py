@@ -1,6 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from playerDB.jsonFunctions import *
-from widgets.utilityWidgets.functions.puzzleFunctions import getDailyPuzzle, goToDaily
+from widgets.utilityWidgets.functions.puzzleFunctions import getDailyPuzzle, goToDaily, getFenSolution, goToFilterStage2
+import requests
 
 
 class Ui_PuzzleWidget(QtWidgets.QWidget):
@@ -13,6 +14,8 @@ class Ui_PuzzleWidget(QtWidgets.QWidget):
         font.setFamily("Fira Code")
         font.setPointSize(18)
         font.setBold(False)
+
+        self.filterPuzzles = []
 
         self.currentUserLabel = QtWidgets.QLabel(self)
         self.currentUserLabel.setGeometry(QtCore.QRect(10, 10, 201, 21))
@@ -39,26 +42,60 @@ class Ui_PuzzleWidget(QtWidgets.QWidget):
         self.openingRadioButton.setGeometry(QtCore.QRect(20, 110, 99, 20))
         self.openingRadioButton.setFont(font)
         self.openingRadioButton.setObjectName("openingRadioButton")
+        self.openingRadioButton.clicked.connect(lambda: self.toggleRadio(self.positionRadioGroup, self.midgameRadioButton, self.endgameRadioButton))
+        self.openingRadioButton.theme = "opening" 
+        self.openingRadioButton.status = "unclicked"
 
         self.midgameRadioButton = QtWidgets.QRadioButton(self)
         self.midgameRadioButton.setGeometry(QtCore.QRect(20, 130, 99, 20))
         self.midgameRadioButton.setFont(font)
         self.midgameRadioButton.setObjectName("midgameRadioButton")
+        self.midgameRadioButton.clicked.connect(lambda: self.toggleRadio(self.positionRadioGroup, self.openingRadioButton, self.endgameRadioButton))
+        self.midgameRadioButton.theme = "middlegame"
+        self.midgameRadioButton.status = "unclicked"
 
         self.endgameRadioButton = QtWidgets.QRadioButton(self)
         self.endgameRadioButton.setGeometry(QtCore.QRect(20, 150, 99, 20))
         self.endgameRadioButton.setFont(font)
         self.endgameRadioButton.setObjectName("endgameRadioButton")
+        self.endgameRadioButton.clicked.connect(lambda: self.toggleRadio(self.positionRadioGroup, self.openingRadioButton, self.midgameRadioButton))
+        self.endgameRadioButton.theme = "endgame"
+        self.endgameRadioButton.status = "unclicked"
+
+        self.positionRadioGroup = QtWidgets.QButtonGroup(self)
+        self.positionRadioGroup.addButton(self.openingRadioButton)
+        self.positionRadioGroup.addButton(self.midgameRadioButton)
+        self.positionRadioGroup.addButton(self.endgameRadioButton)
 
         self.forkRadioButton = QtWidgets.QRadioButton(self)
         self.forkRadioButton.setGeometry(QtCore.QRect(120, 110, 91, 20))
         self.forkRadioButton.setFont(font)
         self.forkRadioButton.setObjectName("forkRadioButton")
+        self.forkRadioButton.clicked.connect(lambda: self.toggleRadio(self.motifRadioGroup, self.pinRadioButton, self.discoveredRadioButton))
+        self.forkRadioButton.theme = "fork"
+        self.forkRadioButton.status = "unclicked"
 
-        self.pinRadio = QtWidgets.QRadioButton(self)
-        self.pinRadio.setGeometry(QtCore.QRect(120, 130, 91, 20))
-        self.pinRadio.setFont(font)
-        self.pinRadio.setObjectName("pinRadio")
+
+        self.pinRadioButton = QtWidgets.QRadioButton(self)
+        self.pinRadioButton.setGeometry(QtCore.QRect(120, 130, 91, 20))
+        self.pinRadioButton.setFont(font)
+        self.pinRadioButton.setObjectName("pinRadio")
+        self.pinRadioButton.clicked.connect(lambda: self.toggleRadio(self.motifRadioGroup, self.forkRadioButton, self.discoveredRadioButton))
+        self.pinRadioButton.theme = "skewer"
+        self.pinRadioButton.status = "unclicked"
+
+        self.discoveredRadioButton = QtWidgets.QRadioButton(self)
+        self.discoveredRadioButton.setGeometry(QtCore.QRect(120, 150, 91, 20))
+        self.discoveredRadioButton.setFont(font)
+        self.discoveredRadioButton.setObjectName("discoveredRadio")
+        self.discoveredRadioButton.clicked.connect(lambda: self.toggleRadio(self.motifRadioGroup, self.pinRadioButton, self.forkRadioButton))
+        self.discoveredRadioButton.theme = "discoveredAttack"
+        self.discoveredRadioButton.status = "unclicked"
+
+        self.motifRadioGroup = QtWidgets.QButtonGroup(self)
+        self.motifRadioGroup.addButton(self.forkRadioButton)
+        self.motifRadioGroup.addButton(self.pinRadioButton)
+        self.motifRadioGroup.addButton(self.discoveredRadioButton)
 
         self.positionLabel = QtWidgets.QLabel(self)
         self.positionLabel.setGeometry(QtCore.QRect(20, 90, 71, 21))
@@ -70,11 +107,6 @@ class Ui_PuzzleWidget(QtWidgets.QWidget):
         self.motifLabel.setFont(font)
         self.motifLabel.setObjectName("motifLabel")
 
-        self.tradeLabel = QtWidgets.QRadioButton(self)
-        self.tradeLabel.setGeometry(QtCore.QRect(120, 150, 91, 20))
-        self.tradeLabel.setFont(font)
-        self.tradeLabel.setObjectName("tradeLabel")
-
         self.taskLabel = QtWidgets.QLabel(self)
         self.taskLabel.setGeometry(QtCore.QRect(20, 180, 71, 21))
         self.taskLabel.setFont(font)
@@ -84,34 +116,49 @@ class Ui_PuzzleWidget(QtWidgets.QWidget):
         self.winRadioButton.setGeometry(QtCore.QRect(20, 200, 99, 20))
         self.winRadioButton.setFont(font)
         self.winRadioButton.setObjectName("winRadioButton")
-
-        self.drawRadioButton = QtWidgets.QRadioButton(self)
-        self.drawRadioButton.setGeometry(QtCore.QRect(20, 220, 99, 20))
-        self.drawRadioButton.setFont(font)
-        self.drawRadioButton.setObjectName("drawRadioButton")
+        self.winRadioButton.clicked.connect(lambda: self.toggleRadio(self.playstyleRadioGroup, self.defendRadioButton))
+        self.winRadioButton.theme = "mate"
+        self.winRadioButton.status = "unclicked"
 
         self.defendRadioButton = QtWidgets.QRadioButton(self)
-        self.defendRadioButton.setGeometry(QtCore.QRect(20, 240, 99, 20))
+        self.defendRadioButton.setGeometry(QtCore.QRect(20, 220, 99, 20))
         self.defendRadioButton.setFont(font)
         self.defendRadioButton.setObjectName("defendRadioButton")
+        self.defendRadioButton.clicked.connect(lambda: self.toggleRadio(self.playstyleRadioGroup, self.winRadioButton))
+        self.defendRadioButton.theme = "defensiveMove"
+        self.defendRadioButton.status = "unclicked"
 
-        self.colourLabel = QtWidgets.QLabel(self)
-        self.colourLabel.setGeometry(QtCore.QRect(120, 180, 71, 21))
-        self.colourLabel.setFont(font)
-        self.colourLabel.setObjectName("colourLabel")
+        self.playstyleRadioGroup = QtWidgets.QButtonGroup(self)
+        self.playstyleRadioGroup.addButton(self.winRadioButton)
+        self.playstyleRadioGroup.addButton(self.defendRadioButton)
 
-        self.whiteRadioButton = QtWidgets.QRadioButton(self)
-        self.whiteRadioButton.setGeometry(QtCore.QRect(120, 200, 99, 20))
-        self.whiteRadioButton.setFont(font)
-        self.whiteRadioButton.setObjectName("whiteRadioButton")
+        self.specialLabel = QtWidgets.QLabel(self)
+        self.specialLabel.setGeometry(QtCore.QRect(120, 180, 71, 21))
+        self.specialLabel.setFont(font)
+        self.specialLabel.setObjectName("specialLabel")
 
-        self.blackRadioButton = QtWidgets.QRadioButton(self)
-        self.blackRadioButton.setGeometry(QtCore.QRect(120, 220, 99, 20))
-        self.blackRadioButton.setFont(font)
-        self.blackRadioButton.setObjectName("blackRadioButton")
+        self.sacrificeRadioButton = QtWidgets.QRadioButton(self)
+        self.sacrificeRadioButton.setGeometry(QtCore.QRect(120, 200, 99, 20))
+        self.sacrificeRadioButton.setFont(font)
+        self.sacrificeRadioButton.setObjectName("sacrificeRadioButton")
+        self.sacrificeRadioButton.clicked.connect(lambda: self.toggleRadio(self.specialRadioGroup, self.zugzwangRadioButton))
+        self.sacrificeRadioButton.theme = "sacrifice"
+        self.sacrificeRadioButton.status = "unclicked"
+
+        self.zugzwangRadioButton = QtWidgets.QRadioButton(self)
+        self.zugzwangRadioButton.setGeometry(QtCore.QRect(120, 220, 99, 20))
+        self.zugzwangRadioButton.setFont(font)
+        self.zugzwangRadioButton.setObjectName("zugzwangRadioButton")
+        self.zugzwangRadioButton.clicked.connect(lambda: self.toggleRadio(self.specialRadioGroup, self.sacrificeRadioButton))
+        self.zugzwangRadioButton.theme = "zugzwang"
+        self.zugzwangRadioButton.status = "unclicked"
+
+        self.specialRadioGroup = QtWidgets.QButtonGroup(self)
+        self.specialRadioGroup.addButton(self.sacrificeRadioButton)
+        self.specialRadioGroup.addButton(self.zugzwangRadioButton)
 
         self.ratingSlider = QtWidgets.QSlider(self)
-        self.ratingSlider.setGeometry(QtCore.QRect(20, 290, 181, 25))
+        self.ratingSlider.setGeometry(QtCore.QRect(20, 265, 181, 25))
         self.ratingSlider.setFont(font)
         self.ratingSlider.setMinimum(400)
         self.ratingSlider.setMaximum(2800)
@@ -120,15 +167,16 @@ class Ui_PuzzleWidget(QtWidgets.QWidget):
         self.ratingSlider.setInvertedAppearance(False)
         self.ratingSlider.setTickInterval(0)
         self.ratingSlider.setObjectName("ratingSlider")
+        self.ratingSlider.valueChanged.connect(self.updateRatingLabel)
 
         self.ratingLabel = QtWidgets.QLabel(self)
-        self.ratingLabel.setGeometry(QtCore.QRect(70, 270, 91, 21))
+        self.ratingLabel.setGeometry(QtCore.QRect(70, 245, 91, 21))
         self.ratingLabel.setFont(font)
         self.ratingLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.ratingLabel.setObjectName("ratingLabel")
 
         self.numOfPuzzleSlider = QtWidgets.QSlider(self)
-        self.numOfPuzzleSlider.setGeometry(QtCore.QRect(20, 340, 181, 25))
+        self.numOfPuzzleSlider.setGeometry(QtCore.QRect(20, 315, 181, 25))
         self.numOfPuzzleSlider.setFont(font)
         self.numOfPuzzleSlider.setMinimum(1)
         self.numOfPuzzleSlider.setMaximum(5)
@@ -137,13 +185,24 @@ class Ui_PuzzleWidget(QtWidgets.QWidget):
         self.numOfPuzzleSlider.setOrientation(QtCore.Qt.Horizontal)
         self.numOfPuzzleSlider.setInvertedAppearance(False)
         self.numOfPuzzleSlider.setTickInterval(0)
-        self.numOfPuzzleSlider.setObjectName("horizontalSlider_2")
+        self.numOfPuzzleSlider.setObjectName("numOfPuzzlesSlider")
+        self.numOfPuzzleSlider.valueChanged.connect(self.updateNumOfPuzzlesLabel)
 
         self.numOfPuzzlesLabel = QtWidgets.QLabel(self)
-        self.numOfPuzzlesLabel.setGeometry(QtCore.QRect(40, 320, 151, 21))
+        self.numOfPuzzlesLabel.setGeometry(QtCore.QRect(40, 295, 151, 21))
         self.numOfPuzzlesLabel.setFont(font)
         self.numOfPuzzlesLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.numOfPuzzlesLabel.setObjectName("numOfPuzzlesLabel")
+
+        self.errorLabel = QtWidgets.QLabel(self)
+        self.errorLabel.setGeometry(QtCore.QRect(10, 330, 201, 31))
+        self.errorLabel.setFont(font)
+        self.errorLabel.setStyleSheet("color: rgb(175, 61, 50)")
+        self.errorLabel.setText("")
+        self.errorLabel.setWordWrap(True)
+        self.errorLabel.setAlignment(QtCore.Qt.AlignCenter)
+        self.errorLabel.setObjectName("errorLabel")
+        self.errorLabel.setHidden(True)
 
         font.setPointSize(18)
         font.setBold(True)
@@ -152,6 +211,8 @@ class Ui_PuzzleWidget(QtWidgets.QWidget):
         self.getPuzzlesButton.setGeometry(QtCore.QRect(20, 370, 181, 41))
         self.getPuzzlesButton.setFont(font)
         self.getPuzzlesButton.setObjectName("getPuzzlesButton")
+        #self.getPuzzlesButton.clicked.connect(lambda: getFenSolution(dashboard, "8/2pq2k1/1p1p2r1/p1nPprNp/2P2p2/P1Q2P2/5KR1/6R1 b - - 5 34", ["d7e8", "g5e6", "c5e6", "g2g6", "e8g6", "g1g6", "g7g6", "d5e6"]))
+        self.getPuzzlesButton.clicked.connect(lambda: goToFilterStage2(dashboard, self))
 
         font.setBold(False)
 
@@ -184,6 +245,15 @@ class Ui_PuzzleWidget(QtWidgets.QWidget):
         self.retranslateUi()
         QtCore.QMetaObject.connectSlotsByName(self)
 
+
+    def updateRatingLabel(self, value):
+        self.ratingLabel.setText(f"Rating: {value}")
+
+    
+    def updateNumOfPuzzlesLabel(self, value):
+        self.numOfPuzzlesLabel.setText(f"Number of Puzzles: {value}")
+
+
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
         self.currentUserLabel.setText(_translate("puzzleWidget", "Current User:"))
@@ -193,24 +263,24 @@ class Ui_PuzzleWidget(QtWidgets.QWidget):
         self.midgameRadioButton.setText(_translate("puzzleWidget", "midgame"))
         self.endgameRadioButton.setText(_translate("puzzleWidget", "endgame"))
         self.forkRadioButton.setText(_translate("puzzleWidget", "fork"))
-        self.pinRadio.setText(_translate("puzzleWidget", "pin"))
+        self.pinRadioButton.setText(_translate("puzzleWidget", "pin"))
         self.positionLabel.setText(_translate("puzzleWidget", "Position:"))
         self.motifLabel.setText(_translate("puzzleWidget", "Motif:"))
-        self.tradeLabel.setText(_translate("puzzleWidget", "trade"))
+        self.discoveredRadioButton.setText(_translate("puzzleWidget", "discovered"))
         self.taskLabel.setText(_translate("puzzleWidget", "Task:"))
         self.winRadioButton.setText(_translate("puzzleWidget", "win"))
-        self.drawRadioButton.setText(_translate("puzzleWidget", "draw"))
         self.defendRadioButton.setText(_translate("puzzleWidget", "defend"))
-        self.colourLabel.setText(_translate("puzzleWidget", "Colour:"))
-        self.whiteRadioButton.setText(_translate("puzzleWidget", "white"))
-        self.blackRadioButton.setText(_translate("puzzleWidget", "black"))
-        self.ratingLabel.setText(_translate("puzzleWidget", "Rating:"))
-        self.numOfPuzzlesLabel.setText(_translate("puzzleWidget", "Number of Puzzles:"))
+        self.specialLabel.setText(_translate("puzzleWidget", "Special:"))
+        self.sacrificeRadioButton.setText(_translate("puzzleWidget", "sacrifice"))
+        self.zugzwangRadioButton.setText(_translate("puzzleWidget", "zugzwang"))
+        self.ratingLabel.setText(_translate("puzzleWidget", "Rating: 800"))
+        self.numOfPuzzlesLabel.setText(_translate("puzzleWidget", "Number of Puzzles: 3"))
         self.getPuzzlesButton.setText(_translate("puzzleWidget", "Get Puzzles"))
         self.dailyPuzzleLabel.setText(_translate("puzzleWidget", "Daily Puzzle:"))
         self.matchupLabel.setText(_translate("puzzleWidget", "Niemman Vs Carlsen"))
         self.dailyRatingLabel.setText(_translate("puzzleWidget", "Rating:"))
         self.dailyPuzzleButton.setText(_translate("puzzleWidget", "Daily Puzzle"))
+
 
     def populate(self, userId):
         user = getData("users", id = userId)
@@ -219,9 +289,100 @@ class Ui_PuzzleWidget(QtWidgets.QWidget):
         self.currentUserLabel.setText(user[0]["username"] + ":")
         self.currentUserPuzzleRatingLabel.setText(f"Puzzle Rating : {user[0]['puzzleRating']}")
 
+        self.ratingSlider.setValue(int(user[0]['puzzleRating']))
+        self.ratingLabel.setText(f"Rating: {user[0]['puzzleRating']}")
+
         if queryStatus == 200:
             self.matchupLabel.setText(matchup)
             self.dailyRatingLabel.setText(f"Rating: {puzzleRating}")
 
         else:
             self.dailyRatingLabel.setText("Couldn't fetch puzzle")
+
+
+    def toggleRadio(self, radioGroup, *args):
+        sender = self.sender()
+
+        for btn in args:
+            if btn != sender and btn.status == "clicked":
+                btn.status = "unclicked"
+
+        if sender.status == "clicked":
+            radioGroup.setExclusive(False)
+            sender.setChecked(False)
+            radioGroup.setExclusive(True)
+
+            sender.status = "unclicked"
+
+        else:
+           sender.status = "clicked"
+
+
+    def getParameters(self, dashboard):
+        groups = [self.motifRadioGroup, self.specialRadioGroup, self.positionRadioGroup, self.playstyleRadioGroup]
+        themes = []
+
+        for i in groups:
+            if i.checkedButton():
+                themes.append(i.checkedButton().theme)
+
+        rating = self.ratingSlider.value()
+        numberOfPuzzles = self.numOfPuzzleSlider.value()
+
+        parameters = {
+            "rating": str(rating),
+            "themesType": "ALL",
+            "count": str(numberOfPuzzles)
+        }
+
+        if themes:
+            parameters["themes"] = json.dumps(themes)
+
+
+        print(parameters)
+
+        heads = {
+            "x-rapidapi-key": "fe146e7cbamshaa42abfb08774abp142fdajsnfd4934fbdbfd",
+            "x-rapidapi-host": "chess-puzzles.p.rapidapi.com"
+        }
+
+        print(heads)
+
+        url = "https://chess-puzzles.p.rapidapi.com/"
+
+        response = requests.get(url, headers=heads, params=parameters)
+        statCode = response.status_code
+
+
+        if statCode == 200:
+            result = response.json()
+            fetchedPuzzles = result["puzzles"]
+
+            puzzles = []
+
+            for i in fetchedPuzzles:
+                solution = getFenSolution(dashboard, i["fen"], i["moves"])
+                robotMove = solution.pop(0)
+
+                record = {
+                    "fen": i["fen"],
+                    "rating": i["rating"],
+                    "robotMove": robotMove,
+                    "solution": solution,
+                    "outcome": "unfinished"
+                }
+
+                puzzles.append(record)
+
+            print(fetchedPuzzles)
+            print(puzzles)
+
+            return puzzles
+
+        else: 
+            self.errorLabel.setText("No Matching Puzzles found")
+            self.errorLabel.setHidden(False)
+
+            print(statCode)
+
+            return 400

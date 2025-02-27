@@ -2,6 +2,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from playerDB.passwordFunctions import passwordHashing, verifyPassword
 from playerDB.jsonFunctions import *
 import random
+from datetime import datetime
 
 # handles the loggging in of a secondary user for pvp
 def secondaryLogIn(widget, username, password, state, baseWindow):
@@ -109,6 +110,7 @@ def goToStage2(dashboard, userId, opponentId):
 
     # resets chessboard Ui
     dashboard.chessBoard.resetUi()
+    dashboard.chessBoard.coverScreen.setHidden(True)
 
     # gets user data
     userQuery = {"id": userId}
@@ -333,6 +335,18 @@ def finaliseMatch(dashboard, matchId, outcome, pgn):
 
     update("users", currentUser, dashboard.pvpStage2Widget.userId)
 
+    currentUserId = currentUser["id"]
+    currentUserRating = dashboard.pvpStage3Widget.currentRating
+    timeInfo = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    currentUserProgressRecord = {
+        "userId": currentUserId,
+        "matchRating": currentUserRating,
+        "datetime": timeInfo
+    }
+
+    _ = insert("matchProgress", currentUserProgressRecord)
+
     if dashboard.pvpStage2Widget.opponentId != "guest":
         opponentUser = getData("users", id = dashboard.pvpStage2Widget.opponentId)
         opponentUser = opponentUser[0]
@@ -343,6 +357,17 @@ def finaliseMatch(dashboard, matchId, outcome, pgn):
         opponentUser["match1"] = matchId
 
         update("users", opponentUser, dashboard.pvpStage2Widget.opponentId)
+
+        opponentUserId = opponentUser["id"]
+        opponentUserRating = dashboard.pvpStage3Widget.opponentRating
+
+        opponentUserProgressRecord = {
+            "userId": opponentUserId,
+            "matchRating": opponentUserRating,
+            "datetime": timeInfo
+        }
+
+        _ = insert("matchProgress", opponentUserProgressRecord)
 
 
 

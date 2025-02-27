@@ -1,11 +1,13 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from widgets.centralWidgets.chessFunctions.chessBoardClasses import *
+from widgets.centralWidgets.chessFunctions.checkChecking import checkForCheck
 from widgets.centralWidgets.chessFunctions.move import *
 from widgets.centralWidgets.chessFunctions.movementFunctions import promotingTo
 from widgets.centralWidgets.chessFunctions.parsePGN import *
 from widgets.centralWidgets.chessFunctions.userEndingFunctions import *
 from widgets.utilityWidgets.functions.playFunctions import goToStage2
 from widgets.utilityWidgets.functions.puzzleFunctions import newMove
+from playerDB.jsonFunctions import getData
 
 
 # the puzzle board must have the exact same functionality as the normal chess board but should not
@@ -84,6 +86,7 @@ class Ui_puzzleChessBoard(QtWidgets.QWidget):
         font.setBold(True)
 
         self.robotMove = False
+        self.currentlyHighlightedTiles = []
 
         # the next 300 lines contain repeated code for each tile 
         # tiles with added words for coords also have alignment declared and font declared
@@ -664,6 +667,15 @@ class Ui_puzzleChessBoard(QtWidgets.QWidget):
         self.pgn = ""
 
         self.robotMove = False
+        self.currentlyHighlightedTiles = []
+
+        query = {"id": self.dashboard.baseWindow.userId}
+        userData = getData("users", **query)
+        pieceIndex = userData[0]["pieces"]
+
+        pieceQuery = {"id": pieceIndex}
+        pieceFolder = getData("pieces", **pieceQuery)
+        pieceFolder = pieceFolder[0]["folder"]
 
         # font is declared once as it doesn't change
         font = QtGui.QFont()
@@ -864,100 +876,100 @@ class Ui_puzzleChessBoard(QtWidgets.QWidget):
         self.h1.setStyleSheet("")
         
 
-        self.blackARook.setupLabel("black", "blackARook", "Rook", "a8")
+        self.blackARook.setupLabel("black", "blackARook", "Rook", "a8", pieceFolder)
         self.blackARook.move(5, 5)
         
-        self.blackBKnight.setupLabel("black", "blackBKnight", "Knight", "b8")
+        self.blackBKnight.setupLabel("black", "blackBKnight", "Knight", "b8", pieceFolder)
         self.blackBKnight.move(75, 5)
         
-        self.blackCBishop.setupLabel("black", "blackCBishop", "Bishop", "c8")
+        self.blackCBishop.setupLabel("black", "blackCBishop", "Bishop", "c8", pieceFolder)
         self.blackCBishop.move(145, 5)
         
-        self.blackQueen.setupLabel("black", "blackQueen", "Queen", "d8")
+        self.blackQueen.setupLabel("black", "blackQueen", "Queen", "d8", pieceFolder)
         self.blackQueen.move(215, 5)
         
-        self.blackKing.setupLabel("black", "blackKing", "King", "e8")
+        self.blackKing.setupLabel("black", "blackKing", "King", "e8", pieceFolder)
         self.blackKing.move(285, 5)
         
-        self.blackFBishop.setupLabel("black", "blackFBishop", "Bishop", "f8")
+        self.blackFBishop.setupLabel("black", "blackFBishop", "Bishop", "f8", pieceFolder)
         self.blackFBishop.move(355, 5)
         
-        self.blackGKnight.setupLabel("black", "blackGKnight", "Knight", "g8")
+        self.blackGKnight.setupLabel("black", "blackGKnight", "Knight", "g8", pieceFolder)
         self.blackGKnight.move(425, 5)
         
-        self.blackHRook.setupLabel("black", "blackHRook", "Rook", "h8")
+        self.blackHRook.setupLabel("black", "blackHRook", "Rook", "h8", pieceFolder)
         self.blackHRook.move(495, 5)
         
-        self.blackAPawn.setupLabel("black", "blackAPawn", "Pawn", "a7")
+        self.blackAPawn.setupLabel("black", "blackAPawn", "Pawn", "a7", pieceFolder)
         self.blackAPawn.move(5, 75)
         
-        self.blackBPawn.setupLabel("black", "blackBPawn", "Pawn", "b7")
+        self.blackBPawn.setupLabel("black", "blackBPawn", "Pawn", "b7", pieceFolder)
         self.blackBPawn.move(75, 75)
         
-        self.blackCPawn.setupLabel("black", "blackCPawn", "Pawn", "c7")
+        self.blackCPawn.setupLabel("black", "blackCPawn", "Pawn", "c7", pieceFolder)
         self.blackCPawn.move(145, 75)
         
-        self.blackDPawn.setupLabel("black", "blackDPawn", "Pawn", "d7")
+        self.blackDPawn.setupLabel("black", "blackDPawn", "Pawn", "d7", pieceFolder)
         self.blackDPawn.move(215, 75)
         
-        self.blackEPawn.setupLabel("black", "blackEPawn", "Pawn", "e7")
+        self.blackEPawn.setupLabel("black", "blackEPawn", "Pawn", "e7", pieceFolder)
         self.blackEPawn.move(285, 75)
         
-        self.blackFPawn.setupLabel("black", "blackFPawn", "Pawn", "f7")
+        self.blackFPawn.setupLabel("black", "blackFPawn", "Pawn", "f7", pieceFolder)
         self.blackFPawn.move(355, 75)
         
-        self.blackGPawn.setupLabel("black", "blackGPawn", "Pawn", "g7")
+        self.blackGPawn.setupLabel("black", "blackGPawn", "Pawn", "g7", pieceFolder)
         self.blackGPawn.move(425, 75)
         
-        self.blackHPawn.setupLabel("black", "blackHPawn", "Pawn", "h7")
+        self.blackHPawn.setupLabel("black", "blackHPawn", "Pawn", "h7", pieceFolder)
         self.blackHPawn.move(495, 75)
         
-        self.whiteARook.setupLabel("white", "whiteARook", "Rook", "a1")
+        self.whiteARook.setupLabel("white", "whiteARook", "Rook", "a1", pieceFolder)
         self.whiteARook.move(5, 495)
         
-        self.whiteBKnight.setupLabel("white", "whiteBKnight", "Knight", "b1")
+        self.whiteBKnight.setupLabel("white", "whiteBKnight", "Knight", "b1", pieceFolder)
         self.whiteBKnight.move(75, 495)
         
-        self.whiteCBishop.setupLabel("white", "whiteCBishop", "Bishop", "c1")
+        self.whiteCBishop.setupLabel("white", "whiteCBishop", "Bishop", "c1", pieceFolder)
         self.whiteCBishop.move(145, 495)
         
-        self.whiteQueen.setupLabel("white", "whiteQueen", "Queen", "d1")
+        self.whiteQueen.setupLabel("white", "whiteQueen", "Queen", "d1", pieceFolder)
         self.whiteQueen.move(215, 495)
         
-        self.whiteKing.setupLabel("white", "whiteKing", "King", "e1")
+        self.whiteKing.setupLabel("white", "whiteKing", "King", "e1", pieceFolder)
         self.whiteKing.move(285, 495)
         
-        self.whiteFBishop.setupLabel("white", "whiteFBishop", "Bishop", "f1")
+        self.whiteFBishop.setupLabel("white", "whiteFBishop", "Bishop", "f1", pieceFolder)
         self.whiteFBishop.move(355, 495)
         
-        self.whiteGKnight.setupLabel("white", "whiteGKnight", "Knight", "g1")
+        self.whiteGKnight.setupLabel("white", "whiteGKnight", "Knight", "g1", pieceFolder)
         self.whiteGKnight.move(425, 495)
         
-        self.whiteHRook.setupLabel("white", "whiteHRook", "Rook", "h1")
+        self.whiteHRook.setupLabel("white", "whiteHRook", "Rook", "h1", pieceFolder)
         self.whiteHRook.move(495, 495)
         
-        self.whiteAPawn.setupLabel("white", "whiteAPawn", "Pawn", "a2")
+        self.whiteAPawn.setupLabel("white", "whiteAPawn", "Pawn", "a2", pieceFolder)
         self.whiteAPawn.move(5, 425)
         
-        self.whiteBPawn.setupLabel("white", "whiteBPawn", "Pawn", "b2")
+        self.whiteBPawn.setupLabel("white", "whiteBPawn", "Pawn", "b2", pieceFolder)
         self.whiteBPawn.move(75, 425)
         
-        self.whiteCPawn.setupLabel("white", "whiteCPawn", "Pawn", "c2")
+        self.whiteCPawn.setupLabel("white", "whiteCPawn", "Pawn", "c2", pieceFolder)
         self.whiteCPawn.move(145, 425)
         
-        self.whiteDPawn.setupLabel("white", "whiteDPawn", "Pawn", "d2")
+        self.whiteDPawn.setupLabel("white", "whiteDPawn", "Pawn", "d2", pieceFolder)
         self.whiteDPawn.move(215, 425)
         
-        self.whiteEPawn.setupLabel("white", "whiteEPawn", "Pawn", "e2")
+        self.whiteEPawn.setupLabel("white", "whiteEPawn", "Pawn", "e2", pieceFolder)
         self.whiteEPawn.move(285, 425)
         
-        self.whiteFPawn.setupLabel("white", "whiteFPawn", "Pawn", "f2")
+        self.whiteFPawn.setupLabel("white", "whiteFPawn", "Pawn", "f2", pieceFolder)
         self.whiteFPawn.move(355, 425)
         
-        self.whiteGPawn.setupLabel("white", "whiteGPawn", "Pawn", "g2")
+        self.whiteGPawn.setupLabel("white", "whiteGPawn", "Pawn", "g2", pieceFolder)
         self.whiteGPawn.move(425, 425)
         
-        self.whiteHPawn.setupLabel("white", "whiteHPawn", "Pawn", "h2")
+        self.whiteHPawn.setupLabel("white", "whiteHPawn", "Pawn", "h2",  pieceFolder)
         self.whiteHPawn.move(495, 425)
         
 
@@ -1001,6 +1013,8 @@ class Ui_puzzleChessBoard(QtWidgets.QWidget):
 
         print(f"this is the pgn {pgn}")
 
+
+
     def runPgnTurn(self, colour, pgn, index=0):
         if isinstance(colour, int):
             if colour / 2 == int(colour / 2):
@@ -1014,8 +1028,9 @@ class Ui_puzzleChessBoard(QtWidgets.QWidget):
         if isinstance(pgn, str):
             pgn = pgn.split()
 
-        moveset = parsePGN(pgn)
+        print(f"PGN BEFORE BEING PASSED IN {pgn}")
 
+        moveset = parsePGN(pgn)
 
         turn = moveset[index]
 
@@ -1024,6 +1039,153 @@ class Ui_puzzleChessBoard(QtWidgets.QWidget):
         makeMove(self, pieceToMove, turn[3], turn[4])
 
         self.robotMove = False
+
+
+    def runFen(self, fen):
+        for child in self.findChildren(piece):
+            child.setHidden(True)
+
+            if child.objectName()[-4:] == "Pawn":
+                child.moveset = "Pawn"
+                child.hasMoved = True
+
+            elif child.moveset in ("King", "Rook"):
+                child.hasMoved = True
+
+        for child in self.findChildren(square):
+            child.occupied = "False"
+            child.enPassantActive = -2
+
+        fenElements = fen.split()
+
+        setup = fenElements[0]
+        activeColour = fenElements[1]
+        castlingAvailability = fenElements[2]
+        enPassant = fenElements[3]
+        fullMove = fenElements[5]
+
+        if activeColour == "w":
+            moveNumber = (int(fullMove) * 2) - 2
+            activeColour = "white"
+
+        else:
+            moveNumber = (int(fullMove) * 2) - 1
+            activeColour = "black"
+
+        setupRanks = setup.split("/")
+        
+        pieces = {
+            "upper": {
+                "pawnCount": 0,
+                "rookCount": 0,
+                "knightCount": 0,
+                "bishopCount": 0,
+                "queenCount": 0,
+                "kingCount": 0,
+                "pawn": ["whiteAPawn", "whiteBPawn", "whiteCPawn", "whiteDPawn", "whiteEPawn", "whiteFPawn", "whiteGPawn", "whiteHPawn"],
+                "rook": ["whiteARook", "whiteHRook"],
+                "knight": ["whiteBKnight", "whiteGKnight"],
+                "bishop": ["whiteCBishop", "whiteFBishop"],
+                "queen": ["whiteQueen"],
+                "king": ["whiteKing"]
+            },
+            "lower": {
+                "pawnCount": 0,
+                "rookCount": 0,
+                "knightCount": 0,
+                "bishopCount": 0,
+                "queenCount": 0,
+                "kingCount": 0,
+                "pawn": ["blackAPawn", "blackBPawn", "blackCPawn", "blackDPawn", "blackEPawn", "blackFPawn", "blackGPawn", "blackHPawn"],
+                "rook": ["blackARook", "blackHRook"],
+                "knight": ["blackBKnight", "blackGKnight"],
+                "bishop": ["blackCBishop", "blackFBishop"],
+                "queen": ["blackQueen"],
+                "king": ["blackKing"]
+            }
+        }
+
+        pieceDirectory = {"P": "pawn", "R": "rook", "N": "knight", "B": "bishop", "Q": "queen", "K": "king"}
+
+        file = 0
+
+        for i in range(8, 0, -1):
+            row = setupRanks[8 - i]
+            rank = 0
+
+            for y in list(row):
+                if y.isdigit():
+                    rank += (int(y) - 1)
+
+                else:
+                    if y == y.lower():
+                        refinedPieceDict = pieces["lower"]
+                        colour = "black"
+
+                    elif y == y.upper():
+                        refinedPieceDict = pieces["upper"]
+                        colour = "white"
+
+                    activePieceType = pieceDirectory[y.upper()]
+
+                    activePiece = refinedPieceDict[activePieceType][refinedPieceDict[f"{activePieceType}Count"]]
+
+                    refinedPieceDict[f"{activePieceType}Count"] += 1
+
+                    tile = getattr(self, chr(ord('a') + rank) + str(i))
+                    tile.occupied = activePiece
+
+                    position = tile.pos()
+                    xPosition = position.x() + 5
+                    yPosition = position.y() + 5
+
+                    activePiece = getattr(self, activePiece)
+
+                    activePiece.move(xPosition, yPosition)
+                    activePiece.pos = chr(ord('a') + rank) + str(i)
+                    activePiece.setHidden(False)
+
+                    if activePieceType == "pawn":
+                        if row == 7 and colour == "black":
+                            activePiece.hasMoved = False
+
+                        elif row == 2 and colour == "white":
+                            activePiece.hasMoved = False
+
+                rank += 1
+
+        
+        for i in list(castlingAvailability):
+            if i != "-":
+                if i == i.upper():
+                    colour == "white"
+
+                    self.whiteKing.hasMoved = False
+
+                else:
+                    colour == "black"
+
+                    self.blackKing.hasMoved = False
+
+                if i.upper() == "Q":
+                    getattr(self, f"{colour}ARook").hasMoved = False
+
+                elif i.upper == "K":
+                    getattr(self, f"{colour}HRook").hasMoved = False
+
+
+
+        if enPassant != "-":
+            getattr(self, enPassant).enPassantActive = moveNumber - 1
+
+
+        attackers = checkForCheck(activeColour, self)
+
+        if len(attackers) > 0:
+            highlightValidTiles([getattr(self, f"{activeColour}King").pos], self, "King")
+
+        self.moveNumber = moveNumber
+        self.attackers = attackers
 
 
     def retranslateUi(self):

@@ -1,0 +1,18 @@
+[
+    {
+        "id": 0,
+        "folder": "Classic"
+    }, {
+        "id": 1,
+        "folder": "Fancy"
+    }, {
+        "id": 2,
+        "folder": "Neo"
+    }, {
+        "id": 3,
+        "folder": "Pixel"
+    }, {
+        "id": 4,
+        "folder": "Simplistic"
+    }
+]

@@ -41,15 +41,21 @@ def getData(tableName, **kwargs):
 
 
 # checks whether a certain value is unique
-def isUnique(key, value):
+def isUnique(key, value, *args):
     # fetches data from users table
     data = fetch("users")
 
-    # if the value for a certain key (username or email) is found in another record
-    # it returns false to show that the value is not unique
-    for record in data:
-        if record[key] == value:
-            return False
+    if len(args) == 0:
+        # if the value for a certain key (username or email) is found in another record
+        # it returns false to show that the value is not unique
+        for record in data:
+            if record[key] == value:
+                return False
+            
+    else:
+        for record in data:
+            if record[key] == value and record["id"] != args[0]:
+                return False
         
     return True
 
