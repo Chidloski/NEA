@@ -265,7 +265,7 @@ def highlightValidTiles(validTiles, domain, deHighlight):
         else:
             getattr(domain, i).setStyleSheet(darkStyle)
 
-    domain.currentlyHighlightedTiles = validTiles
+    domain.currentlyHighlightedTiles = validTiles.copy()
 
     domain.currentlyHighlightedTiles.append(deHighlight)
 

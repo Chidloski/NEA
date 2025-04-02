@@ -1,5 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from widgets.utilityWidgets.functions.tournamentFunctions import *
+from widgets.labelClasses import AutoResizingLabel
 
 
 class invisibleButton(QtWidgets.QPushButton):
@@ -25,7 +26,7 @@ class Ui_tournamentStage4(QtWidgets.QWidget):
         font.setPointSize(18)
         font.setBold(True)
 
-        self.currentUserLabel = QtWidgets.QLabel(self)
+        self.currentUserLabel = AutoResizingLabel(18, True, parent = self)
         self.currentUserLabel.setGeometry(QtCore.QRect(10, 10, 201, 20))
         self.currentUserLabel.setFont(font)
         self.currentUserLabel.setObjectName("currentUserLabel")
@@ -33,19 +34,19 @@ class Ui_tournamentStage4(QtWidgets.QWidget):
         font.setPointSize(13)
         font.setBold(False)
 
-        self.currentUserRatingLabel = QtWidgets.QLabel(self)
+        self.currentUserRatingLabel = AutoResizingLabel(13, False, parent = self)
         self.currentUserRatingLabel.setGeometry(QtCore.QRect(20, 30, 191, 16))
         self.currentUserRatingLabel.setFont(font)
         self.currentUserRatingLabel.setObjectName("currentUserRatingLabel")
 
-        self.currentUserRatingOutcome = QtWidgets.QLabel(self)
+        self.currentUserRatingOutcome = AutoResizingLabel(13, False, parent = self)
         self.currentUserRatingOutcome.setGeometry(QtCore.QRect(20, 60, 191, 16))
         self.currentUserRatingOutcome.setFont(font)
         self.currentUserRatingOutcome.setObjectName("currentUserRatingOutcome")
 
         font.setPointSize(10)
 
-        self.currentUserRatingDelta = QtWidgets.QLabel(self)
+        self.currentUserRatingDelta = AutoResizingLabel(10, False, parent = self)
         self.currentUserRatingDelta.setGeometry(QtCore.QRect(30, 80, 181, 16))
         self.currentUserRatingDelta.setFont(font)
         self.currentUserRatingDelta.setObjectName("currentUserRatingDelta")
@@ -53,7 +54,7 @@ class Ui_tournamentStage4(QtWidgets.QWidget):
         font.setPointSize(18)
         font.setBold(True)
 
-        self.opponentUserLabel = QtWidgets.QLabel(self)
+        self.opponentUserLabel = AutoResizingLabel(18, True, parent = self)
         self.opponentUserLabel.setGeometry(QtCore.QRect(10, 110, 201, 20))
         self.opponentUserLabel.setFont(font)
         self.opponentUserLabel.setObjectName("opponentUserLabel")
@@ -61,19 +62,19 @@ class Ui_tournamentStage4(QtWidgets.QWidget):
         font.setPointSize(13)
         font.setBold(False)
 
-        self.opponentUserRatingLabel = QtWidgets.QLabel(self)
+        self.opponentUserRatingLabel = AutoResizingLabel(13, False, parent = self)
         self.opponentUserRatingLabel.setGeometry(QtCore.QRect(20, 130, 191, 16))
         self.opponentUserRatingLabel.setFont(font)
         self.opponentUserRatingLabel.setObjectName("opponentUserRatingLabel")
 
-        self.opponentUserRatingOutcome = QtWidgets.QLabel(self)
+        self.opponentUserRatingOutcome = AutoResizingLabel(13, False, parent = self)
         self.opponentUserRatingOutcome.setGeometry(QtCore.QRect(20, 160, 191, 16))
         self.opponentUserRatingOutcome.setFont(font)
         self.opponentUserRatingOutcome.setObjectName("opponentUserRatingOutcome")
 
         font.setPointSize(10)
         
-        self.opponentUserRatingDelta = QtWidgets.QLabel(self)
+        self.opponentUserRatingDelta = AutoResizingLabel(10, False, parent = self)
         self.opponentUserRatingDelta.setGeometry(QtCore.QRect(30, 180, 181, 16))
         self.opponentUserRatingDelta.setFont(font)
         self.opponentUserRatingDelta.setObjectName("opponentUserRatingDelta")
@@ -81,7 +82,7 @@ class Ui_tournamentStage4(QtWidgets.QWidget):
         font.setPointSize(18)
         font.setBold(True)
 
-        self.PGNLabel = QtWidgets.QLabel(self)
+        self.PGNLabel = AutoResizingLabel(18, True, parent = self)
         self.PGNLabel.setGeometry(QtCore.QRect(10, 220, 201, 18))
         self.PGNLabel.setFont(font)
         self.PGNLabel.setObjectName("PGNLabel")
@@ -89,7 +90,7 @@ class Ui_tournamentStage4(QtWidgets.QWidget):
         font.setPointSize(8)
         font.setBold(False)
 
-        self.moveset = QtWidgets.QLabel(self)
+        self.moveset = AutoResizingLabel(8, False, wordWrap=True, parent = self)
         self.moveset.setGeometry(QtCore.QRect(10, 240, 201, 201))
         self.moveset.setFont(font)
         self.moveset.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)

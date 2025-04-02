@@ -147,11 +147,11 @@ def goToTournamentStage2(dashboard, widget, capacity):
 
     if capacity.isdigit():
         capacity = int(capacity)
-        print(capacity)
+        #print(capacity)
 
 
         if widget.tournamentTypeGroup.checkedButton().objectName() == "knockoutRadioButton":
-            if capacity <= 8 and capacity > 0:
+            if capacity <= 8 and capacity > 1:
                 dashboard.tournamentStage2Widget.titleLabel.setText("Knockout")
 
                 dashboard.tournamentStage2Widget.tournamentType = "Knockout"
@@ -163,7 +163,7 @@ def goToTournamentStage2(dashboard, widget, capacity):
                 widget.tournamentErrorLabel.setText("Knockout capacity must be 8 or smaller")
         
         else:
-            if capacity > 7:
+            if capacity > 7 and capacity > 1:
                 widget.tournamentErrorLabel.setHidden(False)
                 widget.tournamentErrorLabel.setText("A round robin must have 6 or less people")
 

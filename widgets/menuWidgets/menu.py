@@ -1,5 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from widgets.menuWidgets.functions.menuFunctions import *
+from widgets.labelClasses import AutoResizingResponsiveClickableLabel, AutoResizingClickableLabel
 
 # makes a clickable label
 class clickableLabel(QtWidgets.QLabel):
@@ -30,21 +31,21 @@ class Ui_Menu(QtWidgets.QWidget):
         font.setPointSize(24)
         font.setBold(True)
 
-        self.playSection = clickableLabel(self)
+        self.playSection = AutoResizingResponsiveClickableLabel(24, True, parent=self)
         self.playSection.setGeometry(QtCore.QRect(10, 10, 101, 31))
         self.playSection.setFont(font)
         self.playSection.setObjectName("playSection")
 
         self.playSection.clicked.connect(lambda: goToPlay(dashboard))
 
-        self.puzzleSection = clickableLabel(self)
+        self.puzzleSection = AutoResizingResponsiveClickableLabel(24, True, parent=self)
         self.puzzleSection.setGeometry(QtCore.QRect(10, 50, 101, 31))
         self.puzzleSection.setFont(font)
         self.puzzleSection.setObjectName("puzzleSection")
 
         self.puzzleSection.clicked.connect(lambda: goToPuzzles(dashboard))
 
-        self.prosSection = clickableLabel(self)
+        self.prosSection = AutoResizingResponsiveClickableLabel(24, True, parent=self)
         self.prosSection.setGeometry(QtCore.QRect(10, 90, 111, 31))
         self.prosSection.setFont(font)
         self.prosSection.setObjectName("prosSection")
@@ -54,16 +55,23 @@ class Ui_Menu(QtWidgets.QWidget):
         font.setBold(False)
         font.setPointSize(16)
 
-        self.accountSection = clickableLabel(self)
+        self.accountSection = AutoResizingResponsiveClickableLabel(16, False, parent=self)
         self.accountSection.setGeometry(10, 490, 101, 26)
         self.accountSection.setFont(font)
         self.accountSection.setObjectName("accountSection")
         self.accountSection.clicked.connect(lambda: goToAccount(dashboard))
 
-        self.logOut = clickableLabel(self)
+        self.logOut = AutoResizingResponsiveClickableLabel(16, False, parent=self)
         self.logOut.setGeometry(QtCore.QRect(10, 520, 101, 26))
         self.logOut.setFont(font)
         self.logOut.setObjectName("logOut")
+        self.logOut.clicked.connect(lambda: logOut(dashboard))
+
+        self.playSection.createGroup([self.playSection, self.puzzleSection, self.prosSection, self.accountSection, self.logOut])
+        self.puzzleSection.createGroup([self.playSection, self.puzzleSection, self.prosSection, self.accountSection, self.logOut])
+        self.prosSection.createGroup([self.playSection, self.puzzleSection, self.prosSection, self.accountSection, self.logOut])
+        self.accountSection.createGroup([self.playSection, self.puzzleSection, self.prosSection, self.accountSection, self.logOut])
+        self.logOut.createGroup([self.playSection, self.puzzleSection, self.prosSection, self.accountSection, self.logOut])
 
         self.retranslateUi(self)
         QtCore.QMetaObject.connectSlotsByName(self)

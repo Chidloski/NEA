@@ -141,7 +141,7 @@ def goToDailyStage3(dashboard, moveList, solution, outcome, tournament, matchup,
 
 
 def newMove(dashboard, pgn):
-    if dashboard.puzzleStackedWidget.currentIndex() == 2:
+    if dashboard.puzzleStackedWidget.currentIndex() in (1, 2):
         activeWidget = dashboard.dailyStage2Widget
         puzzleId = dashboard.dailyStage2Widget.moveList
 
@@ -212,7 +212,7 @@ def newMove(dashboard, pgn):
 
                 _ = insert("puzzleProgress", puzzleProgressRecord)
 
-                if dashboard.puzzleStackedWidget.currentIndex() == 2:
+                if dashboard.puzzleStackedWidget.currentIndex() in (1, 2):
                     goToDailyStage3(dashboard, dashboard.dailyStage2Widget.moveList, dashboard.dailyStage2Widget.solution, 
                                 "Completed!", dashboard.dailyStage2Widget.tournamentLabel.text(), 
                                 dashboard.dailyStage2Widget.matchupLabel.text(), dashboard.dailyStage2Widget.puzzleRating)
@@ -252,7 +252,7 @@ def newMove(dashboard, pgn):
 
             _ = insert("puzzleProgress", puzzleProgressRecord)
 
-            if dashboard.puzzleStackedWidget.currentIndex() == 2:
+            if dashboard.puzzleStackedWidget.currentIndex() in (1, 2):
                 goToDailyStage3(dashboard, dashboard.dailyStage2Widget.moveList, dashboard.dailyStage2Widget.solution, 
                                 "Failed", dashboard.dailyStage2Widget.tournamentLabel.text(), 
                                 dashboard.dailyStage2Widget.matchupLabel.text(), dashboard.dailyStage2Widget.puzzleRating)

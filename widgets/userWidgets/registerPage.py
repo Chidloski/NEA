@@ -1,5 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from widgets.userWidgets.functions.userFunctions import Register, PasswordVisibility
+from widgets.labelClasses import AutoResizingLabel
 
 # Responsible for setting up all elements within the log in page
 class Ui_RegisterPage(QtWidgets.QWidget):
@@ -12,7 +13,7 @@ class Ui_RegisterPage(QtWidgets.QWidget):
         self.setAutoFillBackground(False)
 
         # declares welcome label element
-        self.WelcomeLabel = QtWidgets.QLabel(self)
+        self.WelcomeLabel = AutoResizingLabel(70, True, parent = self)
         self.WelcomeLabel.setGeometry(QtCore.QRect(200, 50, 600, 120))
 
         # sets font
@@ -27,7 +28,7 @@ class Ui_RegisterPage(QtWidgets.QWidget):
         self.WelcomeLabel.setObjectName("WelcomeLabel")
 
         # declares the register label
-        self.RegisterLabel = QtWidgets.QLabel(self)
+        self.RegisterLabel = AutoResizingLabel(24, True, parent = self)
         self.RegisterLabel.setGeometry(QtCore.QRect(350, 160, 200, 51))
 
         # changes font size for label definition
@@ -114,7 +115,7 @@ class Ui_RegisterPage(QtWidgets.QWidget):
         font.setBold(False)
 
         # declares the error label
-        self.ErrorLabel = QtWidgets.QLabel(self)
+        self.ErrorLabel = AutoResizingLabel(13, False, parent = self)
         self.ErrorLabel.setGeometry(QtCore.QRect(350, 450, 300, 50))
 
         # defines the font of error label
@@ -159,4 +160,18 @@ class Ui_RegisterPage(QtWidgets.QWidget):
         self.WelcomeLabel.setText(_translate("registerPage", "Chess Teacher"))
         self.RegisterLabel.setText(_translate("registerPage", "Register:"))
         self.RegisterButton.setText(_translate("registerPage", "Register"))
+
+
+    def resetUi(self):
+        self.UsernameInput.setText("")
+        self.FullNameInput.setText("")
+        self.EmailInput.setText("")
+
+        self.PasswordInput.setText("")
+        self.PasswordInput.setEchoMode(QtWidgets.QLineEdit.Password)
+
+        self.RePasswordInput.setText("")
+        self.RePasswordInput.setEchoMode(QtWidgets.QLineEdit.Password)
+
+        self.ErrorLabel.setHidden(True)
     

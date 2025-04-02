@@ -305,8 +305,8 @@ def finaliseMatch(dashboard, matchId, outcome, pgn):
 
     match = getData("matches", **query)
 
-    print(matchId)
-    print(match)
+    #print(matchId)
+    #print(match)
 
     match = match[0]
 

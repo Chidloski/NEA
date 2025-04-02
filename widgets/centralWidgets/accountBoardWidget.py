@@ -2,6 +2,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from playerDB.jsonFunctions import *
 from widgets.centralWidgets.chessFunctions.chessBoardClasses import lightSquare, darkSquare
 from PyQt5.QtGui import QPixmap
+from widgets.labelClasses import AutoResizingLabel, AutoResizingClickableLabel, AutoResizingRadioButton
 import re
 
 
@@ -40,7 +41,7 @@ class Ui_accountBoard(QtWidgets.QWidget):
         font.setPointSize(28)
         font.setBold(True)
 
-        self.accountManagementLabel = QtWidgets.QLabel(self)
+        self.accountManagementLabel = AutoResizingLabel(28, True, parent=self)
         self.accountManagementLabel.setGeometry(QtCore.QRect(130, 10, 311, 31))
         self.accountManagementLabel.setFont(font)
         self.accountManagementLabel.setAlignment(QtCore.Qt.AlignCenter)
@@ -49,13 +50,13 @@ class Ui_accountBoard(QtWidgets.QWidget):
         font.setPointSize(28)
         font.setBold(True)
 
-        self.thematicsLabel = QtWidgets.QLabel(self)
+        self.thematicsLabel = AutoResizingLabel(28, True, parent=self)
         self.thematicsLabel.setGeometry(QtCore.QRect(200, 220, 161, 31))
         self.thematicsLabel.setFont(font)
         self.thematicsLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.thematicsLabel.setObjectName("thematicsLabel")
 
-        self.avatarLabel = QtWidgets.QLabel(self)
+        self.avatarLabel = AutoResizingLabel(28, True, parent=self)
         self.avatarLabel.setGeometry(QtCore.QRect(80, 60, 111, 101))
         self.avatarLabel.setFont(font)
         self.avatarLabel.setAlignment(QtCore.Qt.AlignCenter)
@@ -84,43 +85,43 @@ class Ui_accountBoard(QtWidgets.QWidget):
         self.emailInput.setObjectName("emailInput")
         self.emailInput.setHidden(True)
 
-        self.usernameInputLabel = QtWidgets.QLabel(self)
+        self.usernameInputLabel = AutoResizingLabel(13, False, parent=self)
         self.usernameInputLabel.setGeometry(QtCore.QRect(240, 63, 101, 16))
         self.usernameInputLabel.setFont(font)
         self.usernameInputLabel.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing)
         self.usernameInputLabel.setObjectName("usernameInputLabel")
 
-        self.nameInputLabel = QtWidgets.QLabel(self)
+        self.nameInputLabel = AutoResizingLabel(13, False, parent=self)
         self.nameInputLabel.setGeometry(QtCore.QRect(240, 93, 101, 16))
         self.nameInputLabel.setFont(font)
         self.nameInputLabel.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing)
         self.nameInputLabel.setObjectName("nameInputLabel")
 
-        self.emailInputLabel = QtWidgets.QLabel(self)
+        self.emailInputLabel = AutoResizingLabel(13, False, parent=self)
         self.emailInputLabel.setGeometry(QtCore.QRect(240, 123, 101, 16))
         self.emailInputLabel.setFont(font)
         self.emailInputLabel.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing)
         self.emailInputLabel.setObjectName("emailInputLabel")
 
-        self.usernameLabel = QtWidgets.QLabel(self)
+        self.usernameLabel = AutoResizingLabel(13, False, parent=self)
         self.usernameLabel.setGeometry(QtCore.QRect(350, 63, 171, 16))
         self.usernameLabel.setFont(font)
         self.usernameLabel.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
         self.usernameLabel.setObjectName("usernameLabel")
 
-        self.nameLabel = QtWidgets.QLabel(self)
+        self.nameLabel = AutoResizingLabel(13, False, parent=self)
         self.nameLabel.setGeometry(QtCore.QRect(350, 93, 171, 16))
         self.nameLabel.setFont(font)
         self.nameLabel.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
         self.nameLabel.setObjectName("nameLabel")
 
-        self.emailLabel = QtWidgets.QLabel(self)
+        self.emailLabel = AutoResizingLabel(13, False, parent=self)
         self.emailLabel.setGeometry(QtCore.QRect(350, 123, 171, 16))
         self.emailLabel.setFont(font)
         self.emailLabel.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
         self.emailLabel.setObjectName("emailLabel")
 
-        self.errorLabel = QtWidgets.QLabel(self)
+        self.errorLabel = AutoResizingLabel(13, False, parent=self)
         self.errorLabel.setGeometry(240, 143, 210, 32)
         self.errorLabel.setFont(font)
         self.errorLabel.setStyleSheet("color: rgb(175, 61, 50)")
@@ -131,7 +132,7 @@ class Ui_accountBoard(QtWidgets.QWidget):
 
         font.setPointSize(16)
 
-        self.avatarCycleLeftLabel = clickableLabel(self)
+        self.avatarCycleLeftLabel = AutoResizingClickableLabel(16, False, parent=self)
         self.avatarCycleLeftLabel.setGeometry(QtCore.QRect(50, 103, 21, 16))
         self.avatarCycleLeftLabel.setFont(font)
         self.avatarCycleLeftLabel.setAlignment(QtCore.Qt.AlignCenter)
@@ -139,7 +140,7 @@ class Ui_accountBoard(QtWidgets.QWidget):
         self.avatarCycleLeftLabel.clicked.connect(lambda: self.cycle(-1, self.avatarIndex, 5, "avatar"))
         self.avatarCycleLeftLabel.setHidden(True)
 
-        self.avatarCycleRightLabel = clickableLabel(self)
+        self.avatarCycleRightLabel = AutoResizingClickableLabel(16, False, parent=self)
         self.avatarCycleRightLabel.setGeometry(QtCore.QRect(200, 103, 21, 16))
         self.avatarCycleRightLabel.setFont(font)
         self.avatarCycleRightLabel.setAlignment(QtCore.Qt.AlignCenter)
@@ -211,7 +212,7 @@ class Ui_accountBoard(QtWidgets.QWidget):
 
         font.setPointSize(16)
 
-        self.themeCycleLeftLabel = clickableLabel(self)
+        self.themeCycleLeftLabel = AutoResizingClickableLabel(16, False, parent=self)
         self.themeCycleLeftLabel.setGeometry(QtCore.QRect(100, 480, 21, 16))
         self.themeCycleLeftLabel.setFont(font)
         self.themeCycleLeftLabel.setAlignment(QtCore.Qt.AlignCenter)
@@ -219,7 +220,7 @@ class Ui_accountBoard(QtWidgets.QWidget):
         self.themeCycleLeftLabel.clicked.connect(lambda: self.cycle(-1, self.themeIndex, 5, "theme"))
         self.themeCycleLeftLabel.setHidden(True)
 
-        self.pieceCycleLeftLabel = clickableLabel(self)
+        self.pieceCycleLeftLabel = AutoResizingClickableLabel(16, False, parent=self)
         self.pieceCycleLeftLabel.setGeometry(QtCore.QRect(100, 500, 21, 16))
         self.pieceCycleLeftLabel.setFont(font)
         self.pieceCycleLeftLabel.setAlignment(QtCore.Qt.AlignCenter)
@@ -227,7 +228,7 @@ class Ui_accountBoard(QtWidgets.QWidget):
         self.pieceCycleLeftLabel.clicked.connect(lambda: self.cycle(-1, self.pieceIndex, 5, "piece"))
         self.pieceCycleLeftLabel.setHidden(True)
 
-        self.themeCycleRightLabel = clickableLabel(self)
+        self.themeCycleRightLabel = AutoResizingClickableLabel(16, False, parent=self)
         self.themeCycleRightLabel.setGeometry(QtCore.QRect(190, 480, 21, 16))
         self.themeCycleRightLabel.setFont(font)
         self.themeCycleRightLabel.setAlignment(QtCore.Qt.AlignCenter)
@@ -235,7 +236,7 @@ class Ui_accountBoard(QtWidgets.QWidget):
         self.themeCycleRightLabel.clicked.connect(lambda: self.cycle(1, self.themeIndex, 5, "theme"))
         self.themeCycleRightLabel.setHidden(True)
 
-        self.pieceCycleRightLabel = clickableLabel(self)
+        self.pieceCycleRightLabel = AutoResizingClickableLabel(16, False, parent=self)
         self.pieceCycleRightLabel.setGeometry(QtCore.QRect(190, 500, 21, 16))
         self.pieceCycleRightLabel.setFont(font)
         self.pieceCycleRightLabel.setAlignment(QtCore.Qt.AlignCenter)
@@ -245,14 +246,14 @@ class Ui_accountBoard(QtWidgets.QWidget):
 
         font.setPointSize(13)
 
-        self.themeLabel = QtWidgets.QLabel(self)
+        self.themeLabel = AutoResizingLabel(13, False, parent=self)
         self.themeLabel.setGeometry(QtCore.QRect(125, 480, 61, 16))
         self.themeLabel.setFont(font)
         self.themeLabel.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
         self.themeLabel.setObjectName("themeLabel")
         self.themeLabel.setHidden(True)
 
-        self.pieceLabel = QtWidgets.QLabel(self)
+        self.pieceLabel = AutoResizingLabel(13, False, parent=self)
         self.pieceLabel.setGeometry(QtCore.QRect(125, 500, 61, 16))
         self.pieceLabel.setFont(font)
         self.pieceLabel.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
@@ -270,7 +271,7 @@ class Ui_accountBoard(QtWidgets.QWidget):
         font.setPointSize(20)
         font.setBold(True)
 
-        self.fontsLabel = QtWidgets.QLabel(self)
+        self.fontsLabel = AutoResizingLabel(20, True, parent=self)
         self.fontsLabel.setGeometry(QtCore.QRect(330, 260, 101, 21))
         self.fontsLabel.setFont(font)
         self.fontsLabel.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
@@ -280,7 +281,7 @@ class Ui_accountBoard(QtWidgets.QWidget):
         font.setPointSize(16)
         font.setFamily("Fira Code")
 
-        self.firaCodeRadioButton = QtWidgets.QRadioButton(self)
+        self.firaCodeRadioButton = AutoResizingRadioButton(16, False, parent=self)
         self.firaCodeRadioButton.setGeometry(QtCore.QRect(340, 290, 181, 20))
         self.firaCodeRadioButton.setFont(font)
         self.firaCodeRadioButton.setObjectName("firaCodeRadioButton")
@@ -289,7 +290,7 @@ class Ui_accountBoard(QtWidgets.QWidget):
 
         font.setFamily("Arial")
         
-        self.arialRadioButton = QtWidgets.QRadioButton(self)
+        self.arialRadioButton = AutoResizingRadioButton(16, False, parent=self)
         self.arialRadioButton.setGeometry(QtCore.QRect(340, 320, 181, 20))
         self.arialRadioButton.setFont(font)
         self.arialRadioButton.setObjectName("arialRadioButton")
@@ -298,7 +299,7 @@ class Ui_accountBoard(QtWidgets.QWidget):
 
         font.setFamily("Helvetica")
 
-        self.helveticaRadioButton = QtWidgets.QRadioButton(self)
+        self.helveticaRadioButton = AutoResizingRadioButton(16, False, parent=self)
         self.helveticaRadioButton.setGeometry(QtCore.QRect(340, 350, 181, 20))
         self.helveticaRadioButton.setFont(font)
         self.helveticaRadioButton.setObjectName("helveticaRadioButton")
@@ -307,7 +308,7 @@ class Ui_accountBoard(QtWidgets.QWidget):
 
         font.setFamily("Times New Roman")
 
-        self.timesNewRomanRadioButton = QtWidgets.QRadioButton(self)
+        self.timesNewRomanRadioButton = AutoResizingRadioButton(16, False, parent=self)
         self.timesNewRomanRadioButton.setGeometry(QtCore.QRect(340, 380, 181, 20))
         self.timesNewRomanRadioButton.setFont(font)
         self.timesNewRomanRadioButton.setObjectName("timesNewRomanRadioButton")
@@ -316,7 +317,7 @@ class Ui_accountBoard(QtWidgets.QWidget):
 
         font.setFamily("Wingdings 3")
 
-        self.wingdingsRadioButton = QtWidgets.QRadioButton(self)
+        self.wingdingsRadioButton = AutoResizingRadioButton(16, False, parent=self)
         self.wingdingsRadioButton.setGeometry(QtCore.QRect(340, 410, 181, 20))
         self.wingdingsRadioButton.setFont(font)
         self.wingdingsRadioButton.setObjectName("wingdingsRadioButton")
@@ -325,7 +326,7 @@ class Ui_accountBoard(QtWidgets.QWidget):
 
         font.setFamily("OpenDyslexic3")
 
-        self.dyslexicFontRadioButton = QtWidgets.QRadioButton(self)
+        self.dyslexicFontRadioButton = AutoResizingRadioButton(16, False, parent=self)
         self.dyslexicFontRadioButton.setGeometry(QtCore.QRect(340, 440, 181, 20))
         self.dyslexicFontRadioButton.setFont(font)
         self.dyslexicFontRadioButton.setObjectName("dyslexicFontRadioButton")
@@ -343,42 +344,42 @@ class Ui_accountBoard(QtWidgets.QWidget):
         font.setFamily("Fira Code")
 
         self.kingLabel = QtWidgets.QLabel(self)
-        self.kingLabel.setGeometry(QtCore.QRect(60, 270, 60, 60))
+        self.kingLabel.setGeometry(QtCore.QRect(55, 270, 60, 60))
         self.kingLabel.setText("")
         self.kingLabel.setPixmap(QtGui.QPixmap("Resources/ChessIcons/WhiteKing.png"))
         self.kingLabel.setScaledContents(True)
         self.kingLabel.setObjectName("kingLabel")
 
         self.queenLabel = QtWidgets.QLabel(self)
-        self.queenLabel.setGeometry(QtCore.QRect(131, 270, 60, 60))
+        self.queenLabel.setGeometry(QtCore.QRect(126, 270, 60, 60))
         self.queenLabel.setText("")
         self.queenLabel.setPixmap(QtGui.QPixmap("Resources/ChessIcons/WhiteQueen.png"))
         self.queenLabel.setScaledContents(True)
         self.queenLabel.setObjectName("queenLabel")
 
         self.rookLabel = QtWidgets.QLabel(self)
-        self.rookLabel.setGeometry(QtCore.QRect(202, 270, 60, 60))
+        self.rookLabel.setGeometry(QtCore.QRect(197, 270, 60, 60))
         self.rookLabel.setText("")
         self.rookLabel.setPixmap(QtGui.QPixmap("Resources/ChessIcons/WhiteRook.png"))
         self.rookLabel.setScaledContents(True)
         self.rookLabel.setObjectName("rookLabel")
 
         self.bishopLabel = QtWidgets.QLabel(self)
-        self.bishopLabel.setGeometry(QtCore.QRect(60, 412, 60, 60))
+        self.bishopLabel.setGeometry(QtCore.QRect(55, 412, 60, 60))
         self.bishopLabel.setText("")
         self.bishopLabel.setPixmap(QtGui.QPixmap("Resources/ChessIcons/BlackBishop.png"))
         self.bishopLabel.setScaledContents(True)
         self.bishopLabel.setObjectName("bishopLabel")
 
         self.knightLabel = QtWidgets.QLabel(self)
-        self.knightLabel.setGeometry(QtCore.QRect(131, 412, 60, 60))
+        self.knightLabel.setGeometry(QtCore.QRect(126, 412, 60, 60))
         self.knightLabel.setText("")
         self.knightLabel.setPixmap(QtGui.QPixmap("Resources/ChessIcons/BlackKnight.png"))
         self.knightLabel.setScaledContents(True)
         self.knightLabel.setObjectName("knightLabel")
 
         self.pawnLabel = QtWidgets.QLabel(self)
-        self.pawnLabel.setGeometry(QtCore.QRect(202, 412, 60, 60))
+        self.pawnLabel.setGeometry(QtCore.QRect(197, 412, 60, 60))
         self.pawnLabel.setText("")
         self.pawnLabel.setPixmap(QtGui.QPixmap("Resources/ChessIcons/BlackPawn.png"))
         self.pawnLabel.setScaledContents(True)

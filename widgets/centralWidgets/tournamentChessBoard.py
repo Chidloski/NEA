@@ -647,13 +647,17 @@ class Ui_tournamentChessBoard(QtWidgets.QWidget):
 
         self.currentlyHighlightedTiles = []
 
-        query = {"id": self.dashboard.baseWindow.userId}
-        userData = getData("users", **query)
-        pieceIndex = userData[0]["pieces"]
+        if self.dashboard.baseWindow.userId != -1:
+            query = {"id": self.dashboard.baseWindow.userId}
+            userData = getData("users", **query)
+            pieceIndex = userData[0]["pieces"]
 
-        pieceQuery = {"id": pieceIndex}
-        pieceFolder = getData("pieces", **pieceQuery)
-        pieceFolder = pieceFolder[0]["folder"]
+            pieceQuery = {"id": pieceIndex}
+            pieceFolder = getData("pieces", **pieceQuery)
+            pieceFolder = pieceFolder[0]["folder"]
+
+        else:
+            pieceFolder = "Classic"
 
         # font is declared once as it doesn't change
         font = QtGui.QFont()

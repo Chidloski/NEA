@@ -28,6 +28,8 @@ def populateForPlayer(dashboard, name):
 
         dashboard.infoBoard.descriptionLabel.setText(dashboard.proWidget.pro["description"])
 
+        dashboard.proWidget.infoLabel.simulateClick()
+
 def switchPhoto(widget, direction):
     widget.photoIndex = (widget.photoIndex + direction) % 3
 

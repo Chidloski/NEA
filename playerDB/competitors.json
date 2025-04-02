@@ -553,5 +553,25 @@
         "id": 110,
         "tournamentId": 25,
         "userId": "guest"
+    },
+    {
+        "id": 111,
+        "tournamentId": 26,
+        "userId": 0
+    },
+    {
+        "id": 112,
+        "tournamentId": 26,
+        "userId": "guest"
+    },
+    {
+        "id": 113,
+        "tournamentId": 26,
+        "userId": "guest"
+    },
+    {
+        "id": 114,
+        "tournamentId": 26,
+        "userId": "guest"
     }
 ]

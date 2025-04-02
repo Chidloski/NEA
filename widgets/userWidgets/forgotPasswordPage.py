@@ -1,5 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from widgets.userWidgets.functions.userFunctions import ResetPassword, PasswordVisibility
+from widgets.labelClasses import AutoResizingLabel
 
 # Responsible for setting up all elements within the log in page
 class Ui_ForgotPasswordPage(QtWidgets.QWidget):
@@ -12,7 +13,7 @@ class Ui_ForgotPasswordPage(QtWidgets.QWidget):
         self.setAutoFillBackground(False)
 
         # declares welcome label element
-        self.WelcomeLabel = QtWidgets.QLabel(self)
+        self.WelcomeLabel = AutoResizingLabel(70, True, parent = self)
         self.WelcomeLabel.setGeometry(QtCore.QRect(200, 50, 600, 120))
 
         # sets font
@@ -27,7 +28,7 @@ class Ui_ForgotPasswordPage(QtWidgets.QWidget):
         self.WelcomeLabel.setObjectName("WelcomeLabel")
 
         # declares the reset password button
-        self.ResetPasswordLabel = QtWidgets.QLabel(self)
+        self.ResetPasswordLabel = AutoResizingLabel(24, True, parent = self)
         self.ResetPasswordLabel.setGeometry(QtCore.QRect(350, 160, 220, 51))
 
         # changes font size for label definition
@@ -104,7 +105,7 @@ class Ui_ForgotPasswordPage(QtWidgets.QWidget):
         font.setBold(False)
 
         # declares the error label
-        self.ErrorLabel = QtWidgets.QLabel(self)
+        self.ErrorLabel = AutoResizingLabel(13, False, parent = self)
         self.ErrorLabel.setGeometry(QtCore.QRect(350, 407, 300, 50))
 
         # defines the font of error label
@@ -149,4 +150,17 @@ class Ui_ForgotPasswordPage(QtWidgets.QWidget):
         self.WelcomeLabel.setText(_translate("forgotPasswordPage", "Chess Teacher"))
         self.ResetPasswordLabel.setText(_translate("forgotPasswordPage", "Reset Password:"))
         self.ResetPasswordButton.setText(_translate("forgotPasswordPage", "Reset"))
+
+
+    def resetUi(self):
+        self.UsernameInput.setText("")
+        self.EmailInput.setText("")
+
+        self.PasswordInput.setText("")
+        self.PasswordInput.setEchoMode(QtWidgets.QLineEdit.Password)
+
+        self.RePasswordInput.setText("")
+        self.RePasswordInput.setEchoMode(QtWidgets.QLineEdit.Password)
+
+        self.ErrorLabel.setHidden(True)
     

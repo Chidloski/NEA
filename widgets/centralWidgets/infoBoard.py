@@ -1,5 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from widgets.utilityWidgets.functions.proFunctions import *
+from widgets.labelClasses import AutoResizingClickableLabel, AutoResizingLabel
 
 
 # makes a clickable label
@@ -30,7 +31,7 @@ class Ui_infoBoard(QtWidgets.QWidget):
         font.setPointSize(28)
         font.setBold(True)
 
-        self.proNameLabel = QtWidgets.QLabel(self)
+        self.proNameLabel = AutoResizingLabel(28, True, parent=self)
         self.proNameLabel.setGeometry(QtCore.QRect(10, 10, 531, 31))
         self.proNameLabel.setFont(font)
         self.proNameLabel.setObjectName("proNameLabel")
@@ -45,13 +46,13 @@ class Ui_infoBoard(QtWidgets.QWidget):
         font.setPointSize(16)
         font.setBold(False)
 
-        self.overviewLabel = QtWidgets.QLabel(self)
+        self.overviewLabel = AutoResizingLabel(16, False, parent=self)
         self.overviewLabel.setGeometry(QtCore.QRect(300, 50, 221, 20))
         self.overviewLabel.setFont(font)
         self.overviewLabel.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.overviewLabel.setObjectName("overviewLabel")
 
-        self.majorWinsLabel = QtWidgets.QLabel(self)
+        self.majorWinsLabel = AutoResizingLabel(16, False, parent=self)
         self.majorWinsLabel.setGeometry(QtCore.QRect(300, 210, 221, 20))
         self.majorWinsLabel.setFont(font)
         self.majorWinsLabel.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
@@ -59,57 +60,57 @@ class Ui_infoBoard(QtWidgets.QWidget):
 
         font.setPointSize(11)
 
-        self.peakRatingLabel = QtWidgets.QLabel(self)
-        self.peakRatingLabel.setGeometry(QtCore.QRect(310, 170, 211, 16))
+        self.peakRatingLabel = AutoResizingLabel(11, False, parent=self)
+        self.peakRatingLabel.setGeometry(QtCore.QRect(310, 176, 211, 16))
         self.peakRatingLabel.setFont(font)
         self.peakRatingLabel.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.peakRatingLabel.setObjectName("peakRatingLabel")
 
-        self.titleLabel = QtWidgets.QLabel(self)
-        self.titleLabel.setGeometry(QtCore.QRect(310, 150, 211, 16))
+        self.titleLabel = AutoResizingLabel(11, False, parent=self)
+        self.titleLabel.setGeometry(QtCore.QRect(310, 152, 211, 16))
         self.titleLabel.setFont(font)
         self.titleLabel.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.titleLabel.setObjectName("titleLabel")
 
-        self.birthLabel = QtWidgets.QLabel(self)
-        self.birthLabel.setGeometry(QtCore.QRect(310, 120, 211, 16))
+        self.birthLabel = AutoResizingLabel(11, False, parent=self)
+        self.birthLabel.setGeometry(QtCore.QRect(310, 128, 211, 16))
         self.birthLabel.setFont(font)
         self.birthLabel.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.birthLabel.setObjectName("birthLabel")
 
-        self.genderLabel = QtWidgets.QLabel(self)
-        self.genderLabel.setGeometry(QtCore.QRect(310, 100, 211, 16))
+        self.genderLabel = AutoResizingLabel(11, False, parent=self)
+        self.genderLabel.setGeometry(QtCore.QRect(310, 104, 211, 16))
         self.genderLabel.setFont(font)
         self.genderLabel.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.genderLabel.setObjectName("genderLabel")
 
-        self.nationalityLabel = QtWidgets.QLabel(self)
+        self.nationalityLabel = AutoResizingLabel(11, False, parent=self)
         self.nationalityLabel.setGeometry(QtCore.QRect(310, 80, 211, 16))
         self.nationalityLabel.setFont(font)
         self.nationalityLabel.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.nationalityLabel.setObjectName("nationalityLabel")
 
-        self.major1Label = QtWidgets.QLabel(self)
+        self.major1Label = AutoResizingLabel(11, False, parent=self)
         self.major1Label.setGeometry(QtCore.QRect(310, 240, 211, 16))
         self.major1Label.setFont(font)
         self.major1Label.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.major1Label.setObjectName("major1Label")
 
-        self.major2Label = QtWidgets.QLabel(self)
+        self.major2Label = AutoResizingLabel(11, False, parent=self)
         self.major2Label.setGeometry(QtCore.QRect(310, 260, 211, 16))
         self.major2Label.setFont(font)
         self.major2Label.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.major2Label.setObjectName("major2Label")
 
-        self.major3Label = QtWidgets.QLabel(self)
+        self.major3Label = AutoResizingLabel(11, False, parent=self)
         self.major3Label.setGeometry(QtCore.QRect(310, 280, 211, 16))
         self.major3Label.setFont(font)
         self.major3Label.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.major3Label.setObjectName("major3Label")
 
-        font.setPointSize(12)
+        font.setPointSize(14)
 
-        self.descriptionLabel = QtWidgets.QLabel(self)
+        self.descriptionLabel = AutoResizingLabel(14, False, parent=self, wordWrap=True)
         self.descriptionLabel.setGeometry(QtCore.QRect(10, 310, 521, 231))
         self.descriptionLabel.setFont(font)
         self.descriptionLabel.setWordWrap(True)
@@ -118,14 +119,14 @@ class Ui_infoBoard(QtWidgets.QWidget):
 
         font.setPointSize(18)
 
-        self.backLabel = clickableLabel(self)
+        self.backLabel = AutoResizingClickableLabel(18, False, parent=self)
         self.backLabel.setGeometry(QtCore.QRect(20, 168, 16, 16))
         self.backLabel.setFont(font)
         self.backLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.backLabel.setObjectName("backLabel")
         self.backLabel.clicked.connect(lambda: switchPhoto(self, -1))
 
-        self.forwardLabel = clickableLabel(self)
+        self.forwardLabel = AutoResizingClickableLabel(18, False, parent=self)
         self.forwardLabel.setGeometry(QtCore.QRect(260, 168, 16, 16))
         self.forwardLabel.setFont(font)
         self.forwardLabel.setAlignment(QtCore.Qt.AlignCenter)

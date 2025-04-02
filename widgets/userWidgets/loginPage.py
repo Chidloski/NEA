@@ -1,5 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from widgets.userWidgets.functions.userFunctions import LogIn, PasswordVisibility, goToRegisterPage, goToForgotPasswordPage
+from widgets.labelClasses import AutoResizingLabel
 
 # Responsible for setting up all elements within the log in page
 class Ui_LogInPage(QtWidgets.QWidget):
@@ -12,7 +13,7 @@ class Ui_LogInPage(QtWidgets.QWidget):
         self.setAutoFillBackground(False)
 
         # declares welcome label element
-        self.WelcomeLabel = QtWidgets.QLabel(self)
+        self.WelcomeLabel = AutoResizingLabel(70, True, parent = self)
         self.WelcomeLabel.setGeometry(QtCore.QRect(200, 50, 600, 120))
 
         # sets font
@@ -27,7 +28,7 @@ class Ui_LogInPage(QtWidgets.QWidget):
         self.WelcomeLabel.setObjectName("WelcomeLabel")
 
         # declares the login button
-        self.LoginLabel = QtWidgets.QLabel(self)
+        self.LoginLabel = AutoResizingLabel(24, True, parent = self)
         self.LoginLabel.setGeometry(QtCore.QRect(350, 160, 101, 51))
 
         # changes font size for label definition
@@ -110,7 +111,7 @@ class Ui_LogInPage(QtWidgets.QWidget):
         font.setBold(False)
 
         # declares the error label
-        self.ErrorLabel = QtWidgets.QLabel(self)
+        self.ErrorLabel = AutoResizingLabel(13, False, parent = self)
         self.ErrorLabel.setGeometry(QtCore.QRect(350, 395, 300, 50))
 
         # defines the font of error label
@@ -146,4 +147,15 @@ class Ui_LogInPage(QtWidgets.QWidget):
         self.LoginButton.setText(_translate("logInPage", "Login"))
         self.CreateUserButton.setText(_translate("logInPage", "Create User"))
         self.ForgotPasswordButton.setText(_translate("logInPage", "Reset Password"))
+
+
+    def resetUi(self):
+        self.UsernameInput.setText("")
+
+        self.PasswordInput.setText("")
+        self.PasswordInput.setEchoMode(QtWidgets.QLineEdit.Password)
+
+        self.ForgotPasswordButton.setHidden(True)
+
+        self.ErrorLabel.setHidden(True)
     

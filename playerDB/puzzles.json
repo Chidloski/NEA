@@ -972,5 +972,107 @@
             "Nxe6"
         ],
         "userId": 0
+    },
+    {
+        "finished": false,
+        "id": 68,
+        "matchup": "Nonnomazac Vs Dr_B",
+        "outcome": "unfinished",
+        "puzzleId": "d4 d5 Nf3 c5 c3 Nc6 g3 Nf6 Bg2 Bg4 O-O Qd7 Nbd2 Bh3 Re1 Bxg2 Kxg2 cxd4 Nxd4 e5 Nxc6 bxc6 e3 Bc5 Nf3 e4 Ne5 Qd6 Nxf7 Kxf7 Qc2 Rhf8 Rd1 Kg8 Bd2 Rae8 Be1 Re5 Rd2 Rh5 Rad1 Ng4 h4 Rff5 c4 Qf6 cxd5 cxd5 Qxc5 Rxh4 Rxd5 Rh2+ Kg1",
+        "puzzleRating": 1928,
+        "solution": [
+            "Rh1+",
+            "Kxh1",
+            "Qh6+",
+            "Kg1",
+            "Qh2+",
+            "Kf1",
+            "Rxf2+",
+            "Bxf2",
+            "Qxf2#"
+        ],
+        "tournament": "Blitz",
+        "userId": 0
+    },
+    {
+        "finished": false,
+        "id": 69,
+        "matchup": "deoalpha Vs IbrahimFadhil",
+        "outcome": "unfinished",
+        "puzzleId": "Na3 d6 Nf3 Nc6 e3 Nf6 Bb5 a6 Bxc6+ bxc6 O-O Bf5 Nc4 e5 d3 Be7 e4 Bd7 b3 O-O Qe2 c5 Bd2 c6 Ba5 Qb8 Nb6 Ra7 Nxd7 Rxd7 Rad1 Rb7 Bc3 Qa7 Nd2 Rfb8 Nc4 Rb5 f4 exf4 Rxf4 Nd7 a4 R5b7 Qg4 g6 Qh3 d5 Nd6 Bxd6",
+        "puzzleRating": 1750,
+        "solution": [
+            "Qxh7+",
+            "Kxh7",
+            "Rh4+",
+            "Kg8",
+            "Rh8#"
+        ],
+        "tournament": "Rapid",
+        "userId": 0
+    },
+    {
+        "finished": true,
+        "id": 70,
+        "matchup": "deoalpha Vs IbrahimFadhil",
+        "outcome": "Failed",
+        "puzzleId": "Na3 d6 Nf3 Nc6 e3 Nf6 Bb5 a6 Bxc6+ bxc6 O-O Bf5 Nc4 e5 d3 Be7 e4 Bd7 b3 O-O Qe2 c5 Bd2 c6 Ba5 Qb8 Nb6 Ra7 Nxd7 Rxd7 Rad1 Rb7 Bc3 Qa7 Nd2 Rfb8 Nc4 Rb5 f4 exf4 Rxf4 Nd7 a4 R5b7 Qg4 g6 Qh3 d5 Nd6 Bxd6",
+        "puzzleRating": 1811,
+        "solution": [
+            "Qxh7+",
+            "Kxh7",
+            "Rh4+",
+            "Kg8",
+            "Rh8#"
+        ],
+        "tournament": "Rapid",
+        "userId": 1
+    },
+    {
+        "finished": true,
+        "id": 71,
+        "matchup": "deoalpha Vs IbrahimFadhil",
+        "outcome": "Failed",
+        "puzzleId": "Na3 d6 Nf3 Nc6 e3 Nf6 Bb5 a6 Bxc6+ bxc6 O-O Bf5 Nc4 e5 d3 Be7 e4 Bd7 b3 O-O Qe2 c5 Bd2 c6 Ba5 Qb8 Nb6 Ra7 Nxd7 Rxd7 Rad1 Rb7 Bc3 Qa7 Nd2 Rfb8 Nc4 Rb5 f4 exf4 Rxf4 Nd7 a4 R5b7 Qg4 g6 Qh3 d5 Nd6 Bxd6",
+        "puzzleRating": 1689,
+        "solution": [
+            "Qxh7+",
+            "Kxh7",
+            "Rh4+",
+            "Kg8",
+            "Rh8#"
+        ],
+        "tournament": "Rapid",
+        "userId": 5
+    },
+    {
+        "finished": false,
+        "id": 72,
+        "outcome": "unfinished",
+        "puzzleId": "8/8/P1K2p2/4PP2/7p/4b2k/8/8 b - - 0 46",
+        "puzzleRating": 2311,
+        "solution": [
+            "e6",
+            "h3",
+            "e7",
+            "h2",
+            "e8=Q",
+            "h1=Q",
+            "Qxe3"
+        ],
+        "userId": 0
+    },
+    {
+        "finished": false,
+        "id": 73,
+        "outcome": "unfinished",
+        "puzzleId": "r5k1/1pp2ppp/p2p4/8/4P1q1/3BQ1N1/PbP1RP1r/3RK3 w - - 0 22",
+        "puzzleRating": 2264,
+        "solution": [
+            "Be5",
+            "Nf5",
+            "Bf4"
+        ],
+        "userId": 0
     }
 ]

@@ -1,17 +1,17 @@
 [
     {
-        "avatar": 2,
+        "avatar": 0,
         "email": "s.chidlow07@gmail.com",
-        "font": "OpenDyslexic3",
+        "font": "Fira Code",
         "fullName": "sam chidlow",
         "id": 0,
-        "match1": 42,
-        "match2": 41,
-        "match3": 40,
+        "match1": 60,
+        "match2": 57,
+        "match3": 56,
         "pieces": 3,
         "puzzleRating": 999,
         "rating": 941,
-        "theme": 1,
+        "theme": 0,
         "username": "chidloski"
     },
     {
@@ -24,7 +24,7 @@
         "match2": 32,
         "match3": 85,
         "pieces": 0,
-        "puzzleRating": 785,
+        "puzzleRating": 780,
         "rating": 703,
         "theme": 0,
         "username": "testUser"
@@ -84,7 +84,7 @@
         "match2": -1,
         "match3": -1,
         "pieces": 0,
-        "puzzleRating": 899,
+        "puzzleRating": 893,
         "rating": 800,
         "theme": 0,
         "username": "testUser2"

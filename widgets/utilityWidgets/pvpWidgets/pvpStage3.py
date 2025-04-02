@@ -1,5 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from widgets.utilityWidgets.functions.playFunctions import goToStage2, goToStage1
+from widgets.labelClasses import AutoResizingLabel, AutoResizingRadioButton
 
 class Ui_PvpStage3(QtWidgets.QWidget):
 
@@ -14,7 +15,7 @@ class Ui_PvpStage3(QtWidgets.QWidget):
         font.setPointSize(18)
         font.setBold(True)
 
-        self.currentUserLabel = QtWidgets.QLabel(self)
+        self.currentUserLabel = AutoResizingLabel(18, True, parent = self)
         self.currentUserLabel.setGeometry(QtCore.QRect(10, 10, 201, 16))
         self.currentUserLabel.setFont(font)
         self.currentUserLabel.setObjectName("currentUserLabel")
@@ -22,12 +23,12 @@ class Ui_PvpStage3(QtWidgets.QWidget):
         font.setPointSize(13)
         font.setBold(False)
 
-        self.currentUserRatingChange = QtWidgets.QLabel(self)
+        self.currentUserRatingChange = AutoResizingLabel(13, False, parent = self)
         self.currentUserRatingChange.setGeometry(QtCore.QRect(30, 50, 181, 16))
         self.currentUserRatingChange.setFont(font)
         self.currentUserRatingChange.setObjectName("currentUserRatingChange")
 
-        self.currentUserRating = QtWidgets.QLabel(self)
+        self.currentUserRating = AutoResizingLabel(13, False, parent = self)
         self.currentUserRating.setGeometry(QtCore.QRect(20, 30, 181, 16))
         self.currentUserRating.setFont(font)
         self.currentUserRating.setObjectName("currentUserRating")
@@ -35,7 +36,7 @@ class Ui_PvpStage3(QtWidgets.QWidget):
         font.setPointSize(18)
         font.setBold(True)
 
-        self.opponentLabel = QtWidgets.QLabel(self)
+        self.opponentLabel = AutoResizingLabel(18, True, parent = self)
         self.opponentLabel.setGeometry(QtCore.QRect(10, 110, 201, 16))
         self.opponentLabel.setFont(font)
         self.opponentLabel.setObjectName("opponentLabel")
@@ -43,12 +44,12 @@ class Ui_PvpStage3(QtWidgets.QWidget):
         font.setPointSize(13)
         font.setBold(False)
 
-        self.opponentUserRating = QtWidgets.QLabel(self)
+        self.opponentUserRating = AutoResizingLabel(13, False, parent = self)
         self.opponentUserRating.setGeometry(QtCore.QRect(20, 130, 181, 16))
         self.opponentUserRating.setFont(font)
         self.opponentUserRating.setObjectName("opponentUserRating")
 
-        self.opponentUserRatingChange = QtWidgets.QLabel(self)
+        self.opponentUserRatingChange = AutoResizingLabel(13, False, parent = self)
         self.opponentUserRatingChange.setGeometry(QtCore.QRect(30, 150, 181, 16))
         self.opponentUserRatingChange.setFont(font)
         self.opponentUserRatingChange.setObjectName("opponentUserRatingChange")
@@ -56,7 +57,7 @@ class Ui_PvpStage3(QtWidgets.QWidget):
         font.setPointSize(18)
         font.setBold(True)
 
-        self.PGNLabel = QtWidgets.QLabel(self)
+        self.PGNLabel = AutoResizingLabel(18, True, parent = self)
         self.PGNLabel.setGeometry(QtCore.QRect(10, 210, 201, 16))
         self.PGNLabel.setFont(font)
         self.PGNLabel.setObjectName("PGNLabel")
@@ -64,7 +65,7 @@ class Ui_PvpStage3(QtWidgets.QWidget):
         font.setPointSize(8)
         font.setBold(False)
 
-        self.moveset = QtWidgets.QLabel(self)
+        self.moveset = AutoResizingLabel(8, False, wordWrap=True, parent = self)
         self.moveset.setGeometry(QtCore.QRect(10, 230, 201, 201))
         self.moveset.setFont(font)
         self.moveset.setObjectName("moveset")

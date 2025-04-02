@@ -1,6 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from playerDB.jsonFunctions import *
 from widgets.utilityWidgets.functions.puzzleFunctions import switchPuzzles, goToPuzzleWidget
+from widgets.labelClasses import AutoResizingLabel
 
 
 class Ui_filterStage3(QtWidgets.QWidget):
@@ -15,48 +16,48 @@ class Ui_filterStage3(QtWidgets.QWidget):
         font.setFamily("Fira Code")
         font.setPointSize(18)
 
-        self.currentUserLabel = QtWidgets.QLabel(self)
+        self.currentUserLabel = AutoResizingLabel(18, False, parent = self)
         self.currentUserLabel.setGeometry(QtCore.QRect(10, 10, 201, 21))
         self.currentUserLabel.setFont(font)
         self.currentUserLabel.setObjectName("currentUserLabel")
 
         font.setPointSize(13)
 
-        self.currentUserPuzzleRatingLabel = QtWidgets.QLabel(self)
+        self.currentUserPuzzleRatingLabel = AutoResizingLabel(13, False, parent = self)
         self.currentUserPuzzleRatingLabel.setGeometry(QtCore.QRect(20, 30, 191, 21))
         self.currentUserPuzzleRatingLabel.setFont(font)
         self.currentUserPuzzleRatingLabel.setObjectName("currentUserPuzzleRatingLabel")
 
         font.setPointSize(18)
 
-        self.dailyPuzzleLabel = QtWidgets.QLabel(self)
+        self.dailyPuzzleLabel = AutoResizingLabel(18, False, parent = self)
         self.dailyPuzzleLabel.setGeometry(QtCore.QRect(10, 100, 201, 21))
         self.dailyPuzzleLabel.setFont(font)
         self.dailyPuzzleLabel.setObjectName("dailyPuzzleLabel")
 
-        self.outcomeLabel = QtWidgets.QLabel(self)
+        self.outcomeLabel = AutoResizingLabel(18, False, parent = self)
         self.outcomeLabel.setGeometry(QtCore.QRect(10, 290, 201, 21))
         self.outcomeLabel.setFont(font)
         self.outcomeLabel.setObjectName("outcomeLabel")
 
         font.setPointSize(13)
 
-        self.puzzleRatingLabel = QtWidgets.QLabel(self)
+        self.puzzleRatingLabel = AutoResizingLabel(13, False, parent = self)
         self.puzzleRatingLabel.setGeometry(QtCore.QRect(20, 130, 191, 21))
         self.puzzleRatingLabel.setFont(font)
         self.puzzleRatingLabel.setObjectName("puzzleRatingLabel")
 
-        self.userOutcomeLabel = QtWidgets.QLabel(self)
+        self.userOutcomeLabel = AutoResizingLabel(13, False, parent = self)
         self.userOutcomeLabel.setGeometry(QtCore.QRect(20, 320, 191, 21))
         self.userOutcomeLabel.setFont(font)
         self.userOutcomeLabel.setObjectName("userOutcomeLabel")
 
-        self.solutionLabel = QtWidgets.QLabel(self)
+        self.solutionLabel = AutoResizingLabel(13, False, parent = self)
         self.solutionLabel.setGeometry(QtCore.QRect(20, 340, 191, 21))
         self.solutionLabel.setFont(font)
         self.solutionLabel.setObjectName("solutionLabel")
 
-        self.pgnSolutionLabel = QtWidgets.QLabel(self)
+        self.pgnSolutionLabel = AutoResizingLabel(13, False, parent = self)
         self.pgnSolutionLabel.setGeometry(QtCore.QRect(30, 360, 181, 46))
         self.pgnSolutionLabel.setFont(font)
         self.pgnSolutionLabel.setWordWrap(True)

@@ -1,5 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from widgets.utilityWidgets.functions.tournamentFunctions import tournamentSecondaryLogIn, goToStage1FromTournaments, goToTournamentStage3
+from widgets.labelClasses import AutoResizingLabel
 
 # makes a clickable label
 class clickableLabel(QtWidgets.QLabel):
@@ -41,7 +42,7 @@ class Ui_TournamentStage2(QtWidgets.QWidget):
         font.setPointSize(24)
         font.setBold(True)
 
-        self.titleLabel = QtWidgets.QLabel(self)
+        self.titleLabel = AutoResizingLabel(24, True, parent = self)
         self.titleLabel.setGeometry(QtCore.QRect(10, 10, 201, 31))
         self.titleLabel.setFont(font)
         self.titleLabel.setObjectName("titleLabel")
@@ -49,7 +50,7 @@ class Ui_TournamentStage2(QtWidgets.QWidget):
         font.setPointSize(18)
         font.setBold(True)
 
-        self.playerLogInLabel = QtWidgets.QLabel(self)
+        self.playerLogInLabel = AutoResizingLabel(18, True, parent = self)
         self.playerLogInLabel.setGeometry(QtCore.QRect(30, 300, 161, 31))
         self.playerLogInLabel.setFont(font)
         self.playerLogInLabel.setAlignment(QtCore.Qt.AlignCenter)
@@ -113,13 +114,13 @@ class Ui_TournamentStage2(QtWidgets.QWidget):
 
         font.setPointSize(15)
 
-        self.userTypeLabel = QtWidgets.QLabel(self)
+        self.userTypeLabel = AutoResizingLabel(15, False, parent = self)
         self.userTypeLabel.setGeometry(QtCore.QRect(20, 350, 181, 31))
         self.userTypeLabel.setFont(font)
         self.userTypeLabel.setObjectName("userTypeLabel")
         self.userTypeLabel.setHidden(True)
 
-        self.userLabel = QtWidgets.QLabel(self)
+        self.userLabel = AutoResizingLabel(15, False, parent = self)
         self.userLabel.setGeometry(QtCore.QRect(30, 385, 171, 31))
         self.userLabel.setFont(font)
         self.userLabel.setObjectName("userLabel")
@@ -133,7 +134,7 @@ class Ui_TournamentStage2(QtWidgets.QWidget):
         self.logInButton.setObjectName("logInButton")
         self.logInButton.clicked.connect(lambda: tournamentSecondaryLogIn(self, self.index))
 
-        self.errorLabel = QtWidgets.QLabel(self)
+        self.errorLabel = AutoResizingLabel(12, False, parent = self)
         self.errorLabel.setGeometry(QtCore.QRect(10, 450, 201, 16))
         self.errorLabel.setFont(font)
         self.errorLabel.setStyleSheet("color: rgb(175, 61, 50)")
@@ -160,7 +161,7 @@ class Ui_TournamentStage2(QtWidgets.QWidget):
         font.setPointSize(15)
         font.setBold(False)
 
-        self.oneLabel = QtWidgets.QLabel(self)
+        self.oneLabel = AutoResizingLabel(15, False, parent = self)
         self.oneLabel.setGeometry(QtCore.QRect(10, 50, 16, 16))
         self.oneLabel.setFont(font)
         self.oneLabel.setObjectName("oneLabel")
@@ -169,7 +170,7 @@ class Ui_TournamentStage2(QtWidgets.QWidget):
         self.oneActive = False
         self.oneFull = False
 
-        self.twoLabel = QtWidgets.QLabel(self)
+        self.twoLabel = AutoResizingLabel(15, False, parent = self)
         self.twoLabel.setGeometry(QtCore.QRect(10, 80, 16, 16))
         self.twoLabel.setFont(font)
         self.twoLabel.setObjectName("twoLabel")
@@ -178,7 +179,7 @@ class Ui_TournamentStage2(QtWidgets.QWidget):
         self.twoActive = False
         self.twoFull = False
 
-        self.threeLabel = QtWidgets.QLabel(self)
+        self.threeLabel = AutoResizingLabel(15, False, parent = self)
         self.threeLabel.setGeometry(QtCore.QRect(10, 110, 16, 16))
         self.threeLabel.setFont(font)
         self.threeLabel.setObjectName("threeLabel")
@@ -187,7 +188,7 @@ class Ui_TournamentStage2(QtWidgets.QWidget):
         self.threeActive = False
         self.threeFull = False
 
-        self.fourLabel = QtWidgets.QLabel(self)
+        self.fourLabel = AutoResizingLabel(15, False, parent = self)
         self.fourLabel.setGeometry(QtCore.QRect(10, 140, 16, 16))
         self.fourLabel.setFont(font)
         self.fourLabel.setObjectName("fourLabel")
@@ -196,7 +197,7 @@ class Ui_TournamentStage2(QtWidgets.QWidget):
         self.fourActive = False
         self.fourFull = False
 
-        self.fiveLabel = QtWidgets.QLabel(self)
+        self.fiveLabel = AutoResizingLabel(15, False, parent = self)
         self.fiveLabel.setGeometry(QtCore.QRect(10, 170, 16, 16))
         self.fiveLabel.setFont(font)
         self.fiveLabel.setObjectName("fiveLabel")
@@ -205,7 +206,7 @@ class Ui_TournamentStage2(QtWidgets.QWidget):
         self.fiveActive = False
         self.fiveFull = False
 
-        self.sixLabel = QtWidgets.QLabel(self)
+        self.sixLabel = AutoResizingLabel(15, False, parent = self)
         self.sixLabel.setGeometry(QtCore.QRect(10, 200, 16, 16))
         self.sixLabel.setFont(font)
         self.sixLabel.setObjectName("sixLabel")
@@ -214,7 +215,7 @@ class Ui_TournamentStage2(QtWidgets.QWidget):
         self.sixActive = False
         self.sixFull = False
 
-        self.sevenLabel = QtWidgets.QLabel(self)
+        self.sevenLabel = AutoResizingLabel(15, False, parent = self)
         self.sevenLabel.setGeometry(QtCore.QRect(10, 230, 16, 16))
         self.sevenLabel.setFont(font)
         self.sevenLabel.setObjectName("sevenLabel")
@@ -223,7 +224,7 @@ class Ui_TournamentStage2(QtWidgets.QWidget):
         self.sevenActive = False
         self.sevenFull = False
 
-        self.eightLabel = QtWidgets.QLabel(self)
+        self.eightLabel = AutoResizingLabel(15, False, parent = self)
         self.eightLabel.setGeometry(QtCore.QRect(10, 260, 16, 16))
         self.eightLabel.setFont(font)
         self.eightLabel.setObjectName("eightLabel")
@@ -232,7 +233,7 @@ class Ui_TournamentStage2(QtWidgets.QWidget):
         self.eightActive = False
         self.eightFull = False
 
-        self.player1Label = QtWidgets.QLabel(self)
+        self.player1Label = AutoResizingLabel(15, False, parent = self)
         self.player1Label.setGeometry(QtCore.QRect(40, 50, 161, 16))
         self.player1Label.setFont(font)
         self.player1Label.setObjectName("player1Label")
@@ -242,7 +243,7 @@ class Ui_TournamentStage2(QtWidgets.QWidget):
         self.player1username = ""
         self.player1rating = -1
 
-        self.player2Label = QtWidgets.QLabel(self)
+        self.player2Label = AutoResizingLabel(15, False, parent = self)
         self.player2Label.setGeometry(QtCore.QRect(40, 80, 161, 16))
         self.player2Label.setFont(font)
         self.player2Label.setObjectName("player2Label")
@@ -252,7 +253,7 @@ class Ui_TournamentStage2(QtWidgets.QWidget):
         self.player2username = ""
         self.player2rating = -1
 
-        self.player3Label = QtWidgets.QLabel(self)
+        self.player3Label = AutoResizingLabel(15, False, parent = self)
         self.player3Label.setGeometry(QtCore.QRect(40, 110, 161, 16))
         self.player3Label.setFont(font)
         self.player3Label.setObjectName("player3Label")
@@ -262,7 +263,7 @@ class Ui_TournamentStage2(QtWidgets.QWidget):
         self.player3username = ""
         self.player3rating = -1
 
-        self.player4Label = QtWidgets.QLabel(self)
+        self.player4Label = AutoResizingLabel(15, False, parent = self)
         self.player4Label.setGeometry(QtCore.QRect(40, 140, 161, 16))
         self.player4Label.setFont(font)
         self.player4Label.setObjectName("player4Label")
@@ -272,7 +273,7 @@ class Ui_TournamentStage2(QtWidgets.QWidget):
         self.player4username = ""
         self.player4rating = -1
 
-        self.player5Label = QtWidgets.QLabel(self)
+        self.player5Label = AutoResizingLabel(15, False, parent = self)
         self.player5Label.setGeometry(QtCore.QRect(40, 170, 161, 16))
         self.player5Label.setFont(font)
         self.player5Label.setObjectName("player5Label")
@@ -282,7 +283,7 @@ class Ui_TournamentStage2(QtWidgets.QWidget):
         self.player5username = ""
         self.player5rating = -1
 
-        self.player6Label = QtWidgets.QLabel(self)
+        self.player6Label = AutoResizingLabel(15, False, parent = self)
         self.player6Label.setGeometry(QtCore.QRect(40, 200, 161, 16))
         self.player6Label.setFont(font)
         self.player6Label.setObjectName("player6Label")
@@ -292,7 +293,7 @@ class Ui_TournamentStage2(QtWidgets.QWidget):
         self.player6username = ""
         self.player6rating = -1
 
-        self.player7Label = QtWidgets.QLabel(self)
+        self.player7Label = AutoResizingLabel(15, False, parent = self)
         self.player7Label.setGeometry(QtCore.QRect(40, 230, 161, 16))
         self.player7Label.setFont(font)
         self.player7Label.setObjectName("player7Label")
@@ -302,7 +303,7 @@ class Ui_TournamentStage2(QtWidgets.QWidget):
         self.player7username = ""
         self.player7rating = -1
 
-        self.player8Label = QtWidgets.QLabel(self)
+        self.player8Label = AutoResizingLabel(15, False, parent = self)
         self.player8Label.setGeometry(QtCore.QRect(40, 260, 161, 16))
         self.player8Label.setFont(font)
         self.player8Label.setObjectName("player8Label")

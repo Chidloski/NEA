@@ -1,6 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from widgets.utilityWidgets.functions.playFunctions import *
 from widgets.utilityWidgets.functions.tournamentFunctions import goToTournamentStage2
+from widgets.labelClasses import AutoResizingLabel, AutoResizingRadioButton
 
 # Responsible for setting up all elements within the log in page
 class Ui_PlayStage1(QtWidgets.QWidget):
@@ -19,7 +20,7 @@ class Ui_PlayStage1(QtWidgets.QWidget):
         font.setPointSize(24)
         font.setBold(True)
 
-        self.PvPLabel = QtWidgets.QLabel(self)
+        self.PvPLabel = AutoResizingLabel(24, True, parent = self)
         self.PvPLabel.setGeometry(QtCore.QRect(10, 10, 201, 20))
         
         self.PvPLabel.setFont(font)
@@ -28,34 +29,34 @@ class Ui_PlayStage1(QtWidgets.QWidget):
         font.setPointSize(15)
         font.setBold(False)
 
-        self.currentUserLabel = QtWidgets.QLabel(self)
+        self.currentUserLabel = AutoResizingLabel(15, False, parent = self)
         self.currentUserLabel.setGeometry(QtCore.QRect(10, 40, 201, 16))
         self.currentUserLabel.setFont(font)
         self.currentUserLabel.setObjectName("currentUserLabel")
 
         font.setPointSize(13)
 
-        self.currentUserRatingLabel = QtWidgets.QLabel(self)
+        self.currentUserRatingLabel = AutoResizingLabel(13, False, parent = self)
         self.currentUserRatingLabel.setGeometry(QtCore.QRect(20, 60, 191, 16))
         self.currentUserRatingLabel.setFont(font)
         self.currentUserRatingLabel.setObjectName("currentUserRatingLabel")
 
         font.setPointSize(15)
 
-        self.opponentLabel = QtWidgets.QLabel(self)
+        self.opponentLabel = AutoResizingLabel(15, False, parent = self)
         self.opponentLabel.setGeometry(QtCore.QRect(10, 90, 201, 16))
         self.opponentLabel.setFont(font)
         self.opponentLabel.setObjectName("opponentLabel")
 
         font.setPointSize(13)
 
-        self.guestRadioButton = QtWidgets.QRadioButton(self)
+        self.guestRadioButton = AutoResizingRadioButton(13, False, parent = self)
         self.guestRadioButton.setGeometry(QtCore.QRect(20, 110, 191, 16))
         self.guestRadioButton.setIconSize(QtCore.QSize(12, 12))
         self.guestRadioButton.setObjectName("guestRadioButton")
         self.guestRadioButton.setFont(font)
 
-        self.secondaryUserRadioButton = QtWidgets.QRadioButton(self)
+        self.secondaryUserRadioButton = AutoResizingRadioButton(13, False, parent = self)
         self.secondaryUserRadioButton.setGeometry(QtCore.QRect(20, 130, 191, 16))
         self.secondaryUserRadioButton.setIconSize(QtCore.QSize(12, 12))
         self.secondaryUserRadioButton.setObjectName("secondaryUserRadioButton")
@@ -80,14 +81,14 @@ class Ui_PlayStage1(QtWidgets.QWidget):
 
         font.setPointSize(13)
 
-        self.secondaryUserLabel = QtWidgets.QLabel(self)
+        self.secondaryUserLabel = AutoResizingLabel(13, False, parent = self)
         self.secondaryUserLabel.setGeometry(QtCore.QRect(20, 160, 161, 21))
         self.secondaryUserLabel.setObjectName("secondaryUserLabel")
         self.secondaryUserLabel.setFont(font)
         self.secondaryUserLabel.setText("")
         self.secondaryUserLabel.setHidden(True)
 
-        self.secondaryUserRatingLabel = QtWidgets.QLabel(self)
+        self.secondaryUserRatingLabel = AutoResizingLabel(13, False, parent = self)
         self.secondaryUserRatingLabel.setGeometry(QtCore.QRect(30, 180, 161, 21))
         self.secondaryUserRatingLabel.setObjectName("secondaryUserLabel")
         self.secondaryUserRatingLabel.setFont(font)
@@ -116,7 +117,7 @@ class Ui_PlayStage1(QtWidgets.QWidget):
 
         font.setPointSize(24)
 
-        self.tournamentLabel = QtWidgets.QLabel(self)
+        self.tournamentLabel = AutoResizingLabel(24, False, parent = self)
         self.tournamentLabel.setGeometry(QtCore.QRect(10, 320, 201, 20))
         self.tournamentLabel.setFont(font)
         self.tournamentLabel.setObjectName("tournamentLabel")
@@ -124,13 +125,13 @@ class Ui_PlayStage1(QtWidgets.QWidget):
         font.setPointSize(13)
         font.setBold(False)
 
-        self.roundRadioButton = QtWidgets.QRadioButton(self)
+        self.roundRadioButton = AutoResizingRadioButton(13, False, parent = self)
         self.roundRadioButton.setGeometry(QtCore.QRect(20, 350, 191, 16))
         self.roundRadioButton.setIconSize(QtCore.QSize(12, 12))
         self.roundRadioButton.setObjectName("roundRadioButton")
         self.roundRadioButton.setFont(font)
 
-        self.knockoutRadioButton = QtWidgets.QRadioButton(self)
+        self.knockoutRadioButton = AutoResizingRadioButton(13, False, parent = self)
         self.knockoutRadioButton.setGeometry(QtCore.QRect(20, 370, 191, 16))
         self.knockoutRadioButton.setIconSize(QtCore.QSize(12, 12))
         self.knockoutRadioButton.setObjectName("knockoutRadioButton")
@@ -162,7 +163,7 @@ class Ui_PlayStage1(QtWidgets.QWidget):
         font.setPointSize(12)
         font.setBold(False)
 
-        self.errorLabel = QtWidgets.QLabel(self)
+        self.errorLabel = AutoResizingLabel(12, False, parent = self)
         self.errorLabel.setGeometry(QtCore.QRect(10, 230, 201, 16))
         self.errorLabel.setFont(font)
         self.errorLabel.setStyleSheet("color: rgb(175, 61, 50)")
@@ -170,7 +171,7 @@ class Ui_PlayStage1(QtWidgets.QWidget):
         self.errorLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.errorLabel.setObjectName("errorLabel")
 
-        self.tournamentErrorLabel = QtWidgets.QLabel(self)
+        self.tournamentErrorLabel = AutoResizingLabel(12, False, parent = self)
         self.tournamentErrorLabel.setGeometry(QtCore.QRect(10, 420, 201, 16))
         self.tournamentErrorLabel.setFont(font)
         self.tournamentErrorLabel.setStyleSheet("color: rgb(175, 61, 50)")

@@ -1,5 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from widgets.utilityWidgets.functions.puzzleFunctions import goToPuzzleWidget
+from widgets.labelClasses import AutoResizingLabel, AutoResizingRadioButton
 
 
 class Ui_dailyStage2(QtWidgets.QWidget):
@@ -12,57 +13,57 @@ class Ui_dailyStage2(QtWidgets.QWidget):
         font.setFamily("Fira Code")
         font.setPointSize(18)
 
-        self.currentUserLabel = QtWidgets.QLabel(self)
+        self.currentUserLabel = AutoResizingLabel(18, False, parent = self)
         self.currentUserLabel.setGeometry(QtCore.QRect(10, 10, 201, 16))
         self.currentUserLabel.setFont(font)
         self.currentUserLabel.setObjectName("currentUserLabel")
 
         font.setPointSize(13)
 
-        self.currentUserPuzzleRatingLabel = QtWidgets.QLabel(self)
+        self.currentUserPuzzleRatingLabel = AutoResizingLabel(13, False, parent = self)
         self.currentUserPuzzleRatingLabel.setGeometry(QtCore.QRect(20, 30, 191, 16))
         self.currentUserPuzzleRatingLabel.setFont(font)
         self.currentUserPuzzleRatingLabel.setObjectName("currentUserPuzzleRatingLabel")
 
         font.setPointSize(18)
 
-        self.dailyPuzzleLabel = QtWidgets.QLabel(self)
+        self.dailyPuzzleLabel = AutoResizingLabel(18, False, parent = self)
         self.dailyPuzzleLabel.setGeometry(QtCore.QRect(10, 90, 201, 16))
         self.dailyPuzzleLabel.setFont(font)
         self.dailyPuzzleLabel.setObjectName("dailyPuzzleLabel")
 
         font.setPointSize(13)
 
-        self.matchupLabel = QtWidgets.QLabel(self)
+        self.matchupLabel = AutoResizingLabel(13, False, parent = self)
         self.matchupLabel.setGeometry(QtCore.QRect(20, 140, 191, 16))
         self.matchupLabel.setFont(font)
         self.matchupLabel.setObjectName("matchupLabel")
 
-        self.puzzleRatingLabel = QtWidgets.QLabel(self)
+        self.puzzleRatingLabel = AutoResizingLabel(13, False, parent = self)
         self.puzzleRatingLabel.setGeometry(QtCore.QRect(20, 160, 191, 16))
         self.puzzleRatingLabel.setFont(font)
         self.puzzleRatingLabel.setObjectName("puzzleRatingLabel")
 
-        self.outcomeDeltaLabel = QtWidgets.QLabel(self)
+        self.outcomeDeltaLabel = AutoResizingLabel(13, False, parent = self)
         self.outcomeDeltaLabel.setGeometry(QtCore.QRect(20, 210, 191, 16))
         self.outcomeDeltaLabel.setFont(font)
         self.outcomeDeltaLabel.setObjectName("outcomeDeltaLabel")
 
         font.setPointSize(11)
 
-        self.deltaLabel = QtWidgets.QLabel(self)
+        self.deltaLabel = AutoResizingLabel(11, False, parent = self)
         self.deltaLabel.setGeometry(QtCore.QRect(30, 230, 191, 16))
         self.deltaLabel.setFont(font)
         self.deltaLabel.setObjectName("deltaLabel")
         
         font.setPointSize(13)
 
-        self.tournamentLabel = QtWidgets.QLabel(self)
+        self.tournamentLabel = AutoResizingLabel(13, False, parent = self)
         self.tournamentLabel.setGeometry(QtCore.QRect(20, 120, 191, 16))
         self.tournamentLabel.setFont(font)
         self.tournamentLabel.setObjectName("tournamentLabel")
 
-        self.movesLabel = QtWidgets.QLabel(self)
+        self.movesLabel = AutoResizingLabel(13, False, parent = self)
         self.movesLabel.setGeometry(QtCore.QRect(20, 180, 191, 16))
         self.movesLabel.setFont(font)
         self.movesLabel.setObjectName("movesLabel")

@@ -156,5 +156,11 @@
         "id": 25,
         "type": "Knockout",
         "winnerId": "unfinished"
+    },
+    {
+        "capacity": 4,
+        "id": 26,
+        "type": "Round Robin",
+        "winnerId": "guest"
     }
 ]

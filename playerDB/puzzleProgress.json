@@ -64,5 +64,17 @@
         "id": 10,
         "puzzleRating": 999,
         "userId": 0
+    },
+    {
+        "datetime": "2025-03-09 21:54:29",
+        "id": 11,
+        "puzzleRating": 780,
+        "userId": 1
+    },
+    {
+        "datetime": "2025-03-09 21:55:53",
+        "id": 12,
+        "puzzleRating": 893,
+        "userId": 5
     }
 ]

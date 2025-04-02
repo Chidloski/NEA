@@ -15,6 +15,7 @@ from matplotlib.patches import Rectangle
 import math
 from playerDB.jsonFunctions import *
 from widgets.utilityWidgets.functions.tournamentFunctions import goToStage1FromTournaments, goToTournamentStage4, finaliseTournament
+from widgets.labelClasses import AutoResizingLabel
 
 
 class MatplotlibWidget(QWidget):
@@ -295,7 +296,7 @@ class Ui_TournamentStage3(QtWidgets.QWidget):
         self.currentMatch = []
         self.tournamentId = -1
 
-        self.typeLabel = QtWidgets.QLabel(self)
+        self.typeLabel = AutoResizingLabel(24, True, parent = self)
         self.typeLabel.setGeometry(QtCore.QRect(10, 10, 201, 31))
         self.typeLabel.setFont(font)
         self.typeLabel.setObjectName("typeLabel")
@@ -305,7 +306,7 @@ class Ui_TournamentStage3(QtWidgets.QWidget):
         self.scrollable_matplotlib_widget.setGeometry(0, 30, 211, 281)
         self.scrollable_matplotlib_widget.setObjectName("matplotlibWidget")
 
-        self.nextMatchLabel = QtWidgets.QLabel(self)
+        self.nextMatchLabel = AutoResizingLabel(24, True, parent = self)
         self.nextMatchLabel.setGeometry(QtCore.QRect(10, 320, 201, 31))
         self.nextMatchLabel.setFont(font)
         self.nextMatchLabel.setObjectName("nextMatchLabel")
@@ -324,20 +325,18 @@ class Ui_TournamentStage3(QtWidgets.QWidget):
         self.nextMatchButton.setObjectName("nextMatchButton")
         self.nextMatchButton.clicked.connect(lambda: goToTournamentStage4(dashboard, self.currentMatch, self.userDetails))
 
-        font.setPointSize(False)
-
-        self.player1Label = QtWidgets.QLabel(self)
+        self.player1Label = AutoResizingLabel(18, True, parent = self)
         self.player1Label.setGeometry(QtCore.QRect(10, 350, 141, 31))
         self.player1Label.setFont(font)
         self.player1Label.setObjectName("player1Label")
 
-        self.versusLabel = QtWidgets.QLabel(self)
+        self.versusLabel = AutoResizingLabel(18, True, parent = self)
         self.versusLabel.setGeometry(QtCore.QRect(25, 390, 161, 61))
         self.versusLabel.setFont(font)
         self.versusLabel.setAlignment(QtCore.Qt.AlignCenter|QtCore.Qt.AlignTop)
         self.versusLabel.setObjectName("versusLabel")
 
-        self.player2Label = QtWidgets.QLabel(self)
+        self.player2Label = AutoResizingLabel(18, True, parent = self)
         self.player2Label.setGeometry(QtCore.QRect(70, 430, 141, 31))
         self.player2Label.setFont(font)
         self.player2Label.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
@@ -345,12 +344,12 @@ class Ui_TournamentStage3(QtWidgets.QWidget):
         
         font.setPointSize(14)
 
-        self.player1RatingLabel = QtWidgets.QLabel(self)
+        self.player1RatingLabel = AutoResizingLabel(14, True, parent = self)
         self.player1RatingLabel.setGeometry(QtCore.QRect(10, 380, 58, 16))
         self.player1RatingLabel.setFont(font)
         self.player1RatingLabel.setObjectName("player1Ratinglabel")
         
-        self.player2RatingLabel = QtWidgets.QLabel(self)
+        self.player2RatingLabel = AutoResizingLabel(14, True, parent = self)
         self.player2RatingLabel.setGeometry(QtCore.QRect(150, 420, 58, 16))
         self.player2RatingLabel.setFont(font)
         self.player2RatingLabel.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)

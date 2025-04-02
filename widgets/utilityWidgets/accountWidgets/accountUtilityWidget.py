@@ -13,6 +13,7 @@ from matplotlib.patches import Rectangle
 from playerDB.jsonFunctions import *
 from PyQt5.QtGui import QPalette
 from datetime import datetime
+from widgets.labelClasses import AutoResizingLabel
 
 
 
@@ -90,7 +91,7 @@ class Ui_accountUtility(QtWidgets.QWidget):
         font.setPointSize(20)
         font.setBold(True)
 
-        self.matchLabel = QtWidgets.QLabel(self)
+        self.matchLabel = AutoResizingLabel(20, True, parent = self)
         self.matchLabel.setGeometry(QtCore.QRect(10, 10, 201, 21))
         self.matchLabel.setFont(font)
         self.matchLabel.setAlignment(QtCore.Qt.AlignCenter)
@@ -99,31 +100,31 @@ class Ui_accountUtility(QtWidgets.QWidget):
         font.setFamily("Fira Code")
         font.setPointSize(14)
 
-        self.match1Label = QtWidgets.QLabel(self)
+        self.match1Label = AutoResizingLabel(14, True, parent = self)
         self.match1Label.setGeometry(QtCore.QRect(10, 40, 201, 20))
         self.match1Label.setFont(font)
         self.match1Label.setAlignment(QtCore.Qt.AlignCenter)
         self.match1Label.setObjectName("match1Label")
 
-        self.match2Label = QtWidgets.QLabel(self)
+        self.match2Label = AutoResizingLabel(14, True, parent = self)
         self.match2Label.setGeometry(QtCore.QRect(10, 65, 201, 20))
         self.match2Label.setFont(font)
         self.match2Label.setAlignment(QtCore.Qt.AlignCenter)
         self.match2Label.setObjectName("match2Label")
 
-        self.match3Label = QtWidgets.QLabel(self)
+        self.match3Label = AutoResizingLabel(14, True, parent = self)
         self.match3Label.setGeometry(QtCore.QRect(10, 90, 201, 20))
         self.match3Label.setFont(font)
         self.match3Label.setAlignment(QtCore.Qt.AlignCenter)
         self.match3Label.setObjectName("match3Label")
 
-        self.match4Label = QtWidgets.QLabel(self)
+        self.match4Label = AutoResizingLabel(14, True, parent = self)
         self.match4Label.setGeometry(QtCore.QRect(10, 115, 201, 20))
         self.match4Label.setFont(font)
         self.match4Label.setAlignment(QtCore.Qt.AlignCenter)
         self.match4Label.setObjectName("match4Label")
 
-        self.match5Label = QtWidgets.QLabel(self)
+        self.match5Label = AutoResizingLabel(14, True, parent = self)
         self.match5Label.setGeometry(QtCore.QRect(10, 140, 201, 20))
         self.match5Label.setFont(font)
         self.match5Label.setAlignment(QtCore.Qt.AlignCenter)
@@ -238,7 +239,7 @@ class Ui_accountUtility(QtWidgets.QWidget):
             else:
                 opponentId = i["whitePlayer"]
 
-            print(i)
+            #print(i)
 
             if opponentId == "guest":
                 versus = "vs Guest, "

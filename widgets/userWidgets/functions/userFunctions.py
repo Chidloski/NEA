@@ -25,8 +25,8 @@ def LogIn(self, baseWindow, user, password):
         if verifyPassword(hashedPassword, password):
             baseWindow.userId = id
             baseWindow.stackedWidget.setCurrentIndex(3)
-            baseWindow.dashboard.playWidget.populate(id)
-            baseWindow.dashboard.puzzleWidget.populate(id)
+            baseWindow.dashboard.playWidget.resetUi(id)
+            baseWindow.dashboard.puzzleWidget.resetUi(id)
             baseWindow.dashboard.accountBoard.populate(id)
 
             query = {"id": id}
