@@ -23,6 +23,11 @@ def LogIn(self, baseWindow, user, password):
         hashedPassword = passwordRecord[0]["hash"]
 
         if verifyPassword(hashedPassword, password):
+            self.ErrorLabel.setHidden(True)
+
+            self.UsernameInput.setText("")
+            self.PasswordInput.setText("")
+
             baseWindow.userId = id
             baseWindow.stackedWidget.setCurrentIndex(3)
             baseWindow.dashboard.playWidget.resetUi(id)
@@ -98,7 +103,7 @@ def Register(self, baseWindow, user, fullName, email, password, rePassword):
         self.ErrorLabel.setHidden(False)
 
     elif usernameValidation(user) == False:
-        self.ErrorLabel.setText("Username between 5-16 characters \n Allowed special characters: _, -, .")
+        self.ErrorLabel.setText("Username between 5-16 characters. Allowed special characters: _, -, .")
         self.ErrorLabel.setHidden(False)
 
     elif emailValidation(email) == False:
@@ -122,6 +127,14 @@ def Register(self, baseWindow, user, fullName, email, password, rePassword):
         self.ErrorLabel.setHidden(False)
 
     else:
+        self.ErrorLabel.setHidden(True)
+
+        self.UsernameInput.setText("")
+        self.EmailInput.setText("")
+        self.FullNameInput.setText("")
+        self.PasswordInput.setText("")
+        self.RePasswordInput.setText("")
+
         userData = {
             "username": user,
             "email": email,
@@ -179,6 +192,13 @@ def ResetPassword(self, baseWindow, user, email, password, rePassword):
             self.ErrorLabel.setHidden(False)
 
         else:
+            self.ErrorLabel.setHidden(True)
+
+            self.UsernameInput.setText("")
+            self.EmailInput.setText("")
+            self.PasswordInput.setText("")
+            self.RePasswordInput.setText("")
+
             id = data[0]["id"]
 
             hashedPassword = passwordHashing(password)

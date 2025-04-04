@@ -91,10 +91,34 @@ def backwardMove(dashboard):
 
         dashboard.proChessBoard.resetUi()
 
+        print(f"initial backwards move pgn {dashboard.proWidget.pgn}")
+
         pgn = dashboard.proWidget.pgn.split()
-        pgn = [pgn[i] for i in range(len(pgn)) if (i % 3) != 0]
+
+        if len(pgn[0]) > 2 and pgn[0][:2] == "1.":
+            tempPgn = []
+
+            for i in pgn:
+                if i[1] == ".":
+                    tempPgn.append(i[2:])
+
+                elif len(i) >= 3 and i[2] == ".":
+                    tempPgn.append(i[3:])
+
+                else:
+                    tempPgn.append(i)
+
+            pgn = tempPgn
+
+        else:
+            pgn = [pgn[i] for i in range(len(pgn)) if (i % 3) != 0]
+
+        print(f"split backwards move pgn {pgn}")
 
         pgn = pgn[:dashboard.proWidget.moveIndex]
+
+        print(f"backwards move pgn {pgn}")
+
         dashboard.proChessBoard.runPgn(pgn)
 
 def fullBackMove(dashboard):

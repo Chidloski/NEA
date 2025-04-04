@@ -105,8 +105,8 @@ class Ui_ForgotPasswordPage(QtWidgets.QWidget):
         font.setBold(False)
 
         # declares the error label
-        self.ErrorLabel = AutoResizingLabel(13, False, parent = self)
-        self.ErrorLabel.setGeometry(QtCore.QRect(350, 407, 300, 50))
+        self.ErrorLabel = AutoResizingLabel(13, False, parent = self, wordWrap = True)
+        self.ErrorLabel.setGeometry(QtCore.QRect(350, 407, 300, 70))
 
         # defines the font of error label
         self.ErrorLabel.setFont(font)
@@ -114,6 +114,7 @@ class Ui_ForgotPasswordPage(QtWidgets.QWidget):
         self.ErrorLabel.setObjectName("ErrorLabel")
         self.ErrorLabel.setHidden(True)
         self.ErrorLabel.setStyleSheet("color: rgb(175, 61, 50)")
+        self.ErrorLabel.setWordWrap(True)
 
         # adds the "shut eye" icon to the button
         icon = QtGui.QIcon()
