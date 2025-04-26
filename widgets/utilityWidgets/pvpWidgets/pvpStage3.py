@@ -96,10 +96,9 @@ class Ui_PvpStage3(QtWidgets.QWidget):
 
         self.newMatchButton.clicked.connect(lambda: goToStage1(dashboard))
 
-
-
         self.retranslateUi()
         QtCore.QMetaObject.connectSlotsByName(self)
+
 
     def resetUi(self):
         self.currentUserLabel.setText("")
@@ -112,6 +111,7 @@ class Ui_PvpStage3(QtWidgets.QWidget):
         self.opponentUserRatingChange.setText("")
 
         self.moveset.setText("")
+
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate

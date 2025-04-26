@@ -458,13 +458,4 @@ def isGameOver(defendingColour, domain, attackers, moveNumber, previousMove, pgn
 
     return pgn, attackers
 
-
-#### BUGFOUND
-#### BUGFOUND
-#### BUGFOUND
-#### BUGFOUND
-#### BUGFOUND
-## says cant move from blocking check even if can move to another place which also blocks check
-
-
     

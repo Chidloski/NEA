@@ -1,21 +1,25 @@
 from playerDB.jsonFunctions import *
 from PyQt5.QtGui import QPixmap
 
+# populate central widget for a professional
 def populateForPlayer(dashboard, name):
     if not hasattr(dashboard.proWidget, "pro") or dashboard.proWidget.pro["id"] != name:
 
         goToInfo(dashboard)
 
+        # get the pro info
         dashboard.proWidget.pro = getData("professionals", id = name)
 
         dashboard.proWidget.pro = dashboard.proWidget.pro[0]
 
         dashboard.infoBoard.proNameLabel.setText(name)
 
+        # set infoBoard photo and reset index
         dashboard.infoBoard.photos = [f"{dashboard.proWidget.pro['photoRoute']}1.png", f"{dashboard.proWidget.pro['photoRoute']}2.png", f"{dashboard.proWidget.pro['photoRoute']}3.png"]
         dashboard.infoBoard.photoIndex = 0
         dashboard.infoBoard.imageLabel.setPixmap(QPixmap(dashboard.infoBoard.photos[dashboard.infoBoard.photoIndex]))
 
+        # populate labels
         dashboard.infoBoard.peakRatingLabel.setText(f"• Peak Rating: {dashboard.proWidget.pro['peakRating']}")
         dashboard.infoBoard.titleLabel.setText(f"• Title: {dashboard.proWidget.pro['title']}")
         dashboard.infoBoard.birthLabel.setText(f"• Born: {dashboard.proWidget.pro['birth']}")
@@ -30,21 +34,28 @@ def populateForPlayer(dashboard, name):
 
         dashboard.proWidget.infoLabel.simulateClick()
 
+
+# cycle photo
 def switchPhoto(widget, direction):
+    # use modulus to stop out of bounds error
     widget.photoIndex = (widget.photoIndex + direction) % 3
 
     widget.imageLabel.setPixmap(QPixmap(widget.photos[widget.photoIndex]))
 
+
+# populate main widget for chess board
 def populateForMatch(dashboard, matchId):
     dashboard.proChessBoard.resetUi()
     dashboard.proChessBoard.coverScreen.setHidden(False)
     dashboard.proCentralStackedWidget.setCurrentIndex(1)
 
+    # get info
     match = getData("proMatches", id = dashboard.proWidget.pro[f"match{str(matchId)}"])
     match = match[0]
 
     dashboard.proWidget.currentMatch = match
 
+    # populate info
     dashboard.proWidget.matchLabel.setText(f"Match {str(matchId)}")
     dashboard.proWidget.yearLabel.setText(match["year_location"])
     dashboard.proWidget.tournamentLabel.setText(match["tournament"])
@@ -67,9 +78,13 @@ def populateForMatch(dashboard, matchId):
 
     dashboard.proWidget.moveIndex = 0
 
+
+# run a turn of pgn
 def forwardMove(dashboard):
+    # number of moves in pgn
     lastMove = len(dashboard.proWidget.pgn.split())
 
+    # get rid of game end message
     if dashboard.proWidget.pgn.split()[-1] in ("1-0", "0-1", "1/2-1/2"):
         lastMove -= 1
 
@@ -80,11 +95,15 @@ def forwardMove(dashboard):
     print(f"last move: {lastMove}")
     print(dashboard.proWidget.moveIndex)
 
+    # run move if moveIndex smaller than the index of the last move
     if dashboard.proWidget.moveIndex < lastMove:
         dashboard.proChessBoard.runPgnTurn(dashboard.proChessBoard.moveNumber, dashboard.proWidget.pgn, dashboard.proWidget.moveIndex)
 
         dashboard.proWidget.moveIndex += 1
 
+
+# go backwards a turn in pgn
+# do this by resetting the board and running all moves until the one just before the previous move state
 def backwardMove(dashboard):
     if dashboard.proWidget.moveIndex > 0:
         dashboard.proWidget.moveIndex -= 1
@@ -93,8 +112,10 @@ def backwardMove(dashboard):
 
         print(f"initial backwards move pgn {dashboard.proWidget.pgn}")
 
+        # split pgn
         pgn = dashboard.proWidget.pgn.split()
 
+        # sanitised pgn
         if len(pgn[0]) > 2 and pgn[0][:2] == "1.":
             tempPgn = []
 
@@ -121,10 +142,14 @@ def backwardMove(dashboard):
 
         dashboard.proChessBoard.runPgn(pgn)
 
+
+# reset the board
 def fullBackMove(dashboard):
     dashboard.proChessBoard.resetUi()
     dashboard.proWidget.moveIndex = 0
 
+
+# run full pgn
 def fullForwardMove(dashboard):
     dashboard.proChessBoard.resetUi()
 
@@ -132,6 +157,8 @@ def fullForwardMove(dashboard):
 
     dashboard.proWidget.moveIndex = dashboard.proChessBoard.moveNumber
 
+
+# set utility widget for info
 def goToInfo(dashboard):
     dashboard.proCentralStackedWidget.setCurrentIndex(0)
 

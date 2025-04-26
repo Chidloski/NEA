@@ -602,7 +602,7 @@ class Ui_tournamentChessBoard(QtWidgets.QWidget):
         font.setPointSize(13)
 
         self.drawMessage = QLabel(self)
-        self.drawMessage.setGeometry(180, 260, 200, 20)
+        self.drawMessage.setGeometry(180, 260, 200, 40)
         self.drawMessage.setFont(font)
         self.drawMessage.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
         self.drawMessage.setText("In Knockouts, the black player wins a draw")

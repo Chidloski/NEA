@@ -107,6 +107,7 @@ class Ui_PvpStage2(QtWidgets.QWidget):
         self.retranslateUi()
         QtCore.QMetaObject.connectSlotsByName(self)
 
+
     def resetUi(self):
         self.userId = None
         self.userRating = None
@@ -126,6 +127,7 @@ class Ui_PvpStage2(QtWidgets.QWidget):
 
         self.currentUserRatingDeltaArray = None
         self.opponentUserRatingDeltaArray = None
+
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate

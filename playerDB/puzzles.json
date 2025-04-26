@@ -3,52 +3,441 @@
         "finished": true,
         "id": 0,
         "outcome": "Failed",
-        "puzzleId": "3r2k1/pp3ppp/8/8/3q4/5Q2/PP3PPP/R5K1 w - - 0 22",
-        "puzzleRating": 866,
+        "puzzleId": "7r/3k3r/p1pPp3/1p1bPp2/1P3B1P/P5P1/5R1K/3B4 b - - 2 40",
+        "puzzleRating": 885,
         "solution": [
-            "Qd1+",
-            "Rxd1",
-            "Rxd1#"
+            "xh4",
+            "Rxh4+",
+            "Kg3"
         ],
         "userId": 0
     },
     {
         "finished": true,
         "id": 1,
-        "outcome": "Completed!",
-        "puzzleId": "8/1p4pk/2p2p1p/p3pN1P/Pb2P1P1/1P1r1K2/1B6/5R2 w - - 0 33",
-        "puzzleRating": 953,
+        "outcome": "Failed",
+        "puzzleId": "5k2/1pRP1pp1/8/4pNbp/8/5P2/1P3PKP/3r4 b - - 6 33",
+        "puzzleRating": 728,
         "solution": [
-            "Rd2+",
-            "Kf3",
-            "Rxb2"
-        ],
-        "userId": 0
-    },
-    {
-        "finished": false,
-        "id": 2,
-        "outcome": "unfinished",
-        "puzzleId": "k2q4/pp4p1/2p5/3n1Q2/4N1P1/5P2/PP5r/2KR4 b - - 2 26",
-        "puzzleRating": 864,
-        "solution": [
+            "Rc8+",
+            "Bd8",
             "Rxd8#"
         ],
         "userId": 0
     },
     {
         "finished": true,
-        "id": 3,
-        "matchup": "mahdi74dehghan Vs adoliveira",
-        "outcome": "Failed",
-        "puzzleId": "d4 Nf6 Nd2 d6 h3 g6 Ngf3 Bg7 c3 O-O Qb3 b6 e3 c5 Bb5 a6 Be2 b5 a4 Bb7 a5 Nc6 dxc5 dxc5 O-O c4 Qc2 Nxa5 b4 Nc6 Ne4 Nxe4 Qxe4 Bxc3 Ra3 Bxb4 Ra2 Na5 Qh4 Nb3 Bb2 c3 Bc1 Nxc1 Rxc1 e6 Ng5 h5 Bxh5 Qd5",
-        "puzzleRating": 1814,
+        "id": 2,
+        "outcome": "Completed!",
+        "puzzleId": "8/3R4/pp3p1p/5Pk1/1r4P1/5KP1/8/8 b - - 0 44",
+        "puzzleRating": 751,
         "solution": [
-            "Bf3",
-            "Qxg5",
-            "Qxg5"
+            "Rg7+",
+            "Kxf5",
+            "Rxg4"
         ],
-        "tournament": "Rapid",
+        "userId": 0
+    },
+    {
+        "finished": true,
+        "id": 3,
+        "matchup": "akohl Vs mohsenimohsen",
+        "outcome": "Failed",
+        "puzzleId": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4 Bxb4 c3 Ba5 d4 exd4 Nxd4 Nxd4 Qxd4 Qe7 Ba3 d6 O-O Be6",
+        "puzzleRating": 1832,
+        "solution": [
+            "Bxe6",
+            "xe6",
+            "Qa4+",
+            "Qd7",
+            "Qxa5"
+        ],
+        "tournament": "Bullet",
+        "userId": 0
+    },
+    {
+        "finished": true,
+        "id": 4,
+        "outcome": "Failed",
+        "puzzleId": "8/8/6p1/5k1p/7P/1KB2P2/p7/8 b - - 3 50",
+        "puzzleRating": 810,
+        "solution": [
+            "Bxa1",
+            "g5",
+            "xg5"
+        ],
+        "userId": 0
+    },
+    {
+        "finished": false,
+        "id": 5,
+        "outcome": "unfinished",
+        "puzzleId": "r2q2k1/bppbrpp1/p1np3p/8/2P1N3/1P2P1P1/P1QB1PBP/R3R1K1 b - - 5 16",
+        "puzzleRating": 802,
+        "solution": [
+            "Nf6+",
+            "xf6",
+            "Qxf5"
+        ],
+        "userId": 0
+    },
+    {
+        "finished": false,
+        "id": 6,
+        "outcome": "unfinished",
+        "puzzleId": "rn2k1nr/pp3p2/3pbbp1/7P/8/8/PPPPP3/RNBQKB1R w Qkq - 0 12",
+        "puzzleRating": 755,
+        "solution": [
+            "Bh4+",
+            "Rg3",
+            "Bxg3#"
+        ],
+        "userId": 0
+    },
+    {
+        "finished": true,
+        "id": 7,
+        "outcome": "Completed!",
+        "puzzleId": "6k1/1q3pbp/p2r2p1/QpB5/4b3/2P5/1P4PP/R4BK1 b - - 3 31",
+        "puzzleRating": 772,
+        "solution": [
+            "Qd8+",
+            "Bf8",
+            "Qxf8#"
+        ],
+        "userId": 0
+    },
+    {
+        "finished": true,
+        "id": 8,
+        "outcome": "Completed!",
+        "puzzleId": "6k1/1pr3pp/p1p1p3/4p1N1/2P2n2/P6P/1P3PP1/3R2K1 b - - 1 29",
+        "puzzleRating": 757,
+        "solution": [
+            "Rd8#"
+        ],
+        "userId": 0
+    },
+    {
+        "finished": true,
+        "id": 9,
+        "outcome": "Completed!",
+        "puzzleId": "4rrk1/p5pp/2p5/3p4/N5b1/6B1/PPQ3PP/2R1q2K w - - 6 22",
+        "puzzleRating": 711,
+        "solution": [
+            "Rxe1+",
+            "Bxe1",
+            "Rf1#"
+        ],
+        "userId": 0
+    },
+    {
+        "finished": true,
+        "id": 10,
+        "outcome": "Completed!",
+        "puzzleId": "3r1k2/2q3pp/1pBB3n/1P3r2/3b4/1Q6/4RPPP/4R1K1 b - - 0 31",
+        "puzzleRating": 830,
+        "solution": [
+            "Re8+",
+            "Rxe8",
+            "Rxe8#"
+        ],
+        "userId": 0
+    },
+    {
+        "finished": false,
+        "id": 11,
+        "outcome": "unfinished",
+        "puzzleId": "1r3k1r/2R3pp/5bq1/1P1Q4/P2P4/4P1P1/5PRP/6K1 w - - 1 34",
+        "puzzleRating": 926,
+        "solution": [
+            "Qb1+",
+            "Rc1",
+            "Qxc1#"
+        ],
+        "userId": 0
+    },
+    {
+        "finished": false,
+        "id": 12,
+        "outcome": "unfinished",
+        "puzzleId": "1k2r3/2p3p1/1p2rp2/P2p3p/1Q1P1P2/1R1b4/6PP/3Rq2K w - - 1 32",
+        "puzzleRating": 814,
+        "solution": [
+            "Rxe1+",
+            "Qxe1",
+            "Rxe1#"
+        ],
+        "userId": 0
+    },
+    {
+        "finished": false,
+        "id": 13,
+        "outcome": "unfinished",
+        "puzzleId": "4qr1k/pp5p/4N1p1/3p4/1P3P2/2bQ2P1/r6P/4R1K1 b - - 0 24",
+        "puzzleRating": 1176,
+        "solution": [
+            "Qd4+",
+            "Rf6",
+            "Qxf6+",
+            "Kg8",
+            "Qg7#"
+        ],
+        "userId": 0
+    },
+    {
+        "finished": false,
+        "id": 14,
+        "outcome": "unfinished",
+        "puzzleId": "r2q1rk1/3b1p1p/p4n1Q/1p1PR2p/2p5/2PB1P2/PP4PP/R5K1 b - - 1 20",
+        "puzzleRating": 1127,
+        "solution": [
+            "Rg5+",
+            "Kh8",
+            "Qg7#"
+        ],
+        "userId": 0
+    },
+    {
+        "finished": false,
+        "id": 15,
+        "outcome": "unfinished",
+        "puzzleId": "r5k1/1R4bp/6p1/4pp2/1B6/5P2/P1r4P/3R2K1 b - - 0 25",
+        "puzzleRating": 1091,
+        "solution": [
+            "Rd8+",
+            "Bf8",
+            "Rxf8#"
+        ],
+        "userId": 0
+    },
+    {
+        "finished": true,
+        "id": 16,
+        "outcome": "Completed!",
+        "puzzleId": "7r/pbq1b1k1/5r2/2p2p2/2P2P1Q/1P2B2P/P4NP1/3R1RK1 w - - 1 29",
+        "puzzleRating": 808,
+        "solution": [
+            "Rg6",
+            "Qxg6+",
+            "Kxg6"
+        ],
+        "userId": 0
+    },
+    {
+        "finished": false,
+        "id": 17,
+        "outcome": "unfinished",
+        "puzzleId": "8/8/4R3/4p3/1k1bP1P1/7K/2r4P/8 b - - 0 54",
+        "puzzleRating": 899,
+        "solution": [
+            "Rc6+",
+            "Kd3",
+            "Rxc2",
+            "Kxc2",
+            "g5"
+        ],
+        "userId": 0
+    },
+    {
+        "finished": false,
+        "id": 18,
+        "outcome": "unfinished",
+        "puzzleId": "r3kn1r/ppqbb2p/4pppP/1B1p4/3B4/P1N3P1/1P3P2/R2QR1K1 w kq - 0 20",
+        "puzzleRating": 1406,
+        "solution": [
+            "Qxd7",
+            "Qf3",
+            "Kf7"
+        ],
+        "userId": 0
+    },
+    {
+        "finished": false,
+        "id": 19,
+        "outcome": "unfinished",
+        "puzzleId": "8/5p2/4k2p/7P/3pKPP1/8/8/8 b - - 4 49",
+        "puzzleRating": 984,
+        "solution": [
+            "Kxd4"
+        ],
+        "userId": 0
+    },
+    {
+        "finished": true,
+        "id": 20,
+        "outcome": "Completed!",
+        "puzzleId": "2rq1b1r/p3kppp/4p1n1/1pP1Pb2/Q2B4/1B3P2/PP4PP/RN3RK1 w - b6 0 16",
+        "puzzleRating": 880,
+        "solution": [
+            "Rc7",
+            "Qxc7+",
+            "Qxc7"
+        ],
+        "userId": 0
+    },
+    {
+        "finished": false,
+        "id": 21,
+        "outcome": "unfinished",
+        "puzzleId": "7R/p3kr2/5p2/3r4/b5Q1/2P5/Pq1B1PP1/R3K3 w Q - 5 29",
+        "puzzleRating": 1023,
+        "solution": [
+            "Re5",
+            "Qxe5+",
+            "xe5"
+        ],
+        "userId": 0
+    },
+    {
+        "finished": false,
+        "id": 22,
+        "outcome": "unfinished",
+        "puzzleId": "5R2/1r5r/5PKP/8/5k2/8/8/8 b - - 0 68",
+        "puzzleRating": 1316,
+        "solution": [
+            "f7",
+            "Rxh6+",
+            "Kxh6",
+            "Kf5",
+            "Kg7"
+        ],
+        "userId": 4
+    },
+    {
+        "finished": false,
+        "id": 23,
+        "outcome": "unfinished",
+        "puzzleId": "2k5/R4p2/p4r2/1p6/8/1Pp3Pp/P5bP/2R3K1 w - - 0 35",
+        "puzzleRating": 1251,
+        "solution": [
+            "Kb8",
+            "Rxf7",
+            "Rxf7"
+        ],
+        "userId": 4
+    },
+    {
+        "finished": true,
+        "id": 24,
+        "outcome": "Completed!",
+        "puzzleId": "1rq2b1r/2B1k1p1/p1Q1p2p/6p1/3P2P1/4P2P/PP3P2/R4RK1 w - - 1 22",
+        "puzzleRating": 1403,
+        "solution": [
+            "Kd7",
+            "Qc2",
+            "Qxc7"
+        ],
+        "userId": 4
+    },
+    {
+        "finished": true,
+        "id": 25,
+        "matchup": "Teo222 Vs LFernandes",
+        "outcome": "Failed",
+        "puzzleId": "e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Bd3 e5 Nf3 Be7 O-O O-O c4 Nc6 Nc3 Bg4 Nd5 Nxd5 cxd5 Bxf3 Qxf3 Nd4 Qg3 Kh8 Be3 Qb6 b3 Rac8 Rac1 Qb4 Bc4",
+        "puzzleRating": 1879,
+        "solution": [
+            "Rxc4",
+            "Rxc4",
+            "Ne2+",
+            "Kh1",
+            "Nxg3+"
+        ],
+        "tournament": "Classical",
+        "userId": 0
+    },
+    {
+        "finished": true,
+        "id": 26,
+        "matchup": "Teo222 Vs LFernandes",
+        "outcome": "Completed!",
+        "puzzleId": "e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Bd3 e5 Nf3 Be7 O-O O-O c4 Nc6 Nc3 Bg4 Nd5 Nxd5 cxd5 Bxf3 Qxf3 Nd4 Qg3 Kh8 Be3 Qb6 b3 Rac8 Rac1 Qb4 Bc4",
+        "puzzleRating": 1868,
+        "solution": [
+            "Rxc4",
+            "Rxc4",
+            "Ne2+",
+            "Kh1",
+            "Nxg3+"
+        ],
+        "tournament": "Classical",
+        "userId": 1
+    },
+    {
+        "finished": true,
+        "id": 27,
+        "outcome": "Completed!",
+        "puzzleId": "8/8/p4pkp/1p3P2/3N2P1/1P5P/3r4/6K1 b - - 0 39",
+        "puzzleRating": 932,
+        "solution": [
+            "Nf3+",
+            "Kf4",
+            "Nxd2"
+        ],
+        "userId": 0
+    },
+    {
+        "finished": false,
+        "id": 28,
+        "outcome": "unfinished",
+        "puzzleId": "8/1p4k1/1p6/pP1pP3/P2P1nq1/4QN2/5K2/8 w - - 0 41",
+        "puzzleRating": 933,
+        "solution": [
+            "Ng2+",
+            "Kd2",
+            "Nxe3"
+        ],
+        "userId": 0
+    },
+    {
+        "finished": true,
+        "id": 29,
+        "outcome": "Failed",
+        "puzzleId": "6k1/7p/1p2p1p1/p4p2/P1r5/4P2P/3K1PP1/3B4 b - - 1 35",
+        "puzzleRating": 947,
+        "solution": [
+            "Bb3",
+            "Kg7",
+            "Bxc4"
+        ],
+        "userId": 0
+    },
+    {
+        "finished": true,
+        "id": 30,
+        "outcome": "Failed",
+        "puzzleId": "r2k3r/ppq2p2/4pNp1/4P1P1/2pPQ3/2P3nP/PP6/1R3RK1 w - - 1 27",
+        "puzzleRating": 962,
+        "solution": [
+            "Ne2+",
+            "Kh2",
+            "Nxf4"
+        ],
+        "userId": 0
+    },
+    {
+        "finished": false,
+        "id": 31,
+        "outcome": "unfinished",
+        "puzzleId": "1k6/pp5p/2ppN3/5P1q/2r5/2PPQ3/PP1K1RP1/7r w - - 0 33",
+        "puzzleRating": 979,
+        "solution": [
+            "Qd1#"
+        ],
+        "userId": 0
+    },
+    {
+        "finished": false,
+        "id": 32,
+        "outcome": "unfinished",
+        "puzzleId": "1k6/1p5p/1Br3p1/PR6/3p3r/1R1K4/1P6/8 w - - 0 46",
+        "puzzleRating": 1036,
+        "solution": [
+            "Rh3+",
+            "Kxd4",
+            "Rxb3"
+        ],
         "userId": 0
     }
 ]

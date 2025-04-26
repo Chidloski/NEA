@@ -133,12 +133,11 @@ class Ui_filterStage3(QtWidgets.QWidget):
         QtCore.QMetaObject.connectSlotsByName(self)
 
 
-
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
         self.currentUserLabel.setText(_translate("filterStage3", "Current User:"))
         self.currentUserPuzzleRatingLabel.setText(_translate("filterStage3", "Rating: 800 -> 900"))
-        self.dailyPuzzleLabel.setText(_translate("filterStage3", "Daily Puzzle:"))
+        self.dailyPuzzleLabel.setText(_translate("filterStage3", "Puzzle:"))
         self.outcomeLabel.setText(_translate("filterStage3", "Outcome:"))
         self.puzzleRatingLabel.setText(_translate("filterStage3", "Rating: 800"))
         self.userOutcomeLabel.setText(_translate("filterStage3", "Completed!"))
@@ -154,13 +153,14 @@ class Ui_filterStage3(QtWidgets.QWidget):
         self.puzzle5Button.setText(_translate("filterStage3", "1000"))
 
 
-
+    # populate the solution and update button colours
     def populate(self, dashboard, outcome, index):
         dashboard.puzzleChessBoard.resetUi()
         dashboard.puzzleChessBoard.coverScreen.setHidden(False)
 
         self.puzzleDict = dashboard.puzzleWidget.filterPuzzles[index]
         
+        # run the until the start of the puzzle
         dashboard.puzzleChessBoard.runFen(self.puzzleDict["fen"])
         dashboard.puzzleChessBoard.runPgnTurn(dashboard.puzzleChessBoard.moveNumber, [self.puzzleDict["robotMove"]])
 
@@ -174,6 +174,7 @@ class Ui_filterStage3(QtWidgets.QWidget):
 
         self.pgnSolutionLabel.setText(' '.join(self.puzzleDict["solution"]))
 
+        # set the correct puzzle button in both filterStage2 and stage3 to the correct colour
         if outcome == "Completed!":
             self.userOutcomeLabel.setStyleSheet("color: rgb(50, 175, 61)")
             getattr(self, f"puzzle{index + 1}Button").setStyleSheet("color: rgb(50, 175, 61)")
@@ -189,7 +190,7 @@ class Ui_filterStage3(QtWidgets.QWidget):
         dashboard.puzzleStackedWidget.setCurrentIndex(4)
 
 
-
+    # go back to start of puzzle
     def resetPuzzle(self, dashboard):
         dashboard.puzzleChessBoard.resetUi()
         dashboard.puzzleChessBoard.coverScreen.setHidden(False)
@@ -199,8 +200,8 @@ class Ui_filterStage3(QtWidgets.QWidget):
 
         self.index = 0
 
-
     
+    # run a move in the puzzle
     def nextMove(self, dashboard):
         if self.index < len(self.puzzleDict["solution"]):
             dashboard.puzzleChessBoard.runPgnTurn(dashboard.puzzleChessBoard.moveNumber, self.puzzleDict["solution"], self.index)

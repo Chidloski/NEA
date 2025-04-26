@@ -152,7 +152,7 @@ class Ui_PlayStage1(QtWidgets.QWidget):
         font.setBold(True)
 
         self.createButton = QtWidgets.QPushButton(self)
-        self.createButton.setGeometry(QtCore.QRect(10, 440, 201, 41))
+        self.createButton.setGeometry(QtCore.QRect(10, 452, 201, 41))
         self.createButton.setFont(font)
         self.createButton.setAutoDefault(False)
         self.createButton.setDefault(False)
@@ -164,20 +164,23 @@ class Ui_PlayStage1(QtWidgets.QWidget):
         font.setBold(False)
 
         self.errorLabel = AutoResizingLabel(12, False, parent = self)
-        self.errorLabel.setGeometry(QtCore.QRect(10, 230, 201, 16))
+        self.errorLabel.setGeometry(QtCore.QRect(5, 230, 211, 16))
         self.errorLabel.setFont(font)
         self.errorLabel.setStyleSheet("color: rgb(175, 61, 50)")
-        self.errorLabel.setText("")
+        self.errorLabel.setText("Incorrect username or password")
         self.errorLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.errorLabel.setObjectName("errorLabel")
+        self.errorLabel.setHidden(True)
 
-        self.tournamentErrorLabel = AutoResizingLabel(12, False, parent = self)
-        self.tournamentErrorLabel.setGeometry(QtCore.QRect(10, 420, 201, 16))
+        self.tournamentErrorLabel = AutoResizingLabel(12, False, parent = self, wordWrap = True)
+        self.tournamentErrorLabel.setGeometry(QtCore.QRect(7, 425, 211, 22))
         self.tournamentErrorLabel.setFont(font)
         self.tournamentErrorLabel.setStyleSheet("color: rgb(175, 61, 50)")
-        self.tournamentErrorLabel.setText("")
+        self.tournamentErrorLabel.setWordWrap(True)
+        self.tournamentErrorLabel.setText("A knockout must have 8 or less people")
         self.tournamentErrorLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.tournamentErrorLabel.setObjectName("tournamentErrorLabel")
+        self.tournamentErrorLabel.setHidden(True)
 
         self.guestRadioButton.setChecked(True)
         self.roundRadioButton.setChecked(True)
@@ -199,6 +202,7 @@ class Ui_PlayStage1(QtWidgets.QWidget):
         self.secondaryUserRadioButton.setFocusPolicy(QtCore.Qt.NoFocus)
         self.roundRadioButton.setFocusPolicy(QtCore.Qt.NoFocus)
         self.knockoutRadioButton.setFocusPolicy(QtCore.Qt.NoFocus)
+
 
     def refreshRadioButtons(self):
         # Temporarily disable mutual exclusivity
@@ -222,6 +226,8 @@ class Ui_PlayStage1(QtWidgets.QWidget):
         self.guestRadioButton.setChecked(True)
         self.roundRadioButton.setChecked(True)
 
+
+    # populate widget with the user details
     def populate(self, userId):
 
         query = {"id": userId}
@@ -232,6 +238,7 @@ class Ui_PlayStage1(QtWidgets.QWidget):
 
         self.currentUserLabel.setText(data["username"])
         self.currentUserRatingLabel.setText("Rating: " + str(data["rating"]))
+
 
     def resetUi(self, userId):
         self.opponentUser = False
@@ -244,6 +251,7 @@ class Ui_PlayStage1(QtWidgets.QWidget):
 
         self.refreshRadioButtons()
         self.populate(userId)
+
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate

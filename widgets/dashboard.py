@@ -195,11 +195,12 @@ class Ui_Dashboard(QtWidgets.QWidget):
         atexit.register(self.onExit)
 
 
+    # for all piece classes contained within any portion of the specified widget, change their style
     def changePiecesForWidget(self, widget, pieceFolder):
         for i in widget.findChildren(piece):
             i.changeStyle(pieceFolder)
 
-
+    # changePieces for all chess boards
     def changePieces(self, pieceFolder):
         self.changePiecesForWidget(self.chessBoard, pieceFolder)
         self.chessBoard.pieceFolder = pieceFolder
@@ -214,6 +215,7 @@ class Ui_Dashboard(QtWidgets.QWidget):
         self.tournamentChessBoard.pieceFolder = pieceFolder
 
 
+    # change the theme for all current boards
     def changeTheme(self, styleSheet, themeDict):
         self.themeDict = themeDict
 
@@ -238,6 +240,7 @@ class Ui_Dashboard(QtWidgets.QWidget):
             highlightValidTiles(self.tournamentChessBoard.currentlyHighlightedTiles[:-1], self.tournamentChessBoard, self.tournamentChessBoard.currentlyHighlightedTiles[-1])
 
     
+    # find all labels and change to new font unless otherwise specified
     def changeFont(self, fontType):
         for child in self.findChildren(QtWidgets.QWidget):
             if not child.objectName() in ("matplotlibWidget", "firaCodeRadioButton", "arialRadioButton", "helveticaRadioButton", 
@@ -247,6 +250,7 @@ class Ui_Dashboard(QtWidgets.QWidget):
                 child.setFont(font)
 
 
+    # when quitting finalise all matches and tournaments as unfinished
     def onExit(self):
         finaliseMatchOnExit(self)
         finaliseMatchAndTournamentOnExit(self)

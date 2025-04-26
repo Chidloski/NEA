@@ -981,19 +981,24 @@ class Ui_proChessBoard(QtWidgets.QWidget):
 
         self.currentMatchId = -1
 
+
     def promotionEvent(self, newPiece, alias):
         self.pgn = promotingTo(newPiece, self, alias, self.pgn, self.attackers, self.previousMove, self.moveNumber)
 
 
+    # runs a whole moveset from a pgn
     def runPgn(self, pgn):
-
+        # sets robotMove to true to stop any unwanted effects
         self.robotMove = True
 
+        # if string isnt a list make it a list
         if isinstance(pgn, str):
             pgn = pgn.split()
 
+        # parse it to get all the info
         moveset = parsePGN(pgn)
 
+        # make a move for each turn
         for turn in moveset:
             pieceToMove = getPiece(self, turn[0], turn[1], turn[2], turn[3])
 
@@ -1003,7 +1008,11 @@ class Ui_proChessBoard(QtWidgets.QWidget):
 
         print(f"this is the pgn {pgn}")
 
+
+    # runs a singular move of a pgn
+    # runs the first move unless the index is passed in
     def runPgnTurn(self, colour, pgn, index=0):
+        # find the colour
         if isinstance(colour, int):
             if colour / 2 == int(colour / 2):
                 colour = "white"
@@ -1018,12 +1027,13 @@ class Ui_proChessBoard(QtWidgets.QWidget):
 
         moveset = parsePGN(pgn)
 
+        # runs the move if index is in bounds
         if index < len(moveset):
             turn = moveset[index]
 
-        pieceToMove = getPiece(self, colour, turn[1], turn[2], turn[3])
+            pieceToMove = getPiece(self, colour, turn[1], turn[2], turn[3])
 
-        makeMove(self, pieceToMove, turn[3], turn[4])
+            makeMove(self, pieceToMove, turn[3], turn[4])
 
         self.robotMove = False
 

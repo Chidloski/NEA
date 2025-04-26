@@ -26,25 +26,25 @@ class MatplotlibWidget(QWidget):
         self.layout = QVBoxLayout(self)
         self.layout.addWidget(self.canvas)
 
-    def draw_tournament_bracket(self, matchups):
+    def drawTournamentBracket(self, matchups):
         rcParams['font.family'] = 'Fira Code'
 
-        background_color = get_default_qt_background_color(self)
+        backgroundColour = getBackgroundColour(self)
         
         self.figure.clear()  # Clear the figure
         ax = self.figure.add_subplot(111)
 
-        y_spacing = 2
-        x_spacing = 1
+        ySpacing = 2
+        xSpacing = 1
 
-        y_max = 0
-        x_max = 0
+        ymax = 0
+        xmax = 0
 
         for round, matches in matchups.items():
-            xPosition = x_spacing * (round - 1)
+            xPosition = xSpacing * (round - 1)
             yPosition = 0
 
-            x_max = xPosition
+            xmax = xPosition
 
             firstSpacing = (2**(round - 1) - 1)
             otherSpacings = 2**(round)
@@ -55,7 +55,7 @@ class MatplotlibWidget(QWidget):
                 for player in match:
                     players.append(player)
 
-            yPosition += firstSpacing * y_spacing
+            yPosition += firstSpacing * ySpacing
 
             #print(players)
 
@@ -69,7 +69,7 @@ class MatplotlibWidget(QWidget):
                         #print(f"{i} has index {index}")
                         #print(f"{round} thus round - 1 is {round - 1}, and the searched index is {index * 2}")
                         if matchups[round - 1][len(matchups[round - 1]) - index - 1] != ["", ""]:
-                            xLineStart = x_spacing * (round - 2) + x_spacing / 4
+                            xLineStart = xSpacing * (round - 2) + xSpacing / 4
 
                             ax.plot([xLineStart, xPosition], [yPosition, yPosition], color='white', linestyle='-', linewidth=1)
 
@@ -82,11 +82,11 @@ class MatplotlibWidget(QWidget):
                     #print(round < len(matchups))
 
                     if round < len(matchups):
-                        xLineStart = x_spacing * (round - 2) + x_spacing
+                        xLineStart = xSpacing * (round - 2) + xSpacing
 
-                        ax.plot([xLineStart, xLineStart + x_spacing / 4], [yPosition, yPosition], color='white', linestyle='-', linewidth=1)
+                        ax.plot([xLineStart, xLineStart + xSpacing / 4], [yPosition, yPosition], color='white', linestyle='-', linewidth=1)
     
-                    text = ax.text(xPosition, yPosition, i, ha='right', va='center', fontsize=10, color='white') #, bbox=dict(facecolor=background_color, edgecolor='none'))
+                    text = ax.text(xPosition, yPosition, i, ha='right', va='center', fontsize=10, color='white') #, bbox=dict(facecolor=backgroundColour, edgecolor='none'))
 
                     renderer = self.canvas.get_renderer()
                     bbox = text.get_window_extent(renderer).transformed(ax.transData.inverted())
@@ -99,7 +99,7 @@ class MatplotlibWidget(QWidget):
                         (bbox.x0 - padding * 3.5, bbox.y0 - padding),
                         bbox.width + 3.5 * padding,
                         bbox.height + 3.5 * padding,
-                        color=background_color,
+                        color=backgroundColour,
                         zorder=text.get_zorder() - 1,  # Draw behind the text
                     )
                     ax.add_patch(rect)
@@ -107,43 +107,37 @@ class MatplotlibWidget(QWidget):
                     #print(f"{i} at x:{xPosition}, y:{yPosition}")
                 
 
-                y_max = max(y_max, yPosition)
+                ymax = max(ymax, yPosition)
 
-                yPosition += otherSpacings * y_spacing
-
-        #print(x_max)
-        #print(y_max)
-
-        #print(len(matchups[1]))
-        #print(y_spacing * len(matchups[1]))
+                yPosition += otherSpacings * ySpacing
 
         # Formatting the plot
-        ax.set_xlim(0, x_max)
-        ax.set_ylim(0, y_max)
+        ax.set_xlim(0, xmax)
+        ax.set_ylim(0, ymax)
         ax.axis('off')
 
         self.figure.subplots_adjust(left=calculateMargin(len(matchups)), right=0.9, top=0.93, bottom=0.07)  # Avoid excessive padding
 
-        self.figure.patch.set_facecolor(background_color)  # Figure background
-        ax.set_facecolor(background_color)
+        self.figure.patch.set_facecolor(backgroundColour)  # Figure background
+        ax.set_facecolor(backgroundColour)
 
         # Adjust the resolution to make the grid visually compressed
-        self.canvas.setFixedSize(int(x_max * 150), int(y_max * 12)) 
+        self.canvas.setFixedSize(int(xmax * 150), int(ymax * 12)) 
 
         self.canvas.draw()
 
-    def draw_round_robin(self, playerStats):
+    def drawRoundRobin(self, playerStats):
         # passes in a 2d list, list for each player containing id, username, games played, games won, games drawn, games lost, and points
         rcParams['font.family'] = 'Fira Code'
 
-        background_color = get_default_qt_background_color(self)
+        backgroundColour = getBackgroundColour(self)
 
         playerStats = insertionSort(playerStats)
         
         self.figure.clear()  # Clear the figure
         ax = self.figure.add_subplot(111)
 
-        y_spacing = 2.5
+        ySpacing = 2.5
 
         yPosition = 0
 
@@ -159,7 +153,7 @@ class MatplotlibWidget(QWidget):
             ax.text(2.05, yPosition, i[6], ha='center', va='center', fontsize=10, color='white')
 
             index -= 1
-            yPosition += y_spacing
+            yPosition += ySpacing
 
         ax.text(0, yPosition, "Player", ha='left', va='center', fontsize=10, fontweight='bold', color='white')
         ax.text(1, yPosition, "GP", ha='center', va='center', fontsize=10, fontweight='bold', color='white')
@@ -168,21 +162,21 @@ class MatplotlibWidget(QWidget):
         ax.text(1.75, yPosition, "L", ha='center', va='center', fontsize=10, fontweight='bold', color='white')
         ax.text(2.05, yPosition, "Pts", ha='center', va='center', fontsize=10, fontweight='bold', color='white')
 
-        y_max = yPosition
-        x_max = 2.05
+        ymax = yPosition
+        xmax = 2.05
 
         # Formatting the plot
-        ax.set_xlim(0, x_max)
-        ax.set_ylim(0, y_max)
+        ax.set_xlim(0, xmax)
+        ax.set_ylim(0, ymax)
         ax.axis('off')
 
-        self.figure.patch.set_facecolor(background_color)  # Figure background
-        ax.set_facecolor(background_color)
+        self.figure.patch.set_facecolor(backgroundColour)  # Figure background
+        ax.set_facecolor(backgroundColour)
 
         self.figure.subplots_adjust(left=0, right=0.9, top=0.93, bottom=0.07)  # Avoid excessive padding
 
         # Adjust the resolution to make the grid visually compressed
-        self.canvas.setFixedSize(int(x_max * 150), int(y_max * 12)) 
+        self.canvas.setFixedSize(int(xmax * 150), int(ymax * 12)) 
 
         self.canvas.draw()
 
@@ -196,10 +190,12 @@ def calculateMargin(rounds):
 
     return round(A * (B**rounds), 2)
 
-def get_default_qt_background_color(widget):
+
+def getBackgroundColour(widget):
     palette = widget.palette()
     color = palette.color(QPalette.Background)  # Get the default background color
     return color.name()  # Convert to hex color code
+
 
 def padMatches(bracket):
     # takes in a dictionary of matchups and pads all null matches
@@ -218,6 +214,8 @@ def padMatches(bracket):
     return bracket
 
 
+# regular insertion sort
+# -> however when two are equal it will sort based on other fields
 def insertionSort(list):
     for i in range(1, len(list)):
         placed = False
@@ -254,25 +252,25 @@ class ScrollableMatplotlibWidget(QWidget):
         super().__init__(parent)
 
         # Create the Matplotlib widget
-        self.matplotlib_widget = MatplotlibWidget()
+        self.matplotlibWidget = MatplotlibWidget()
 
         # Embed it inside a QScrollArea
-        self.scroll_area = QScrollArea()
-        self.scroll_area.setWidget(self.matplotlib_widget)
-        self.scroll_area.setWidgetResizable(True)
+        self.scrollArea = QScrollArea()
+        self.scrollArea.setWidget(self.matplotlibWidget)
+        self.scrollArea.setWidgetResizable(True)
 
         # Set fixed size for the scrollable area
-        self.scroll_area.setFixedSize(201, 271)
+        self.scrollArea.setFixedSize(201, 271)
 
         # Layout for the scrollable widget
         layout = QVBoxLayout(self)
-        layout.addWidget(self.scroll_area)
+        layout.addWidget(self.scrollArea)
 
-    def draw_tournament_bracket(self, matchups):
-        self.matplotlib_widget.draw_tournament_bracket(matchups)
+    def drawTournamentBracket(self, matchups):
+        self.matplotlibWidget.drawTournamentBracket(matchups)
 
-    def draw_round_robin(self, playerStats):
-        self.matplotlib_widget.draw_round_robin(playerStats)
+    def drawRoundRobin(self, playerStats):
+        self.matplotlibWidget.drawRoundRobin(playerStats)
 
 
 class Ui_TournamentStage3(QtWidgets.QWidget):
@@ -302,9 +300,9 @@ class Ui_TournamentStage3(QtWidgets.QWidget):
         self.typeLabel.setObjectName("typeLabel")
 
         # Create the scrollable Matplotlib widget
-        self.scrollable_matplotlib_widget = ScrollableMatplotlibWidget(self)
-        self.scrollable_matplotlib_widget.setGeometry(0, 30, 211, 281)
-        self.scrollable_matplotlib_widget.setObjectName("matplotlibWidget")
+        self.scrollableMatplotlibWidget = ScrollableMatplotlibWidget(self)
+        self.scrollableMatplotlibWidget.setGeometry(0, 30, 211, 281)
+        self.scrollableMatplotlibWidget.setObjectName("matplotlibWidget")
 
         self.nextMatchLabel = AutoResizingLabel(24, True, parent = self)
         self.nextMatchLabel.setGeometry(QtCore.QRect(10, 320, 201, 31))
@@ -359,6 +357,7 @@ class Ui_TournamentStage3(QtWidgets.QWidget):
         QtCore.QMetaObject.connectSlotsByName(self)
 
     
+    # populate the next match portion of the widget
     def populateNextMatch(self, match, userDetails):
 
         print(f"Match: {match}")
@@ -382,7 +381,7 @@ class Ui_TournamentStage3(QtWidgets.QWidget):
             self.player2Label.setText(player2)
             self.player2RatingLabel.setText(str(player2Rating))
 
-        else:
+        else: # populate for winner
             self.nextMatchButton.setHidden(True)
             self.player1Label.setHidden(True)
             self.player1RatingLabel.setHidden(True)
@@ -391,6 +390,7 @@ class Ui_TournamentStage3(QtWidgets.QWidget):
 
             self.nextMatchLabel.setText("Winner:")
 
+            # find the winner of the tournament
             if self.tournamentType == "Knockout":
                 winner = self.knockoutDetails[len(self.knockoutDetails)][0][0]
 
@@ -417,9 +417,8 @@ class Ui_TournamentStage3(QtWidgets.QWidget):
             elif len(user) == 1:
                 winnerId = user[0]["id"]
 
+            # finalise tournament with winner
             finaliseTournament(self.tournamentId, winnerId)
-
-            #FINALISE TOURNAMENT RECORD
 
 
     def resetUi(self):
@@ -441,10 +440,10 @@ class Ui_TournamentStage3(QtWidgets.QWidget):
         self.nextMatchButton.setHidden(False)
         self.player1Label.setHidden(False)
         self.player1RatingLabel.setHidden(False)
-        self.player1Label.setHidden(False)
-        self.player1RatingLabel.setHidden(False)
+        self.player2Label.setHidden(False)
+        self.player2RatingLabel.setHidden(False)
 
-        self.nextMatchButton.setText("Next Match:")
+        self.nextMatchLabel.setText("Next Match:")
         self.versusLabel.setText("Vs.")
 
 

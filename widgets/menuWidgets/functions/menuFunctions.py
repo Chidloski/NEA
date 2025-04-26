@@ -2,24 +2,29 @@ from widgets.utilityWidgets.functions.playFunctions import finaliseMatchOnExit
 from widgets.utilityWidgets.functions.tournamentFunctions import finaliseMatchAndTournamentOnExit
 from widgets.utilityWidgets.functions.proFunctions import populateForPlayer
 
+# go to account widgets
 def goToAccount(dashboard):
     dashboard.centralStackedWidget.setCurrentIndex(4)
     dashboard.utilityStackedWidget.setCurrentIndex(3)
     dashboard.accountUtilityWidget.resetUi()
     dashboard.accountUtilityWidget.populate(dashboard.baseWindow.userId)
 
+# go to puzzle widgets
 def goToPuzzles(dashboard):
     dashboard.centralStackedWidget.setCurrentIndex(1)
     dashboard.utilityStackedWidget.setCurrentIndex(1)
 
+# go to play widgets
 def goToPlay(dashboard):
     dashboard.centralStackedWidget.setCurrentIndex(0)
     dashboard.utilityStackedWidget.setCurrentIndex(0)
 
+# go to pros widget
 def goToPros(dashboard):
     dashboard.centralStackedWidget.setCurrentIndex(2)
     dashboard.utilityStackedWidget.setCurrentIndex(2)
 
+# reset all necessary widgets so when a user logs back in there is no activity
 def logOut(dashboard):
     dashboard.baseWindow.userId = -1
 

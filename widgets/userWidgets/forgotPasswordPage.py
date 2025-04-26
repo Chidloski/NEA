@@ -13,8 +13,8 @@ class Ui_ForgotPasswordPage(QtWidgets.QWidget):
         self.setAutoFillBackground(False)
 
         # declares welcome label element
-        self.WelcomeLabel = AutoResizingLabel(70, True, parent = self)
-        self.WelcomeLabel.setGeometry(QtCore.QRect(200, 50, 600, 120))
+        self.welcomeLabel = AutoResizingLabel(70, True, parent = self)
+        self.welcomeLabel.setGeometry(QtCore.QRect(200, 50, 600, 120))
 
         # sets font
         font = QtGui.QFont()
@@ -23,98 +23,98 @@ class Ui_ForgotPasswordPage(QtWidgets.QWidget):
         font.setBold(True)
 
         # populates the welcome label element
-        self.WelcomeLabel.setFont(font)
-        self.WelcomeLabel.setAlignment(QtCore.Qt.AlignCenter)
-        self.WelcomeLabel.setObjectName("WelcomeLabel")
+        self.welcomeLabel.setFont(font)
+        self.welcomeLabel.setAlignment(QtCore.Qt.AlignCenter)
+        self.welcomeLabel.setObjectName("WelcomeLabel")
 
         # declares the reset password button
-        self.ResetPasswordLabel = AutoResizingLabel(24, True, parent = self)
-        self.ResetPasswordLabel.setGeometry(QtCore.QRect(350, 160, 220, 51))
+        self.resetPasswordLabel = AutoResizingLabel(24, True, parent = self)
+        self.resetPasswordLabel.setGeometry(QtCore.QRect(350, 160, 220, 51))
 
         # changes font size for label definition
         font.setPointSize(24)
 
         # defines the font of reset password label
-        self.ResetPasswordLabel.setFont(font)
-        self.ResetPasswordLabel.setObjectName("ResetPasswordLabel")
+        self.resetPasswordLabel.setFont(font)
+        self.resetPasswordLabel.setObjectName("ResetPasswordLabel")
 
         # Changes font for next declaration
         font.setPointSize(13)
         font.setBold(False)
 
         # declares username input box
-        self.UsernameInput = QtWidgets.QLineEdit(self)
-        self.UsernameInput.setGeometry(QtCore.QRect(350, 210, 300, 30))
+        self.usernameInput = QtWidgets.QLineEdit(self)
+        self.usernameInput.setGeometry(QtCore.QRect(350, 210, 300, 30))
 
         # defines the settings of the username input
-        self.UsernameInput.setFont(font)
-        self.UsernameInput.setText("")
-        self.UsernameInput.setPlaceholderText("Enter Username:")
-        self.UsernameInput.setObjectName("UsernameInput")
+        self.usernameInput.setFont(font)
+        self.usernameInput.setText("")
+        self.usernameInput.setPlaceholderText("Enter Username:")
+        self.usernameInput.setObjectName("UsernameInput")
 
         # declares email input box
-        self.EmailInput = QtWidgets.QLineEdit(self)
-        self.EmailInput.setGeometry(QtCore.QRect(350, 253, 300, 30))
+        self.emailInput = QtWidgets.QLineEdit(self)
+        self.emailInput.setGeometry(QtCore.QRect(350, 253, 300, 30))
 
         # defines the settings of the email input
-        self.EmailInput.setFont(font)
-        self.EmailInput.setText("")
-        self.EmailInput.setPlaceholderText("Enter Email:")
-        self.EmailInput.setObjectName("EmailInput")
+        self.emailInput.setFont(font)
+        self.emailInput.setText("")
+        self.emailInput.setPlaceholderText("Enter Email:")
+        self.emailInput.setObjectName("EmailInput")
 
         # declares password input box
-        self.PasswordInput = QtWidgets.QLineEdit(self)
-        self.PasswordInput.setGeometry(QtCore.QRect(350, 296, 300, 30))
+        self.passwordInput = QtWidgets.QLineEdit(self)
+        self.passwordInput.setGeometry(QtCore.QRect(350, 296, 300, 30))
 
         # defines the default settings of the password input box
-        self.PasswordInput.setFont(font)
-        self.PasswordInput.setText("")
+        self.passwordInput.setFont(font)
+        self.passwordInput.setText("")
         # echo mode states whether the input is shown as bullets or text
-        self.PasswordInput.setEchoMode(QtWidgets.QLineEdit.Password)
-        self.PasswordInput.setPlaceholderText("Enter Password:")
-        self.PasswordInput.setObjectName("PasswordInput")
+        self.passwordInput.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.passwordInput.setPlaceholderText("Enter Password:")
+        self.passwordInput.setObjectName("PasswordInput")
 
         # declares re-enter password input box
-        self.RePasswordInput = QtWidgets.QLineEdit(self)
-        self.RePasswordInput.setGeometry(QtCore.QRect(350, 339, 300, 30))
+        self.rePasswordInput = QtWidgets.QLineEdit(self)
+        self.rePasswordInput.setGeometry(QtCore.QRect(350, 339, 300, 30))
 
         # defines the default settings of the re-enter password input box
-        self.RePasswordInput.setFont(font)
-        self.RePasswordInput.setText("")
+        self.rePasswordInput.setFont(font)
+        self.rePasswordInput.setText("")
         # echo mode states whether the input is shown as bullets or text
-        self.RePasswordInput.setEchoMode(QtWidgets.QLineEdit.Password)
-        self.RePasswordInput.setPlaceholderText("Re-enter Password:")
-        self.RePasswordInput.setObjectName("RePasswordInput")
+        self.rePasswordInput.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.rePasswordInput.setPlaceholderText("Re-enter Password:")
+        self.rePasswordInput.setObjectName("RePasswordInput")
 
         # declares reset password button
-        self.ResetPasswordButton = QtWidgets.QPushButton(self)
-        self.ResetPasswordButton.setGeometry(QtCore.QRect(450, 378, 100, 32))
+        self.resetPasswordButton = QtWidgets.QPushButton(self)
+        self.resetPasswordButton.setGeometry(QtCore.QRect(450, 378, 100, 32))
 
         font.setPointSize(14)
         font.setBold(True)
 
-        self.ResetPasswordButton.setFont(font)
-        self.ResetPasswordButton.setObjectName("ResetPasswordButton")
+        self.resetPasswordButton.setFont(font)
+        self.resetPasswordButton.setObjectName("ResetPasswordButton")
 
         # calls log in function which checks the input of username and password
         # passes in the self of the group window to allow access to the stacked widget
-        self.ResetPasswordButton.clicked.connect(lambda: ResetPassword(self, stackedWidgetObject, self.UsernameInput.text(), self.EmailInput.text(), self.PasswordInput.text(), self.RePasswordInput.text()))
+        self.resetPasswordButton.clicked.connect(lambda: ResetPassword(self, stackedWidgetObject, self.usernameInput.text(), self.emailInput.text(), self.passwordInput.text(), self.rePasswordInput.text()))
 
         # Changes font for next declaration
         font.setPointSize(13)
         font.setBold(False)
 
         # declares the error label
-        self.ErrorLabel = AutoResizingLabel(13, False, parent = self, wordWrap = True)
-        self.ErrorLabel.setGeometry(QtCore.QRect(350, 407, 300, 70))
+        self.errorLabel = AutoResizingLabel(13, False, parent = self, wordWrap = True)
+        self.errorLabel.setGeometry(QtCore.QRect(350, 407, 300, 70))
 
         # defines the font of error label
-        self.ErrorLabel.setFont(font)
-        self.ErrorLabel.setAlignment(QtCore.Qt.AlignCenter)
-        self.ErrorLabel.setObjectName("ErrorLabel")
-        self.ErrorLabel.setHidden(True)
-        self.ErrorLabel.setStyleSheet("color: rgb(175, 61, 50)")
-        self.ErrorLabel.setWordWrap(True)
+        self.errorLabel.setFont(font)
+        self.errorLabel.setAlignment(QtCore.Qt.AlignCenter)
+        self.errorLabel.setObjectName("ErrorLabel")
+        self.errorLabel.setHidden(True)
+        self.errorLabel.setStyleSheet("color: rgb(175, 61, 50)")
+        self.errorLabel.setWordWrap(True)
 
         # adds the "shut eye" icon to the button
         icon = QtGui.QIcon()
@@ -129,7 +129,7 @@ class Ui_ForgotPasswordPage(QtWidgets.QWidget):
         self.passwordVisibilityButton.setObjectName("passwordVisibilityButton")
 
         # calls function which either sets text to bullets or shows real text
-        self.passwordVisibilityButton.clicked.connect(lambda: PasswordVisibility(self.PasswordInput.displayText(), self.PasswordInput.text(), self.PasswordInput))
+        self.passwordVisibilityButton.clicked.connect(lambda: PasswordVisibility(self.passwordInput.displayText(), self.passwordInput.text(), self.passwordInput))
 
         self.rePasswordVisibilityButton = QtWidgets.QPushButton(self)
         self.rePasswordVisibilityButton.setGeometry(QtCore.QRect(613, 339, 40, 26))
@@ -140,7 +140,7 @@ class Ui_ForgotPasswordPage(QtWidgets.QWidget):
         self.rePasswordVisibilityButton.setObjectName("rePasswordVisibilityButton")
 
         # calls function which either sets text to bullets or shows real text
-        self.rePasswordVisibilityButton.clicked.connect(lambda: PasswordVisibility(self.RePasswordInput.displayText(), self.RePasswordInput.text(), self.RePasswordInput))
+        self.rePasswordVisibilityButton.clicked.connect(lambda: PasswordVisibility(self.rePasswordInput.displayText(), self.rePasswordInput.text(), self.rePasswordInput))
         
         self.retranslateUi()
         QtCore.QMetaObject.connectSlotsByName(self)
@@ -148,20 +148,20 @@ class Ui_ForgotPasswordPage(QtWidgets.QWidget):
     
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        self.WelcomeLabel.setText(_translate("forgotPasswordPage", "Chess Teacher"))
-        self.ResetPasswordLabel.setText(_translate("forgotPasswordPage", "Reset Password:"))
-        self.ResetPasswordButton.setText(_translate("forgotPasswordPage", "Reset"))
+        self.welcomeLabel.setText(_translate("forgotPasswordPage", "Chess Teacher"))
+        self.resetPasswordLabel.setText(_translate("forgotPasswordPage", "Reset Password:"))
+        self.resetPasswordButton.setText(_translate("forgotPasswordPage", "Reset"))
 
 
     def resetUi(self):
-        self.UsernameInput.setText("")
-        self.EmailInput.setText("")
+        self.usernameInput.setText("")
+        self.emailInput.setText("")
 
-        self.PasswordInput.setText("")
-        self.PasswordInput.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.passwordInput.setText("")
+        self.passwordInput.setEchoMode(QtWidgets.QLineEdit.Password)
 
-        self.RePasswordInput.setText("")
-        self.RePasswordInput.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.rePasswordInput.setText("")
+        self.rePasswordInput.setEchoMode(QtWidgets.QLineEdit.Password)
 
-        self.ErrorLabel.setHidden(True)
+        self.errorLabel.setHidden(True)
     

@@ -122,6 +122,7 @@ class Ui_dailyStage3(QtWidgets.QWidget):
         self.backMoveButton.setText(_translate("dailyStage3", "<<-"))
         self.forwardMoveButton.setText(_translate("dailyStage3", "->"))
 
+    # reset the board to the start of the puzzle
     def reRunPgn(self, dashboard):
         dashboard.puzzleChessBoard.resetUi()
         dashboard.puzzleChessBoard.coverScreen.setHidden(False)
@@ -130,6 +131,7 @@ class Ui_dailyStage3(QtWidgets.QWidget):
 
         self.index = 0
 
+    # run the next move in the solution
     def nextMove(self, dashboard):
         if self.index < len(self.solution):
             dashboard.puzzleChessBoard.runPgnTurn(dashboard.puzzleChessBoard.moveNumber, self.solution, self.index)

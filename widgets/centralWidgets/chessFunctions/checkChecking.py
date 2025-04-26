@@ -2,77 +2,6 @@
 # These functions enable the board to see whether the king is in danger 
 # or whether a piece is blocking a check
 
-'''
-def isBlockingCheck(colour, domain, currentPosition):
-
-    # returns False if the function is called upon the king piece
-    if str(getattr(domain, str(currentPosition)).occupied) == (str(colour) + "King"):
-        return False
-
-    #print("checking pin on: " + currentPosition)
-    # temporarily sets the current position's tile to false
-    # -> allows check for check to see if moving the piece would cause a check on its own king
-    temp = getattr(domain, str(currentPosition)).occupied
-    #print("contents of current position: " + temp)
-
-    getattr(domain, str(currentPosition)).occupied = "False"
-
-    # position contains the value of the King's position for the blockableCheck function
-    kingPosition = getattr(domain, (str(colour) + "King")).pos
-
-    # only uses the first two positions within direction array as distance is only used to 
-    # finds the direction between current position and king
-    direction = onSameLine(currentPosition, kingPosition)
-
-    # if onSameLine returns false, it means the two pieces do not share a line
-    # thus the piece cannot block / be pinned to the king
-    if direction == False:
-        # resets the value of occupied back to original
-        getattr(domain, str(currentPosition)).occupied = temp
-        #print("reset occupation: " + getattr(domain, str(currentPosition)).occupied)
-
-        return False
-        
-    # calls blockableCheck to see whether the king is in danger
-    attackers = blockableChecks(kingPosition, colour, domain, direction[0], direction[1])
-
-    # resets the value of occupied back to original
-    getattr(domain, str(currentPosition)).occupied = temp
-    #print("reset occupation: " + getattr(domain, str(currentPosition)).occupied)
-
-    #print("direction from piece to king: ")
-    #print(direction)
-
-    # if there is no attackers on the king then false can be returned
-    if len(attackers) == 0:
-        return False
-    
-    else:
-        if len(attackers) == 1:
-            directionToAttacker = onSameLine(currentPosition, attackers[0][1])
-            #print("direction from piece to attacker: ")
-            #print(directionToAttacker)
-
-            if directionToAttacker == False:
-                return True
-            
-            elif directionToAttacker[0] * -1 == direction[0] and directionToAttacker[1] * -1 == direction[1]:
-                return True
-            
-            return False
-        blocks = []
-
-        for i in attackers:
-            directionToAttacker = onSameLine(currentPosition, attackers[i][1])
-
-            if directionToAttacker == False:
-                blocks.append(False)
-
-            elif directionToAttacker[0] * -1 == direction[0] and directionToAttacker[1] * -1 == direction[1]:
-                pass'''
-
-
-
 
 # check for check gets the position of the king and returns a list of all attacking pieces
 def checkForCheck(colour, domain, *args):
@@ -108,8 +37,6 @@ def checkForCheck(colour, domain, *args):
 
 
 
-
-
 def addToAttackers(attackers, blockingPiece, validPieces, colour):
     if blockingPiece.moveset in validPieces and blockingPiece.colour != colour:
         # if so it adds it to the attackers list
@@ -119,15 +46,11 @@ def addToAttackers(attackers, blockingPiece, validPieces, colour):
 
 
 
-
-# <--------- New Function --------->
-
 # checks all regular / blockable checks
 def blockableChecks(position, colour, domain, xDirection, yDirection):
     blocked = False
     attackers = []
     currentPos = position
-
 
     # sets starting co-ordinate
     currentPos = str(chr(ord(position[0]) + xDirection)) + str(int(position[1]) + yDirection)

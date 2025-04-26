@@ -5,12 +5,20 @@ from PyQt5.QtWidgets import QLabel, QApplication
 import time
 import re
 
+
+# pgn standards are as follows
+# first portion: piece mnemonic
+# -> a file/rank can be added to this if two pieces can make the same move
+# second portion: x if a piece has been taken
+# tile target
+# mnemonic denoting check/mate
 def parsePGN(pgn):
     moveset = []
     
+    # define typical pattern for pgn
     moveNumberPattern = r'^\d{1,3}\.$'
-    amountDeleted = 0
 
+    # split move list into pgn
     newPgn = [item for item in pgn if not re.match(moveNumberPattern, item)]
 
     solutionPattern = r'^[a-z]\d[a-z]\d$'
@@ -20,12 +28,14 @@ def parsePGN(pgn):
 
         promotionInfo = ""
 
+        # find move colour
         if int(index / 2) == index / 2:
             colour = "white"
 
         else:
             colour = "black"
 
+        # remove any move numbers if move number is connected to move
         if len(move) > 2 and move[1] == ".":
             move = move[2:]
 
@@ -35,6 +45,8 @@ def parsePGN(pgn):
         elif len(move) > 4 and move[3] == ".":
             move = move[4:]
 
+
+        # solution patterns may follow non-pgn standards such as e4e5 rather than any piece info
         if re.match(otherSolutionPattern, move):
             endPosition = move[-3:-1]
             piece = move[:2]
@@ -47,6 +59,7 @@ def parsePGN(pgn):
             middleInfo = ""
             promotionInfo = ""
 
+        # check for castling king side
         elif move == "O-O":
             if colour == "white":
                 endPosition = "g1"
@@ -57,6 +70,7 @@ def parsePGN(pgn):
             piece = "K"
             middleInfo = ""
 
+        # check for castling queen side
         elif move == "O-O-O":
             if colour == "white":
                 endPosition = "c1"
@@ -69,6 +83,7 @@ def parsePGN(pgn):
         
         else:
             
+            # check for promotion
             if move[-2:] in ("=Q", "=N"):
                 endPosition = move[-4:-2]
 
@@ -76,6 +91,7 @@ def parsePGN(pgn):
 
                 move = move[:-2]
 
+            # check for promotion and check or checkmate
             elif move[-3:] in ("=Q+", "=N+", "=Q#", "=N#"):
                 endPosition = move[-5:-3]
 
@@ -83,6 +99,7 @@ def parsePGN(pgn):
 
                 move = move[:-3]
 
+            # check for check or checkmate
             elif move[-1] in ("+", "#"):
                 endPosition = move[-3:-1]
 
@@ -95,6 +112,7 @@ def parsePGN(pgn):
                 piece = move[0]
                 middleInfo = move[1: -2]
 
+            # if there is no piece in the pgn, it relates to a pawn
             else:
                 piece = "P"
                 middleInfo = move[:-2]
@@ -104,6 +122,7 @@ def parsePGN(pgn):
 
         moveNumberPattern = r'^\d{1,3}\.$'
 
+        # append to moveset unless the move relates to end of game message
         if not move in ("1-0", "0-1", "1/2-1/2") and not re.match(moveNumberPattern, move):
 
             moveset.append([colour, piece, middleInfo, endPosition, promotionInfo])
@@ -111,9 +130,12 @@ def parsePGN(pgn):
     return moveset
         
 
+
+# this function focusses on getting the correct piece from the information gathered in parsepGN
 def getPiece(domain, colour, pieceType, piecePosition, endPosition):
     tileFormat = r'^[a-z]\d$'
 
+    # solutions which do not follow pgn will pass through a tile as the piece type
     if re.match(tileFormat, pieceType):
         return getattr(domain, pieceType).occupied
 
@@ -123,6 +145,8 @@ def getPiece(domain, colour, pieceType, piecePosition, endPosition):
 
     possiblePieces = []
 
+    # part of the function loops through to find all the possible pieces that could relate to the piece acronym
+    # -> for knights and queens, pawns must also be checked just in case they have been promoted
     if piece == "Pawn":
         for i in range(65, 73):
             pieceToCheck = getattr(domain, colour + chr(i) + "Pawn")
@@ -167,6 +191,7 @@ def getPiece(domain, colour, pieceType, piecePosition, endPosition):
 
     refinedPossiblePieces = []
 
+    # refine the possible pieces for whether a disambiguation has been passed through in piecePosition
     for possiblePiece in possiblePieces:
         pieceObject = getattr(domain, possiblePiece)
 
@@ -176,6 +201,8 @@ def getPiece(domain, colour, pieceType, piecePosition, endPosition):
     functions = {"Pawn": checkMovePawn, "Knight": checkMoveKnight, "King": checkMoveKing,
                     "Queen": checkMoveQueen, "Bishop": checkMoveDiagonal, "Rook": checkMoveStraight}
 
+    # check whether each piece in the refined set is able to make the move to the target position
+    # -> by this point, only one piece can and it is thus returned
     for refinedPiece in refinedPossiblePieces:
         refinedPieceObject = getattr(domain, refinedPiece)
 
@@ -189,6 +216,9 @@ def getPiece(domain, colour, pieceType, piecePosition, endPosition):
             if position == endPosition:
                 return refinedPiece
 
+
+
+# simulates the clicks needed to move a piece from the pgn
 def makeMove(domain, piece, target, promotionInfo):
     print(f"piece: {piece}")
     print(f"target: {target}")
@@ -208,6 +238,7 @@ def makeMove(domain, piece, target, promotionInfo):
     targetReleaseEvent = QMouseEvent(QMouseEvent.MouseButtonRelease, targetObject.rect().center(), Qt.LeftButton, Qt.LeftButton, Qt.NoModifier)
     targetObject.mouseReleaseEvent(targetReleaseEvent)
 
+    # necessary for if a pawn needs to be promoted
     if pieceObject.moveset == "Pawn" and ((pieceObject.colour == "white" and target[1] == "8") or (pieceObject.colour == "black" and target[1] == "1")):
         if promotionInfo == "N":
             buttonObject = getattr(domain, "knightButton")

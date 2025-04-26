@@ -50,21 +50,25 @@ def checkForCheckMate(colour, domain, attackers, moveNumber):
                     
             return True
         
+
+
 def checkForStaleMate(colour, domain, attackers, moveNumber):
+    # find the position of the king
     kingPos = getattr(domain, colour + "King").pos
 
     if len(attackers) != 0:
+        # can't be a stalemate if there is a check
         return False
     
     elif len(checkMoveKing(colour, kingPos, domain, attackers)) != 0:
+        # if theres possible king moves return false
         return False
     
     else:
         validTiles = allPieceMoves(colour, domain, attackers, moveNumber)
-        #print("ALL PIECE MOVES:")
-        #print(validTiles)
 
         if len(validTiles) == 0:
+            # if theres no possible moves at all return true
             return True
         
         else:
@@ -103,6 +107,7 @@ def allPieceMoves(colour, domain, attackers, moveNumber):
 
 
 def remainingPieces(domain):
+    # define all possible piece suffixes
     pieces = ["ARook", "BKnight", "CBishop", "Queen", "FBishop", "GKnight", "HRook", "APawn",
                 "BPawn", "CPawn", "DPawn", "EPawn", "FPawn", "GPawn", "HPawn"]
     
@@ -110,6 +115,7 @@ def remainingPieces(domain):
 
     piecesLeft = []
 
+    # loop through all pieces to see what is remaining
     for i in range(0, 2):
         for i in pieces:
             piece = getattr(domain, colour + i)

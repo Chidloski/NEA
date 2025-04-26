@@ -21,13 +21,13 @@ def secondaryLogIn(widget, username, password, state, baseWindow):
             
             # if no record is found
             if len(data) == 0:
-                widget.errorLabel.setText("Incorrect username or password")
                 widget.errorLabel.setHidden(False)
+                widget.errorLabel.setText("Incorrect username or password")
 
             # if base user tries to login
             elif data[0]["id"] == baseWindow.userId:
-                widget.errorLabel.setText("User cannot play themselves")
                 widget.errorLabel.setHidden(False)
+                widget.errorLabel.setText("User cannot play themselves")
 
             else:
                 # fetches hashed password
@@ -40,8 +40,8 @@ def secondaryLogIn(widget, username, password, state, baseWindow):
 
                 # if password doesn't match
                 if not verifyPassword(hashedPassword, password):
-                    widget.errorLabel.setText("Incorrect username or password")
                     widget.errorLabel.setHidden(False)
+                    widget.errorLabel.setText("Incorrect username or password")
 
                 # populates all necessary elements with new logged in user
                 else:
@@ -303,10 +303,8 @@ def createMatch(whiteId, blackId):
 def finaliseMatch(dashboard, matchId, outcome, pgn):
     query = {"id": matchId}
 
+    # fetch the record
     match = getData("matches", **query)
-
-    #print(matchId)
-    #print(match)
 
     match = match[0]
 

@@ -999,15 +999,19 @@ class Ui_puzzleChessBoard(QtWidgets.QWidget):
         self.returnPgn(self.pgn)
 
 
+    # runs a whole moveset from a pgn
     def runPgn(self, pgn):
-
+        # sets robotMove to true to stop any unwanted effects
         self.robotMove = True
 
+        # if string isnt a list make it a list
         if isinstance(pgn, str):
             pgn = pgn.split()
 
+        # parse it to get all the info
         moveset = parsePGN(pgn)
 
+        # make a move for each turn
         for turn in moveset:
             pieceToMove = getPiece(self, turn[0], turn[1], turn[2], turn[3])
 
@@ -1018,8 +1022,10 @@ class Ui_puzzleChessBoard(QtWidgets.QWidget):
         print(f"this is the pgn {pgn}")
 
 
-
+    # runs a singular move of a pgn
+    # runs the first move unless the index is passed in
     def runPgnTurn(self, colour, pgn, index=0):
+        # find the colour
         if isinstance(colour, int):
             if colour / 2 == int(colour / 2):
                 colour = "white"
@@ -1032,23 +1038,26 @@ class Ui_puzzleChessBoard(QtWidgets.QWidget):
         if isinstance(pgn, str):
             pgn = pgn.split()
 
-        print(f"PGN BEFORE BEING PASSED IN {pgn}")
-
         moveset = parsePGN(pgn)
 
-        turn = moveset[index]
+        # runs the move if index is in bounds
+        if index < len(moveset):
+            turn = moveset[index]
 
-        pieceToMove = getPiece(self, colour, turn[1], turn[2], turn[3])
+            pieceToMove = getPiece(self, colour, turn[1], turn[2], turn[3])
 
-        makeMove(self, pieceToMove, turn[3], turn[4])
+            makeMove(self, pieceToMove, turn[3], turn[4])
 
         self.robotMove = False
 
 
+    # parse function for fen formats
     def runFen(self, fen):
+        # set all pieces to hidden
         for child in self.findChildren(piece):
             child.setHidden(True)
 
+            # ensures all pawns, kings, and rooks have necessary variables reset
             if child.objectName()[-4:] == "Pawn":
                 child.moveset = "Pawn"
                 child.hasMoved = True
@@ -1056,18 +1065,31 @@ class Ui_puzzleChessBoard(QtWidgets.QWidget):
             elif child.moveset in ("King", "Rook"):
                 child.hasMoved = True
 
+        # sets all tiles to unoccupied
         for child in self.findChildren(square):
             child.occupied = "False"
             child.enPassantActive = -2
+            child.setStyleSheet("")
 
+        # splits fen based upon spaces
         fenElements = fen.split()
 
+        # setup of tiles is the first position
         setup = fenElements[0]
+
+        # colour to move is the second position
         activeColour = fenElements[1]
+
+        # castling availabilities is the third position
         castlingAvailability = fenElements[2]
+
+        # en passant availabilities is the fourth position
         enPassant = fenElements[3]
+
+        # move number is the fourth position
         fullMove = fenElements[5]
 
+        # sets the correct half move number
         if activeColour == "w":
             moveNumber = (int(fullMove) * 2) - 2
             activeColour = "white"
@@ -1076,8 +1098,11 @@ class Ui_puzzleChessBoard(QtWidgets.QWidget):
             moveNumber = (int(fullMove) * 2) - 1
             activeColour = "black"
 
+        # splits first position into lines
         setupRanks = setup.split("/")
         
+        # set up all the piece counters ready to be inserted
+        # -> upper refers to white as in fen an upper case letter means white
         pieces = {
             "upper": {
                 "pawnCount": 0,
@@ -1109,19 +1134,24 @@ class Ui_puzzleChessBoard(QtWidgets.QWidget):
             }
         }
 
+        # set up mnemonic to piece dictionary
         pieceDirectory = {"P": "pawn", "R": "rook", "N": "knight", "B": "bishop", "Q": "queen", "K": "king"}
 
         file = 0
 
+        # loop through lines
+        # fen uses a mnemonic and will then use a number to say the amount of empty spaces between that and the next piece
         for i in range(8, 0, -1):
             row = setupRanks[8 - i]
             rank = 0
 
             for y in list(row):
+                # if digit move rank to the next square with a piece on it
                 if y.isdigit():
                     rank += (int(y) - 1)
 
                 else:
+                    # target the correct colour
                     if y == y.lower():
                         refinedPieceDict = pieces["lower"]
                         colour = "black"
@@ -1130,15 +1160,20 @@ class Ui_puzzleChessBoard(QtWidgets.QWidget):
                         refinedPieceDict = pieces["upper"]
                         colour = "white"
 
+                    # find piece type
                     activePieceType = pieceDirectory[y.upper()]
 
+                    # find the actual piece based off of the counters
                     activePiece = refinedPieceDict[activePieceType][refinedPieceDict[f"{activePieceType}Count"]]
 
+                    # add to counter
                     refinedPieceDict[f"{activePieceType}Count"] += 1
 
+                    # set tile to occupied
                     tile = getattr(self, chr(ord('a') + rank) + str(i))
                     tile.occupied = activePiece
 
+                    # move piece to correct position
                     position = tile.pos()
                     xPosition = position.x() + 5
                     yPosition = position.y() + 5
@@ -1149,6 +1184,7 @@ class Ui_puzzleChessBoard(QtWidgets.QWidget):
                     activePiece.pos = chr(ord('a') + rank) + str(i)
                     activePiece.setHidden(False)
 
+                    # if the piece is a pawn on its starting row, set hasMove to false
                     if activePieceType == "pawn":
                         if row == 7 and colour == "black":
                             activePiece.hasMoved = False
@@ -1158,7 +1194,7 @@ class Ui_puzzleChessBoard(QtWidgets.QWidget):
 
                 rank += 1
 
-        
+        # initiates the correct castling
         for i in list(castlingAvailability):
             if i != "-":
                 if i == i.upper():
@@ -1178,11 +1214,11 @@ class Ui_puzzleChessBoard(QtWidgets.QWidget):
                     getattr(self, f"{colour}HRook").hasMoved = False
 
 
-
+        # set en passant on the correct tile if it is active
         if enPassant != "-":
             getattr(self, enPassant).enPassantActive = moveNumber - 1
 
-
+        # calculate attackers
         attackers = checkForCheck(activeColour, self)
 
         if len(attackers) > 0:

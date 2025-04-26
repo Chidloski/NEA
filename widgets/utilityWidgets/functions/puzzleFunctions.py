@@ -30,6 +30,8 @@ def getDailyPuzzle():
         # if unsuccessful, code is printed to show error
         return statCode, [], [], "", "", 0
 
+
+# fetch puzzle and populate widget
 def goToDaily(dashboard):
     queryStatus, moveList, solution, tournament, matchup, puzzleRating = getDailyPuzzle()
 
@@ -40,6 +42,7 @@ def goToDaily(dashboard):
 
         newSolution = getSolution(dashboard, moveList, solution)
 
+        # if puzzle isnt finished load stage 2
         if len(record) == 0 or record[0]["finished"] == False:
             if len(record) == 0:
                 newRecord = {
@@ -64,6 +67,7 @@ def goToDaily(dashboard):
         print("query fail")
 
 
+# populate stage 2
 def goToDailyStage2(dashboard, moveList, solution, tournament, matchup, puzzleRating):
     dashboard.dailyStage2Widget.resetUi()
 
@@ -99,6 +103,7 @@ def goToDailyStage2(dashboard, moveList, solution, tournament, matchup, puzzleRa
     dashboard.puzzleStackedWidget.setCurrentIndex(1)
 
 
+# populate stage 3
 def goToDailyStage3(dashboard, moveList, solution, outcome, tournament, matchup, puzzleRating):
     dashboard.dailyStage3Widget.resetUi()
 
@@ -267,7 +272,7 @@ def newMove(dashboard, pgn):
         activeWidget.currentMove += 1
 
 
-
+# populate filter widgets
 def goToPuzzleWidget(dashboard):
     dashboard.puzzleChessBoard.resetUi()
     dashboard.puzzleChessBoard.coverScreen.setHidden(False)
@@ -275,11 +280,23 @@ def goToPuzzleWidget(dashboard):
     dashboard.puzzleWidget.errorLabel.setHidden(True)
     dashboard.puzzleWidget.filterPuzzles = []
 
+    dashboard.filterStage2Widget.puzzle1Button.setStyleSheet("")
+    dashboard.filterStage2Widget.puzzle2Button.setStyleSheet("")
+    dashboard.filterStage2Widget.puzzle3Button.setStyleSheet("")
+    dashboard.filterStage2Widget.puzzle4Button.setStyleSheet("")
+    dashboard.filterStage2Widget.puzzle5Button.setStyleSheet("")
+
+    dashboard.filterStage3Widget.puzzle1Button.setStyleSheet("")
+    dashboard.filterStage3Widget.puzzle2Button.setStyleSheet("")
+    dashboard.filterStage3Widget.puzzle3Button.setStyleSheet("")
+    dashboard.filterStage3Widget.puzzle4Button.setStyleSheet("")
+    dashboard.filterStage3Widget.puzzle5Button.setStyleSheet("")
+
     dashboard.puzzleWidget.populate(dashboard.baseWindow.userId)
     dashboard.puzzleStackedWidget.setCurrentIndex(0)
 
 
-
+# run the pgn of the solution to find the solution in pgn format
 def getSolution(dashboard, moveList, solution):
     dashboard.puzzleChessBoard.resetUi()
 
@@ -301,6 +318,7 @@ def getSolution(dashboard, moveList, solution):
     return reformattedSolution
 
 
+# run solution to get solution in pgn terms
 def getFenSolution(dashboard, fen, solution):
     dashboard.puzzleChessBoard.resetUi()
     dashboard.puzzleChessBoard.runFen(fen)
@@ -324,6 +342,8 @@ def getFenSolution(dashboard, fen, solution):
     return reformattedSolution
 
 
+# populate stage 2 if no error
+# insert puzzles into playerDB and populate
 def goToFilterStage2(dashboard, stage1):
     puzzles = stage1.getParameters(dashboard)
 
@@ -357,6 +377,8 @@ def goToFilterStage2(dashboard, stage1):
         dashboard.puzzleStackedWidget.setCurrentIndex(3)
 
 
+# switch to a different puzzle
+# set all buttons to false before setting correct ones to true
 def switchPuzzles(dashboard, index):
     if getattr(dashboard.filterStage2Widget, f"puzzle{index + 1}Button").active == False:
         puzzle = dashboard.puzzleWidget.filterPuzzles[index]

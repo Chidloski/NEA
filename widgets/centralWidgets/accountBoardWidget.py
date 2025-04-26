@@ -121,11 +121,12 @@ class Ui_accountBoard(QtWidgets.QWidget):
         self.emailLabel.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
         self.emailLabel.setObjectName("emailLabel")
 
-        self.errorLabel = AutoResizingLabel(13, False, parent=self)
-        self.errorLabel.setGeometry(240, 143, 210, 32)
+        self.errorLabel = AutoResizingLabel(13, False, parent=self, wordWrap=True)
+        self.errorLabel.setGeometry(240, 143, 300, 30)
         self.errorLabel.setFont(font)
+        self.errorLabel.setWordWrap(True)
         self.errorLabel.setStyleSheet("color: rgb(175, 61, 50)")
-        self.errorLabel.setText("")
+        self.errorLabel.setText("Username between 5-16 characters. Allowed special characters: _, -, .")
         self.errorLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.errorLabel.setObjectName("errorLabel")
         self.errorLabel.setHidden(True)
@@ -423,8 +424,10 @@ class Ui_accountBoard(QtWidgets.QWidget):
 
 
     def cycle(self, direction, currentIndex, size, type):
+        # take a modulus to ensure no out of bounds error
         currentIndex = (currentIndex + direction) % size
 
+        # multiple scrolls so ensures right one
         if type == "avatar":
             self.populateAvatar(currentIndex)
             self.avatarIndex = currentIndex
@@ -438,7 +441,9 @@ class Ui_accountBoard(QtWidgets.QWidget):
             self.pieceIndex = currentIndex
 
 
+    # switch colour of chess board
     def populateTheme(self, index):
+        # gets correct colour from playerDB
         query = {"id": index}
         themeDetails = getData("themes", **query)
 
@@ -465,7 +470,9 @@ class Ui_accountBoard(QtWidgets.QWidget):
         self.avatarLabel.setPixmap(QPixmap("Resources/UserIcons/avatar" + str(index) + ".png"))
 
 
+    # switches piece style
     def populatePieces(self, index):
+        # gets correct style from playerDB
         query = {"id": index}
         pieceFolder = getData("pieces", **query)
 
@@ -479,6 +486,7 @@ class Ui_accountBoard(QtWidgets.QWidget):
         self.pawnLabel.setPixmap(QPixmap("Resources/ChessIcons/" + pieceFolder + "/BlackPawn.png"))
 
 
+    # type will often resemble button apart from wingdings or dyslexic
     def populateFonts(self, type):
         if type == "Wingdings 3":
             font = "wingdings"
@@ -487,6 +495,7 @@ class Ui_accountBoard(QtWidgets.QWidget):
             font = "dyslexicFont"
 
         else:
+            # puts font into camel case
             fontWords = type.split()
             font = fontWords[0].lower() + ''.join(word.title() for word in fontWords[1:])
 
@@ -566,6 +575,7 @@ class Ui_accountBoard(QtWidgets.QWidget):
 
     
 
+    # handles when the edit account details button is pressed
     def editAccountDetails(self, userId):
         if self.accountEditButton.text() == "Change Details":
             self.usernameInput.setHidden(False)
@@ -584,26 +594,32 @@ class Ui_accountBoard(QtWidgets.QWidget):
             print(self.emailInput.text())
 
         else:
+            # handles whether any input is blank
             if len(self.usernameInput.text()) == 0 or len(self.nameInput.text()) == 0 or len(self.emailInput.text()) == 0:
                 self.errorLabel.setText("Please ensure all fields are filled")
                 self.errorLabel.setHidden(False)
 
+            # handles an invalid email
             elif self.emailValidation(self.emailInput.text()) == False:
                 self.errorLabel.setText("Invalid email address")
                 self.errorLabel.setHidden(False)
 
+            # handles an invalid username
             elif self.usernameValidation(self.usernameInput.text()) == False:
-                self.errorLabel.setText("Username between 5-16 characters \n Allowed special characters: _, -, .")
+                self.errorLabel.setText("Username between 5-16 characters. Allowed special characters: _, -, .")
                 self.errorLabel.setHidden(False)
 
+            # handles an already used email
             elif isUnique("email", self.emailInput.text(), userId) == False:
                 self.errorLabel.setText("Email already taken")
                 self.errorLabel.setHidden(False)
 
+            # handles an already used username
             elif isUnique("username", self.usernameInput.text(), userId) == False:
                 self.errorLabel.setText("Username already taken")
                 self.errorLabel.setHidden(False)
 
+            # updates user record
             else:
                 query = {"id": userId}
                 userData = getData("users", **query)

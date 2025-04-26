@@ -1,1 +1,74 @@
-[]
+[
+    {
+        "capacity": 3,
+        "id": 0,
+        "type": "Round Robin",
+        "winnerId": "guest"
+    },
+    {
+        "capacity": 4,
+        "id": 1,
+        "type": "Knockout",
+        "winnerId": 0
+    },
+    {
+        "capacity": 5,
+        "id": 2,
+        "type": "Knockout",
+        "winnerId": "guest"
+    },
+    {
+        "capacity": 4,
+        "id": 3,
+        "type": "Knockout",
+        "winnerId": "unfinished"
+    },
+    {
+        "capacity": 3,
+        "id": 4,
+        "type": "Round Robin",
+        "winnerId": "guest"
+    },
+    {
+        "capacity": 4,
+        "id": 5,
+        "type": "Knockout",
+        "winnerId": "unfinished"
+    },
+    {
+        "capacity": 4,
+        "id": 6,
+        "type": "Knockout",
+        "winnerId": "unfinished"
+    },
+    {
+        "capacity": 4,
+        "id": 7,
+        "type": "Round Robin",
+        "winnerId": "unfinished"
+    },
+    {
+        "capacity": 4,
+        "id": 8,
+        "type": "Knockout",
+        "winnerId": "unfinished"
+    },
+    {
+        "capacity": 4,
+        "id": 9,
+        "type": "Knockout",
+        "winnerId": "unfinished"
+    },
+    {
+        "capacity": 4,
+        "id": 10,
+        "type": "Knockout",
+        "winnerId": "unfinished"
+    },
+    {
+        "capacity": 3,
+        "id": 11,
+        "type": "Round Robin",
+        "winnerId": "unfinished"
+    }
+]

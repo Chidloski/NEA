@@ -1,18 +1,18 @@
 [
     {
-        "blackPlayer": 0,
+        "blackPlayer": 1,
         "finished": true,
         "id": 0,
-        "pgn": " 1. e4 c6 2. Qf3 b6 3. Bc4 b5 4. Qxf7#",
-        "whitePlayer": 1,
-        "winner": 1
+        "pgn": " 1. e4 a6 2. Qf3 a5 3. Bc4 a4 4. Qxf7#",
+        "whitePlayer": 0,
+        "winner": 0
     },
     {
-        "blackPlayer": "guest",
+        "blackPlayer": 0,
         "finished": true,
         "id": 1,
-        "pgn": " 1. Nf3 f6 2. g3 d5 3. Bg2 e6 4. O-O f5 5. Ne5 c6 6. Bxd5 xd5 7. Nxc6 xc6 8. d4 Qd6 9. e3 Qc5 10. xc5 Bd7 11. Qxd5 xd5 12. e4 xe4 13. f3 Bb5 14. xe4 xe4 15. c4 Nc6 16. xb5 a6 17. xa6 Rb8 18. Bf4 g6 19. Bxb8 Ne7 20. a7 Bg7 21. a8=Q Kd8 22. Ba7+ Nc8 23. Qxe4 Bxb2 24. Qxg6 Bxa1 25. Qxh7 Nf6 26. Qxh8+ Kc7 27. Nd2 Nh7 28. Rxa1 Kd7 29. Qxh7+ Kd8 30. Bb6+ Nxb6 31. Qb7 Ke8 32. Qxb6 Kf8 33. Qb7 Kg8 34. Qc7 Kh8 35. Qf7",
-        "whitePlayer": 0,
+        "pgn": " 1. e4 e5 2. g4 f6 3. Nf3 f5 4. xf5 e4 5. Bg2 xf3 6. Bxf3 d5 7. O-O c6 8. Bxd5 xd5 9. c4 xc4 10. d3 Qxd3 11. Qxd3 xd3 12. b4 b5 13. Bf4 Na6 14. Bd6 Bxd6 15. f6 xf6 16. g5 xg5 17. Re1+ Kf7 18. Nd2 Bxb4 19. Rb1 g4 20. Rxb4 g3 21. xg3 Kf8 22. g4 Nf6 23. g5 Ne4 24. Rxe4 h5 25. xh6 Rg8+ 26. Rg4 Be6 27. f3 Rxg4+ 28. xg4 Bxg4 29. h7 Nc7 30. Rxg4 Nd5 31. h8=Q+ Kf7 32. Qxa8 Nf4 33. Rxf4+ Kg7 34. Nc4 xc4 35. Rxc4 a6 36. Qxa6 d2 37. Rc1 d1=N 38. Rxd1 Kg8 39. Qa7 Kh8 40. Qf7",
+        "whitePlayer": "guest",
         "winner": "draw"
     },
     {
@@ -30,5 +30,189 @@
         "pgn": " 0-1",
         "whitePlayer": 0,
         "winner": "guest"
+    },
+    {
+        "blackPlayer": "",
+        "finished": true,
+        "id": 4,
+        "pgn": " 1. e4 a6 2. Qf3 a5 3. Bc4 a4 4. Qxf7#",
+        "whitePlayer": 1,
+        "winner": 1
+    },
+    {
+        "blackPlayer": 0,
+        "finished": true,
+        "id": 5,
+        "pgn": "",
+        "whitePlayer": "guest",
+        "winner": "draw"
+    },
+    {
+        "blackPlayer": "guest",
+        "finished": true,
+        "id": 6,
+        "pgn": " 0-1",
+        "whitePlayer": 1,
+        "winner": "guest"
+    },
+    {
+        "blackPlayer": "",
+        "finished": true,
+        "id": 7,
+        "pgn": "",
+        "whitePlayer": "guest",
+        "winner": "draw"
+    },
+    {
+        "blackPlayer": "",
+        "finished": true,
+        "id": 8,
+        "pgn": " 0-1",
+        "whitePlayer": "guest",
+        "winner": ""
+    },
+    {
+        "blackPlayer": "",
+        "finished": true,
+        "id": 9,
+        "pgn": "",
+        "whitePlayer": "guest",
+        "winner": "draw"
+    },
+    {
+        "blackPlayer": "guest",
+        "finished": false,
+        "id": 10,
+        "pgn": "",
+        "whitePlayer": 0,
+        "winner": "Unfinished match"
+    },
+    {
+        "blackPlayer": "guest",
+        "finished": false,
+        "id": 11,
+        "pgn": "",
+        "whitePlayer": 0,
+        "winner": "Unfinished match"
+    },
+    {
+        "blackPlayer": "guest",
+        "finished": false,
+        "id": 12,
+        "pgn": " 1. e4",
+        "whitePlayer": 0,
+        "winner": "Unfinished match"
+    },
+    {
+        "blackPlayer": "guest",
+        "finished": true,
+        "id": 13,
+        "pgn": "",
+        "whitePlayer": "guest",
+        "winner": "draw"
+    },
+    {
+        "blackPlayer": "",
+        "finished": true,
+        "id": 14,
+        "pgn": "",
+        "whitePlayer": "guest",
+        "winner": "draw"
+    },
+    {
+        "blackPlayer": "guest",
+        "finished": true,
+        "id": 15,
+        "pgn": "",
+        "whitePlayer": "guest",
+        "winner": "draw"
+    },
+    {
+        "blackPlayer": "guest",
+        "finished": true,
+        "id": 16,
+        "pgn": "",
+        "whitePlayer": "guest",
+        "winner": "draw"
+    },
+    {
+        "blackPlayer": "guest",
+        "finished": true,
+        "id": 17,
+        "pgn": "",
+        "whitePlayer": "guest",
+        "winner": "draw"
+    },
+    {
+        "blackPlayer": "guest",
+        "finished": true,
+        "id": 18,
+        "pgn": "",
+        "whitePlayer": "guest",
+        "winner": "draw"
+    },
+    {
+        "blackPlayer": "guest",
+        "finished": true,
+        "id": 19,
+        "pgn": " 0-1",
+        "whitePlayer": "guest",
+        "winner": "guest"
+    },
+    {
+        "blackPlayer": "",
+        "finished": true,
+        "id": 20,
+        "pgn": "",
+        "whitePlayer": "guest",
+        "winner": "draw"
+    },
+    {
+        "blackPlayer": "guest",
+        "finished": true,
+        "id": 21,
+        "pgn": "",
+        "whitePlayer": "guest",
+        "winner": "draw"
+    },
+    {
+        "blackPlayer": "",
+        "finished": true,
+        "id": 22,
+        "pgn": "",
+        "whitePlayer": "guest",
+        "winner": "draw"
+    },
+    {
+        "blackPlayer": "guest",
+        "finished": true,
+        "id": 23,
+        "pgn": "",
+        "whitePlayer": "guest",
+        "winner": "draw"
+    },
+    {
+        "blackPlayer": 0,
+        "finished": true,
+        "id": 24,
+        "pgn": " 0-1",
+        "whitePlayer": "guest",
+        "winner": 0
+    },
+    {
+        "blackPlayer": "guest",
+        "finished": true,
+        "id": 25,
+        "pgn": " 1. e4 b5 2. f4 f5 3. Qh5+ 1-0",
+        "whitePlayer": 0,
+        "winner": 0
+    },
+    {
+        "blackPlayer": 0,
+        "finished": true,
+        "id": 26,
+        "pgn": " 1. e4 d5 2. Qf3 c6 3. g4 h6 4. Bb5 d4 5. Qc3 d3 6. Qxc6+",
+        "whitePlayer": 1,
+        "winner": "draw"
     }
 ]

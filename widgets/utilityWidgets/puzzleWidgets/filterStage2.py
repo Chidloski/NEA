@@ -128,10 +128,11 @@ class Ui_filterStage2(QtWidgets.QWidget):
         self.puzzle5Button.setText(_translate("filterStage2", "2200"))
         self.quitButton.setText(_translate("filterStage2", "Quit"))
 
-
+    # populate widgets with corrcet info
     def populate(self, dashboard, index):
         self.index = index
 
+        # add record to puzzles
         userQuery = {"id": dashboard.baseWindow.userId}
         userData = getData("users", **userQuery)
         userData = userData[0]

@@ -212,7 +212,6 @@ class Ui_PuzzleWidget(QtWidgets.QWidget):
         self.getPuzzlesButton.setGeometry(QtCore.QRect(20, 370, 181, 41))
         self.getPuzzlesButton.setFont(font)
         self.getPuzzlesButton.setObjectName("getPuzzlesButton")
-        #self.getPuzzlesButton.clicked.connect(lambda: getFenSolution(dashboard, "8/2pq2k1/1p1p2r1/p1nPprNp/2P2p2/P1Q2P2/5KR1/6R1 b - - 5 34", ["d7e8", "g5e6", "c5e6", "g2g6", "e8g6", "g1g6", "g7g6", "d5e6"]))
         self.getPuzzlesButton.clicked.connect(lambda: goToFilterStage2(dashboard, self))
 
         font.setBold(False)
@@ -311,6 +310,7 @@ class Ui_PuzzleWidget(QtWidgets.QWidget):
         self.populate(userId)
 
 
+    # get daily puzzle and set rating slider to the correct rating
     def populate(self, userId):
         user = getData("users", id = userId)
         queryStatus, *_, matchup,  puzzleRating = getDailyPuzzle()
@@ -329,6 +329,7 @@ class Ui_PuzzleWidget(QtWidgets.QWidget):
             self.dailyRatingLabel.setText("Couldn't fetch puzzle")
 
 
+    # set up behaviour for toggles
     def toggleRadio(self, radioGroup, *args):
         sender = self.sender()
 
@@ -347,10 +348,12 @@ class Ui_PuzzleWidget(QtWidgets.QWidget):
            sender.status = "clicked"
 
 
+    # fetch filter puzzles
     def getParameters(self, dashboard):
         groups = [self.motifRadioGroup, self.specialRadioGroup, self.positionRadioGroup, self.playstyleRadioGroup]
         themes = []
 
+        # get filters if any button is selected
         for i in groups:
             if i.checkedButton():
                 themes.append(i.checkedButton().theme)
@@ -364,11 +367,9 @@ class Ui_PuzzleWidget(QtWidgets.QWidget):
             "count": str(numberOfPuzzles)
         }
 
+        # themes list must be in json format
         if themes:
             parameters["themes"] = json.dumps(themes)
-
-
-        print(parameters)
 
         heads = {
             "x-rapidapi-key": "fe146e7cbamshaa42abfb08774abp142fdajsnfd4934fbdbfd",
@@ -382,7 +383,7 @@ class Ui_PuzzleWidget(QtWidgets.QWidget):
         response = requests.get(url, headers=heads, params=parameters)
         statCode = response.status_code
 
-
+        # if the puzzles are fetched
         if statCode == 200:
             result = response.json()
             fetchedPuzzles = result["puzzles"]
@@ -408,6 +409,7 @@ class Ui_PuzzleWidget(QtWidgets.QWidget):
 
             return puzzles
 
+        # show error
         else: 
             self.errorLabel.setText("No Matching Puzzles found")
             self.errorLabel.setHidden(False)

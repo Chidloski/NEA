@@ -1,1 +1,138 @@
-[]
+[
+    {
+        "black": "",
+        "id": 0,
+        "matchId": 4,
+        "tournamentId": 0,
+        "type": "Round Robin",
+        "white": 1
+    },
+    {
+        "black": 0,
+        "id": 1,
+        "matchId": 5,
+        "tournamentId": 0,
+        "type": "Round Robin",
+        "white": "guest"
+    },
+    {
+        "black": "guest",
+        "id": 2,
+        "matchId": 6,
+        "tournamentId": 0,
+        "type": "Round Robin",
+        "white": 1
+    },
+    {
+        "black": "",
+        "id": 3,
+        "matchId": 7,
+        "tournamentId": 1,
+        "type": "Knockout",
+        "white": "guest"
+    },
+    {
+        "black": "",
+        "id": 4,
+        "matchId": 8,
+        "tournamentId": 1,
+        "type": "Knockout",
+        "white": "guest"
+    },
+    {
+        "black": "",
+        "id": 5,
+        "matchId": 9,
+        "tournamentId": 1,
+        "type": "Knockout",
+        "white": "guest"
+    },
+    {
+        "black": "guest",
+        "id": 6,
+        "matchId": 13,
+        "tournamentId": 2,
+        "type": "Knockout",
+        "white": "guest"
+    },
+    {
+        "black": "",
+        "id": 7,
+        "matchId": 14,
+        "tournamentId": 2,
+        "type": "Knockout",
+        "white": "guest"
+    },
+    {
+        "black": "guest",
+        "id": 8,
+        "matchId": 15,
+        "tournamentId": 2,
+        "type": "Knockout",
+        "white": "guest"
+    },
+    {
+        "black": "guest",
+        "id": 9,
+        "matchId": 16,
+        "tournamentId": 2,
+        "type": "Knockout",
+        "white": "guest"
+    },
+    {
+        "black": "guest",
+        "id": 10,
+        "matchId": 17,
+        "tournamentId": 4,
+        "type": "Round Robin",
+        "white": "guest"
+    },
+    {
+        "black": "guest",
+        "id": 11,
+        "matchId": 18,
+        "tournamentId": 4,
+        "type": "Round Robin",
+        "white": "guest"
+    },
+    {
+        "black": "guest",
+        "id": 12,
+        "matchId": 19,
+        "tournamentId": 4,
+        "type": "Round Robin",
+        "white": "guest"
+    },
+    {
+        "black": "",
+        "id": 13,
+        "matchId": 20,
+        "tournamentId": 6,
+        "type": "Knockout",
+        "white": "guest"
+    },
+    {
+        "black": "guest",
+        "id": 14,
+        "matchId": 21,
+        "tournamentId": 7,
+        "type": "Round Robin",
+        "white": "guest"
+    },
+    {
+        "black": "",
+        "id": 15,
+        "matchId": 22,
+        "tournamentId": 8,
+        "type": "Knockout",
+        "white": "guest"
+    },
+    {
+        "black": "guest",
+        "id": 16,
+        "matchId": 23,
+        "tournamentId": 9,
+        "type": "Knockout",
+        "white": "guest"
+    }
+]

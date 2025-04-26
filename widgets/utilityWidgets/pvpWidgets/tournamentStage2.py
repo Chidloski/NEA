@@ -322,11 +322,13 @@ class Ui_TournamentStage2(QtWidgets.QWidget):
                         [self.sevenLabel, self.player7Label],
                         [self.eightLabel, self.player8Label]]
         
+        # stores which users are active
         self.userValues = [[self.oneActive, self.oneFull], [self.twoActive, self.twoFull], 
                       [self.threeActive, self.threeFull], [self.fourActive, self.fourFull], 
                       [self.fiveActive, self.fiveFull], [self.sixActive, self.sixFull], 
                       [self.sevenActive, self.sevenFull], [self.eightActive, self.eightFull]]
         
+        # stores the details of users
         self.userDetails = [[self.player1id, self.player1username, self.player1rating],
                             [self.player2id, self.player2username, self.player2rating],
                             [self.player3id, self.player3username, self.player3rating],
@@ -355,6 +357,7 @@ class Ui_TournamentStage2(QtWidgets.QWidget):
         self.secondaryUserRadioButton.setFocusPolicy(QtCore.Qt.NoFocus)
 
 
+    # set the correct amount of players to be active
     def setActivePlayers(self, capacity):
         for i in range(0, capacity):
             for y in self.userElements[i]:
@@ -411,6 +414,7 @@ class Ui_TournamentStage2(QtWidgets.QWidget):
         self.errorLabel.setHidden(True)
 
 
+    # switch the inputs from secondary user to guest
     def switchInputs(self, type):
         self.usernameInput.setHidden(type)
         self.passwordInput.setHidden(type)
@@ -556,8 +560,6 @@ class Ui_TournamentStage2(QtWidgets.QWidget):
         self.guestNameInput.setHidden(True)
         self.userTypeLabel.setHidden(True)
         self.userLabel.setHidden(True)
-
-
 
 
     def retranslateUi(self):

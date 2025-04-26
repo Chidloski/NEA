@@ -6,14 +6,14 @@ def passwordHashing(password):
     salt = os.urandom(16)
     
     # Create the hash using SHA-256
-    hash_obj = hashlib.sha256(salt + password.encode())
-    password_hash = hash_obj.digest()
-    
+    hashObj = hashlib.sha256(salt + password.encode())
+    passwordHash = hashObj.digest()
+
     # Combine the salt and the password hash
-    salt_and_hash = salt + password_hash
+    saltHash = salt + passwordHash
     
     # Encode the result in hexadecimal
-    return salt_and_hash.hex()
+    return saltHash.hex()
 
 
 

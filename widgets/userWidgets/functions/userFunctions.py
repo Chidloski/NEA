@@ -8,10 +8,11 @@ def LogIn(self, baseWindow, user, password):
 
     record = getData("users", username = user)
 
+
     if len(record) == 0:
-        self.ErrorLabel.setText("Incorrect username")
-        self.ErrorLabel.setHidden(False)
-        self.ForgotPasswordButton.setHidden(False)
+        self.errorLabel.setText("Incorrect username")
+        self.errorLabel.setHidden(False)
+        self.forgotPasswordButton.setHidden(False)
 
     else:
         id = record[0]["id"]
@@ -23,10 +24,10 @@ def LogIn(self, baseWindow, user, password):
         hashedPassword = passwordRecord[0]["hash"]
 
         if verifyPassword(hashedPassword, password):
-            self.ErrorLabel.setHidden(True)
+            self.errorLabel.setHidden(True)
 
-            self.UsernameInput.setText("")
-            self.PasswordInput.setText("")
+            self.usernameInput.setText("")
+            self.passwordInput.setText("")
 
             baseWindow.userId = id
             baseWindow.stackedWidget.setCurrentIndex(3)
@@ -65,12 +66,14 @@ def LogIn(self, baseWindow, user, password):
 
             baseWindow.dashboard.changeFont(fontType)
 
+            baseWindow.dashboard.menu.playSection.simulateClick()
+
             
 
         else:
-            self.ErrorLabel.setText("Incorrect password")
-            self.ErrorLabel.setHidden(False)
-            self.ForgotPasswordButton.setHidden(False)
+            self.errorLabel.setText("Incorrect password")
+            self.errorLabel.setHidden(False)
+            self.forgotPasswordButton.setHidden(False)
 
 
 
@@ -88,8 +91,10 @@ def PasswordVisibility(displayText, actualText, target):
 
 def goToRegisterPage(baseWindow, user, password, registerPage):
     # pre populates fields in the register page
-    registerPage.UsernameInput.setText(user)
-    registerPage.PasswordInput.setText(password)
+    registerPage.usernameInput.setText(user)
+    registerPage.passwordInput.setText(password)
+
+    baseWindow.logInWidget.errorLabel.setHidden(True)
 
     # cycles to register widget
     baseWindow.stackedWidget.setCurrentIndex(1)
@@ -99,41 +104,41 @@ def goToRegisterPage(baseWindow, user, password, registerPage):
 # ensures all inputs are correct before adding data to table and cycling to login page
 def Register(self, baseWindow, user, fullName, email, password, rePassword):
     if len(user) == 0 or len(email) == 0 or len(fullName) == 0 or len(password) == 0 or len(rePassword) == 0:
-        self.ErrorLabel.setText("Please ensure all fields are filled")
-        self.ErrorLabel.setHidden(False)
+        self.errorLabel.setText("Please ensure all fields are filled")
+        self.errorLabel.setHidden(False)
 
     elif usernameValidation(user) == False:
-        self.ErrorLabel.setText("Username between 5-16 characters. Allowed special characters: _, -, .")
-        self.ErrorLabel.setHidden(False)
+        self.errorLabel.setText("Username between 5-16 characters. Allowed special characters: _, -, .")
+        self.errorLabel.setHidden(False)
 
     elif emailValidation(email) == False:
-        self.ErrorLabel.setText("Invalid email address")
-        self.ErrorLabel.setHidden(False)
+        self.errorLabel.setText("Invalid email address")
+        self.errorLabel.setHidden(False)
 
     elif passwordValidation(password) == False:
-        self.ErrorLabel.setText("Ensure password is at least 5 characters")
-        self.ErrorLabel.setHidden(False)
+        self.errorLabel.setText("Ensure password is at least 5 characters")
+        self.errorLabel.setHidden(False)
     
     elif doPasswordsMatch(password, rePassword) == False:
-        self.ErrorLabel.setText("Passwords do not match")
-        self.ErrorLabel.setHidden(False)
+        self.errorLabel.setText("Passwords do not match")
+        self.errorLabel.setHidden(False)
 
     elif isUnique("email", email) == False:
-        self.ErrorLabel.setText("Email already taken")
-        self.ErrorLabel.setHidden(False)
+        self.errorLabel.setText("Email already taken")
+        self.errorLabel.setHidden(False)
 
     elif isUnique("username", user) == False:
-        self.ErrorLabel.setText("Username already taken")
-        self.ErrorLabel.setHidden(False)
+        self.errorLabel.setText("Username already taken")
+        self.errorLabel.setHidden(False)
 
     else:
-        self.ErrorLabel.setHidden(True)
+        self.errorLabel.setHidden(True)
 
-        self.UsernameInput.setText("")
-        self.EmailInput.setText("")
-        self.FullNameInput.setText("")
-        self.PasswordInput.setText("")
-        self.RePasswordInput.setText("")
+        self.usernameInput.setText("")
+        self.emailInput.setText("")
+        self.fullNameInput.setText("")
+        self.passwordInput.setText("")
+        self.rePasswordInput.setText("")
 
         userData = {
             "username": user,
@@ -167,7 +172,7 @@ def Register(self, baseWindow, user, fullName, email, password, rePassword):
 
 def goToForgotPasswordPage(baseWindow, user, forgotPasswordPage):
     # pre-populates some fields in the forgot password widget
-    forgotPasswordPage.UsernameInput.setText(user)
+    forgotPasswordPage.usernameInput.setText(user)
 
     # cycles to the correct widget
     baseWindow.stackedWidget.setCurrentIndex(2)
@@ -177,27 +182,27 @@ def goToForgotPasswordPage(baseWindow, user, forgotPasswordPage):
 def ResetPassword(self, baseWindow, user, email, password, rePassword):
 
     if len(user) == 0 or len(email) == 0 or len(password) == 0:
-        self.ErrorLabel.setText("Please ensure all fields are filled")
-        self.ErrorLabel.setHidden(False)
+        self.errorLabel.setText("Please ensure all fields are filled")
+        self.errorLabel.setHidden(False)
 
     elif doPasswordsMatch(password, rePassword) == False:
-        self.ErrorLabel.setText("Passwords do not match")
-        self.ErrorLabel.setHidden(False)
+        self.errorLabel.setText("Passwords do not match")
+        self.errorLabel.setHidden(False)
 
     else:
         data = getData("users", username = user, email = email)
 
         if len(data) == 0:
-            self.ErrorLabel.setText("Invalid email or username")
-            self.ErrorLabel.setHidden(False)
+            self.errorLabel.setText("Invalid email or username")
+            self.errorLabel.setHidden(False)
 
         else:
-            self.ErrorLabel.setHidden(True)
+            self.errorLabel.setHidden(True)
 
-            self.UsernameInput.setText("")
-            self.EmailInput.setText("")
-            self.PasswordInput.setText("")
-            self.RePasswordInput.setText("")
+            self.usernameInput.setText("")
+            self.emailInput.setText("")
+            self.passwordInput.setText("")
+            self.rePasswordInput.setText("")
 
             id = data[0]["id"]
 

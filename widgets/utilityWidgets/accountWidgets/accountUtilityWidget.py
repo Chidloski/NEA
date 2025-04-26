@@ -29,15 +29,17 @@ class MatplotlibWidget(QWidget):
 
         self.setFixedSize(200, 280)
 
-    def plot_lines(self, x1, y1, x2, y2, xlabel="X Axis", ylabel="Y Axis", title="Two Line Graphs"):
+    # plot all lines on the graph
+    def plotLines(self, x1, y1, x2, y2, xlabel="X Axis", ylabel="Y Axis", title="Two Line Graphs"):
         rcParams['font.family'] = 'Fira Code'
 
-        background_color = get_default_qt_background_color(self)
+        background_color = getDefaultQtBackgroundColour(self)
 
+        # format both sets of x values
         x1 = [datetime.strptime(ts, "%Y-%m-%d %H:%M:%S") for ts in x1]
         x2 = [datetime.strptime(ts, "%Y-%m-%d %H:%M:%S") for ts in x2]
 
-        """Plots two line graphs with labels and automatic scaling."""
+        # plot both lines
         self.ax.clear()  # Clear previous plots
         self.ax.plot(x1, y1, label="Match Rating", color="blue", linestyle="-", marker="o")
         self.ax.plot(x2, y2, label="Puzzle Rating", color="red", linestyle="--", marker="x")
@@ -47,8 +49,6 @@ class MatplotlibWidget(QWidget):
         self.ax.set_title(title, fontsize=10, color="white", fontweight="bold")
 
         self.ax.tick_params(axis="y", labelsize=6, colors="white")
-
-        #self.ax.legend(fontsize=6, loc="best", frameon=False)
 
         for spine in self.ax.spines.values():
             spine.set_color("white")
@@ -71,10 +71,13 @@ class MatplotlibWidget(QWidget):
 
 
 
-def get_default_qt_background_color(widget):
+def getDefaultQtBackgroundColour(widget):
     palette = widget.palette()
-    color = palette.color(QPalette.Background)  # Get the default background color
-    return color.name()  # Convert to hex color code
+    # Get the default background color
+    color = palette.color(QPalette.Background)
+
+    # Convert to hex color code
+    return color.name()
 
 
 
@@ -164,7 +167,7 @@ class Ui_accountUtility(QtWidgets.QWidget):
         self.match5Label.setHidden(True)
 
 
-
+    # find all matches, and rating records
     def fetchStatistics(self, userId):
         matchRatingQuery = {"userId": userId}
         matchRatingRecords = getData("matchProgress", **matchRatingQuery)
@@ -186,6 +189,7 @@ class Ui_accountUtility(QtWidgets.QWidget):
         return matches, matchRatingRecords, puzzleRatingRecords
 
     
+    # find all unfinished matches
     def cleanse(self, list):
         newList = []
 
@@ -196,6 +200,7 @@ class Ui_accountUtility(QtWidgets.QWidget):
         return newList
 
 
+    # regular insertion sort
     def insertionSort(self, list):
         for i in range(1, len(list)):
             placed = False
@@ -219,11 +224,13 @@ class Ui_accountUtility(QtWidgets.QWidget):
         return list
     
 
-
+    # populate the widget
     def populate(self, userId):
+        # fetch stats
         matches, matchRatingRecords, puzzleRatingRecords = self.fetchStatistics(userId)
 
         for index, i in enumerate(matches):
+            # set the outcome
             if i["winner"] == "draw":
                 outcome = "Draw"
 
@@ -233,14 +240,14 @@ class Ui_accountUtility(QtWidgets.QWidget):
             else:
                 outcome = "Lost :("
 
+            # set the versus
             if i["whitePlayer"] == userId:
                 opponentId = i["blackPlayer"]
 
             else:
                 opponentId = i["whitePlayer"]
 
-            #print(i)
-
+            # find the opponent name
             if opponentId == "guest":
                 versus = "vs Guest, "
 
@@ -258,6 +265,7 @@ class Ui_accountUtility(QtWidgets.QWidget):
         puzzleX = []
         puzzleY = []
 
+        # fetch all necessary fields
         for i in puzzleRatingRecords:
             puzzleX.append(i["datetime"])
             puzzleY.append(i["puzzleRating"])
@@ -269,7 +277,7 @@ class Ui_accountUtility(QtWidgets.QWidget):
             matchX.append(i["datetime"])
             matchY.append(i["matchRating"])
 
-        self.matplotlib_widget.plot_lines(matchX, matchY, puzzleX, puzzleY, "Date / Time", "Rating", "Rating Stats.")
+        self.matplotlib_widget.plotLines(matchX, matchY, puzzleX, puzzleY, "Date / Time", "Rating", "Rating Stats.")
 
 
 

@@ -13,8 +13,8 @@ class Ui_LogInPage(QtWidgets.QWidget):
         self.setAutoFillBackground(False)
 
         # declares welcome label element
-        self.WelcomeLabel = AutoResizingLabel(70, True, parent = self)
-        self.WelcomeLabel.setGeometry(QtCore.QRect(200, 50, 600, 120))
+        self.welcomeLabel = AutoResizingLabel(70, True, parent = self)
+        self.welcomeLabel.setGeometry(QtCore.QRect(200, 50, 600, 120))
 
         # sets font
         font = QtGui.QFont()
@@ -23,104 +23,104 @@ class Ui_LogInPage(QtWidgets.QWidget):
         font.setBold(True)
 
         # populates the welcome label element
-        self.WelcomeLabel.setFont(font)
-        self.WelcomeLabel.setAlignment(QtCore.Qt.AlignCenter)
-        self.WelcomeLabel.setObjectName("WelcomeLabel")
+        self.welcomeLabel.setFont(font)
+        self.welcomeLabel.setAlignment(QtCore.Qt.AlignCenter)
+        self.welcomeLabel.setObjectName("WelcomeLabel")
 
         # declares the login button
-        self.LoginLabel = AutoResizingLabel(24, True, parent = self)
-        self.LoginLabel.setGeometry(QtCore.QRect(350, 160, 101, 51))
+        self.loginLabel = AutoResizingLabel(24, True, parent = self)
+        self.loginLabel.setGeometry(QtCore.QRect(350, 160, 101, 51))
 
         # changes font size for label definition
         font.setPointSize(24)
 
         # defines the font of login label
-        self.LoginLabel.setFont(font)
-        self.LoginLabel.setObjectName("LoginLabel")
+        self.loginLabel.setFont(font)
+        self.loginLabel.setObjectName("LoginLabel")
 
         # declares username input box
-        self.UsernameInput = QtWidgets.QLineEdit(self)
-        self.UsernameInput.setGeometry(QtCore.QRect(350, 210, 300, 30))
+        self.usernameInput = QtWidgets.QLineEdit(self)
+        self.usernameInput.setGeometry(QtCore.QRect(350, 210, 300, 30))
 
         # Changes font for next declaration
         font.setPointSize(13)
         font.setBold(False)
 
         # defines the settings of the username input
-        self.UsernameInput.setFont(font)
-        self.UsernameInput.setText("")
-        self.UsernameInput.setPlaceholderText("Enter Username:")
-        self.UsernameInput.setObjectName("UsernameInput")
+        self.usernameInput.setFont(font)
+        self.usernameInput.setText("")
+        self.usernameInput.setPlaceholderText("Enter Username:")
+        self.usernameInput.setObjectName("UsernameInput")
 
         # declares password input box
-        self.PasswordInput = QtWidgets.QLineEdit(self)
-        self.PasswordInput.setGeometry(QtCore.QRect(350, 253, 300, 30))
+        self.passwordInput = QtWidgets.QLineEdit(self)
+        self.passwordInput.setGeometry(QtCore.QRect(350, 253, 300, 30))
 
         # changes font
         font.setPointSize(13)
 
         # defines the default settings of the password input box
-        self.PasswordInput.setFont(font)
-        self.PasswordInput.setText("")
+        self.passwordInput.setFont(font)
+        self.passwordInput.setText("")
         # echo mode states whether the input is shown as bullets or text
-        self.PasswordInput.setEchoMode(QtWidgets.QLineEdit.Password)
-        self.PasswordInput.setPlaceholderText("Enter Password:")
-        self.PasswordInput.setObjectName("PasswordInput")
+        self.passwordInput.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.passwordInput.setPlaceholderText("Enter Password:")
+        self.passwordInput.setObjectName("PasswordInput")
 
         font.setPointSize(14)
         font.setBold(True)
 
         # declares log in button
-        self.LoginButton = QtWidgets.QPushButton(self)
-        self.LoginButton.setGeometry(QtCore.QRect(425, 292, 150, 32))
+        self.loginButton = QtWidgets.QPushButton(self)
+        self.loginButton.setGeometry(QtCore.QRect(425, 292, 150, 32))
 
-        self.LoginButton.setFont(font)
-        self.LoginButton.setObjectName("LoginButton")
+        self.loginButton.setFont(font)
+        self.loginButton.setObjectName("LoginButton")
 
         # calls log in function which checks the input of username and password
         # passes in the base window to allow access to the stacked widget
-        self.LoginButton.clicked.connect(lambda: LogIn(self, stackedWidgetObject, self.UsernameInput.text(), self.PasswordInput.text()))
+        self.loginButton.clicked.connect(lambda: LogIn(self, stackedWidgetObject, self.usernameInput.text(), self.passwordInput.text()))
 
         # declares createUser button
-        self.CreateUserButton = QtWidgets.QPushButton(self)
-        self.CreateUserButton.setGeometry(QtCore.QRect(425, 324, 150, 32))
+        self.createUserButton = QtWidgets.QPushButton(self)
+        self.createUserButton.setGeometry(QtCore.QRect(425, 324, 150, 32))
 
-        self.CreateUserButton.setFont(font)
-        self.CreateUserButton.setObjectName("LoginButton")
+        self.createUserButton.setFont(font)
+        self.createUserButton.setObjectName("LoginButton")
 
         # calls go to register page function which passes username and input to new page
         # passes in the base window to allow access to the stacked widget
-        self.CreateUserButton.clicked.connect(lambda: goToRegisterPage(stackedWidgetObject, self.UsernameInput.text(), self.PasswordInput.text(), registerWidgetObject))
+        self.createUserButton.clicked.connect(lambda: goToRegisterPage(stackedWidgetObject, self.usernameInput.text(), self.passwordInput.text(), registerWidgetObject))
 
         # declares forgotPassword button
-        self.ForgotPasswordButton = QtWidgets.QPushButton(self)
-        self.ForgotPasswordButton.setGeometry(QtCore.QRect(425, 356, 150, 32))
+        self.forgotPasswordButton = QtWidgets.QPushButton(self)
+        self.forgotPasswordButton.setGeometry(QtCore.QRect(425, 356, 150, 32))
 
-        self.ForgotPasswordButton.setFont(font)
-        self.ForgotPasswordButton.setObjectName("LoginButton")
+        self.forgotPasswordButton.setFont(font)
+        self.forgotPasswordButton.setObjectName("LoginButton")
 
         # button is initially hidden
-        self.ForgotPasswordButton.setHidden(True)
+        self.forgotPasswordButton.setHidden(True)
 
         # calls log in function which checks the input of username and password
         # passes in the self of the group window to allow access to the stacked widget
-        self.ForgotPasswordButton.clicked.connect(lambda: goToForgotPasswordPage(stackedWidgetObject, self.UsernameInput.text(), forgotPasswordWidgetObject))
+        self.forgotPasswordButton.clicked.connect(lambda: goToForgotPasswordPage(stackedWidgetObject, self.usernameInput.text(), forgotPasswordWidgetObject))
 
         # Changes font for next declaration
         font.setPointSize(13)
         font.setBold(False)
 
         # declares the error label
-        self.ErrorLabel = AutoResizingLabel(13, False, parent = self, wordWrap = True)
-        self.ErrorLabel.setGeometry(QtCore.QRect(350, 395, 300, 70))
+        self.errorLabel = AutoResizingLabel(13, False, parent = self, wordWrap = True)
+        self.errorLabel.setGeometry(QtCore.QRect(350, 395, 300, 70))
 
         # defines the font of error label
-        self.ErrorLabel.setFont(font)
-        self.ErrorLabel.setAlignment(QtCore.Qt.AlignCenter)
-        self.ErrorLabel.setObjectName("ErrorLabel")
-        self.ErrorLabel.setHidden(True)
-        self.ErrorLabel.setStyleSheet("color: rgb(175, 61, 50)")
-        self.ErrorLabel.setWordWrap(True)
+        self.errorLabel.setFont(font)
+        self.errorLabel.setAlignment(QtCore.Qt.AlignCenter)
+        self.errorLabel.setObjectName("ErrorLabel")
+        self.errorLabel.setHidden(True)
+        self.errorLabel.setStyleSheet("color: rgb(175, 61, 50)")
+        self.errorLabel.setWordWrap(True)
 
         self.passwordVisibilityButton = QtWidgets.QPushButton(self)
         self.passwordVisibilityButton.setGeometry(QtCore.QRect(613, 253, 40, 26))
@@ -135,7 +135,7 @@ class Ui_LogInPage(QtWidgets.QWidget):
         self.passwordVisibilityButton.setObjectName("passwordVisibilityButton")
 
         # calls function which either sets text to bullets or shows real text
-        self.passwordVisibilityButton.clicked.connect(lambda: PasswordVisibility(self.PasswordInput.displayText(), self.PasswordInput.text(), self.PasswordInput))
+        self.passwordVisibilityButton.clicked.connect(lambda: PasswordVisibility(self.passwordInput.displayText(), self.passwordInput.text(), self.passwordInput))
         
         self.retranslateUi()
         QtCore.QMetaObject.connectSlotsByName(self)
@@ -143,20 +143,20 @@ class Ui_LogInPage(QtWidgets.QWidget):
     
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        self.WelcomeLabel.setText(_translate("logInPage", "Chess Teacher"))
-        self.LoginLabel.setText(_translate("logInPage", "Login:"))
-        self.LoginButton.setText(_translate("logInPage", "Login"))
-        self.CreateUserButton.setText(_translate("logInPage", "Create User"))
-        self.ForgotPasswordButton.setText(_translate("logInPage", "Reset Password"))
+        self.welcomeLabel.setText(_translate("logInPage", "Chess Teacher"))
+        self.loginLabel.setText(_translate("logInPage", "Login:"))
+        self.loginButton.setText(_translate("logInPage", "Login"))
+        self.createUserButton.setText(_translate("logInPage", "Create User"))
+        self.forgotPasswordButton.setText(_translate("logInPage", "Reset Password"))
 
 
     def resetUi(self):
-        self.UsernameInput.setText("")
+        self.usernameInput.setText("")
 
-        self.PasswordInput.setText("")
-        self.PasswordInput.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.passwordInput.setText("")
+        self.passwordInput.setEchoMode(QtWidgets.QLineEdit.Password)
 
-        self.ForgotPasswordButton.setHidden(True)
+        self.forgotPasswordButton.setHidden(True)
 
-        self.ErrorLabel.setHidden(True)
+        self.errorLabel.setHidden(True)
     
